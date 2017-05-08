@@ -4,6 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Entity.h</itemPath>
+      <itemPath>MyObject.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +14,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Entity.cpp</itemPath>
+      <itemPath>MyObject.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -43,6 +47,14 @@
           <commandLine>-std=c++11 -lncurses</commandLine>
         </ccTool>
       </compileType>
+      <item path="Entity.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Entity.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MyObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MyObject.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -66,6 +78,14 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Entity.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Entity.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MyObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MyObject.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
