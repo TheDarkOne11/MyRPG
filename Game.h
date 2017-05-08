@@ -47,9 +47,6 @@ public:
 	 * @return true if game is still running.
 	 */
 	bool isRunning();
-	
-private:
-	GameState currState;
 };
 
 #endif /* GAME_H */
