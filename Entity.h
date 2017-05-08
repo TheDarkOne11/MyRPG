@@ -26,15 +26,13 @@ public:
 	/**
 	 * 
 	 * @param ID
-	 * @param x
-	 * @param y
 	 * @param mapSymbol what the entity looks like in the game
 	 * @param health
 	 * @param speed
 	 * @param attackDmg
 	 * @param attackSpeed
 	 */
-	Entity	(int ID, int x, int y, char mapSymbol, 
+	Entity	(int ID, char mapSymbol, 
 			int health, int speed, int attackDmg, int attackSpeed);
 	
 	

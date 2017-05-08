@@ -26,11 +26,9 @@ public:
 	/**
 	 * 
 	 * @param ID is unique value used to distinguish MyObjects's descendants
-	 * @param x is ingame x position
-	 * @param y is ingame y position
 	 * @param mapSymbol what the object looks like in the game
 	 */
-	MyObject(int ID, int x, int y, char mapSymbol);
+	MyObject(int ID, char mapSymbol);
 		
 	virtual ~MyObject();
 	
@@ -38,6 +36,13 @@ public:
 	 * Handles painting of the object in the game.
 	 */
 	//virtual void paint();
+	
+	/**
+	 * Adds object into the game.
+	 * @param x
+	 * @param y
+	 */
+	virtual void addObject(int x, int y);
 };
 
 #endif /* MYOBJECT_H */

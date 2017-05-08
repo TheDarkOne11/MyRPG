@@ -1,8 +1,8 @@
 #include "Entity.h"
 
-Entity::Entity	(int ID, int x, int y, char mapSymbol, 
+Entity::Entity	(int ID, char mapSymbol, 
 				int health, int speed, int attackDmg, int attackSpeed)
-				: MyObject(ID, x, y, mapSymbol), health(health), speed(speed), 
+				: MyObject(ID, mapSymbol), health(health), speed(speed), 
 				attackDmg(attackDmg), attackSpeed(attackSpeed)
 {
 	
