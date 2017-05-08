@@ -10,7 +10,6 @@
 
 #include <iostream>
 #include <ncurses.h>
-#include "Screen.h"
 
 /**
  * Class represents the whole game.
@@ -48,7 +47,6 @@ public:
 	
 private:
 	GameState currState;
-	Screen scr;
 };
 
 #endif /* GAME_H */

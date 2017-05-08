@@ -9,7 +9,6 @@
         <itemPath>MyObject.h</itemPath>
       </logicalFolder>
       <itemPath>Game.h</itemPath>
-      <itemPath>Screen.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -23,7 +22,6 @@
         <itemPath>MyObject.cpp</itemPath>
       </logicalFolder>
       <itemPath>Game.cpp</itemPath>
-      <itemPath>Screen.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -67,10 +65,6 @@
       </item>
       <item path="MyObject.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Screen.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Screen.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -105,10 +99,6 @@
       <item path="MyObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MyObject.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Screen.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Screen.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

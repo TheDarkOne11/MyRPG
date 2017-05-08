@@ -8,11 +8,9 @@ Game::~Game() {
 }
 
 void Game::update() {
-	
 }
 
 void Game::paint() {
-	
 }
 
 bool Game::isRunning() {

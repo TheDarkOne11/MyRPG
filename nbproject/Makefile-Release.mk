@@ -38,7 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/Entity.o \
 	${OBJECTDIR}/Game.o \
 	${OBJECTDIR}/MyObject.o \
-	${OBJECTDIR}/Screen.o \
 	${OBJECTDIR}/main.o
 
 
@@ -80,11 +79,6 @@ ${OBJECTDIR}/MyObject.o: MyObject.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MyObject.o MyObject.cpp
-
-${OBJECTDIR}/Screen.o: Screen.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Screen.o Screen.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
