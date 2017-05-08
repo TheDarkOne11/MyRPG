@@ -23,10 +23,12 @@ private:
 	enum GameState {
 		MAIN_MENU,
 		GAME,
+		INGAME_MENU,
 		EXIT
 	};
 	
 	GameState currState;
+	int maxX, maxY;
 
 public:	
 	Game();
