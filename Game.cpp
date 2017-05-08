@@ -14,3 +14,7 @@ void Game::update() {
 void Game::paint() {
 	
 }
+
+bool Game::isRunning() {
+	return currState != currState.EXIT;
+}

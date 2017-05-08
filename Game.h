@@ -12,10 +12,14 @@
 #include <ncurses.h>
 
 /**
- * Main class which handles everything.
+ * Class represents the whole game.
+ * It handles all updates and paints.
  */
 class Game {
 private:
+	/**
+	 * All different major game states.
+	 */
 	enum GameState {
 		MAIN_MENU,
 		GAME,
@@ -40,6 +44,11 @@ public:
 	 * Paints whole game.
 	 */
 	void paint();
+	
+	/**
+	 * @return true if game is still running.
+	 */
+	bool isRunning();
 };
 
 #endif /* GAME_H */
