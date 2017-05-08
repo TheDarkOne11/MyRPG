@@ -10,13 +10,14 @@
 
 #include <iostream>
 #include <ncurses.h>
+#include "Screen.h"
 
 /**
  * Class represents the whole game.
  * It handles all updates and paints.
  */
 class Game {
-private:
+public:
 	/**
 	 * All different major game states.
 	 */
@@ -25,12 +26,7 @@ private:
 		GAME,
 		EXIT
 	};
-
-	GameState currState;
-	Screen scr;
 	
-	
-public:
 	Game();
 	
 	~Game();
@@ -49,6 +45,10 @@ public:
 	 * @return true if game is still running.
 	 */
 	bool isRunning();
+	
+private:
+	GameState currState;
+	Screen scr;
 };
 
 #endif /* GAME_H */

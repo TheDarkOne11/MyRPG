@@ -16,7 +16,7 @@
  */
 class Screen {
 private:
-	
+	int maxWidth, maxHeight;
 
 public:
 	Screen();

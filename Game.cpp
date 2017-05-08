@@ -1,7 +1,7 @@
 #include "Game.h"
 
 Game::Game() {
-	currState = MAIN_MENU;
+	currState = GameState::MAIN_MENU;
 }
 
 Game::~Game() {
@@ -16,5 +16,5 @@ void Game::paint() {
 }
 
 bool Game::isRunning() {
-	return currState != currState.EXIT;
+	return currState != GameState::EXIT;
 }
