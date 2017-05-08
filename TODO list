@@ -1,0 +1,8 @@
+MY TODO LIST:
+
+Test of the screen using makeshift player.
+Complete main.cpp timer.
+Complete Game update and paint methods (makeshift for testing, using simple char array)
+Add user input for the player (moving for testing).
+Make player camera - window centralized around player.
+Test of the camera using simple array of chars - check how well it works when player is moving.
