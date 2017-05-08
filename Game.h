@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <ncurses.h>
+#include "Level.h"
 
 /**
  * Class represents the whole game.
@@ -27,6 +28,7 @@ private:
 		EXIT
 	};
 	
+	Level* level;
 	GameState currState;
 	int maxX, maxY;
 

@@ -11,10 +11,10 @@
 #include "MyObject.h"
 
 class Wall : public MyObject {
+private:
+	
 public:
 	Wall();
-private:
-
 };
 
 #endif /* WALL_H */

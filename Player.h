@@ -11,10 +11,11 @@
 #include "Entity.h"
 
 class Player : public Entity {
+private:
+	
+	
 public:
 	Player();
-private:
-
 };
 
 #endif /* PLAYER_H */
