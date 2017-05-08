@@ -15,6 +15,13 @@
  * Super class of all objects in the game (Walls, Player, Enemies...)
  */
 class MyObject {
+protected:
+	int ID;
+	int x, y;
+	
+	// Ingame representation of the object
+	char mapSymbol;
+
 public:
 	/**
 	 * 
@@ -31,13 +38,6 @@ public:
 	 * Handles painting of the object in the game.
 	 */
 	//virtual void paint();
-	
-protected:
-	int ID;
-	int x, y;
-	
-	// Ingame representation of the object
-	char mapSymbol;
 };
 
 #endif /* MYOBJECT_H */
