@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Level.o \
 	${OBJECTDIR}/MyObject.o \
 	${OBJECTDIR}/Player.o \
+	${OBJECTDIR}/Static_Object.o \
 	${OBJECTDIR}/Wall.o \
 	${OBJECTDIR}/main.o
 
@@ -92,6 +93,11 @@ ${OBJECTDIR}/Player.o: Player.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Player.o Player.cpp
+
+${OBJECTDIR}/Static_Object.o: Static_Object.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Static_Object.o Static_Object.cpp
 
 ${OBJECTDIR}/Wall.o: Wall.cpp
 	${MKDIR} -p ${OBJECTDIR}

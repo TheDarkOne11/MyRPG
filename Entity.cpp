@@ -1,11 +1,14 @@
 #include "Entity.h"
 
-Entity::Entity	(int ID, char mapSymbol, 
-				int health, int speed, int attackDmg, int attackSpeed)
-				: MyObject(ID, mapSymbol), health(health), speed(speed), 
-				attackDmg(attackDmg), attackSpeed(attackSpeed)
+int Entity::lastID = 0;
+
+
+Entity::Entity	(char mapSymbol, int health, int speed, 
+				int attackDmg, int attackSpeed)
+				: MyObject(lastID, mapSymbol, MyObject::ENTITY), health(health), 
+				speed(speed), attackDmg(attackDmg), attackSpeed(attackSpeed)
 {
-	
+	lastID++;
 }
 
 void Entity::move(int newX, int newY)

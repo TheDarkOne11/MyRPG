@@ -8,9 +8,9 @@
 #ifndef WALL_H
 #define WALL_H
 
-#include "MyObject.h"
+#include "Static_Object.h"
 
-class Wall : public MyObject {
+class Wall : public Static_Object {
 private:
 	
 public:

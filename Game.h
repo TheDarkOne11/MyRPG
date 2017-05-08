@@ -28,8 +28,12 @@ private:
 		EXIT
 	};
 	
+	// Actual game level
 	Level* level;
+	
 	GameState currState;
+	
+	// Maximum values of the screen
 	int maxX, maxY;
 
 public:	
@@ -50,7 +54,7 @@ public:
 	/**
 	 * @return true if game is still running.
 	 */
-	bool isRunning();
+	bool isRunning() const;
 };
 
 #endif /* GAME_H */

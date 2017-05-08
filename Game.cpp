@@ -26,6 +26,6 @@ void Game::paint() {
 	refresh();
 }
 
-bool Game::isRunning() {
+bool Game::isRunning() const {
 	return currState != GameState::EXIT;
 }

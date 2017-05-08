@@ -1,5 +1,5 @@
 #include "Player.h"
 
-Player::Player() : Entity(0, 'P', 500, 1, 10, 1) {
+Player::Player() : Entity('P', 500, 1, 10, 1) {
 }
 

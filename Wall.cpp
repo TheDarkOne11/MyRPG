@@ -1,5 +1,5 @@
 #include "Wall.h"
 
-Wall::Wall() : MyObject(0, '#') {
+Wall::Wall() : Static_Object('#') {
 }
 

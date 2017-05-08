@@ -9,6 +9,8 @@
 #define LEVEL_H
 
 #include "MyObject.h"
+#include "Entity.h"
+#include "Static_Object.h"
 
 class Level {
 private:

@@ -20,6 +20,7 @@ protected:
 	
 private:
 	int timeSinceAttack;
+	static int lastID;
 	
 public:
 	
@@ -32,8 +33,8 @@ public:
 	 * @param attackDmg
 	 * @param attackSpeed
 	 */
-	Entity	(int ID, char mapSymbol, 
-			int health, int speed, int attackDmg, int attackSpeed);
+	Entity	(char mapSymbol, int health, int speed, 
+			int attackDmg, int attackSpeed);
 	
 	
 	virtual void move(int newX, int newY);

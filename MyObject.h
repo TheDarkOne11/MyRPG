@@ -16,8 +16,14 @@
  */
 class MyObject {
 protected:
+	enum ObjectType {
+		ENTITY,
+		STATIC
+	};
+	
 	int ID;
 	int x, y;
+	ObjectType type;
 	
 	// Ingame representation of the object
 	char mapSymbol;
@@ -28,7 +34,7 @@ public:
 	 * @param ID is unique value used to distinguish MyObjects's descendants
 	 * @param mapSymbol what the object looks like in the game
 	 */
-	MyObject(int ID, char mapSymbol);
+	MyObject(int ID, char mapSymbol, ObjectType type);
 		
 	virtual ~MyObject();
 	
