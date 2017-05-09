@@ -43,6 +43,7 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>TODO list</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -84,6 +85,8 @@
       <item path="Static_Object.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Static_Object.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TODO list" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Wall.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -135,6 +138,8 @@
       <item path="Static_Object.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Static_Object.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TODO list" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Wall.cpp" ex="false" tool="1" flavor2="0">
       </item>

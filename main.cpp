@@ -9,11 +9,11 @@ using namespace std;
 
 int main(int argc, char** argv) {
 	Game game;
-	int fps = 25;
-	int sleepTime = 1000000;	// TODO Count sleepTime
+	int fps = 60;
+	int sleepTime = 1000000/fps;	// TODO Count sleepTime
 	
 	// Main game loop
-	while(true) {
+	while( game.isRunning() ) {
 		game.update();
 		game.paint();
 		

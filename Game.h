@@ -27,14 +27,13 @@ private:
 		INGAME_MENU,
 		EXIT
 	};
-	
+	GameState currState;
 	// Actual game level
 	Level* level;
 	
-	GameState currState;
-	
 	// Maximum values of the screen
 	int maxX, maxY;
+	int pressedKey;
 
 public:	
 	Game();
