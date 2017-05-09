@@ -8,7 +8,7 @@
         <itemPath>Entity.h</itemPath>
         <itemPath>MyObject.h</itemPath>
         <itemPath>Player.h</itemPath>
-        <itemPath>Static_Object.h</itemPath>
+        <itemPath>StaticObject.h</itemPath>
         <itemPath>Wall.h</itemPath>
       </logicalFolder>
       <itemPath>Game.h</itemPath>
@@ -25,7 +25,7 @@
         <itemPath>Entity.cpp</itemPath>
         <itemPath>MyObject.cpp</itemPath>
         <itemPath>Player.cpp</itemPath>
-        <itemPath>Static_Object.cpp</itemPath>
+        <itemPath>StaticObject.cpp</itemPath>
         <itemPath>Wall.cpp</itemPath>
       </logicalFolder>
       <itemPath>Game.cpp</itemPath>
@@ -82,9 +82,9 @@
       </item>
       <item path="Player.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Static_Object.cpp" ex="false" tool="1" flavor2="0">
+      <item path="StaticObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Static_Object.h" ex="false" tool="3" flavor2="0">
+      <item path="StaticObject.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="TODO list" ex="false" tool="3" flavor2="0">
       </item>
@@ -135,9 +135,9 @@
       </item>
       <item path="Player.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Static_Object.cpp" ex="false" tool="1" flavor2="0">
+      <item path="StaticObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Static_Object.h" ex="false" tool="3" flavor2="0">
+      <item path="StaticObject.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="TODO list" ex="false" tool="3" flavor2="0">
       </item>

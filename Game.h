@@ -11,6 +11,7 @@
 #include <iostream>
 #include <ncurses.h>
 #include "Level.h"
+#include "Player.h"
 
 /**
  * Class represents the whole game.
@@ -32,9 +33,9 @@ private:
 	Level* level;
 	
 	// Maximum values of the screen
-	int maxX, maxY;
-	int pressedKey;
-
+	static int maxX, maxY;
+	static int pressedKey;
+	
 public:	
 	Game();
 	
@@ -54,6 +55,9 @@ public:
 	 * @return true if game is still running.
 	 */
 	bool isRunning() const;
+	
+	static int getPressedKey();
+	
 };
 
 #endif /* GAME_H */

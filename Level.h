@@ -12,14 +12,17 @@
 #include <ncurses.h>
 #include "MyObject.h"
 #include "Entity.h"
-#include "Static_Object.h"
+#include "StaticObject.h"
+#include "Player.h"
 
 class Level {
 private:
+	std::vector< std::vector<std::string> > file;
 	std::vector< std::vector<MyObject*> > gameMap;
+	Player* player;
+
 
 public:
-	std::vector< std::vector<std::string> > file;
 	
 	Level();
 	~Level();

@@ -37,7 +37,7 @@ public:
 			int attackDmg, int attackSpeed);
 	
 	
-	virtual void move(int newX, int newY);
+	virtual void move(int newY, int newX);
 	
 	virtual void attack(Entity* target);
 	

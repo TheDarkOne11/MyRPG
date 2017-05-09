@@ -10,7 +10,19 @@ MyObject::~MyObject()
 {
 }
 
-void MyObject::addObject(int x, int y) {
+void MyObject::paint() {
+	mvprintw(y, x, "%c", mapSymbol);
+}
+
+void MyObject::addObject(int y, int x) {
 	this->x = x;
 	this->y = y;
+}
+
+int MyObject::getX() {
+	return x;
+}
+	
+int MyObject::getY() {
+	return y;
 }

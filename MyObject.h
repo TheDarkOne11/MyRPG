@@ -23,10 +23,11 @@ protected:
 	
 	int ID;
 	int x, y;
-	ObjectType type;
 	
 	// Ingame representation of the object
 	char mapSymbol;
+	
+	ObjectType type;
 
 public:
 	/**
@@ -41,14 +42,18 @@ public:
 	/**
 	 * Handles painting of the object in the game.
 	 */
-	//virtual void paint();
+	virtual void paint();
 	
 	/**
 	 * Adds object into the game.
 	 * @param x
 	 * @param y
 	 */
-	virtual void addObject(int x, int y);
+	virtual void addObject(int y, int x);
+	
+	int getX();
+	
+	int getY();
 };
 
 #endif /* MYOBJECT_H */

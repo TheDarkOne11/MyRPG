@@ -1,5 +1,8 @@
 #include "Game.h"
 
+int Game::pressedKey;
+int Game::maxX, Game::maxY;
+
 Game::Game() {
 	currState = GameState::MAIN_MENU;
 	
@@ -12,18 +15,18 @@ Game::Game() {
 	getmaxyx(stdscr, maxY, maxX);
 	
 	level = new Level();
-	level->fillMap(8, 5);
-	pressedKey = 0;
+	level->fillMap(maxY - 1, maxX - 1);	
 }
 
 Game::~Game() {
+	delete level;
 	endwin();
 }
 
 void Game::update() {
 	getmaxyx(stdscr, maxY, maxX);
-	
 	pressedKey = getch();
+	level->update();
 }
 
 void Game::paint() {
@@ -32,20 +35,8 @@ void Game::paint() {
 	level->paint();
 	
 	switch(pressedKey) {
-		case(KEY_UP):
-			
-			break;
-		case(KEY_DOWN):
-			
-			break;
-		case(KEY_LEFT):
-			
-			break;
-		case(KEY_RIGHT):
-			
-			break;
 		case('o'):
-			currState = Game::EXIT;
+			currState = EXIT;
 			break;
 	}
 	
@@ -54,4 +45,8 @@ void Game::paint() {
 
 bool Game::isRunning() const {
 	return currState != GameState::EXIT;
+}
+
+int Game::getPressedKey() {
+	return pressedKey;
 }

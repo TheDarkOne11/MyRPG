@@ -1,15 +1,30 @@
 #include "Level.h"
+#include "Game.h"
 #include <unistd.h>
 
 Level::Level() {
-	
+	player = new Player();
+	player->addObject(5, 10);
 }
 
 Level::~Level() {
 }
 
 void Level::update() {
-	
+	switch(Game::getPressedKey()) {
+		case(KEY_UP):
+			player->move(player->getY() - 1, player->getX());
+			break;
+		case(KEY_DOWN):
+			player->move(player->getY() + 1, player->getX());
+			break;
+		case(KEY_LEFT):
+			player->move(player->getY(), player->getX() - 1);
+			break;
+		case(KEY_RIGHT):
+			player->move(player->getY(), player->getX() + 1);
+			break;
+	}
 }
 
 void Level::paint() {
@@ -18,6 +33,8 @@ void Level::paint() {
 			mvprintw(y, x, file[y][x].c_str());
 		}
 	}
+	
+	player->paint();
 }
 
 void Level::fillMap(int h, int w) {

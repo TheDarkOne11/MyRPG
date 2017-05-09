@@ -11,9 +11,10 @@ Entity::Entity	(char mapSymbol, int health, int speed,
 	lastID++;
 }
 
-void Entity::move(int newX, int newY)
+void Entity::move(int newY, int newX)
 {
-	
+	x = newX;
+	y = newY;
 }
 	
 void Entity::attack(Entity* target)
