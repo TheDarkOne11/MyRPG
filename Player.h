@@ -14,6 +14,8 @@ class Player : public Entity {
 public:
 	Player(char mapSymbol, int health, int speed, int attackDmg, int attackSpeed);
 	
+	virtual MyObject* clone() const override;
+	
 private:
 	
 };

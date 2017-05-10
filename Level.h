@@ -16,7 +16,7 @@
 #include "StaticObject.h"
 #include "Player.h"
 #include "ConfigClass.h"
-#include "Game.h"
+#include "UserInput.h"
 
 class Level {
 public:

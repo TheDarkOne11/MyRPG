@@ -7,14 +7,18 @@ ConfigClass::ConfigClass() {
 }
 
 ConfigClass::~ConfigClass() {
-	
+	for(auto it = mapMyObjectsTypes.begin(); it != mapMyObjectsTypes.end(); it++) {
+		for(MyObject* curr : it->second) {
+			delete curr;
+		}
+	}
 }
 
 void ConfigClass::init() {
 	std::cerr << "Initialization started" << std::endl;
 	
 	// Initialize static objects
-	MyObject* wall = new Wall();
+	MyObject* wall = new Wall('#');
 	addObject(wall);
 	
 	// Initialize entities
@@ -34,6 +38,6 @@ void ConfigClass::addObject(MyObject* object) {
 	it->second.push_back(object);
 }
 
-Player* ConfigClass::getPlayer() {
-	return player;	// TODO cloning
+MyObject* ConfigClass::getPlayer() {
+	return player->clone();	// TODO cloning
 }

@@ -14,6 +14,7 @@
       <itemPath>ConfigClass.h</itemPath>
       <itemPath>Game.h</itemPath>
       <itemPath>Level.h</itemPath>
+      <itemPath>UserInput.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -32,6 +33,7 @@
       <itemPath>ConfigClass.cpp</itemPath>
       <itemPath>Game.cpp</itemPath>
       <itemPath>Level.cpp</itemPath>
+      <itemPath>UserInput.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -94,6 +96,10 @@
       </item>
       <item path="TODO list" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="UserInput.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="UserInput.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Wall.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Wall.h" ex="false" tool="3" flavor2="0">
@@ -150,6 +156,10 @@
       <item path="StaticObject.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="TODO list" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="UserInput.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="UserInput.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Wall.cpp" ex="false" tool="1" flavor2="0">
       </item>

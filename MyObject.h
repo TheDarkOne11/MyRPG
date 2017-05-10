@@ -24,7 +24,7 @@ public:
 
 	/**
 	 * 
-	 * @param ID is unique value used to distinguish MyObjects's descendants
+	 * @param ID is unique value used to distinguish MyObjects's subclasses
 	 * @param mapSymbol what the object looks like in the game
 	 */
 	MyObject(int ID, char mapSymbol, ObjectGroup type);
@@ -42,12 +42,14 @@ public:
 	 * @param y
 	 */
 	virtual void addObject(int y, int x);
+	
+	virtual MyObject* clone() const = 0;
 
-	int getX();
+	virtual int getX();
 
-	int getY();
+	virtual int getY();
 
-	ObjectGroup getGroup();
+	virtual ObjectGroup getGroup();
 
 protected:
 	int ID;

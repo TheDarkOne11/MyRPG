@@ -12,6 +12,7 @@
 #include <ncurses.h>
 #include "Level.h"
 #include "ConfigClass.h"
+#include "UserInput.h"
 
 /**
  * Class represents the whole game.
@@ -48,17 +49,15 @@ public:
 	 */
 	bool isRunning() const;
 	
-	static int getPressedKey();
-	
 private:
 	GameState currState;
+	UserInput input;
 	ConfigClass configs;
 	// Actual game level
 	Level* level;
 	
 	// Maximum values of the screen
 	static int maxX, maxY;
-	static int pressedKey;
 	
 	
 };

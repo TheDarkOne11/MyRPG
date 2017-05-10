@@ -19,7 +19,7 @@
 /**
  * Class has some important constants for the game.
  * All types of MyObject subclasses that can be placed in the game are initialized here. (Wall, Player..)
- * Class provides copies of these subclasses.
+ * These initialized subclass serve as "templates", their copies are provided outside ConfigClass.
  */
 class ConfigClass {
 public:
@@ -29,7 +29,7 @@ public:
 	static MyObject* getMyObject(const char mapSymbol);
 	static MyObject* getMyObject(const MyObject::ObjectGroup, const int ID);
 	static MyObject* getMyObject(const MyObject::ObjectGroup);
-	static Player* getPlayer();
+	static MyObject* getPlayer();
 	
 private:
 	/**

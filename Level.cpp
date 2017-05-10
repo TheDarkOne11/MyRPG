@@ -1,15 +1,17 @@
 #include "Level.h"
 
 Level::Level() {
-	player = ConfigClass::getPlayer();
-	player->addObject(5, 10);
+	// Get player from ConfigClass
+	player = dynamic_cast<Player*> ( ConfigClass::getPlayer() );
+	player->addObject(3, 10);
 }
 
 Level::~Level() {
+	delete player;
 }
 
 void Level::update() {
-	switch(Game::getPressedKey()) {
+	switch(UserInput::getPressedKey()) {
 		case(KEY_UP):
 			player->move(player->getY() - 1, player->getX());
 			break;
@@ -26,8 +28,8 @@ void Level::update() {
 }
 
 void Level::paint() {
-	for(int y = 0; y < file.size(); y++) {
-		for(int x = 0; x < file[y].size(); x++) {
+	for(unsigned int y = 0; y < file.size(); y++) {
+		for(unsigned int x = 0; x < file[y].size(); x++) {
 			mvprintw(y, x, file[y][x].c_str());
 		}
 	}
@@ -36,6 +38,7 @@ void Level::paint() {
 }
 
 void Level::fillMap(int h, int w) {
+	//TODO Read map from file instead of hardcoding it
 	for(int y = 0; y < h; y++) {
 		std::vector<std::string> row;
 		for(int x = 0; x < w; x++) {
@@ -49,4 +52,6 @@ void Level::fillMap(int h, int w) {
 		}
 		file.push_back(row);
 	}
+	
+	
 }

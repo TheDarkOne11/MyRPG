@@ -1,6 +1,5 @@
 #include "Game.h"
 
-int Game::pressedKey;
 int Game::maxX, Game::maxY;
 
 Game::Game() {
@@ -25,7 +24,7 @@ Game::~Game() {
 
 void Game::update() {
 	getmaxyx(stdscr, maxY, maxX);
-	pressedKey = getch();
+	input.update();
 	level->update();
 }
 
@@ -34,7 +33,7 @@ void Game::paint() {
 	//mvprintw(maxY/2, maxX/2, "SCREEN INITIATED %d/ %d", maxX/2, maxY/2);
 	level->paint();
 	
-	switch(pressedKey) {
+	switch(UserInput::getPressedKey()) {
 		case('o'):
 			currState = EXIT;
 			break;
@@ -45,8 +44,4 @@ void Game::paint() {
 
 bool Game::isRunning() const {
 	return currState != GameState::EXIT;
-}
-
-int Game::getPressedKey() {
-	return pressedKey;
 }
