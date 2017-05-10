@@ -13,9 +13,9 @@
 /**
  * Super class for static objects (walls, chests, doors...)
  */
-class Static_Object : public MyObject {
+class StaticObject : public MyObject {
 public:
-	Static_Object(char mapSymbol);
+	StaticObject(char mapSymbol);
 	
 private:
 	static int lastID;

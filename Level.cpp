@@ -8,6 +8,12 @@ Level::Level() {
 
 Level::~Level() {
 	delete player;
+	
+	for(unsigned int y = 0; y < vect_gameMap.size(); y++) {
+		for(unsigned int x = 0; x < vect_gameMap[y].size(); x++) {
+			delete vect_gameMap[y][x];
+		}
+	}
 }
 
 void Level::update() {
@@ -28,9 +34,9 @@ void Level::update() {
 }
 
 void Level::paint() {
-	for(unsigned int y = 0; y < vect_file.size(); y++) {
-		for(unsigned int x = 0; x < vect_file[y].size(); x++) {
-			mvprintw(y, x, vect_file[y][x].c_str());
+	for(unsigned int y = 0; y < vect_gameMap.size(); y++) {
+		for(unsigned int x = 0; x < vect_gameMap[y].size(); x++) {
+			vect_gameMap[y][x]->paint();
 		}
 	}
 	
@@ -40,18 +46,17 @@ void Level::paint() {
 void Level::fillMap(int h, int w) {
 	//TODO Read map from file instead of hardcoding it
 	for(int y = 0; y < h; y++) {
-		std::vector<std::string> row;
+		std::vector<MyObject*> row;
 		for(int x = 0; x < w; x++) {
-			std::string s;
+			MyObject* tmp;
 			if(y == 0 || y == h -1 || x == 0 || x == w - 1) {
-				s = "#";
+				tmp = ConfigClass::getMyObject('#');
 			} else {
-				s = " ";
+				tmp = ConfigClass::getMyObject(' ');
 			}
-			row.push_back(s);
+			row.push_back(tmp);
+			tmp->addObject(y, x);
 		}
-		vect_file.push_back(row);
+		vect_gameMap.push_back(row);
 	}
-	
-	
 }

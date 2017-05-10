@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/ConfigClass.o \
 	${OBJECTDIR}/Entity.o \
+	${OBJECTDIR}/Floor.o \
 	${OBJECTDIR}/Game.o \
 	${OBJECTDIR}/Level.o \
 	${OBJECTDIR}/MyObject.o \
@@ -80,6 +81,11 @@ ${OBJECTDIR}/Entity.o: Entity.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Entity.o Entity.cpp
+
+${OBJECTDIR}/Floor.o: Floor.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Floor.o Floor.cpp
 
 ${OBJECTDIR}/Game.o: Game.cpp
 	${MKDIR} -p ${OBJECTDIR}

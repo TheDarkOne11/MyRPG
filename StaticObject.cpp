@@ -1,8 +1,8 @@
 #include "StaticObject.h"
 
-int Static_Object::lastID = 0;
+int StaticObject::lastID = 0;
 
-Static_Object::Static_Object(char mapSymbol) 
+StaticObject::StaticObject(char mapSymbol) 
 					: MyObject(lastID, mapSymbol, MyObject::STATIC)
 {
 	lastID++;

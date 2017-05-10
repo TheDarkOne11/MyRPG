@@ -19,14 +19,18 @@ void MyObject::addObject(int y, int x) {
 	this->y = y;
 }
 
-int MyObject::getX() {
+int MyObject::getX() const {
 	return x;
 }
 	
-int MyObject::getY() {
+int MyObject::getY() const {
 	return y;
 }
 
-MyObject::ObjectGroup MyObject::getGroup() {
+MyObject::ObjectGroup MyObject::getGroup() const {
 	return group;
+}
+
+char MyObject::getMapSymbol() const {
+	return mapSymbol;
 }

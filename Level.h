@@ -30,7 +30,6 @@ public:
 	void fillMap(int w, int h);
 
 private:
-	std::vector< std::vector<std::string> > vect_file;
 	std::vector< std::vector<MyObject*> > vect_gameMap;
 	Player* player;
 

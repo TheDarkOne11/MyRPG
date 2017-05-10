@@ -10,7 +10,7 @@
 
 #include "StaticObject.h"
 
-class Wall : public Static_Object {
+class Wall : public StaticObject {
 public:
 	Wall(char mapSymbol);
 	

@@ -1,6 +1,6 @@
 #include "Wall.h"
 
-Wall::Wall(char mapSymbol) : Static_Object(mapSymbol) {
+Wall::Wall(char mapSymbol) : StaticObject(mapSymbol) {
 }
 
 MyObject* Wall::clone() const {

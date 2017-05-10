@@ -45,11 +45,13 @@ public:
 	
 	virtual MyObject* clone() const = 0;
 
-	virtual int getX();
+	virtual int getX() const;
 
-	virtual int getY();
+	virtual int getY() const;
 
-	virtual ObjectGroup getGroup();
+	virtual ObjectGroup getGroup() const;
+	
+	virtual char getMapSymbol() const;
 
 protected:
 	int ID;
