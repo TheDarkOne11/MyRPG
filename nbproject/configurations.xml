@@ -11,6 +11,7 @@
         <itemPath>StaticObject.h</itemPath>
         <itemPath>Wall.h</itemPath>
       </logicalFolder>
+      <itemPath>ConfigClass.h</itemPath>
       <itemPath>Game.h</itemPath>
       <itemPath>Level.h</itemPath>
     </logicalFolder>
@@ -28,6 +29,7 @@
         <itemPath>StaticObject.cpp</itemPath>
         <itemPath>Wall.cpp</itemPath>
       </logicalFolder>
+      <itemPath>ConfigClass.cpp</itemPath>
       <itemPath>Game.cpp</itemPath>
       <itemPath>Level.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -62,6 +64,10 @@
           <commandLine>-std=c++11 -lncurses</commandLine>
         </ccTool>
       </compileType>
+      <item path="ConfigClass.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ConfigClass.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Entity.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Entity.h" ex="false" tool="3" flavor2="0">
@@ -115,6 +121,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="ConfigClass.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ConfigClass.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Entity.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Entity.h" ex="false" tool="3" flavor2="0">

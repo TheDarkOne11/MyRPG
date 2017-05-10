@@ -15,27 +15,3 @@ Test of the camera using simple array of chars - check how well it works when pl
 	- check if gameMap is printed properly when moving
 
 Complete main.cpp timer.
-
-
--- Poznámky:
-
-GameMap:
-Musí obsahovat UNIKÁTNÍ mapSymboly.
-
-MyObjectChooser:
-Obsahuje: 
-MOHOU BÝT TYTO METODY STATIC?
-map<MyObjType, vector<MyObject*>>
-getMyObject(gameSymbol)
-getMyObject(MyObjType, ID)
-getMyObject(MyObjType) - random
-
-Užití:
-Načítání gameMap(zdi, dvere, truhly)
-Random generace nepřátel
-
-Poznámka:
-Pokaždé, když vytvořím nový subclass, musím ho zde inicializovat.
-Jejich atributy (HP, speed...) budu mít zde.
-Možná bych tuto třídu mohl pojmout jako třídu se všemi důležitými informacemi.
-Mohla by obsahovat cesty k adresářům, načítání informací z konfigurace, načítání map...

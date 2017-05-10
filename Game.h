@@ -11,7 +11,7 @@
 #include <iostream>
 #include <ncurses.h>
 #include "Level.h"
-#include "Player.h"
+#include "ConfigClass.h"
 
 /**
  * Class represents the whole game.
@@ -52,6 +52,7 @@ public:
 	
 private:
 	GameState currState;
+	ConfigClass configs;
 	// Actual game level
 	Level* level;
 	

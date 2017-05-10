@@ -1,9 +1,7 @@
 #include "Level.h"
-#include "Game.h"
-#include <unistd.h>
 
 Level::Level() {
-	player = new Player();
+	player = ConfigClass::getPlayer();
 	player->addObject(5, 10);
 }
 

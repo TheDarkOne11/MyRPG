@@ -10,10 +10,13 @@
 
 #include <vector>
 #include <ncurses.h>
+#include <unistd.h>
 #include "MyObject.h"
 #include "Entity.h"
 #include "StaticObject.h"
 #include "Player.h"
+#include "ConfigClass.h"
+#include "Game.h"
 
 class Level {
 public:

@@ -1,7 +1,7 @@
 #include "MyObject.h"
 
-MyObject::MyObject(int ID, char mapSymbol, ObjectType type)	
-							: ID(ID), mapSymbol(mapSymbol) , type(type)
+MyObject::MyObject(int ID, char mapSymbol, ObjectGroup type)	
+							: ID(ID), mapSymbol(mapSymbol) , group(type)
 {
 
 }
@@ -25,4 +25,8 @@ int MyObject::getX() {
 	
 int MyObject::getY() {
 	return y;
+}
+
+MyObject::ObjectGroup MyObject::getGroup() {
+	return group;
 }
