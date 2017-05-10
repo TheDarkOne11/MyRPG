@@ -36,7 +36,7 @@ private:
 	 * Map of all types of MyObject subclasses.
 	 * Divided into groups by ObjectType key.
 	 */
-	std::map<MyObject::ObjectGroup, std::vector<MyObject*>> mapMyObjectsTypes;
+	std::map<MyObject::ObjectGroup, std::vector<MyObject*>> map_MyObjectsTypes;
 	static Player* player;
 	
 	/**

@@ -7,7 +7,7 @@ ConfigClass::ConfigClass() {
 }
 
 ConfigClass::~ConfigClass() {
-	for(auto it = mapMyObjectsTypes.begin(); it != mapMyObjectsTypes.end(); it++) {
+	for(auto it = map_MyObjectsTypes.begin(); it != map_MyObjectsTypes.end(); it++) {
 		for(MyObject* curr : it->second) {
 			delete curr;
 		}
@@ -26,12 +26,12 @@ void ConfigClass::init() {
 }
 
 void ConfigClass::addObject(MyObject* object) {
-	auto it = mapMyObjectsTypes.find(object->getGroup());
+	auto it = map_MyObjectsTypes.find(object->getGroup());
 	
 	// Insert new group if it doesn't exist
-	if(it == mapMyObjectsTypes.end()) {
+	if(it == map_MyObjectsTypes.end()) {
 		std::vector<MyObject*> tmp;
-		it = mapMyObjectsTypes.insert( make_pair(object->getGroup(), tmp) ).first;
+		it = map_MyObjectsTypes.insert( make_pair(object->getGroup(), tmp) ).first;
 	}
 	
 	// Add MyObject in the vector

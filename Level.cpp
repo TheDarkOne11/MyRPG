@@ -28,9 +28,9 @@ void Level::update() {
 }
 
 void Level::paint() {
-	for(unsigned int y = 0; y < file.size(); y++) {
-		for(unsigned int x = 0; x < file[y].size(); x++) {
-			mvprintw(y, x, file[y][x].c_str());
+	for(unsigned int y = 0; y < vect_file.size(); y++) {
+		for(unsigned int x = 0; x < vect_file[y].size(); x++) {
+			mvprintw(y, x, vect_file[y][x].c_str());
 		}
 	}
 	
@@ -50,7 +50,7 @@ void Level::fillMap(int h, int w) {
 			}
 			row.push_back(s);
 		}
-		file.push_back(row);
+		vect_file.push_back(row);
 	}
 	
 	
