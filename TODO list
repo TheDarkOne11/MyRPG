@@ -1,16 +1,23 @@
 MY TODO LIST:
 
-Test of the screen using makeshift player.
-Fill gameMap in Level - need "MyObject chooser"
-Complete main.cpp timer.
-Complete Game update and paint methods (makeshift for testing, using simple char array)
-Add user input for the player (moving for testing).
+Test of the screen using makeshift moving player.		DONE
+
+Fill gameMap in Level - gameMap is the 2-dimensional vector of MyObjects
+	- need class that helps me choose descendants of MyObject
+
+Add user input - for the player (moving for testing)	DONE
+	1/ have seperate class for user input?
+	2/ have user inputs in Game and Level classes?
+
 Make player camera - window centralized around player.
 Test of the camera using simple array of chars - check how well it works when player is moving.
+	- check with gameMap bigger than the screen
+	- check if gameMap is printed properly when moving
+
+Complete main.cpp timer.
 
 
 -- Poznámky:
-Zkusit dát všechny typy enum nad jejich třídy. Budou vidět pro každého?
 
 GameMap:
 Musí obsahovat UNIKÁTNÍ mapSymboly.
