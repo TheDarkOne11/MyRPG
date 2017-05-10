@@ -11,10 +11,11 @@
 #include "StaticObject.h"
 
 class Wall : public Static_Object {
-private:
-	
 public:
 	Wall();
+	
+private:
+	
 };
 
 #endif /* WALL_H */

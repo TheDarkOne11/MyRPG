@@ -18,7 +18,7 @@
  * It handles all updates and paints.
  */
 class Game {
-private:
+public:	
 	/**
 	 * All different major game states.
 	 */
@@ -28,15 +28,7 @@ private:
 		INGAME_MENU,
 		EXIT
 	};
-	GameState currState;
-	// Actual game level
-	Level* level;
 	
-	// Maximum values of the screen
-	static int maxX, maxY;
-	static int pressedKey;
-	
-public:	
 	Game();
 	
 	~Game();
@@ -57,6 +49,16 @@ public:
 	bool isRunning() const;
 	
 	static int getPressedKey();
+	
+private:
+	GameState currState;
+	// Actual game level
+	Level* level;
+	
+	// Maximum values of the screen
+	static int maxX, maxY;
+	static int pressedKey;
+	
 	
 };
 

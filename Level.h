@@ -16,12 +16,6 @@
 #include "Player.h"
 
 class Level {
-private:
-	std::vector< std::vector<std::string> > file;
-	std::vector< std::vector<MyObject*> > gameMap;
-	Player* player;
-
-
 public:
 	
 	Level();
@@ -31,6 +25,12 @@ public:
 	void paint();
 	
 	void fillMap(int w, int h);
+
+private:
+	std::vector< std::vector<std::string> > file;
+	std::vector< std::vector<MyObject*> > gameMap;
+	Player* player;
+
 
 };
 

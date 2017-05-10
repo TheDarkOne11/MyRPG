@@ -14,11 +14,11 @@
  * Super class for static objects (walls, chests, doors...)
  */
 class Static_Object : public MyObject {
-private:
-	static int lastID;
-
 public:
 	Static_Object(char mapSymbol);
+	
+private:
+	static int lastID;
 };
 
 #endif /* STATIC_OBJECT_H */

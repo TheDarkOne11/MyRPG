@@ -1,8 +1,34 @@
 MY TODO LIST:
 
 Test of the screen using makeshift player.
+Fill gameMap in Level - need "MyObject chooser"
 Complete main.cpp timer.
 Complete Game update and paint methods (makeshift for testing, using simple char array)
 Add user input for the player (moving for testing).
 Make player camera - window centralized around player.
 Test of the camera using simple array of chars - check how well it works when player is moving.
+
+
+-- Poznámky:
+Zkusit dát všechny typy enum nad jejich třídy. Budou vidět pro každého?
+
+GameMap:
+Musí obsahovat UNIKÁTNÍ mapSymboly.
+
+MyObjectChooser:
+Obsahuje: 
+MOHOU BÝT TYTO METODY STATIC?
+map<MyObjType, vector<MyObject*>>
+getMyObject(gameSymbol)
+getMyObject(MyObjType, ID)
+getMyObject(MyObjType) - random
+
+Užití:
+Načítání gameMap(zdi, dvere, truhly)
+Random generace nepřátel
+
+Poznámka:
+Pokaždé, když vytvořím nový subclass, musím ho zde inicializovat.
+Jejich atributy (HP, speed...) budu mít zde.
+Možná bych tuto třídu mohl pojmout jako třídu se všemi důležitými informacemi.
+Mohla by obsahovat cesty k adresářům, načítání informací z konfigurace, načítání map...

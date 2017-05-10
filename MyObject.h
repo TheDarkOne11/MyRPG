@@ -15,21 +15,12 @@
  * Super class of all objects in the game (Walls, Player, Enemies...)
  */
 class MyObject {
-protected:
+public:
 	enum ObjectType {
-		ENTITY,
+		ENTITY_ENEMY,
 		STATIC
 	};
 	
-	int ID;
-	int x, y;
-	
-	// Ingame representation of the object
-	char mapSymbol;
-	
-	ObjectType type;
-
-public:
 	/**
 	 * 
 	 * @param ID is unique value used to distinguish MyObjects's descendants
@@ -54,6 +45,15 @@ public:
 	int getX();
 	
 	int getY();
+	
+protected:
+	int ID;
+	int x, y;
+	
+	// Ingame representation of the object
+	char mapSymbol;
+	
+	ObjectType type;
 };
 
 #endif /* MYOBJECT_H */

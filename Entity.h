@@ -14,16 +14,7 @@
  * Super class of the Player and all Enemies.
  */
 class Entity : public MyObject {
-protected:
-	int health, speed;
-	int attackDmg, attackSpeed;
-	
-private:
-	int timeSinceAttack;
-	static int lastID;
-	
 public:
-	
 	/**
 	 * 
 	 * @param ID
@@ -42,6 +33,14 @@ public:
 	virtual void attack(Entity* target);
 	
 	virtual void isAttacked(int damage);
+	
+protected:
+	int health, speed;
+	int attackDmg, attackSpeed;
+	
+private:
+	int timeSinceAttack;
+	static int lastID;
 };
 
 #endif /* ENTITY_H */
