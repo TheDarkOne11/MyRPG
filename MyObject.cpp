@@ -1,7 +1,7 @@
 #include "MyObject.h"
 
 MyObject::MyObject(int ID, char mapSymbol, ObjectGroup type)	
-							: ID(ID), mapSymbol(mapSymbol) , group(type)
+							: ID(ID), x(0), y(0), mapSymbol(mapSymbol) , group(type)
 {
 
 }
@@ -18,7 +18,7 @@ void MyObject::paint() {
 	paint(y, x);
 }
 
-void MyObject::addObject(int y, int x) {
+void MyObject::addToMap(int y, int x) {
 	this->x = x;
 	this->y = y;
 }

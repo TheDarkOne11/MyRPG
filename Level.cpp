@@ -9,7 +9,7 @@ Level::Level() {
 
 Level::~Level() {
 	delete gameScreen;
-	delete player;
+	//TODO Mustn't delete player when going to new level
 	
 	for(unsigned int y = 0; y < vect_gameMap.size(); y++) {
 		for(unsigned int x = 0; x < vect_gameMap[y].size(); x++) {
@@ -19,8 +19,6 @@ Level::~Level() {
 }
 
 void Level::update() {
-	gameScreen->update();
-	
 	switch(UserInput::getPressedKey()) {
 		case(KEY_UP):
 			player->move(player->getY() - 1, player->getX());
@@ -35,6 +33,8 @@ void Level::update() {
 			player->move(player->getY(), player->getX() + 1);
 			break;
 	}
+	
+	gameScreen->update();
 }
 
 void Level::paint() {
@@ -55,8 +55,10 @@ void Level::fillMap() {
 				tmp = ConfigClass::getMyObject(' ');
 			}
 			row.push_back(tmp);
-			tmp->addObject(y, x);
+			tmp->addToMap(y, x);
 		}
 		vect_gameMap.push_back(row);
 	}
+	vect_gameMap[5][7] = player;
+	player->addToMap(5, 7);
 }

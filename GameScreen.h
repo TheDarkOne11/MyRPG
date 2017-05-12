@@ -37,16 +37,8 @@ public:
 	bool isInScreen(const int y, const int x) const;
 private:
 	Player* player;
-	/**
-	 *  Middle of the game screen, always coordinates of the player.
-	 */
-	int middleY, middleX;
 	
-	/**
-	 * Left upper corner of the game screen.
-	 * Calculated based on middleY, middleX.
-	 */
-	int startY, startX;
+	int offsetY, offsetX;
 };
 
 #endif /* CAMERA_H */

@@ -48,7 +48,7 @@ public:
 	 * @param x
 	 * @param y
 	 */
-	virtual void addObject(int y, int x);
+	virtual void addToMap(int y, int x);
 	
 	virtual MyObject* clone() const = 0;
 
