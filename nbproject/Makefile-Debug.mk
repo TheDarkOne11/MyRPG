@@ -40,7 +40,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/Floor.o \
 	${OBJECTDIR}/Game.o \
 	${OBJECTDIR}/GameScreen.o \
-	${OBJECTDIR}/Level.o \
+	${OBJECTDIR}/Levels.o \
+	${OBJECTDIR}/Mob.o \
 	${OBJECTDIR}/MyObject.o \
 	${OBJECTDIR}/Player.o \
 	${OBJECTDIR}/StaticObject.o \
@@ -98,10 +99,15 @@ ${OBJECTDIR}/GameScreen.o: GameScreen.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GameScreen.o GameScreen.cpp
 
-${OBJECTDIR}/Level.o: Level.cpp
+${OBJECTDIR}/Levels.o: Levels.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Level.o Level.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Levels.o Levels.cpp
+
+${OBJECTDIR}/Mob.o: Mob.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mob.o Mob.cpp
 
 ${OBJECTDIR}/MyObject.o: MyObject.cpp
 	${MKDIR} -p ${OBJECTDIR}

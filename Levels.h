@@ -19,11 +19,11 @@
 #include "UserInput.h"
 #include "GameScreen.h"
 
-class Level {
+class Levels {
 public:
 	
-	Level();
-	~Level();
+	Levels();
+	~Levels();
 	
 	void update();
 	void paint();

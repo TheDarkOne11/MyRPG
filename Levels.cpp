@@ -1,13 +1,13 @@
-#include "Level.h"
+#include "Levels.h"
 
-Level::Level() {
+Levels::Levels() {
 	// Get player from ConfigClass
 	player = ConfigClass::getPlayer();
 	gameScreen = new GameScreen(player);
 	fillMap();
 }
 
-Level::~Level() {
+Levels::~Levels() {
 	delete gameScreen;
 	//TODO Mustn't delete player when going to new level
 	
@@ -18,7 +18,7 @@ Level::~Level() {
 	}
 }
 
-void Level::update() {
+void Levels::update() {
 	switch(UserInput::getPressedKey()) {
 		case(KEY_UP):
 			player->move(player->getY() - 1, player->getX());
@@ -37,14 +37,14 @@ void Level::update() {
 	gameScreen->update();
 }
 
-void Level::paint() {
+void Levels::paint() {
 	gameScreen->paint(vect_gameMap);
 }
 
-void Level::fillMap() {
+void Levels::fillMap() {
 	//TODO Read map from file instead of hardcoding it
 	int h = 30;
-	int w = 20;
+	int w = 50;
 	for(int y = 0; y < h; y++) {
 		std::vector<MyObject*> row;
 		for(int x = 0; x < w; x++) {
