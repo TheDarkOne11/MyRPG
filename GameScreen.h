@@ -24,7 +24,7 @@ public:
 	/**
 	 * Paints only those MyObjects that are in the game screen.
 	 * MyObject is in the game screen when its coordinates are between top-right and bottom-left corners of the game screen.
-	 * @param vect_gameMap Map of the game
+	 * @param vect_gameMap 2D vector of all MyObjects currently placed in the current level
 	 */
 	void paint(const std::vector< std::vector<MyObject*> > & vect_gameMap);
 	
