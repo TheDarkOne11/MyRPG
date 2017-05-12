@@ -27,7 +27,7 @@ public:
 	void update();
 	void paint();
 	
-	void fillMap(int w, int h);
+	void fillMap();
 
 private:
 	std::vector< std::vector<MyObject*> > vect_gameMap;

@@ -2,7 +2,7 @@
 
 Level::Level() {
 	// Get player from ConfigClass
-	player = dynamic_cast<Player*> ( ConfigClass::getPlayer() );
+	player = ConfigClass::getPlayer();
 	player->addObject(3, 10);
 }
 
@@ -17,6 +17,8 @@ Level::~Level() {
 }
 
 void Level::update() {
+	fillMap();
+	
 	switch(UserInput::getPressedKey()) {
 		case(KEY_UP):
 			player->move(player->getY() - 1, player->getX());
@@ -43,8 +45,10 @@ void Level::paint() {
 	player->paint();
 }
 
-void Level::fillMap(int h, int w) {
+void Level::fillMap() {
 	//TODO Read map from file instead of hardcoding it
+	int h = ConfigClass::getWidth();
+	int w = ConfigClass::getMaxX();
 	for(int y = 0; y < h; y++) {
 		std::vector<MyObject*> row;
 		for(int x = 0; x < w; x++) {

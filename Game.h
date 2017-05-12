@@ -56,9 +56,6 @@ private:
 	// Actual game level
 	Level* level;
 	
-	// Maximum values of the screen
-	static int maxX, maxY;
-	
 	
 };
 

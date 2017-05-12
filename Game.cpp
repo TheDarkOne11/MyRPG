@@ -1,7 +1,5 @@
 #include "Game.h"
 
-int Game::maxX, Game::maxY;
-
 Game::Game() {
 	currState = GameState::MAIN_MENU;
 	
@@ -11,10 +9,9 @@ Game::Game() {
 	curs_set(0);				// Hide cursor
 	noecho();					// Do not print out pressed keys
 	nodelay(stdscr, true);		// Do not wait for input when getch()
-	getmaxyx(stdscr, maxY, maxX);
 	
 	level = new Level();
-	level->fillMap(maxY - 1, maxX - 1);	
+	level->fillMap();	
 }
 
 Game::~Game() {
@@ -23,8 +20,8 @@ Game::~Game() {
 }
 
 void Game::update() {
-	getmaxyx(stdscr, maxY, maxX);
 	input.update();
+	configs.update();
 	level->update();
 }
 

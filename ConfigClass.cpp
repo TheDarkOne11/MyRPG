@@ -1,6 +1,9 @@
 #include "ConfigClass.h"
 #include "Floor.h"
 
+int ConfigClass::width =0;
+int ConfigClass::height = 0;
+
 std::map<MyObject::ObjectGroup, std::vector<MyObject*>> ConfigClass::map_MyObjectsTypes;
 Player* ConfigClass::player;
 
@@ -14,6 +17,10 @@ ConfigClass::~ConfigClass() {
 			delete curr;
 		}
 	}
+}
+
+void ConfigClass::update() {
+	getmaxyx(stdscr, height, width);
 }
 
 void ConfigClass::init() {
@@ -65,12 +72,20 @@ MyObject* ConfigClass::getMyObject(const MyObject::ObjectGroup, const int ID) {
 }
 
 MyObject* ConfigClass::getMyObject(const MyObject::ObjectGroup) {
-	
+	//TODO
 	
 	throw "Group doesn't exist.";
 	return NULL;
 }
 
-MyObject* ConfigClass::getPlayer() {
-	return player->clone();	// TODO cloning
+Player* ConfigClass::getPlayer() {
+	return dynamic_cast<Player*> (player->clone());
+}
+
+int ConfigClass::getWidth() {
+	return height;
+}
+
+int ConfigClass::getMaxX() {
+	return width;
 }

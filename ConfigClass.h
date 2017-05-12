@@ -26,6 +26,8 @@ public:
 	ConfigClass();
 	~ConfigClass();
 	
+	void update();
+	
 	/**
 	 * Finds the MyObject subclass using mapSymbol.
 	 * Used when reading game map.
@@ -55,7 +57,11 @@ public:
 	 * Returns a copy of player subclass.
 	 * @return player
 	 */
-	static MyObject* getPlayer();
+	static Player* getPlayer();
+	
+	static int getWidth();
+	
+	static int getMaxX();
 	
 private:
 	/**
@@ -64,6 +70,9 @@ private:
 	 */
 	static std::map<MyObject::ObjectGroup, std::vector<MyObject*>> map_MyObjectsTypes;
 	static Player* player;
+	
+	// Maximum values of the screen
+	static int width, height;
 	
 	/**
 	 * Class initialization.
