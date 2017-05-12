@@ -1,7 +1,6 @@
 #include "ConfigClass.h"
-#include "Floor.h"
 
-int ConfigClass::width =0;
+int ConfigClass::width = 0;
 int ConfigClass::height = 0;
 
 std::map<MyObject::ObjectGroup, std::vector<MyObject*>> ConfigClass::map_MyObjectsTypes;
@@ -82,10 +81,10 @@ Player* ConfigClass::getPlayer() {
 	return dynamic_cast<Player*> (player->clone());
 }
 
-int ConfigClass::getWidth() {
+int ConfigClass::getHeight() {
 	return height;
 }
 
-int ConfigClass::getMaxX() {
+int ConfigClass::getWidth() {
 	return width;
 }

@@ -17,6 +17,7 @@
 #include "Player.h"
 #include "ConfigClass.h"
 #include "UserInput.h"
+#include "GameScreen.h"
 
 class Level {
 public:
@@ -30,8 +31,12 @@ public:
 	void fillMap();
 
 private:
+	/**
+	 * All MyObjects that were placed in the current level are stored here.
+	 */
 	std::vector< std::vector<MyObject*> > vect_gameMap;
 	Player* player;
+	GameScreen* gameScreen;
 
 
 };

@@ -15,6 +15,7 @@
 #include "MyObject.h"
 #include "Wall.h"
 #include "Player.h"
+#include "Floor.h"
 
 /**
  * Class has some important constants for the game.
@@ -59,9 +60,9 @@ public:
 	 */
 	static Player* getPlayer();
 	
-	static int getWidth();
+	static int getHeight();
 	
-	static int getMaxX();
+	static int getWidth();
 	
 private:
 	/**

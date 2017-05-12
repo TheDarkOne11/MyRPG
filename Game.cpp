@@ -11,7 +11,6 @@ Game::Game() {
 	nodelay(stdscr, true);		// Do not wait for input when getch()
 	
 	level = new Level();
-	level->fillMap();	
 }
 
 Game::~Game() {

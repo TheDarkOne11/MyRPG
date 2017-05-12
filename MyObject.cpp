@@ -10,8 +10,12 @@ MyObject::~MyObject()
 {
 }
 
-void MyObject::paint() {
+void MyObject::paint(const int y, const int x) {
 	mvprintw(y, x, "%c", mapSymbol);
+}
+
+void MyObject::paint() {
+	paint(y, x);
 }
 
 void MyObject::addObject(int y, int x) {

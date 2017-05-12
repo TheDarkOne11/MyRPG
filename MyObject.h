@@ -32,9 +32,16 @@ public:
 	virtual ~MyObject();
 
 	/**
-	 * Handles painting of the object in the game.
+	 * Paints the object at its coordinates.
 	 */
 	virtual void paint();
+	
+	/**
+	 * Paints the object on the screen at the specified coordinates.
+	 * @param y
+	 * @param x
+	 */
+	virtual void paint(const int y, const int x);
 
 	/**
 	 * Adds object into the game.

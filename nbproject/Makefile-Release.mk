@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Entity.o \
 	${OBJECTDIR}/Floor.o \
 	${OBJECTDIR}/Game.o \
+	${OBJECTDIR}/GameScreen.o \
 	${OBJECTDIR}/Level.o \
 	${OBJECTDIR}/MyObject.o \
 	${OBJECTDIR}/Player.o \
@@ -91,6 +92,11 @@ ${OBJECTDIR}/Game.o: Game.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Game.o Game.cpp
+
+${OBJECTDIR}/GameScreen.o: GameScreen.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GameScreen.o GameScreen.cpp
 
 ${OBJECTDIR}/Level.o: Level.cpp
 	${MKDIR} -p ${OBJECTDIR}

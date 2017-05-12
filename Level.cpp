@@ -3,10 +3,12 @@
 Level::Level() {
 	// Get player from ConfigClass
 	player = ConfigClass::getPlayer();
-	player->addObject(3, 10);
+	gameScreen = new GameScreen(player);
+	fillMap();
 }
 
 Level::~Level() {
+	delete gameScreen;
 	delete player;
 	
 	for(unsigned int y = 0; y < vect_gameMap.size(); y++) {
@@ -17,7 +19,7 @@ Level::~Level() {
 }
 
 void Level::update() {
-	fillMap();
+	gameScreen->update();
 	
 	switch(UserInput::getPressedKey()) {
 		case(KEY_UP):
@@ -36,19 +38,13 @@ void Level::update() {
 }
 
 void Level::paint() {
-	for(unsigned int y = 0; y < vect_gameMap.size(); y++) {
-		for(unsigned int x = 0; x < vect_gameMap[y].size(); x++) {
-			vect_gameMap[y][x]->paint();
-		}
-	}
-	
-	player->paint();
+	gameScreen->paint(vect_gameMap);
 }
 
 void Level::fillMap() {
 	//TODO Read map from file instead of hardcoding it
-	int h = ConfigClass::getWidth();
-	int w = ConfigClass::getMaxX();
+	int h = 30;
+	int w = 20;
 	for(int y = 0; y < h; y++) {
 		std::vector<MyObject*> row;
 		for(int x = 0; x < w; x++) {
