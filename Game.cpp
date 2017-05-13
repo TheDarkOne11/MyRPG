@@ -29,16 +29,21 @@ void Game::update() {
 	
 	switch(currState) {
 		case(MAIN_MENU):
-			// Update currState when choice was chosen
 			tmp = mainMenu.update();
 			if(tmp != -1) {
+				// New state was chosen
 				currState = (GameState) tmp;
+				nodelay(stdscr, true);
+			} else {
+				nodelay(stdscr, false);
 			}
 			
-			nodelay(stdscr, false);
 			break;
 		case(GAME):
 			levels->update();
+			break;
+			
+		case(EXIT):
 			break;
 	}
 }
@@ -52,6 +57,8 @@ void Game::paint() {
 			break;
 		case(GAME): 
 			levels->paint();
+			break;
+		case(EXIT):
 			break;
 	}
 	

@@ -15,11 +15,17 @@ Levels::~Levels() {
 	
 	for(unsigned int y = 0; y < vect_gameMap.size(); y++) {
 		for(unsigned int x = 0; x < vect_gameMap[y].size(); x++) {
-			delete vect_gameMap[y][x];
+			MyObject* curr = vect_gameMap[y][x];
+			
+			// Remove everything but player
+			if(curr->getGroup() != player->getGroup() || curr->getID() != player->getID()) {
+				delete curr;
+			}
 		}
 		vect_gameMap[y].clear();
 	}
 	vect_gameMap.clear();
+	delete player;
 }
 
 void Levels::update() {	

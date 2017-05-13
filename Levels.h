@@ -28,7 +28,7 @@ public:
 		ENEMY
 	};
 	
-	enum State {
+	enum LevelState {
 		INIT,
 		START,
 		INGAME
@@ -55,7 +55,7 @@ private:
 	GameScreen* gameScreen;
 	
 	Turns currTurn;
-	State currState;
+	LevelState currState;
 		
 	/**
 	 * Addes other MyObjects (enemies, items) to the map randomly.

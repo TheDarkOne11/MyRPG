@@ -16,18 +16,15 @@ void Menu::paint() {
 	int currY = ConfigClass::getHeight()/2;
 	int i = 0;
 	
-	/*currY = 1;
-	currX = 10;*/
-	
 	for(auto it = choices.begin(); it != choices.end(); it++) {
-		std::pair<std::string, int> curr = *it;
+		std::string currString = it->first;
 		
 		if(i == currChoice) {
 			attron(A_REVERSE);
-			mvprintw(currY, currX, "%s", curr.first.c_str());
+			mvprintw(currY, currX - currString.size()/2, currString.c_str());
 			attroff(A_REVERSE);
 		} else {
-			mvprintw(currY, currX, "%s", curr.first.c_str());
+			mvprintw(currY, currX - currString.size()/2, currString.c_str());
 		}
 		
 		i++;
