@@ -18,7 +18,7 @@ class MyObject {
 public:
 
 	enum ObjectGroup {
-		ENTITY_ENEMY,
+		ENTITY,
 		STATIC
 	};
 
