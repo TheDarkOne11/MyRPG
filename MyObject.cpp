@@ -14,8 +14,8 @@ void MyObject::paint(const int y, const int x) {
 	mvprintw(y, x, "%c", mapSymbol);
 }
 
-void MyObject::paint() {
-	paint(y, x);
+void MyObject::update() {
+	
 }
 
 void MyObject::addToMap(int y, int x) {
