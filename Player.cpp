@@ -37,9 +37,10 @@ bool Player::move(std::vector<std::vector<MyObject*> >& vect_gameMap, int presse
 	}
 	
 	if(y != newY || x != newX) {
-		Entity::move(vect_gameMap, newY, newX);
 		printMap(vect_gameMap);
 	}
+	
+	return Entity::move(vect_gameMap, newY, newX);
 }
 
 MyObject* Player::clone() const {

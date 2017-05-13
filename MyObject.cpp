@@ -40,6 +40,10 @@ MyObject::ObjectGroup MyObject::getGroup() const {
 	return group;
 }
 
+bool MyObject::getPassable() const {
+	return isPassable;
+}
+
 char MyObject::getMapSymbol() const {
 	return mapSymbol;
 }

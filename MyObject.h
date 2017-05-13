@@ -59,6 +59,8 @@ public:
 	virtual int getX() const;
 
 	virtual int getY() const;
+	
+	virtual bool getPassable() const;
 
 	virtual ObjectGroup getGroup() const;
 	
