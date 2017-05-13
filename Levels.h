@@ -34,7 +34,7 @@ public:
 	void update();
 	void paint();
 	
-	void fillMap();
+	void loadLevel();
 
 private:
 	/**

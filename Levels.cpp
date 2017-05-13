@@ -4,7 +4,7 @@ Levels::Levels() : currTurn(PLAYER) {
 	srand(time(NULL));
 	// Get player from ConfigClass
 	player = ConfigClass::getPlayer();
-	fillMap();
+	loadLevel();
 	gameScreen = new GameScreen(player);
 }
 
@@ -53,7 +53,7 @@ void Levels::paint() {
 	gameScreen->paint(vect_gameMap);
 }
 
-void Levels::fillMap() {
+void Levels::loadLevel() {
 	// Used for adding other MyObjects (enemies, items), randomly
 	std::vector<MyObject*> vect_floors;
 	//TODO Read map from file instead of hardcoding it
