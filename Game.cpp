@@ -26,7 +26,6 @@ void Game::update() {
 
 void Game::paint() {
 	clear();
-	//mvprintw(maxY/2, maxX/2, "SCREEN INITIATED %d/ %d", maxX/2, maxY/2);
 	levels->paint();
 	
 	switch(UserInput::getPressedKey()) {
