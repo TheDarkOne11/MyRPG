@@ -10,6 +10,7 @@
 
 #include <ncurses.h>
 #include <iostream>
+#include <vector>
 
 /**
  * Super class of all objects in the game (Walls, Player, Enemies...)
@@ -50,7 +51,7 @@ public:
 	 * @param x
 	 * @param y
 	 */
-	virtual void addToMap(int y, int x);
+	virtual void addToMap(std::vector< std::vector<MyObject*> >& vect_gameMap, int y, int x);
 	
 	virtual MyObject* clone() const = 0;
 	
@@ -72,11 +73,6 @@ protected:
 	 */
 	int ID;
 	int x, y;
-	
-	/**
-	 * true if Entity can move to this MyObject's position
-	 */
-	bool isPassable;
 
 	/**
 	 * Ingame representation of the object.
@@ -84,6 +80,11 @@ protected:
 	char mapSymbol;
 
 	ObjectGroup group;
+	
+	/**
+	 * true if Entity can move to this MyObject's position
+	 */
+	bool isPassable;
 };
 
 #endif /* MYOBJECT_H */

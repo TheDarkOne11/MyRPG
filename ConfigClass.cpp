@@ -88,9 +88,19 @@ MyObject* ConfigClass::getMyObject(const char mapSymbol) {
 }
 
 MyObject* ConfigClass::getMyObject(const MyObject::ObjectGroup group, const int ID) {
-	//TODO
+	auto it = map_MyObjectsTypes.find(group);
 	
-	throw "No match for mapSymbol found: " + ID;
+	if(it == map_MyObjectsTypes.end()) {
+		throw "Group doesn't exist.";
+	} else {
+		for(MyObject* curr : it->second) {
+			if(curr->getID() == ID) {
+				return curr->clone();
+			}
+		}
+	}
+	
+	throw "No match for group, id found: " + ID;
 	return NULL;
 }
 

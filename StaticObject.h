@@ -27,6 +27,9 @@ public:
 	 */
 	StaticObject(const StaticObject* temp);
 	
+	void addToMap(std::vector<std::vector<MyObject*> >& vect_gameMap, int y, int x) override;
+
+	
 private:
 	static int lastID;
 };

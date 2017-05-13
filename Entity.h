@@ -33,9 +33,9 @@ public:
 	 * @param temp is a "template" instance of the derived class.
 	 */
 	Entity	(const Entity* temp);
-	
+		
 	// TODO remove
-	void printMap(std::vector< std::vector<MyObject*> >& vect_gameMap) {
+	/*void printMap(std::vector< std::vector<MyObject*> >& vect_gameMap) {
 		for(unsigned int y = 0; y < vect_gameMap.size(); y++) {
 			for(unsigned int x = 0; x < vect_gameMap[y].size(); x++) {
 				std::cerr << vect_gameMap[y][x]->getMapSymbol();
@@ -43,7 +43,7 @@ public:
 			std::cerr << std::endl;
 		}
 		std::cerr << std::endl;
-	}
+	}*/
 	
 	/**
 	 * Moves Entity to the new position.
@@ -67,9 +67,17 @@ public:
 	
 	virtual void isAttacked(int damage);
 	
+	void addToMap(std::vector<std::vector<MyObject*> >& vect_gameMap, int y, int x) override;
+
+	
 protected:
 	int health, speed;
 	int attackDmg, attackSpeed;
+	
+	/**
+	 * Entity stores the MyObject it stands on.
+	 */
+	std::pair<ObjectGroup, int> entityStandsOn;
 	
 private:
 	int timeSinceAttack;

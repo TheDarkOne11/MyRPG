@@ -36,10 +36,6 @@ bool Player::move(std::vector<std::vector<MyObject*> >& vect_gameMap, int presse
 			break;
 	}
 	
-	if(y != newY || x != newX) {
-		printMap(vect_gameMap);
-	}
-	
 	return Entity::move(vect_gameMap, newY, newX);
 }
 

@@ -17,6 +17,9 @@ public:
 	
 	MyObject* clone() const override;
 	
+	void addToMap(std::vector<std::vector<MyObject*> >& vect_gameMap, int y, int x) override;
+
+	
 private:
 
 };

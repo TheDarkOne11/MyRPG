@@ -52,7 +52,7 @@ void Levels::fillMap() {
 				vect_floors.push_back(tmp);
 			}
 			row.push_back(tmp);
-			tmp->addToMap(y, x);
+			tmp->addToMap(vect_gameMap, y, x);
 		}
 		vect_gameMap.push_back(row);
 	}
@@ -86,10 +86,8 @@ void Levels::addToMap(std::vector<MyObject*>& floors, int index, MyObject* newOb
 	MyObject* curr = floors[index];
 	
 	// Add new object to old object's coordinates
-	vect_gameMap[curr->getY()][curr->getX()] = newObject;
-	newObject->addToMap(curr->getY(), curr->getX());
+	newObject->addToMap(vect_gameMap, curr->getY(), curr->getX());
 	
 	// Remove old floor
 	floors.erase(floors.begin() + index);
-	delete curr;
 }

@@ -14,8 +14,14 @@ int main(int argc, char** argv) {
 	
 	// Main game loop
 	while( game.isRunning() ) {
-		game.update();
-		game.paint();
+		// TODO Make exception handling somewhere else
+		try {
+			game.update();
+			game.paint();
+		} catch(const char* s) {
+			cerr << s << endl;
+			break;
+		}
 		
 		usleep(sleepTime);	
 	}

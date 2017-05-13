@@ -9,6 +9,12 @@ StaticObject::StaticObject(char mapSymbol, bool isPassable)
 }
 
 StaticObject::StaticObject(const StaticObject* tmp) 
-					: MyObject(lastID, tmp->mapSymbol, tmp->group, tmp->isPassable)
+					: MyObject(tmp->ID, tmp->mapSymbol, tmp->group, tmp->isPassable)
 {
+}
+
+void StaticObject::addToMap(std::vector<std::vector<MyObject*> >& vect_gameMap, int y, int x) {
+	MyObject* curr = vect_gameMap[y][x];
+	MyObject::addToMap(vect_gameMap, y, x);
+	delete curr;
 }

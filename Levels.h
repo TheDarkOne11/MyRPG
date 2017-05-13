@@ -52,7 +52,6 @@ private:
 	
 
 	void addToMap(std::vector<MyObject*>& floors, int index, MyObject* newObject);
-
 };
 
 #endif /* LEVEL_H */
