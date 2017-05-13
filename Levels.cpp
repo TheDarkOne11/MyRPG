@@ -73,7 +73,7 @@ void Levels::fillMap() {
 void Levels::addRandomObjects(std::vector<MyObject*>& floors) {
 	srand(time(NULL));
 	int index = rand() % floors.size();
-	
+		
 	// Add player to random position
 	this->addToMap(floors, index, player);
 	

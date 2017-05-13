@@ -13,6 +13,7 @@
 class Floor : public StaticObject {
 public:
 	Floor(char mapSymbol);
+	Floor(const Floor* temp);
 	
 	MyObject* clone() const override;
 	

@@ -13,6 +13,7 @@
 class Player : public Entity {
 public:
 	Player(char mapSymbol, int health, int speed, int attackDmg, int attackSpeed);
+	Player(const Player* temp);
 	
 	virtual MyObject* clone() const override;
 	

@@ -18,6 +18,7 @@ class Mob : public Entity {
 public:
 	Mob(char mapSymbol, int health, int speed, 
 			int attackDmg, int attackSpeed);
+	Mob(const Mob* temp);
 	
 	MyObject* clone() const override;
 

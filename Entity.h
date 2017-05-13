@@ -16,7 +16,7 @@
 class Entity : public MyObject {
 public:
 	/**
-	 * 
+	 * This constructor is used for setting up "template" instances of derived classes.
 	 * @param ID
 	 * @param mapSymbol what the entity looks like in the game
 	 * @param health
@@ -26,6 +26,12 @@ public:
 	 */
 	Entity	(char mapSymbol, int health, int speed, 
 			int attackDmg, int attackSpeed);
+	
+	/**
+	 This constructor is used for cloning "templates" of derived classes.
+	 * @param temp is a "template" instance of the derived class.
+	 */
+	Entity	(const Entity* temp);
 	
 	
 	virtual void move(int newY, int newX);

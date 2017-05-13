@@ -5,6 +5,10 @@ Mob::Mob(char mapSymbol, int health, int speed, int attackDmg, int attackSpeed)
 {
 }
 
+Mob::Mob(const Mob* temp) : Entity(temp)
+{
+}
+
 MyObject* Mob::clone() const {
-	return new Mob(mapSymbol, health, speed, attackDmg, attackSpeed);
+	return new Mob(this);
 }

@@ -11,6 +11,13 @@ Entity::Entity	(char mapSymbol, int health, int speed,
 	lastID++;
 }
 
+Entity::Entity	(const Entity* temp)
+				: MyObject(lastID, temp->mapSymbol, MyObject::ENTITY_ENEMY), 
+				health(temp->health), speed(temp->speed), attackDmg(temp->attackDmg), 
+				attackSpeed(temp->attackSpeed)
+{
+}
+
 void Entity::move(int newY, int newX)
 {
 	x = newX;

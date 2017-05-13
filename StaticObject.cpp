@@ -8,3 +8,7 @@ StaticObject::StaticObject(char mapSymbol)
 	lastID++;
 }
 
+StaticObject::StaticObject(const StaticObject* tmp) 
+					: MyObject(lastID, tmp->mapSymbol, MyObject::STATIC)
+{
+}

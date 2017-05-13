@@ -15,7 +15,17 @@
  */
 class StaticObject : public MyObject {
 public:
+	/**
+	 * This constructor is used for setting up "template" instances of derived classes.
+	 * @param mapSymbol what the object looks like in the game
+	 */
 	StaticObject(char mapSymbol);
+	
+	/**
+	 * This constructor is used for cloning "templates" of derived classes.
+	 * @param temp is a "template" instance of the derived class.
+	 */
+	StaticObject(const StaticObject* temp);
 	
 private:
 	static int lastID;
