@@ -83,7 +83,7 @@ void Levels::addRandomObjects(std::vector<MyObject*>& floors) {
 	
 	std::cerr << "Num of Enemies added: " << ranNum << std::endl;
 	for(int i = 0; i < ranNum; i++) {
-		MyObject* enemy = ConfigClass::getMyObject(MyObject::ENTITY_ENEMY);
+		MyObject* enemy = ConfigClass::getMyObject(MyObject::ENTITY);
 		std::cerr << "Enemy: " << enemy->getID() << "/ " << enemy->getMapSymbol() << std::endl;
 		ranPos = rand() % floors.size();
 		this->addToMap(floors, ranPos, enemy);
