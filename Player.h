@@ -24,7 +24,7 @@ public:
 	
 	virtual void paint(const int y, const int x) override;
 		
-	virtual void move(std::vector< std::vector<MyObject*> >& vect_gameMap, int pressedKey) override;
+	virtual bool move(std::vector< std::vector<MyObject*> >& vect_gameMap, int pressedKey) override;
 	
 	virtual MyObject* clone() const override;
 	

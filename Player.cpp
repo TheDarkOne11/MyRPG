@@ -13,7 +13,7 @@ void Player::paint(const int y, const int x) {
 	mvprintw(y, x, "%c", currDirection);
 }
 
-void Player::move(std::vector<std::vector<MyObject*> >& vect_gameMap, int pressedKey) {
+bool Player::move(std::vector<std::vector<MyObject*> >& vect_gameMap, int pressedKey) {
 	int newY = y;
 	int newX = x;
 	
@@ -37,7 +37,7 @@ void Player::move(std::vector<std::vector<MyObject*> >& vect_gameMap, int presse
 	}
 	
 	if(y != newY || x != newX) {
-		Entity::move(newY, newX);
+		Entity::move(vect_gameMap, newY, newX);
 		printMap(vect_gameMap);
 	}
 }

@@ -12,7 +12,7 @@
 
 class Wall : public StaticObject {
 public:
-	Wall(char mapSymbol);
+	Wall(char mapSymbol, bool isPassable);
 	Wall(const Wall* temp);
 	
 	virtual MyObject* clone() const override;

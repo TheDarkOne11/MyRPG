@@ -26,9 +26,9 @@ void ConfigClass::update() {
 
 void ConfigClass::init() {
 	// Initialize static objects
-	MyObject* wall = new Wall('#');
+	MyObject* wall = new Wall('#', false);
 	addObject(wall);
-	MyObject* floor = new Floor(' ');
+	MyObject* floor = new Floor(' ', true);
 	addObject(floor);
 	
 	// Initialize entities

@@ -27,7 +27,7 @@ public:
 	 * @param ID is unique value used to distinguish MyObjects's subclasses
 	 * @param mapSymbol what the object looks like in the game
 	 */
-	MyObject(int ID, char mapSymbol, ObjectGroup type);
+	MyObject(int ID, char mapSymbol, ObjectGroup type, bool isPassable);
 
 	virtual ~MyObject();
 
@@ -68,11 +68,17 @@ protected:
 	/**
 	 * ID unique to this MyObject's ObjectGroup
 	 */
-	//TODO Fix ID counting. Have to add second constructor without adding lastID
 	int ID;
 	int x, y;
+	
+	/**
+	 * true if Entity can move to this MyObject's position
+	 */
+	bool isPassable;
 
-	// Ingame representation of the object
+	/**
+	 * Ingame representation of the object.
+	 */
 	char mapSymbol;
 
 	ObjectGroup group;

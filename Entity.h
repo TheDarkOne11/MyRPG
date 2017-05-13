@@ -45,10 +45,23 @@ public:
 		std::cerr << std::endl;
 	}
 	
+	/**
+	 * Moves Entity to the new position.
+	 * Updates gameMap accordingly.
+	 * @param vect_gameMap is the 2D vector game map.
+	 * @param newY is Y-coordinate of new position.
+	 * @param newX is X-coordinate of new position.
+	 * @return true if the Entity could move to new coordinates.
+	 */
+	virtual bool move(std::vector< std::vector<MyObject*> >& vect_gameMap, int newY, int newX);
 	
-	virtual void move(int newY, int newX);
-	
-	virtual void move(std::vector< std::vector<MyObject*> >& vect_gameMap, int pressedKey);
+	/**
+	 * Moves Entity according to the pressed key.
+	 * @param vect_gameMap is the 2D vector game map.
+	 * @param pressedKey
+	 * @return true if the Entity could move to new coordinates.
+	 */
+	virtual bool move(std::vector< std::vector<MyObject*> >& vect_gameMap, int pressedKey);
 	
 	virtual void attack(Entity* target);
 	

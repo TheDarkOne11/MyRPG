@@ -1,7 +1,8 @@
 #include "MyObject.h"
 
-MyObject::MyObject(int ID, char mapSymbol, ObjectGroup type)	
-							: ID(ID), x(0), y(0), mapSymbol(mapSymbol) , group(type)
+MyObject::MyObject(int ID, char mapSymbol, ObjectGroup type, bool isPassable)	
+							: ID(ID), x(0), y(0), mapSymbol(mapSymbol), 
+							group(type), isPassable(isPassable)
 {
 
 }
