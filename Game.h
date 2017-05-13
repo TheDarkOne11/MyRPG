@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include <ncurses.h>
-#include "Level.h"
+#include "Levels.h"
 #include "ConfigClass.h"
 #include "UserInput.h"
 
@@ -54,7 +54,7 @@ private:
 	UserInput input;
 	ConfigClass configs;
 	// Actual game level
-	Level* level;
+	Levels* levels;
 	
 	
 };

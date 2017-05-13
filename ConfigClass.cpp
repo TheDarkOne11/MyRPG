@@ -1,4 +1,5 @@
 #include "ConfigClass.h"
+#include "Mob.h"
 
 int ConfigClass::width = 0;
 int ConfigClass::height = 0;
@@ -32,7 +33,9 @@ void ConfigClass::init() {
 	addObject(floor);
 	
 	// Initialize entities
-	player = new Player('P', 50, 5, 1, 2);
+	player = new Player('P', 50, 1, 5, 2);
+	MyObject* mob = new Mob('M', 10, 1, 2, 1);
+	addObject(mob);
 }
 
 void ConfigClass::addObject(MyObject* object) {
@@ -46,6 +49,26 @@ void ConfigClass::addObject(MyObject* object) {
 	
 	// Add MyObject in the vector
 	it->second.push_back(object);
+}
+
+DefiningPair ConfigClass::getMyObjectID(const char mapSymbol) {
+	DefiningPair currPair;
+	bool found = false;
+	for(auto it = map_MyObjectsTypes.begin(); it != map_MyObjectsTypes.end(); it++) {
+		for(MyObject* curr : it->second) {
+			// If match is found, return copy of the MyObject subclass
+			if(curr->getMapSymbol() == mapSymbol) {
+				currPair = std::make_pair(curr->getID(), curr->getGroup());
+				found = true;
+			}
+		}
+	}
+	
+	if(!found) {
+		throw "No match for mapSymbol found: " + mapSymbol;
+	}
+		
+	return currPair;
 }
 
 MyObject* ConfigClass::getMyObject(const char mapSymbol) {
@@ -63,18 +86,26 @@ MyObject* ConfigClass::getMyObject(const char mapSymbol) {
 	return NULL;
 }
 
-MyObject* ConfigClass::getMyObject(const MyObject::ObjectGroup, const int ID) {
+MyObject* ConfigClass::getMyObject(const MyObject::ObjectGroup group, const int ID) {
 	//TODO
 	
 	throw "No match for mapSymbol found: " + ID;
 	return NULL;
 }
 
-MyObject* ConfigClass::getMyObject(const MyObject::ObjectGroup) {
-	//TODO
+MyObject* ConfigClass::getMyObject(const MyObject::ObjectGroup group) {
+	MyObject* tmp;
+	auto it = map_MyObjectsTypes.find(group);
 	
-	throw "Group doesn't exist.";
-	return NULL;
+	if(it == map_MyObjectsTypes.end()) {
+		throw "Group doesn't exist.";
+	} else {
+		srand(time(NULL));
+		int ranID = rand() % it->second.size();
+		tmp = it->second[ranID]->clone();
+	}
+	
+	return tmp;
 }
 
 Player* ConfigClass::getPlayer() {

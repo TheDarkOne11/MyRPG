@@ -32,25 +32,27 @@ public:
 	virtual ~MyObject();
 
 	/**
-	 * Paints the object at its coordinates.
+	 * Paints this MyObject at its coordinates.
 	 */
 	virtual void paint();
 	
 	/**
-	 * Paints the object on the screen at the specified coordinates.
+	 * Paints this MyObject on the screen at the specified coordinates.
 	 * @param y
 	 * @param x
 	 */
 	virtual void paint(const int y, const int x);
 
 	/**
-	 * Adds object into the game.
+	 * Adds this MyObject into the game.
 	 * @param x
 	 * @param y
 	 */
 	virtual void addToMap(int y, int x);
 	
 	virtual MyObject* clone() const = 0;
+	
+	virtual int getID() const;
 
 	virtual int getX() const;
 
@@ -61,6 +63,10 @@ public:
 	virtual char getMapSymbol() const;
 
 protected:
+	/**
+	 * ID unique to this MyObject's ObjectGroup
+	 */
+	//TODO Fix ID counting. Have to add second constructor without adding lastID
 	int ID;
 	int x, y;
 

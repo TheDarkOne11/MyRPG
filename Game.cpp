@@ -10,24 +10,24 @@ Game::Game() {
 	noecho();					// Do not print out pressed keys
 	nodelay(stdscr, true);		// Do not wait for input when getch()
 	
-	level = new Level();
+	levels = new Levels();
 }
 
 Game::~Game() {
-	delete level;
+	delete levels;
 	endwin();
 }
 
 void Game::update() {
 	input.update();
 	configs.update();
-	level->update();
+	levels->update();
 }
 
 void Game::paint() {
 	clear();
 	//mvprintw(maxY/2, maxX/2, "SCREEN INITIATED %d/ %d", maxX/2, maxY/2);
-	level->paint();
+	levels->paint();
 	
 	switch(UserInput::getPressedKey()) {
 		case('o'):

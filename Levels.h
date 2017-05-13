@@ -11,6 +11,8 @@
 #include <vector>
 #include <ncurses.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <time.h>
 #include "MyObject.h"
 #include "Entity.h"
 #include "StaticObject.h"
@@ -37,7 +39,15 @@ private:
 	std::vector< std::vector<MyObject*> > vect_gameMap;
 	Player* player;
 	GameScreen* gameScreen;
+	
+	/**
+	 * Addes other MyObjects (enemies, items) to the map randomly.
+	 * @param floors All positions in the game map where we can add new MyObjects
+	 */
+	void addRandomObjects(std::vector<MyObject*>& floors);
+	
 
+	void addToMap(std::vector<MyObject*>& floors, int index, MyObject* newObject);
 
 };
 

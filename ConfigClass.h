@@ -10,12 +10,16 @@
 
 #include <vector>
 #include <map>
+#include <stdlib.h>
+#include <time.h>
 #include <iostream>
 #include <utility>
 #include "MyObject.h"
 #include "Wall.h"
 #include "Player.h"
 #include "Floor.h"
+
+#define DefiningPair std::pair<int, MyObject::ObjectGroup>
 
 /**
  * Class has some important constants for the game.
@@ -31,7 +35,13 @@ public:
 	
 	/**
 	 * Finds the MyObject subclass using mapSymbol.
-	 * Used when reading game map.
+	 * @param mapSymbol is the unique symbol each MyObject class has.
+	 * @return Pair<ID, ObjectGroup> of the MyObject subclass
+	 */
+	static DefiningPair getMyObjectID(const char mapSymbol);
+	
+	/**
+	 * Finds the MyObject subclass using mapSymbol.
 	 * @param mapSymbol is the unique symbol each MyObject class has.
 	 * @return copy of the MyObject subclass.
 	 */
@@ -65,6 +75,10 @@ public:
 	static int getWidth();
 	
 private:
+	// TODO Put them in config file? Maybe update them with player level?
+	const static int maxEnemiesPerLevel = 15;
+	const static int maxItemsPerLevel = 5;
+	
 	/**
 	 * Map of all types of MyObject subclasses.
 	 * Divided into groups by ObjectType key.

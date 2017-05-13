@@ -23,6 +23,10 @@ void MyObject::addToMap(int y, int x) {
 	this->y = y;
 }
 
+int MyObject::getID() const {
+	return ID;
+}
+
 int MyObject::getX() const {
 	return x;
 }

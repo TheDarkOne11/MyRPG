@@ -1,6 +1,8 @@
 #include "GameScreen.h"
 
-GameScreen::GameScreen(Player*& player) : player(player), offsetY(0), offsetX(0) {
+GameScreen::GameScreen(Player*& player) : player(player) {
+	offsetY = player->getY() - ConfigClass::getHeight()/2;
+	offsetX = player->getX() - ConfigClass::getWidth()/2;
 }
 
 void GameScreen::update() {
@@ -32,13 +34,13 @@ void GameScreen::paint(const std::vector<std::vector<MyObject*> >& vect_gameMap)
 		startY = 0;
 	}
 	
-	if(endY > vect_gameMap.size()) {
+	if(endY > (signed) vect_gameMap.size()) {
 		endY = vect_gameMap.size();
 	}
 	
 	//FIXME Maybe paint static objects first and then entities
 	// Paint all MyObjects that are in screen
-	for(int y = startY; y < vect_gameMap.size(); y++) {
+	for(int y = startY; y < (signed) vect_gameMap.size(); y++) {
 		int startX = player->getX() - ConfigClass::getWidth()/2 - offsetX;
 		int endX = player->getX() + ConfigClass::getWidth()/2 - offsetX;
 		
@@ -46,11 +48,11 @@ void GameScreen::paint(const std::vector<std::vector<MyObject*> >& vect_gameMap)
 			startX = 0;
 		}
 
-		if(endX > vect_gameMap[y].size()) {
+		if(endX > (signed) vect_gameMap[y].size()) {
 			endX = vect_gameMap[y].size();
 		}
 		
-		for(int x = startX; x < vect_gameMap[y].size(); x++) {
+		for(int x = startX; x < (signed) vect_gameMap[y].size(); x++) {
 			MyObject* curr = vect_gameMap[y][x];
 			curr->paint(curr->getY() - offsetY, curr->getX() - offsetX);
 		}
