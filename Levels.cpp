@@ -1,6 +1,7 @@
 #include "Levels.h"
 
 Levels::Levels() {
+	srand(time(NULL));
 	// Get player from ConfigClass
 	player = ConfigClass::getPlayer();
 	fillMap();
@@ -71,11 +72,22 @@ void Levels::fillMap() {
 }
 
 void Levels::addRandomObjects(std::vector<MyObject*>& floors) {
-	srand(time(NULL));
-	int index = rand() % floors.size();
+	int ranPos = rand() % floors.size();
+	int ranNum = 0;
 		
 	// Add player to random position
-	this->addToMap(floors, index, player);
+	this->addToMap(floors, ranPos, player);
+	
+	// Add random number of random enemies
+	ranNum = rand() % ConfigClass::maxEnemiesPerLevel + 1;
+	
+	std::cerr << "Num of Enemies added: " << ranNum << std::endl;
+	for(int i = 0; i < ranNum; i++) {
+		MyObject* enemy = ConfigClass::getMyObject(MyObject::ENTITY_ENEMY);
+		std::cerr << "Enemy: " << enemy->getID() << "/ " << enemy->getMapSymbol() << std::endl;
+		ranPos = rand() % floors.size();
+		this->addToMap(floors, ranPos, enemy);
+	}
 	
 }
 

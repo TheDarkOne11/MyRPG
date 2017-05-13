@@ -28,6 +28,10 @@
  */
 class ConfigClass {
 public:
+	// TODO Put them in config file? Maybe update them with player level?
+	const static int maxEnemiesPerLevel = 15;
+	const static int maxItemsPerLevel = 5;
+	
 	ConfigClass();
 	~ConfigClass();
 	
@@ -75,10 +79,6 @@ public:
 	static int getWidth();
 	
 private:
-	// TODO Put them in config file? Maybe update them with player level?
-	const static int maxEnemiesPerLevel = 15;
-	const static int maxItemsPerLevel = 5;
-	
 	/**
 	 * Map of all types of MyObject subclasses.
 	 * Divided into groups by ObjectType key.

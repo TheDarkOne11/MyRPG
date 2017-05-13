@@ -8,6 +8,7 @@ std::map<MyObject::ObjectGroup, std::vector<MyObject*>> ConfigClass::map_MyObjec
 Player* ConfigClass::player;
 
 ConfigClass::ConfigClass() {
+	srand(time(NULL));
 	init();
 }
 
@@ -36,6 +37,8 @@ void ConfigClass::init() {
 	player = new Player('P', 50, 1, 5, 2);
 	MyObject* mob = new Mob('M', 10, 1, 2, 1);
 	addObject(mob);
+	MyObject* mob2 = new Mob('O', 10, 1, 2, 1);
+	addObject(mob2);
 }
 
 void ConfigClass::addObject(MyObject* object) {
@@ -100,9 +103,9 @@ MyObject* ConfigClass::getMyObject(const MyObject::ObjectGroup group) {
 	if(it == map_MyObjectsTypes.end()) {
 		throw "Group doesn't exist.";
 	} else {
-		srand(time(NULL));
 		int ranID = rand() % it->second.size();
 		tmp = it->second[ranID]->clone();
+		std::cerr << "ran: " << ranID << "/ " << it->second.size() << std::endl;
 	}
 	
 	return tmp;
