@@ -9,6 +9,7 @@
 #define ENTITY_H
 
 #include "MyObject.h"
+#include <vector>
 
 /**
  * Super class of the Player and all Enemies.
@@ -33,8 +34,21 @@ public:
 	 */
 	Entity	(const Entity* temp);
 	
+	// TODO remove
+	void printMap(std::vector< std::vector<MyObject*> >& vect_gameMap) {
+		for(unsigned int y = 0; y < vect_gameMap.size(); y++) {
+			for(unsigned int x = 0; x < vect_gameMap[y].size(); x++) {
+				std::cerr << vect_gameMap[y][x]->getMapSymbol();
+			}
+			std::cerr << std::endl;
+		}
+		std::cerr << std::endl;
+	}
+	
 	
 	virtual void move(int newY, int newX);
+	
+	virtual void move(std::vector< std::vector<MyObject*> >& vect_gameMap, int pressedKey);
 	
 	virtual void attack(Entity* target);
 	

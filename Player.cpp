@@ -10,38 +10,35 @@ Player::Player(const Player* temp) : Entity(temp), currDirection(RIGHT)
 }
 
 void Player::paint(const int y, const int x) {
-	switch(currDirection) {
-		case(UP):
-			mvprintw(y, x, "%c", '^');
-			break;
-		case(DOWN):
-			mvprintw(y, x, "%c", 'V');
-			break;
-		case(LEFT):
-			mvprintw(y, x, "%c", '<');
-			break;
-		case(RIGHT):
-			mvprintw(y, x, "%c", '>');
-			break;
-	}
+	mvprintw(y, x, "%c", currDirection);
 }
 
-void Player::move(int newY, int newX) {
-	int currY = y;
-	int currX = x;
+void Player::move(std::vector<std::vector<MyObject*> >& vect_gameMap, int pressedKey) {
+	int newY = y;
+	int newX = x;
 	
-	// Move
-	Entity::move(newY, newX);
+	switch(pressedKey) {
+		case(KEY_UP):
+			newY -= 1;
+			currDirection = UP;
+			break;
+		case(KEY_DOWN):
+			newY += 1;
+			currDirection = DOWN;
+			break;
+		case(KEY_LEFT):
+			newX -=1;
+			currDirection = LEFT;
+			break;
+		case(KEY_RIGHT):
+			newX += 1;
+			currDirection = RIGHT;
+			break;
+	}
 	
-	// Change direction
-	if(currY < newY) {
-		currDirection = DOWN;
-	} else if(currY > newY) {
-		currDirection = UP;
-	} else if(currX < newX) {
-		currDirection = RIGHT;
-	} else if(currX > newX) {
-		currDirection = LEFT;
+	if(y != newY || x != newX) {
+		Entity::move(newY, newX);
+		printMap(vect_gameMap);
 	}
 }
 

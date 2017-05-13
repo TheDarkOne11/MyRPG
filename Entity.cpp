@@ -23,6 +23,9 @@ void Entity::move(int newY, int newX)
 	x = newX;
 	y = newY;
 }
+
+void Entity::move(std::vector< std::vector<MyObject*> >& vect_gameMap, int pressedKey) {
+}
 	
 void Entity::attack(Entity* target)
 {

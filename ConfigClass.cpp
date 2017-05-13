@@ -25,8 +25,6 @@ void ConfigClass::update() {
 }
 
 void ConfigClass::init() {
-	std::cerr << "Initialization started" << std::endl;
-	
 	// Initialize static objects
 	MyObject* wall = new Wall('#');
 	addObject(wall);
@@ -105,7 +103,6 @@ MyObject* ConfigClass::getMyObject(const MyObject::ObjectGroup group) {
 	} else {
 		int ranID = rand() % it->second.size();
 		tmp = it->second[ranID]->clone();
-		std::cerr << "ran: " << ranID << "/ " << it->second.size() << std::endl;
 	}
 	
 	return tmp;

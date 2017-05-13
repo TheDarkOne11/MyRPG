@@ -13,18 +13,18 @@
 class Player : public Entity {
 public:
 	enum Direction {
-		UP,
-		DOWN,
-		LEFT,
-		RIGHT
+		UP = '^',
+		DOWN = 'V',
+		LEFT = '<',
+		RIGHT = '>'
 	};
 	
 	Player(char mapSymbol, int health, int speed, int attackDmg, int attackSpeed);
 	Player(const Player* temp);
 	
 	virtual void paint(const int y, const int x) override;
-	
-	virtual void move(int newY, int newX) override;
+		
+	virtual void move(std::vector< std::vector<MyObject*> >& vect_gameMap, int pressedKey) override;
 	
 	virtual MyObject* clone() const override;
 	

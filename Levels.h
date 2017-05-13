@@ -39,7 +39,7 @@ private:
 	std::vector< std::vector<MyObject*> > vect_gameMap;
 	Player* player;
 	GameScreen* gameScreen;
-	
+		
 	/**
 	 * Addes other MyObjects (enemies, items) to the map randomly.
 	 * @param floors All positions in the game map where we can add new MyObjects

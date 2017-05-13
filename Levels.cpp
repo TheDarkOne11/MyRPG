@@ -20,20 +20,7 @@ Levels::~Levels() {
 }
 
 void Levels::update() {
-	switch(UserInput::getPressedKey()) {
-		case(KEY_UP):
-			player->move(player->getY() - 1, player->getX());
-			break;
-		case(KEY_DOWN):
-			player->move(player->getY() + 1, player->getX());
-			break;
-		case(KEY_LEFT):
-			player->move(player->getY(), player->getX() - 1);
-			break;
-		case(KEY_RIGHT):
-			player->move(player->getY(), player->getX() + 1);
-			break;
-	}
+	player->move(vect_gameMap, UserInput::getPressedKey());
 	
 	gameScreen->update();
 }
@@ -44,7 +31,7 @@ void Levels::paint() {
 
 void Levels::fillMap() {
 	// Used for adding other MyObjects (enemies, items), randomly
-	std::vector<MyObject*> floors;
+	std::vector<MyObject*> vect_floors;
 	//TODO Read map from file instead of hardcoding it
 	int h = 30;
 	int w = 50;
@@ -59,7 +46,7 @@ void Levels::fillMap() {
 			} else {
 				// Floor ' '
 				tmp = ConfigClass::getMyObject(' ');
-				floors.push_back(tmp);
+				vect_floors.push_back(tmp);
 			}
 			row.push_back(tmp);
 			tmp->addToMap(y, x);
@@ -68,25 +55,25 @@ void Levels::fillMap() {
 	}
 	
 	// Add other MyObjects
-	addRandomObjects(floors);
+	addRandomObjects(vect_floors);
 }
 
-void Levels::addRandomObjects(std::vector<MyObject*>& floors) {
-	int ranPos = rand() % floors.size();
+void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
+	int ranPos = rand() % vect_floors.size();
 	int ranNum = 0;
 		
 	// Add player to random position
-	this->addToMap(floors, ranPos, player);
+	this->addToMap(vect_floors, ranPos, player);
 	
 	// Add random number of random enemies
 	ranNum = rand() % ConfigClass::maxEnemiesPerLevel + 1;
 	
-	std::cerr << "Num of Enemies added: " << ranNum << std::endl;
+	//std::cerr << "Num of Enemies added: " << ranNum << std::endl;
 	for(int i = 0; i < ranNum; i++) {
 		MyObject* enemy = ConfigClass::getMyObject(MyObject::ENTITY);
-		std::cerr << "Enemy: " << enemy->getID() << "/ " << enemy->getMapSymbol() << std::endl;
-		ranPos = rand() % floors.size();
-		this->addToMap(floors, ranPos, enemy);
+		//std::cerr << "Enemy: " << enemy->getID() << "/ " << enemy->getMapSymbol() << std::endl;
+		ranPos = rand() % vect_floors.size();
+		this->addToMap(vect_floors, ranPos, enemy);
 	}
 	
 }
