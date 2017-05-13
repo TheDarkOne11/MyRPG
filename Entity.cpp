@@ -5,14 +5,14 @@ int Entity::lastID = 0;
 
 Entity::Entity	(char mapSymbol, int health, int speed, 
 				int attackDmg, int attackSpeed)
-				: MyObject(lastID, mapSymbol, MyObject::ENTITY_ENEMY), health(health), 
+				: MyObject(lastID, mapSymbol, MyObject::ENTITY), health(health), 
 				speed(speed), attackDmg(attackDmg), attackSpeed(attackSpeed)
 {
 	lastID++;
 }
 
 Entity::Entity	(const Entity* temp)
-				: MyObject(lastID, temp->mapSymbol, MyObject::ENTITY_ENEMY), 
+				: MyObject(lastID, temp->mapSymbol, MyObject::ENTITY), 
 				health(temp->health), speed(temp->speed), attackDmg(temp->attackDmg), 
 				attackSpeed(temp->attackSpeed)
 {
