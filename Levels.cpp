@@ -10,13 +10,16 @@ Levels::Levels() {
 
 Levels::~Levels() {
 	delete gameScreen;
+	vect_enemiesInLevel.clear();
 	//TODO Mustn't delete player when going to new level
 	
 	for(unsigned int y = 0; y < vect_gameMap.size(); y++) {
 		for(unsigned int x = 0; x < vect_gameMap[y].size(); x++) {
 			delete vect_gameMap[y][x];
 		}
+		vect_gameMap[y].clear();
 	}
+	vect_gameMap.clear();
 }
 
 void Levels::update() {
@@ -60,20 +63,21 @@ void Levels::fillMap() {
 
 void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
 	int ranPos = rand() % vect_floors.size();
-	int ranNum = 0;
+	int ranNum = rand() % ConfigClass::maxEnemiesPerLevel + 1;
 		
 	// Add player to random position
 	this->addToMap(vect_floors, ranPos, player);
 	
-	// Add random number of random enemies
-	ranNum = rand() % ConfigClass::maxEnemiesPerLevel + 1;
-	
+	// Add random number of random enemies	
 	//std::cerr << "Num of Enemies added: " << ranNum << std::endl;
-	for(int i = 0; i < ranNum; i++) {
-		MyObject* enemy = ConfigClass::getMyObject(MyObject::ENTITY);
-		//std::cerr << "Enemy: " << enemy->getID() << "/ " << enemy->getMapSymbol() << std::endl;
+	for(int i = 0; i < ranNum || vect_floors.size() == 0; i++) {
+		// Get random enemy
+		Entity* enemy = dynamic_cast<Entity*> (ConfigClass::getMyObject(MyObject::ENTITY));
 		ranPos = rand() % vect_floors.size();
+		
+		vect_enemiesInLevel.push_back(enemy);
 		this->addToMap(vect_floors, ranPos, enemy);
+		//std::cerr << "Enemy: " << enemy->getID() << "/ " << enemy->getMapSymbol() << std::endl;
 	}
 	
 }

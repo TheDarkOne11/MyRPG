@@ -37,6 +37,10 @@ private:
 	 * All MyObjects that were placed in the current level are stored here.
 	 */
 	std::vector< std::vector<MyObject*> > vect_gameMap;
+	/**
+	 * Stores all enemy Entities that were added to current level.
+	 */
+	std::vector<Entity*> vect_enemiesInLevel;
 	Player* player;
 	GameScreen* gameScreen;
 		
