@@ -1,8 +1,6 @@
 #include "Game.h"
 
-Game::Game() {
-	currState = GameState::MAIN_MENU;
-	
+Game::Game() : currState(MAIN_MENU) {
 	// Init Ncurses
 	initscr();
 	keypad(stdscr,true);
@@ -11,9 +9,13 @@ Game::Game() {
 	nodelay(stdscr, true);		// Do not wait for input when getch()
 	
 	// TODO Load and pain Main Menu
-	levels = new Levels();
+	ChoiceList choices;
+	choices.push_back( std::make_pair("New Game", GAME) );
+	choices.push_back( std::make_pair("Exit", EXIT) );
+	mainMenu.setChoices(choices);
 	
-	nodelay(stdscr, false);		// Wait for input when getch()
+	levels = new Levels();
+	//nodelay(stdscr, false);		// Wait for input when getch()
 }
 
 Game::~Game() {
@@ -22,16 +24,38 @@ Game::~Game() {
 }
 
 void Game::update() {
-	input.update();
+	int tmp;
 	configs.update();
-	levels->update();
+	
+	switch(currState) {
+		case(MAIN_MENU):
+			// Update currState when choice was chosen
+			tmp = mainMenu.update();
+			if(tmp != -1) {
+				currState = (GameState) tmp;
+			}
+			
+			nodelay(stdscr, false);
+			break;
+		case(GAME):
+			levels->update();
+			break;
+	}
 }
 
 void Game::paint() {
 	clear();
-	levels->paint();
 	
-	switch(UserInput::getPressedKey()) {
+	switch(currState) {
+		case(MAIN_MENU):
+			mainMenu.paint();
+			break;
+		case(GAME): 
+			levels->paint();
+			break;
+	}
+	
+	switch(ConfigClass::getPressedKey()) {
 		case('o'):
 			currState = EXIT;
 			break;

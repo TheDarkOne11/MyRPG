@@ -10,9 +10,12 @@
 
 #include <iostream>
 #include <ncurses.h>
+#include <list>
 #include "Levels.h"
 #include "ConfigClass.h"
-#include "UserInput.h"
+#include "Menu.h"
+
+#define ChoiceList std::vector< std::pair<std::string, int> >
 
 /**
  * Class represents the whole game.
@@ -26,7 +29,6 @@ public:
 	enum GameState {
 		MAIN_MENU,
 		GAME,
-		INGAME_MENU,
 		EXIT
 	};
 	
@@ -51,9 +53,8 @@ public:
 	
 private:
 	GameState currState;
-	UserInput input;
+	Menu mainMenu;
 	ConfigClass configs;
-	// Actual game level
 	Levels* levels;
 	
 	

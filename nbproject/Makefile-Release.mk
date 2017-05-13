@@ -42,11 +42,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/Game.o \
 	${OBJECTDIR}/GameScreen.o \
 	${OBJECTDIR}/Levels.o \
+	${OBJECTDIR}/Menu.o \
 	${OBJECTDIR}/Mob.o \
 	${OBJECTDIR}/MyObject.o \
 	${OBJECTDIR}/Player.o \
 	${OBJECTDIR}/StaticObject.o \
-	${OBJECTDIR}/UserInput.o \
 	${OBJECTDIR}/Wall.o \
 	${OBJECTDIR}/main.o
 
@@ -110,6 +110,11 @@ ${OBJECTDIR}/Levels.o: Levels.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Levels.o Levels.cpp
 
+${OBJECTDIR}/Menu.o: Menu.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Menu.o Menu.cpp
+
 ${OBJECTDIR}/Mob.o: Mob.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -129,11 +134,6 @@ ${OBJECTDIR}/StaticObject.o: StaticObject.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StaticObject.o StaticObject.cpp
-
-${OBJECTDIR}/UserInput.o: UserInput.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UserInput.o UserInput.cpp
 
 ${OBJECTDIR}/Wall.o: Wall.cpp
 	${MKDIR} -p ${OBJECTDIR}

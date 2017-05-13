@@ -1,10 +1,10 @@
 #include "Levels.h"
 
-Levels::Levels() : currTurn(PLAYER) {
+Levels::Levels() : currTurn(PLAYER), currState(INIT) {
 	srand(time(NULL));
 	// Get player from ConfigClass
 	player = ConfigClass::getPlayer();
-	loadLevel();
+	
 	gameScreen = new GameScreen(player);
 }
 
@@ -22,31 +22,17 @@ Levels::~Levels() {
 	vect_gameMap.clear();
 }
 
-void Levels::update() {
-	switch(currTurn) {
-		case(PLAYER):
-			// If player moved, enemy has turn
-			if( player->move(vect_gameMap, UserInput::getPressedKey()) ) {
-				currTurn = ENEMY;
-			
-				// Enemies turn, we don't have to wait for input
-				nodelay(stdscr, true);
-			}
-			
+void Levels::update() {	
+	switch(currState) {
+		case(INIT):
+			loadLevel();
+			currState = INGAME;
 			break;
-		case(ENEMY):
-			currTurn = PLAYER;
-			
-			for(Enemy* curr : vect_enemiesInLevel) {
-				curr->AI_update(vect_gameMap, player->getY(), player->getX());
-			}
-			
-			// Players turn, we have to wait for input
-			nodelay(stdscr, false);
+		case(INGAME):
+			ingameUpdate();
 			break;
 	}
 	
-	gameScreen->update();
 }
 
 void Levels::paint() {
@@ -79,7 +65,7 @@ void Levels::loadLevel() {
 	}
 	
 	// Add other MyObjects
-	addRandomObjects(vect_floors);
+	addRandomObjects(vect_floors);	
 }
 
 void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
@@ -111,4 +97,31 @@ void Levels::addToMap(std::vector<MyObject*>& floors, int index, MyObject* newOb
 	
 	// Remove old floor
 	floors.erase(floors.begin() + index);
+}
+
+void Levels::ingameUpdate() {
+	switch(currTurn) {
+		case(PLAYER):
+			// If player moved, enemy has turn
+			if( player->move(vect_gameMap, ConfigClass::getPressedKey()) ) {
+				currTurn = ENEMY;
+			
+				// Enemies turn, we don't have to wait for input
+				nodelay(stdscr, true);
+			}
+			
+			break;
+		case(ENEMY):
+			currTurn = PLAYER;
+			
+			for(Enemy* curr : vect_enemiesInLevel) {
+				curr->AI_update(vect_gameMap, player->getY(), player->getX());
+			}
+			
+			// Players turn, we have to wait for input
+			nodelay(stdscr, false);
+			break;
+	}
+	
+	gameScreen->update();
 }

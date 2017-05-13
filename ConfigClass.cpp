@@ -1,8 +1,8 @@
 #include "ConfigClass.h"
-#include "Mob.h"
 
 int ConfigClass::width = 0;
 int ConfigClass::height = 0;
+int ConfigClass::pressedKey;
 
 std::map<MyObject::ObjectGroup, std::vector<MyObject*>> ConfigClass::map_MyObjectsTypes;
 Player* ConfigClass::player;
@@ -22,6 +22,7 @@ ConfigClass::~ConfigClass() {
 
 void ConfigClass::update() {
 	getmaxyx(stdscr, height, width);
+	pressedKey = getch();
 }
 
 void ConfigClass::init() {
@@ -128,4 +129,8 @@ int ConfigClass::getHeight() {
 
 int ConfigClass::getWidth() {
 	return width;
+}
+
+int ConfigClass::getPressedKey() {
+	return pressedKey;
 }

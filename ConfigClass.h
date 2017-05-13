@@ -18,6 +18,7 @@
 #include "Wall.h"
 #include "Player.h"
 #include "Floor.h"
+#include "Mob.h"
 
 #define DefiningPair std::pair<int, MyObject::ObjectGroup>
 
@@ -78,6 +79,8 @@ public:
 	
 	static int getWidth();
 	
+	static int getPressedKey();
+	
 private:
 	/**
 	 * Map of all types of MyObject subclasses.
@@ -88,6 +91,8 @@ private:
 	
 	// Maximum values of the screen
 	static int width, height;
+	
+	static int pressedKey;
 	
 	/**
 	 * Class initialization.

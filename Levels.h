@@ -18,7 +18,6 @@
 #include "StaticObject.h"
 #include "Player.h"
 #include "ConfigClass.h"
-#include "UserInput.h"
 #include "GameScreen.h"
 #include "Enemy.h"
 
@@ -27,6 +26,12 @@ public:
 	enum Turns {
 		PLAYER,
 		ENEMY
+	};
+	
+	enum State {
+		INIT,
+		START,
+		INGAME
 	};
 	
 	Levels();
@@ -48,7 +53,9 @@ private:
 	std::vector<Enemy*> vect_enemiesInLevel;
 	Player* player;
 	GameScreen* gameScreen;
+	
 	Turns currTurn;
+	State currState;
 		
 	/**
 	 * Addes other MyObjects (enemies, items) to the map randomly.
@@ -58,6 +65,8 @@ private:
 	
 
 	void addToMap(std::vector<MyObject*>& floors, int index, MyObject* newObject);
+	
+	void ingameUpdate();
 };
 
 #endif /* LEVEL_H */
