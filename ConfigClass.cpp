@@ -32,10 +32,10 @@ void ConfigClass::init() {
 	addObject(floor);
 	
 	// Initialize entities
-	player = new Player('P', 50, 1, 5, 2);
-	MyObject* mob = new Mob('M', 10, 1, 2, 1);
+	player = new Player('P', 50, 1, 5, 2, 3);
+	MyObject* mob = new Mob('M', 10, 1, 2, 1, 1);
 	addObject(mob);
-	MyObject* mob2 = new Mob('O', 10, 1, 2, 1);
+	MyObject* mob2 = new Mob('O', 10, 1, 2, 1, 1);
 	addObject(mob2);
 }
 

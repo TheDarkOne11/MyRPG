@@ -8,16 +8,16 @@
 #ifndef MOB_H
 #define MOB_H
 
-#include "Entity.h"
+#include "Enemy.h"
 
 
 /**
  * Most common enemy.
  */
-class Mob : public Entity {
+class Mob : public Enemy {
 public:
 	Mob(char mapSymbol, int health, int speed, 
-			int attackDmg, int attackSpeed);
+			int attackDmg, int attackSpeed, int range);
 	Mob(const Mob* temp);
 	
 	MyObject* clone() const override;

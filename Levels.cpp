@@ -37,8 +37,8 @@ void Levels::update() {
 		case(ENEMY):
 			currTurn = PLAYER;
 			
-			for(Entity* curr : vect_enemiesInLevel) {
-				curr->move(vect_gameMap, curr->getY() + 1, curr->getX());
+			for(Enemy* curr : vect_enemiesInLevel) {
+				curr->AI_update(vect_gameMap, player->getY(), player->getX());
 			}
 			
 			// Players turn, we have to wait for input
@@ -93,7 +93,7 @@ void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
 	//std::cerr << "Num of Enemies added: " << ranNum << std::endl;
 	for(int i = 0; i < ranNum || vect_floors.size() == 0; i++) {
 		// Get random enemy
-		Entity* enemy = dynamic_cast<Entity*> (ConfigClass::getMyObject(MyObject::ENTITY));
+		Enemy* enemy = dynamic_cast<Enemy*> (ConfigClass::getMyObject(MyObject::ENTITY));
 		ranPos = rand() % vect_floors.size();
 		
 		vect_enemiesInLevel.push_back(enemy);

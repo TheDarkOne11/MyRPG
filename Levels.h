@@ -20,6 +20,7 @@
 #include "ConfigClass.h"
 #include "UserInput.h"
 #include "GameScreen.h"
+#include "Enemy.h"
 
 class Levels {
 public:
@@ -44,7 +45,7 @@ private:
 	/**
 	 * Stores all enemy Entities that were added to current level.
 	 */
-	std::vector<Entity*> vect_enemiesInLevel;
+	std::vector<Enemy*> vect_enemiesInLevel;
 	Player* player;
 	GameScreen* gameScreen;
 	Turns currTurn;

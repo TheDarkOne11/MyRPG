@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/ConfigClass.o \
+	${OBJECTDIR}/Enemy.o \
 	${OBJECTDIR}/Entity.o \
 	${OBJECTDIR}/Floor.o \
 	${OBJECTDIR}/Game.o \
@@ -78,6 +79,11 @@ ${OBJECTDIR}/ConfigClass.o: ConfigClass.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ConfigClass.o ConfigClass.cpp
+
+${OBJECTDIR}/Enemy.o: Enemy.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Enemy.o Enemy.cpp
 
 ${OBJECTDIR}/Entity.o: Entity.cpp
 	${MKDIR} -p ${OBJECTDIR}

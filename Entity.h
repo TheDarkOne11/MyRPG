@@ -26,7 +26,7 @@ public:
 	 * @param attackSpeed
 	 */
 	Entity	(char mapSymbol, int health, int speed, 
-			int attackDmg, int attackSpeed);
+			int attackDmg, int attackSpeed, int range);
 	
 	/**
 	 This constructor is used for cloning "templates" of derived classes.
@@ -72,7 +72,7 @@ public:
 	
 protected:
 	int health, speed;
-	int attackDmg, attackSpeed;
+	int attackDmg, attackSpeed, range;
 	
 	/**
 	 * Entity stores the MyObject it stands on.

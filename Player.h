@@ -19,7 +19,7 @@ public:
 		RIGHT = '>'
 	};
 	
-	Player(char mapSymbol, int health, int speed, int attackDmg, int attackSpeed);
+	Player(char mapSymbol, int health, int speed, int attackDmg, int attackSpeed, int range);
 	Player(const Player* temp);
 	
 	virtual void paint(const int y, const int x) override;

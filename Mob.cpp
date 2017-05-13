@@ -1,11 +1,11 @@
 #include "Mob.h"
 
-Mob::Mob(char mapSymbol, int health, int speed, int attackDmg, int attackSpeed)
-				: Entity(mapSymbol, health, speed, attackDmg, attackSpeed)
+Mob::Mob(char mapSymbol, int health, int speed, int attackDmg, int attackSpeed, int range)
+				: Enemy(mapSymbol, health, speed, attackDmg, attackSpeed, range)
 {
 }
 
-Mob::Mob(const Mob* temp) : Entity(temp)
+Mob::Mob(const Mob* temp) : Enemy(temp)
 {
 }
 

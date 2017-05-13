@@ -5,9 +5,9 @@ int Entity::lastID = 0;
 
 
 Entity::Entity	(char mapSymbol, int health, int speed, 
-				int attackDmg, int attackSpeed)
+				int attackDmg, int attackSpeed, int range)
 				: MyObject(lastID, mapSymbol, MyObject::ENTITY, false), health(health), 
-				speed(speed), attackDmg(attackDmg), attackSpeed(attackSpeed)
+				speed(speed), attackDmg(attackDmg), attackSpeed(attackSpeed), range(range)
 {
 	lastID++;
 }
@@ -15,7 +15,7 @@ Entity::Entity	(char mapSymbol, int health, int speed,
 Entity::Entity	(const Entity* temp)
 				: MyObject(temp->ID, temp->mapSymbol, temp->group, temp->isPassable), 
 				health(temp->health), speed(temp->speed), attackDmg(temp->attackDmg), 
-				attackSpeed(temp->attackSpeed)
+				attackSpeed(temp->attackSpeed), range(temp->range)
 {
 }
 
