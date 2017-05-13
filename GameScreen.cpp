@@ -1,8 +1,7 @@
 #include "GameScreen.h"
 
 GameScreen::GameScreen(Player*& player) : player(player) {
-	offsetY = player->getY() - ConfigClass::getHeight()/2;
-	offsetX = player->getX() - ConfigClass::getWidth()/2;
+	update();
 }
 
 void GameScreen::update() {

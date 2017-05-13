@@ -10,7 +10,10 @@ Game::Game() {
 	noecho();					// Do not print out pressed keys
 	nodelay(stdscr, true);		// Do not wait for input when getch()
 	
+	// TODO Load and pain Main Menu
 	levels = new Levels();
+	
+	nodelay(stdscr, false);		// Wait for input when getch()
 }
 
 Game::~Game() {

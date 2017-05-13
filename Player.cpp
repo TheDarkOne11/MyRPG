@@ -34,6 +34,9 @@ bool Player::move(std::vector<std::vector<MyObject*> >& vect_gameMap, int presse
 			newX += 1;
 			currDirection = RIGHT;
 			break;
+		default:
+			return false;
+			break;
 	}
 	
 	return Entity::move(vect_gameMap, newY, newX);

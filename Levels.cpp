@@ -1,6 +1,6 @@
 #include "Levels.h"
 
-Levels::Levels() {
+Levels::Levels() : currTurn(PLAYER) {
 	srand(time(NULL));
 	// Get player from ConfigClass
 	player = ConfigClass::getPlayer();
@@ -23,7 +23,28 @@ Levels::~Levels() {
 }
 
 void Levels::update() {
-	player->move(vect_gameMap, UserInput::getPressedKey());
+	switch(currTurn) {
+		case(PLAYER):
+			// If player moved, enemy has turn
+			if( player->move(vect_gameMap, UserInput::getPressedKey()) ) {
+				currTurn = ENEMY;
+			
+				// Enemies turn, we don't have to wait for input
+				nodelay(stdscr, true);
+			}
+			
+			break;
+		case(ENEMY):
+			currTurn = PLAYER;
+			
+			for(Entity* curr : vect_enemiesInLevel) {
+				curr->move(vect_gameMap, curr->getY() + 1, curr->getX());
+			}
+			
+			// Players turn, we have to wait for input
+			nodelay(stdscr, false);
+			break;
+	}
 	
 	gameScreen->update();
 }

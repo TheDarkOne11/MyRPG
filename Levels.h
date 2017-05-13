@@ -23,6 +23,10 @@
 
 class Levels {
 public:
+	enum Turns {
+		PLAYER,
+		ENEMY
+	};
 	
 	Levels();
 	~Levels();
@@ -43,6 +47,7 @@ private:
 	std::vector<Entity*> vect_enemiesInLevel;
 	Player* player;
 	GameScreen* gameScreen;
+	Turns currTurn;
 		
 	/**
 	 * Addes other MyObjects (enemies, items) to the map randomly.
