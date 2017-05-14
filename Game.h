@@ -13,6 +13,7 @@
 #include <list>
 #include "Levels.h"
 #include "ConfigClass.h"
+#include "UserInput.h"
 #include "Menu.h"
 
 #define ChoiceList std::vector< std::pair<std::string, int> >

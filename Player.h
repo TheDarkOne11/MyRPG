@@ -9,6 +9,7 @@
 #define PLAYER_H
 
 #include "Entity.h"
+#include "UserInput.h"
 
 class Player : public Entity {
 public:

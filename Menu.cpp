@@ -33,14 +33,14 @@ void Menu::paint() {
 }
 
 int Menu::update() {
-	switch(ConfigClass::getPressedKey()) {
-		case(KEY_UP):
+	switch(UserInput::getPressedKey()) {
+		case(UserInput::K_UP):
 			currChoice = (currChoice - 1) % choices.size();
 			break;
-		case(KEY_DOWN):
+		case(UserInput::K_DOWN):
 			currChoice = (currChoice + 1) % choices.size();
 			break;
-		case(10):
+		case(UserInput::K_ENTER):
 			// Last picked choice was chosen
 			return choices[currChoice].second;
 			break;

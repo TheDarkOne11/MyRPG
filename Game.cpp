@@ -25,6 +25,7 @@ Game::~Game() {
 
 void Game::update() {
 	int tmp;
+	UserInput::update();
 	configs.update();
 	
 	switch(currState) {
@@ -62,7 +63,7 @@ void Game::paint() {
 			break;
 	}
 	
-	switch(ConfigClass::getPressedKey()) {
+	switch(UserInput::getPressedKey()) {
 		case('o'):
 			currState = EXIT;
 			break;

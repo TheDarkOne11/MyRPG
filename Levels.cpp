@@ -109,7 +109,7 @@ void Levels::ingameUpdate() {
 	switch(currTurn) {
 		case(PLAYER):
 			// If player moved, enemy has turn
-			if( player->move(vect_gameMap, ConfigClass::getPressedKey()) ) {
+			if( player->move(vect_gameMap, UserInput::getPressedKey()) ) {
 				currTurn = ENEMY;
 			
 				// Enemies turn, we don't have to wait for input

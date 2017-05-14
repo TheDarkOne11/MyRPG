@@ -19,7 +19,7 @@
       <itemPath>GameScreen.h</itemPath>
       <itemPath>Levels.h</itemPath>
       <itemPath>Menu.h</itemPath>
-      <itemPath>ConfigClass.h</itemPath>
+      <itemPath>UserInput.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -43,7 +43,7 @@
       <itemPath>GameScreen.cpp</itemPath>
       <itemPath>Levels.cpp</itemPath>
       <itemPath>Menu.cpp</itemPath>
-      <itemPath>ConfigClass.cpp</itemPath>
+      <itemPath>UserInput.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -123,9 +123,9 @@
       </item>
       <item path="StaticObject.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="ConfigClass.cpp" ex="false" tool="1" flavor2="0">
+      <item path="UserInput.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="ConfigClass.h" ex="false" tool="3" flavor2="0">
+      <item path="UserInput.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Wall.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -202,9 +202,9 @@
       </item>
       <item path="StaticObject.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="ConfigClass.cpp" ex="false" tool="1" flavor2="0">
+      <item path="UserInput.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="ConfigClass.h" ex="false" tool="3" flavor2="0">
+      <item path="UserInput.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Wall.cpp" ex="false" tool="1" flavor2="0">
       </item>

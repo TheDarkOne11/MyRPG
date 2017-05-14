@@ -78,9 +78,7 @@ public:
 	static int getHeight();
 	
 	static int getWidth();
-	
-	static int getPressedKey();
-	
+		
 private:
 	/**
 	 * Map of all types of MyObject subclasses.
@@ -91,9 +89,7 @@ private:
 	
 	// Maximum values of the screen
 	static int width, height;
-	
-	static int pressedKey;
-	
+		
 	/**
 	 * Class initialization.
 	 */

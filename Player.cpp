@@ -18,19 +18,19 @@ bool Player::move(std::vector<std::vector<MyObject*> >& vect_gameMap, int presse
 	int newX = x;
 	
 	switch(pressedKey) {
-		case(KEY_UP):
+		case(UserInput::K_UP):
 			newY -= 1;
 			currDirection = UP;
 			break;
-		case(KEY_DOWN):
+		case(UserInput::K_DOWN):
 			newY += 1;
 			currDirection = DOWN;
 			break;
-		case(KEY_LEFT):
+		case(UserInput::K_LEFT):
 			newX -=1;
 			currDirection = LEFT;
 			break;
-		case(KEY_RIGHT):
+		case(UserInput::K_RIGHT):
 			newX += 1;
 			currDirection = RIGHT;
 			break;
