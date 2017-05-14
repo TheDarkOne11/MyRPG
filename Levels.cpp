@@ -1,34 +1,47 @@
 #include "Levels.h"
+#include "Game.h"
 
 Levels::Levels() : currTurn(PLAYER), currState(INIT) {
 	srand(time(NULL));
+	
 	// Get player from ConfigClass
 	player = Info::getPlayer();
+	
+	// Init game menu
+	ChoiceVect vect_GameMenu;
+	vect_GameMenu.push_back( std::make_pair("Resume game", INGAME) );
+	vect_GameMenu.push_back( std::make_pair("Exit game", EXIT) );
+	this->gameMenu.setChoices(vect_GameMenu);
 	
 	gameScreen = new GameScreen(player);
 }
 
 Levels::~Levels() {
+	clearLevel();
+	delete player;
+}
+
+void Levels::clearLevel() {
 	delete gameScreen;
 	vect_enemiesInLevel.clear();
-	//TODO Mustn't delete player when going to new level
 	
 	for(unsigned int y = 0; y < vect_levelMap.size(); y++) {
 		for(unsigned int x = 0; x < vect_levelMap[y].size(); x++) {
 			MyObject* curr = vect_levelMap[y][x];
 			
 			// Remove everything but player
-			if(curr->getGroup() != player->getGroup() || curr->getID() != player->getID()) {
+			if(curr->getID() != Info::ID_Player) {
 				delete curr;
 			}
 		}
 		vect_levelMap[y].clear();
 	}
 	vect_levelMap.clear();
-	delete player;
 }
 
 void Levels::update() {	
+	int tmp;
+	
 	switch(currState) {
 		case(INIT):
 			loadLevel();
@@ -36,13 +49,48 @@ void Levels::update() {
 			break;
 		case(INGAME):
 			ingameUpdate();
+			if(!player->alive()) {
+				// Player died
+				currState = EXIT;
+			}
+			break;
+		case(INGAME_MENU):
+			tmp = gameMenu.update();
+			if(tmp != -1) {
+				// New gamestate chosen
+				currState = (LevelState) tmp;
+			}
+			break;
+		case(NEXT_LEVEL):
+			clearLevel();
+			loadLevel();
+			currState = INGAME;
+			break;
+		case(EXIT):
+			
 			break;
 	}
 	
 }
 
 void Levels::paint() {
-	gameScreen->paint(vect_levelMap);
+	switch(currState) {
+		case(INIT):
+			
+			break;
+		case(INGAME):
+			gameScreen->paint(vect_levelMap);
+			break;
+		case(INGAME_MENU):
+			gameMenu.paint();
+			break;
+		case(NEXT_LEVEL):
+			
+			break;
+		case(EXIT):
+			
+			break;
+	}
 }
 
 void Levels::loadLevel() {
@@ -111,14 +159,25 @@ MyObject* Levels::getFloor(std::vector<MyObject*> vect_floors, int index) {
 
 
 void Levels::ingameUpdate() {
+	int tmp;
+	
 	switch(currTurn) {
 		case(PLAYER):
+			tmp = UserInput::getPressedKey();
 			// If player moved, enemy has turn
-			if( player->move(vect_levelMap, UserInput::getPressedKey()) ) {
+			if( player->move(vect_levelMap, tmp) ) {
 				currTurn = ENEMY;
 			
 				// Enemies turn, we don't have to wait for input
 				nodelay(stdscr, true);
+				return;
+			}
+			
+			// Check other pressed keys
+			switch(tmp) {
+				case(UserInput::K_MENU):
+					currState = INGAME_MENU;
+					break;
 			}
 			
 			break;

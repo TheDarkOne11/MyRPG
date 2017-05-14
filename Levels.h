@@ -23,6 +23,8 @@
 #include "Door.h"
 #include "Menu.h"
 
+#define ChoiceVect std::vector< std::pair<std::string, int> >
+
 class Levels {
 public:
 	enum Turns {
@@ -31,14 +33,18 @@ public:
 	};
 	
 	enum LevelState {
-		INIT,
-		INGAME_MENU,
+		INIT,		// Went from Main menu to game
 		INGAME,
-		NEXT_LEVEL
+		INGAME_MENU,
+		INVENTORY,
+		NEXT_LEVEL,
+		EXIT
 	};
 	
 	Levels();
 	~Levels();
+	
+	void clearLevel();
 	
 	void update();
 	void paint();

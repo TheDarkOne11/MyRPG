@@ -36,6 +36,8 @@ void Menu::paint() {
 }
 
 int Menu::update() {
+	int tmp;
+	
 	// Traverse choices
 	switch(UserInput::getPressedKey()) {
 		case(UserInput::K_UP):
@@ -46,7 +48,9 @@ int Menu::update() {
 			break;
 		case(UserInput::K_ENTER):
 			// Last picked choice was chosen
-			return choices[currChoice].second;
+			tmp = currChoice;
+			currChoice = 0;
+			return choices[tmp].second;
 			break;
 	}
 	
@@ -54,7 +58,7 @@ int Menu::update() {
 }
 
 
-void Menu::setChoices(ChoiceList choices) {
+void Menu::setChoices(ChoiceVect choices) {
 	this->choices.clear();
 	
 	for(auto iter = choices.begin(); iter != choices.end(); iter++) {

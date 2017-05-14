@@ -25,7 +25,13 @@ public:
 	
 	virtual void paint(const int y, const int x) override;
 		
-	virtual bool move(std::vector< std::vector<MyObject*> >& vect_levelMap, int pressedKey) override;
+	/**
+	 * Moves Entity according to the pressed key.
+	 * @param vect_levelMap is the 2D vector game map.
+	 * @param pressedKey
+	 * @return true if the Entity could move to new coordinates.
+	 */
+	virtual bool move(std::vector< std::vector<MyObject*> >& vect_levelMap, int pressedKey);
 	
 	virtual MyObject* clone() const override;
 	

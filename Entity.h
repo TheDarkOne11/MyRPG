@@ -55,17 +55,11 @@ public:
 	 */
 	virtual bool move(std::vector< std::vector<MyObject*> >& vect_levelMap, int newY, int newX);
 	
-	/**
-	 * Moves Entity according to the pressed key.
-	 * @param vect_levelMap is the 2D vector game map.
-	 * @param pressedKey
-	 * @return true if the Entity could move to new coordinates.
-	 */
-	virtual bool move(std::vector< std::vector<MyObject*> >& vect_levelMap, int pressedKey);
-	
 	virtual void attack(Entity* target);
 	
 	virtual void isAttacked(int damage);
+	
+	virtual bool alive();
 	
 	void addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x, bool removeFormer) override;
 

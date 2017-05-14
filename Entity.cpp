@@ -39,10 +39,6 @@ bool Entity::move(std::vector< std::vector<MyObject*> >& vect_levelMap, int newY
 		
 	return true;
 }
-
-bool Entity::move(std::vector< std::vector<MyObject*> >& vect_levelMap, int pressedKey) {
-	return true;
-}
 	
 void Entity::attack(Entity* target)
 {
@@ -52,6 +48,15 @@ void Entity::attack(Entity* target)
 void Entity::isAttacked(int damage)
 {
 	
+}
+
+bool Entity::alive() {
+	if(health <= 0) {
+		return false;
+	}
+	
+	
+	return true;
 }
 
 void Entity::addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x, bool removeFormer) {

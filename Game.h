@@ -16,7 +16,7 @@
 #include "UserInput.h"
 #include "Menu.h"
 
-#define ChoiceList std::vector< std::pair<std::string, int> >
+#define ChoiceVect std::vector< std::pair<std::string, int> >
 
 /**
  * Class represents the whole game.

@@ -14,7 +14,7 @@
 #include "Info.h"
 #include "UserInput.h"
 
-#define ChoiceList std::vector< std::pair<std::string, int> >
+#define ChoiceVect std::vector< std::pair<std::string, int> >
 
 /**
  * Class handles painting and updates of simple menus.
@@ -25,7 +25,7 @@ public:
 	
 	Menu(std::string head);
 	
-	void setChoices(ChoiceList choices);
+	void setChoices(ChoiceVect choices);
 	
 	void setHead(std::string head);
 	
@@ -40,7 +40,7 @@ public:
 private:
 	std::string head;
 	bool headExists;
-	ChoiceList choices;
+	ChoiceVect choices;
 	int currChoice;
 };
 

@@ -9,7 +9,7 @@ Game::Game() : currState(MAIN_MENU) {
 	nodelay(stdscr, true);		// Do not wait for input when getch()
 	
 	// TODO Load Main Menu
-	ChoiceList choices;
+	ChoiceVect choices;
 	choices.push_back( std::make_pair("New Game", GAME) );
 	choices.push_back( std::make_pair("Exit", EXIT) );
 	mainMenu.setChoices(choices);

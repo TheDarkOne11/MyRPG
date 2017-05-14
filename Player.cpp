@@ -17,6 +17,7 @@ bool Player::move(std::vector<std::vector<MyObject*> >& vect_levelMap, int press
 	int newY = y;
 	int newX = x;
 	
+	// Move according to the pressedKey
 	switch(pressedKey) {
 		case(UserInput::K_UP):
 			newY -= 1;
