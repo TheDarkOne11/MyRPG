@@ -27,14 +27,14 @@
  * All types of MyObject subclasses that can be placed in the game are initialized here. (Wall, Player..)
  * These initialized subclass serve as "templates", their copies are provided outside ConfigClass.
  */
-class ConfigClass {
+class Info {
 public:
 	// TODO Put them in config file? Maybe update them with player level?
 	const static int maxEnemiesPerLevel = 15;
 	const static int maxItemsPerLevel = 5;
 	
-	ConfigClass();
-	~ConfigClass();
+	Info();
+	~Info();
 	
 	void update();
 	

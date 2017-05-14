@@ -11,7 +11,7 @@
 #include <vector>
 #include <iostream>
 #include <ncurses.h>
-#include "ConfigClass.h"
+#include "Info.h"
 #include "UserInput.h"
 
 #define ChoiceList std::vector< std::pair<std::string, int> >

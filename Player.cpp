@@ -13,7 +13,7 @@ void Player::paint(const int y, const int x) {
 	mvprintw(y, x, "%c", currDirection);
 }
 
-bool Player::move(std::vector<std::vector<MyObject*> >& vect_gameMap, int pressedKey) {
+bool Player::move(std::vector<std::vector<MyObject*> >& vect_levelMap, int pressedKey) {
 	int newY = y;
 	int newX = x;
 	
@@ -39,7 +39,7 @@ bool Player::move(std::vector<std::vector<MyObject*> >& vect_gameMap, int presse
 			break;
 	}
 	
-	return Entity::move(vect_gameMap, newY, newX);
+	return Entity::move(vect_levelMap, newY, newX);
 }
 
 MyObject* Player::clone() const {

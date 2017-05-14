@@ -51,7 +51,7 @@ public:
 	 * @param x
 	 * @param y
 	 */
-	virtual void addToMap(std::vector< std::vector<MyObject*> >& vect_gameMap, int y, int x);
+	virtual void addToMap(std::vector< std::vector<MyObject*> >& vect_levelMap, int y, int x);
 	
 	virtual MyObject* clone() const = 0;
 	

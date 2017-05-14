@@ -17,7 +17,7 @@
 #include "Entity.h"
 #include "StaticObject.h"
 #include "Player.h"
-#include "ConfigClass.h"
+#include "Info.h"
 #include "GameScreen.h"
 #include "Enemy.h"
 
@@ -46,7 +46,7 @@ private:
 	/**
 	 * All MyObjects that were placed in the current level are stored here.
 	 */
-	std::vector< std::vector<MyObject*> > vect_gameMap;
+	std::vector< std::vector<MyObject*> > vect_levelMap;
 	/**
 	 * Stores all enemy Entities that were added to current level.
 	 */

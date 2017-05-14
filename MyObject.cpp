@@ -19,10 +19,10 @@ void MyObject::update() {
 	
 }
 
-void MyObject::addToMap(std::vector< std::vector<MyObject*> >& vect_gameMap, int y, int x) {
+void MyObject::addToMap(std::vector< std::vector<MyObject*> >& vect_levelMap, int y, int x) {
 	this->x = x;
 	this->y = y;
-	vect_gameMap[y][x] = this;
+	vect_levelMap[y][x] = this;
 }
 
 int MyObject::getID() const {

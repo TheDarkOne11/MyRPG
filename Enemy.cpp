@@ -10,7 +10,7 @@ Enemy::Enemy	(const Enemy* temp) : Entity(temp)
 {
 }
 
-void Enemy::AI_update(std::vector<std::vector<MyObject*> >& vect_gameMap, 
+void Enemy::AI_update(std::vector<std::vector<MyObject*> >& vect_levelMap, 
 		const int playerY, const int playerX) {
-	move(vect_gameMap, getY() + 1, getX());
+	move(vect_levelMap, getY() + 1, getX());
 }

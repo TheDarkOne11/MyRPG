@@ -1,5 +1,5 @@
 #include "Entity.h"
-#include "ConfigClass.h"
+#include "Info.h"
 
 int Entity::lastID = 0;
 
@@ -19,9 +19,9 @@ Entity::Entity	(const Entity* temp)
 {
 }
 
-bool Entity::move(std::vector< std::vector<MyObject*> >& vect_gameMap, int newY, int newX)
+bool Entity::move(std::vector< std::vector<MyObject*> >& vect_levelMap, int newY, int newX)
 {
-	MyObject* newPos = vect_gameMap[newY][newX];
+	MyObject* newPos = vect_levelMap[newY][newX];
 	// Check if entity moved
 	if(y == newY && x == newX) {
 		return true;
@@ -35,11 +35,11 @@ bool Entity::move(std::vector< std::vector<MyObject*> >& vect_gameMap, int newY,
 	
 	// Update game map
 	//TODO
-	MyObject* oldPos = ConfigClass::getMyObject(entityStandsOn.first, entityStandsOn.second);
+	MyObject* oldPos = Info::getMyObject(entityStandsOn.first, entityStandsOn.second);
 	entityStandsOn = std::make_pair(newPos->getGroup(), newPos->getID());
 	delete newPos;
-	vect_gameMap[newY][newX] = this;
-	vect_gameMap[y][x] = oldPos;
+	vect_levelMap[newY][newX] = this;
+	vect_levelMap[y][x] = oldPos;
 	
 	
 	// Update entity coordinates
@@ -49,7 +49,7 @@ bool Entity::move(std::vector< std::vector<MyObject*> >& vect_gameMap, int newY,
 	return true;
 }
 
-bool Entity::move(std::vector< std::vector<MyObject*> >& vect_gameMap, int pressedKey) {
+bool Entity::move(std::vector< std::vector<MyObject*> >& vect_levelMap, int pressedKey) {
 	return true;
 }
 	
@@ -63,9 +63,9 @@ void Entity::isAttacked(int damage)
 	
 }
 
-void Entity::addToMap(std::vector<std::vector<MyObject*> >& vect_gameMap, int y, int x) {
-	MyObject* curr = vect_gameMap[y][x];
+void Entity::addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x) {
+	MyObject* curr = vect_levelMap[y][x];
 	this->entityStandsOn = std::make_pair(curr->getGroup(), curr->getID());
-	MyObject::addToMap(vect_gameMap, y, x);
+	MyObject::addToMap(vect_levelMap, y, x);
 	delete curr;
 }

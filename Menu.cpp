@@ -12,8 +12,8 @@ void Menu::setChoices(ChoiceList choices) {
 }
 
 void Menu::paint() {
-	int currX = ConfigClass::getWidth()/2;
-	int currY = ConfigClass::getHeight()/2;
+	int currX = Info::getWidth()/2;
+	int currY = Info::getHeight()/2;
 	int i = 0;
 	
 	for(auto it = choices.begin(); it != choices.end(); it++) {

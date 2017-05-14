@@ -14,9 +14,9 @@
         <itemPath>StaticObject.h</itemPath>
         <itemPath>Wall.h</itemPath>
       </logicalFolder>
-      <itemPath>ConfigClass.h</itemPath>
       <itemPath>Game.h</itemPath>
       <itemPath>GameScreen.h</itemPath>
+      <itemPath>Info.h</itemPath>
       <itemPath>Levels.h</itemPath>
       <itemPath>Menu.h</itemPath>
       <itemPath>UserInput.h</itemPath>
@@ -38,9 +38,9 @@
         <itemPath>StaticObject.cpp</itemPath>
         <itemPath>Wall.cpp</itemPath>
       </logicalFolder>
-      <itemPath>ConfigClass.cpp</itemPath>
       <itemPath>Game.cpp</itemPath>
       <itemPath>GameScreen.cpp</itemPath>
+      <itemPath>Info.cpp</itemPath>
       <itemPath>Levels.cpp</itemPath>
       <itemPath>Menu.cpp</itemPath>
       <itemPath>UserInput.cpp</itemPath>
@@ -75,10 +75,6 @@
           <commandLine>-std=c++11 -lncurses</commandLine>
         </ccTool>
       </compileType>
-      <item path="ConfigClass.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="ConfigClass.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Enemy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Enemy.h" ex="false" tool="3" flavor2="0">
@@ -98,6 +94,10 @@
       <item path="GameScreen.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="GameScreen.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Info.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Info.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Levels.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -154,10 +154,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="ConfigClass.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="ConfigClass.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Enemy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Enemy.h" ex="false" tool="3" flavor2="0">
@@ -177,6 +173,10 @@
       <item path="GameScreen.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="GameScreen.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Info.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Info.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Levels.cpp" ex="false" tool="1" flavor2="0">
       </item>

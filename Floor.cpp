@@ -8,7 +8,7 @@ Floor::Floor(const Floor* temp) : StaticObject(temp)
 {
 }
 
-void Floor::addToMap(std::vector<std::vector<MyObject*> >& vect_gameMap, int y, int x) {
+void Floor::addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x) {
 	this->y = y;
 	this->x = x;
 }

@@ -1,16 +1,16 @@
-#include "ConfigClass.h"
+#include "Info.h"
 
-int ConfigClass::width = 0;
-int ConfigClass::height = 0;
-std::map<MyObject::ObjectGroup, std::vector<MyObject*>> ConfigClass::map_MyObjectsTypes;
-Player* ConfigClass::player;
+int Info::width = 0;
+int Info::height = 0;
+std::map<MyObject::ObjectGroup, std::vector<MyObject*>> Info::map_MyObjectsTypes;
+Player* Info::player;
 
-ConfigClass::ConfigClass() {
+Info::Info() {
 	srand(time(NULL));
 	init();
 }
 
-ConfigClass::~ConfigClass() {
+Info::~Info() {
 	for(auto it = map_MyObjectsTypes.begin(); it != map_MyObjectsTypes.end(); it++) {
 		for(MyObject* curr : it->second) {
 			delete curr;
@@ -18,11 +18,11 @@ ConfigClass::~ConfigClass() {
 	}
 }
 
-void ConfigClass::update() {
+void Info::update() {
 	getmaxyx(stdscr, height, width);
 }
 
-void ConfigClass::init() {
+void Info::init() {
 	// Initialize static objects
 	MyObject* wall = new Wall('#', false);
 	addObject(wall);
@@ -37,7 +37,7 @@ void ConfigClass::init() {
 	addObject(mob2);
 }
 
-void ConfigClass::addObject(MyObject* object) {
+void Info::addObject(MyObject* object) {
 	auto it = map_MyObjectsTypes.find(object->getGroup());
 	
 	// Insert new group if it doesn't exist
@@ -50,7 +50,7 @@ void ConfigClass::addObject(MyObject* object) {
 	it->second.push_back(object);
 }
 
-DefiningPair ConfigClass::getMyObjectID(const char mapSymbol) {
+DefiningPair Info::getMyObjectID(const char mapSymbol) {
 	DefiningPair currPair;
 	bool found = false;
 	for(auto it = map_MyObjectsTypes.begin(); it != map_MyObjectsTypes.end(); it++) {
@@ -70,7 +70,7 @@ DefiningPair ConfigClass::getMyObjectID(const char mapSymbol) {
 	return currPair;
 }
 
-MyObject* ConfigClass::getMyObject(const char mapSymbol) {
+MyObject* Info::getMyObject(const char mapSymbol) {
 	for(auto it = map_MyObjectsTypes.begin(); it != map_MyObjectsTypes.end(); it++) {
 		for(MyObject* curr : it->second) {
 			// If match is found, return copy of the MyObject subclass
@@ -85,7 +85,7 @@ MyObject* ConfigClass::getMyObject(const char mapSymbol) {
 	return NULL;
 }
 
-MyObject* ConfigClass::getMyObject(const MyObject::ObjectGroup group, const int ID) {
+MyObject* Info::getMyObject(const MyObject::ObjectGroup group, const int ID) {
 	auto it = map_MyObjectsTypes.find(group);
 	
 	if(it == map_MyObjectsTypes.end()) {
@@ -102,7 +102,7 @@ MyObject* ConfigClass::getMyObject(const MyObject::ObjectGroup group, const int 
 	return NULL;
 }
 
-MyObject* ConfigClass::getMyObject(const MyObject::ObjectGroup group) {
+MyObject* Info::getMyObject(const MyObject::ObjectGroup group) {
 	MyObject* tmp;
 	auto it = map_MyObjectsTypes.find(group);
 	
@@ -116,14 +116,14 @@ MyObject* ConfigClass::getMyObject(const MyObject::ObjectGroup group) {
 	return tmp;
 }
 
-Player* ConfigClass::getPlayer() {
+Player* Info::getPlayer() {
 	return dynamic_cast<Player*> (player->clone());
 }
 
-int ConfigClass::getHeight() {
+int Info::getHeight() {
 	return height;
 }
 
-int ConfigClass::getWidth() {
+int Info::getWidth() {
 	return width;
 }

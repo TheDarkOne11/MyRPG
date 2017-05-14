@@ -35,10 +35,10 @@ public:
 	Entity	(const Entity* temp);
 		
 	// TODO remove
-	/*void printMap(std::vector< std::vector<MyObject*> >& vect_gameMap) {
-		for(unsigned int y = 0; y < vect_gameMap.size(); y++) {
-			for(unsigned int x = 0; x < vect_gameMap[y].size(); x++) {
-				std::cerr << vect_gameMap[y][x]->getMapSymbol();
+	/*void printMap(std::vector< std::vector<MyObject*> >& vect_levelMap) {
+		for(unsigned int y = 0; y < vect_levelMap.size(); y++) {
+			for(unsigned int x = 0; x < vect_levelMap[y].size(); x++) {
+				std::cerr << vect_levelMap[y][x]->getMapSymbol();
 			}
 			std::cerr << std::endl;
 		}
@@ -48,26 +48,26 @@ public:
 	/**
 	 * Moves Entity to the new position.
 	 * Updates gameMap accordingly.
-	 * @param vect_gameMap is the 2D vector game map.
+	 * @param vect_levelMap is the 2D vector game map.
 	 * @param newY is Y-coordinate of new position.
 	 * @param newX is X-coordinate of new position.
 	 * @return true if the Entity could move to new coordinates.
 	 */
-	virtual bool move(std::vector< std::vector<MyObject*> >& vect_gameMap, int newY, int newX);
+	virtual bool move(std::vector< std::vector<MyObject*> >& vect_levelMap, int newY, int newX);
 	
 	/**
 	 * Moves Entity according to the pressed key.
-	 * @param vect_gameMap is the 2D vector game map.
+	 * @param vect_levelMap is the 2D vector game map.
 	 * @param pressedKey
 	 * @return true if the Entity could move to new coordinates.
 	 */
-	virtual bool move(std::vector< std::vector<MyObject*> >& vect_gameMap, int pressedKey);
+	virtual bool move(std::vector< std::vector<MyObject*> >& vect_levelMap, int pressedKey);
 	
 	virtual void attack(Entity* target);
 	
 	virtual void isAttacked(int damage);
 	
-	void addToMap(std::vector<std::vector<MyObject*> >& vect_gameMap, int y, int x) override;
+	void addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x) override;
 
 	
 protected:

@@ -35,12 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/ConfigClass.o \
 	${OBJECTDIR}/Enemy.o \
 	${OBJECTDIR}/Entity.o \
 	${OBJECTDIR}/Floor.o \
 	${OBJECTDIR}/Game.o \
 	${OBJECTDIR}/GameScreen.o \
+	${OBJECTDIR}/Info.o \
 	${OBJECTDIR}/Levels.o \
 	${OBJECTDIR}/Menu.o \
 	${OBJECTDIR}/Mob.o \
@@ -76,11 +76,6 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/myrpg: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/myrpg ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/ConfigClass.o: ConfigClass.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ConfigClass.o ConfigClass.cpp
-
 ${OBJECTDIR}/Enemy.o: Enemy.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -105,6 +100,11 @@ ${OBJECTDIR}/GameScreen.o: GameScreen.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GameScreen.o GameScreen.cpp
+
+${OBJECTDIR}/Info.o: Info.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Info.o Info.cpp
 
 ${OBJECTDIR}/Levels.o: Levels.cpp
 	${MKDIR} -p ${OBJECTDIR}

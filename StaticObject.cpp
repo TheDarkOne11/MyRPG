@@ -13,8 +13,8 @@ StaticObject::StaticObject(const StaticObject* tmp)
 {
 }
 
-void StaticObject::addToMap(std::vector<std::vector<MyObject*> >& vect_gameMap, int y, int x) {
-	MyObject* curr = vect_gameMap[y][x];
-	MyObject::addToMap(vect_gameMap, y, x);
+void StaticObject::addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x) {
+	MyObject* curr = vect_levelMap[y][x];
+	MyObject::addToMap(vect_levelMap, y, x);
 	delete curr;
 }
