@@ -16,8 +16,6 @@ Game::Game() : currState(MAIN_MENU) {
 	choices.push_back( std::make_pair("Exit application", EXIT) );
 	mainMenu.setChoices(choices);
 	mainMenu.setHead("MAIN MENU");
-	
-	//nodelay(stdscr, false);		// Wait for input when getch()
 }
 
 Game::~Game() {
@@ -35,9 +33,9 @@ void Game::update() {
 			if(tmp != -1) {
 				// New state was chosen
 				currState = (GameState) tmp;
-				nodelay(stdscr, true);
+				//nodelay(stdscr, true);
 			} else {
-				nodelay(stdscr, false);
+				//nodelay(stdscr, false);
 			}
 			
 			break;
