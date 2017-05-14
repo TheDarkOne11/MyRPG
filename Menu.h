@@ -11,8 +11,8 @@
 #include <vector>
 #include <iostream>
 #include <ncurses.h>
-#include "Handler.h"
 #include "UserInput.h"
+#include "Info.h"
 
 #define ChoiceVect std::vector< std::pair<std::string, int> >
 

@@ -8,6 +8,8 @@ Game::Game() : currState(MAIN_MENU) {
 	noecho();					// Do not print out pressed keys
 	nodelay(stdscr, true);		// Do not wait for input when getch()
 	
+	Handler::init();
+	
 	// TODO Load Main Menu
 	ChoiceVect choices;
 	choices.push_back( std::make_pair("New Game", NEW_LEVELS) );
@@ -25,7 +27,7 @@ Game::~Game() {
 void Game::update() {
 	int tmp;
 	UserInput::update();
-	configs.update();
+	info.update();
 	
 	switch(currState) {
 		case(MAIN_MENU):

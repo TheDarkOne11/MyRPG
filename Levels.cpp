@@ -30,7 +30,7 @@ void Levels::clearLevel() {
 			MyObject* curr = vect_levelMap[y][x];
 			
 			// Remove everything but player
-			if(curr->getID() != Handler::ID_Player || curr->getGroup() != MyObject::ENTITY) {
+			if(curr->getID() != Info::ID_Player || curr->getGroup() != MyObject::ENTITY) {
 				delete curr;
 			}
 		}
@@ -163,14 +163,14 @@ void Levels::loadLevel() {
 void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
 	MyObject* curr;
 	int ranPos = rand() % vect_floors.size();
-	int ranNum = rand() % Handler::maxEnemiesPerLevel + 1;
+	int ranNum = rand() % Info::maxEnemiesPerLevel + 1;
 		
 	// Add player to random position
 	curr = getFloor(vect_floors, ranPos);
 	player->addToMap(vect_levelMap, curr->getY(), curr->getX(), true);
 	
 	// Add door to random position
-	MyObject* door = Handler::getMyObject(MyObject::STATIC, Handler::ID_Door);
+	MyObject* door = Handler::getMyObject(MyObject::STATIC, Info::ID_Door);
 	ranPos = rand() % vect_floors.size();
 	curr = getFloor(vect_floors, ranPos);
 	door->addToMap(vect_levelMap, curr->getY(), curr->getX(), true);

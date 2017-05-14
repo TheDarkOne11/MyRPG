@@ -11,6 +11,7 @@
 #include <vector>
 #include "Handler.h"
 #include "Player.h"
+#include "Info.h"
 
 /**
  * TODO Documentation

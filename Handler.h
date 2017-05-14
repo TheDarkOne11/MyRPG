@@ -20,6 +20,7 @@
 #include "Floor.h"
 #include "Mob.h"
 #include "Door.h"
+#include "Info.h"
 
 #define DefiningPair std::pair<int, MyObject::ObjectGroup>
 
@@ -29,27 +30,14 @@
  * These initialized subclass serve as "templates", their copies are provided outside ConfigClass.
  */
 class Handler {
-public:
-	// TODO Put them in config file? Maybe update them with player level?
-	const static int maxEnemiesPerLevel = 15;
-	const static int maxItemsPerLevel = 5;
-		
-	// List of StaticObject IDs
-	const static int ID_Door = 0;
-	const static int ID_Floor = 1;
-	const static int ID_Wall = 2;
-	
-	
-	// List of Entity IDs
-	const static int ID_Player = 0;
-	const static int ID_Mob = 1;
-	const static int ID_Mob2 = 2;
-	
-	Handler();
+public:	
 	~Handler();
 	
-	void update();
-	
+	/**
+	 * Class initialization.
+	 */
+	static void init();
+		
 	/**
 	 * Finds the MyObject subclass using mapSymbol.
 	 * @param mapSymbol is the unique symbol each MyObject class has.
@@ -86,10 +74,6 @@ public:
 	 * @return player
 	 */
 	static Player* getPlayer();
-	
-	static int getHeight();
-	
-	static int getWidth();
 		
 private:
 	/**
@@ -99,19 +83,11 @@ private:
 	static std::map<MyObject::ObjectGroup, std::vector<MyObject*>> map_MyObjectsTypes;
 	static Player* player;
 	
-	// Maximum values of the screen
-	static int width, height;
-		
-	/**
-	 * Class initialization.
-	 */
-	void init();
-	
 	/**
 	 * Stores new object into the map.
 	 * @param object is the object which we want to store.
 	 */
-	void addObject(MyObject* object);
+	static void addObject(MyObject* object);
 };
 
 #endif /* MYOBJECTDESCENDANTS_H */

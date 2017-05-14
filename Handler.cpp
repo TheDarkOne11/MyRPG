@@ -1,14 +1,7 @@
 #include "Handler.h"
 
-int Handler::width = 0;
-int Handler::height = 0;
 std::map<MyObject::ObjectGroup, std::vector<MyObject*>> Handler::map_MyObjectsTypes;
 Player* Handler::player;
-
-Handler::Handler() {
-	srand(time(NULL));
-	init();
-}
 
 Handler::~Handler() {
 	for(auto it = map_MyObjectsTypes.begin(); it != map_MyObjectsTypes.end(); it++) {
@@ -18,24 +11,22 @@ Handler::~Handler() {
 	}
 }
 
-void Handler::update() {
-	getmaxyx(stdscr, height, width);
-}
-
 void Handler::init() {
+	srand(time(NULL));
+	
 	// Initialize static objects
-	MyObject* door = new Door(ID_Door, '0', true);
+	MyObject* door = new Door(Info::ID_Door, '0', true);
 	addObject(door);
-	MyObject* wall = new Wall(ID_Wall, '#', false);
+	MyObject* wall = new Wall(Info::ID_Wall, '#', false);
 	addObject(wall);
-	MyObject* floor = new Floor(ID_Floor, '.', true);
+	MyObject* floor = new Floor(Info::ID_Floor, '.', true);
 	addObject(floor);
 	
 	// Initialize entities
-	player = new Player(ID_Player, 'P', 50, 1, 5, 2, 3);
-	MyObject* mob = new Mob(ID_Mob, 'M', 10, 1, 2, 1, 1);
+	player = new Player(Info::ID_Player, 'P', 50, 1, 5, 2, 3);
+	MyObject* mob = new Mob(Info::ID_Mob, 'M', 10, 1, 2, 1, 1);
 	addObject(mob);
-	MyObject* mob2 = new Mob(ID_Mob2, 'N', 10, 1, 2, 1, 1);
+	MyObject* mob2 = new Mob(Info::ID_Mob2, 'N', 10, 1, 2, 1, 1);
 	addObject(mob2);
 }
 
@@ -120,12 +111,4 @@ MyObject* Handler::getMyObject(const MyObject::ObjectGroup group) {
 
 Player* Handler::getPlayer() {
 	return dynamic_cast<Player*> (player->clone());
-}
-
-int Handler::getHeight() {
-	return height;
-}
-
-int Handler::getWidth() {
-	return width;
 }

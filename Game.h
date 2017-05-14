@@ -15,6 +15,7 @@
 #include "Handler.h"
 #include "UserInput.h"
 #include "Menu.h"
+#include "Info.h"
 
 #define ChoiceVect std::vector< std::pair<std::string, int> >
 
@@ -57,7 +58,8 @@ public:
 private:
 	GameState currState;
 	Menu mainMenu;
-	Handler configs;
+	Info info;
+	Handler handler;
 	Levels* levels;
 	
 	

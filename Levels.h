@@ -22,6 +22,7 @@
 #include "Enemy.h"
 #include "Door.h"
 #include "Menu.h"
+#include "Info.h"
 
 #define ChoiceVect std::vector< std::pair<std::string, int> >
 
