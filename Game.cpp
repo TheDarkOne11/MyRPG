@@ -19,7 +19,6 @@ Game::Game() : currState(MAIN_MENU) {
 }
 
 Game::~Game() {
-	delete levels;
 	endwin();
 }
 
@@ -54,13 +53,6 @@ void Game::update() {
 			currState = MAIN_MENU;
 			break;
 		case(EXIT):
-			break;
-	}
-	
-	// TODO remove
-	switch(UserInput::getPressedKey()) {
-		case('o'):
-			currState = EXIT;
 			break;
 	}
 	

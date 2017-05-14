@@ -30,7 +30,7 @@ void Levels::clearLevel() {
 			MyObject* curr = vect_levelMap[y][x];
 			
 			// Remove everything but player
-			if(curr->getID() != Info::ID_Player) {
+			if(curr->getID() != Info::ID_Player || curr->getGroup() != MyObject::ENTITY) {
 				delete curr;
 			}
 		}
