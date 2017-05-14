@@ -1,14 +1,9 @@
 #include "Menu.h"
 
-Menu::Menu() : currChoice(0) {
+Menu::Menu() : head(""), headExists(false), currChoice(0) {
 }
 
-void Menu::setChoices(ChoiceList choices) {
-	this->choices.clear();
-	
-	for(auto iter = choices.begin(); iter != choices.end(); iter++) {
-		this->choices.push_back(*iter);
-	}
+Menu::Menu(std::string head) : head(head), headExists(true), currChoice(0) {
 }
 
 void Menu::paint() {
@@ -16,6 +11,14 @@ void Menu::paint() {
 	int currY = Info::getHeight()/2;
 	int i = 0;
 	
+	// Paint head if it exists
+	if(headExists) {
+		attron(A_BOLD);
+		mvprintw(currY - 2, currX - head.size()/2, head.c_str());
+		attroff(A_BOLD);
+	}
+	
+	// Paint choices
 	for(auto it = choices.begin(); it != choices.end(); it++) {
 		std::string currString = it->first;
 		
@@ -33,6 +36,7 @@ void Menu::paint() {
 }
 
 int Menu::update() {
+	// Traverse choices
 	switch(UserInput::getPressedKey()) {
 		case(UserInput::K_UP):
 			currChoice = (currChoice - 1) % choices.size();
@@ -47,4 +51,18 @@ int Menu::update() {
 	}
 	
 	return -1;
+}
+
+
+void Menu::setChoices(ChoiceList choices) {
+	this->choices.clear();
+	
+	for(auto iter = choices.begin(); iter != choices.end(); iter++) {
+		this->choices.push_back(*iter);
+	}
+}
+
+void Menu::setHead(std::string head) {
+	this->head = head;
+	headExists = true;
 }

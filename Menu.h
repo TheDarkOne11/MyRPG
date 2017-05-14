@@ -23,7 +23,11 @@ class Menu {
 public:
 	Menu();
 	
+	Menu(std::string head);
+	
 	void setChoices(ChoiceList choices);
+	
+	void setHead(std::string head);
 	
 	void paint();
 	
@@ -35,6 +39,7 @@ public:
 	
 private:
 	std::string head;
+	bool headExists;
 	ChoiceList choices;
 	int currChoice;
 };
