@@ -19,13 +19,14 @@ Game::Game() : currState(MAIN_MENU) {
 }
 
 Game::~Game() {
+	Handler::clear();
 	endwin();
 }
 
 void Game::update() {
 	int tmp;
 	UserInput::update();
-	info.update();
+	Info::update();
 	
 	switch(currState) {
 		case(MAIN_MENU):

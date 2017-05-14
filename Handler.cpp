@@ -3,7 +3,7 @@
 std::map<MyObject::ObjectGroup, std::vector<MyObject*>> Handler::map_MyObjectsTypes;
 Player* Handler::player;
 
-Handler::~Handler() {
+void Handler::clear() {
 	for(auto it = map_MyObjectsTypes.begin(); it != map_MyObjectsTypes.end(); it++) {
 		for(MyObject* curr : it->second) {
 			delete curr;

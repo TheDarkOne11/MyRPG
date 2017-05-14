@@ -58,8 +58,6 @@ public:
 private:
 	GameState currState;
 	Menu mainMenu;
-	Info info;
-	Handler handler;
 	Levels* levels;
 	
 	

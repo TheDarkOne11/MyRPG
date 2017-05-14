@@ -31,7 +31,7 @@ public:
 	const static int ID_Mob = 1;
 	const static int ID_Mob2 = 2;
 	
-	void update();
+	static void update();
 	
 	static int getHeight();
 	

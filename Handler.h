@@ -31,7 +31,7 @@
  */
 class Handler {
 public:	
-	~Handler();
+	static void clear();
 	
 	/**
 	 * Class initialization.
