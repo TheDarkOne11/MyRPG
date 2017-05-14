@@ -17,7 +17,7 @@
 #include "Entity.h"
 #include "StaticObject.h"
 #include "Player.h"
-#include "Info.h"
+#include "Handler.h"
 #include "GameScreen.h"
 #include "Enemy.h"
 #include "Door.h"

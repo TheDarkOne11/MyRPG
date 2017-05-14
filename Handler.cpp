@@ -1,16 +1,16 @@
-#include "Info.h"
+#include "Handler.h"
 
-int Info::width = 0;
-int Info::height = 0;
-std::map<MyObject::ObjectGroup, std::vector<MyObject*>> Info::map_MyObjectsTypes;
-Player* Info::player;
+int Handler::width = 0;
+int Handler::height = 0;
+std::map<MyObject::ObjectGroup, std::vector<MyObject*>> Handler::map_MyObjectsTypes;
+Player* Handler::player;
 
-Info::Info() {
+Handler::Handler() {
 	srand(time(NULL));
 	init();
 }
 
-Info::~Info() {
+Handler::~Handler() {
 	for(auto it = map_MyObjectsTypes.begin(); it != map_MyObjectsTypes.end(); it++) {
 		for(MyObject* curr : it->second) {
 			delete curr;
@@ -18,11 +18,11 @@ Info::~Info() {
 	}
 }
 
-void Info::update() {
+void Handler::update() {
 	getmaxyx(stdscr, height, width);
 }
 
-void Info::init() {
+void Handler::init() {
 	// Initialize static objects
 	MyObject* door = new Door(ID_Door, '0', true);
 	addObject(door);
@@ -39,7 +39,7 @@ void Info::init() {
 	addObject(mob2);
 }
 
-void Info::addObject(MyObject* object) {
+void Handler::addObject(MyObject* object) {
 	auto it = map_MyObjectsTypes.find(object->getGroup());
 	
 	// Insert new group if it doesn't exist
@@ -52,7 +52,7 @@ void Info::addObject(MyObject* object) {
 	it->second.push_back(object);
 }
 
-DefiningPair Info::getMyObjectID(const char mapSymbol) {
+DefiningPair Handler::getMyObjectID(const char mapSymbol) {
 	DefiningPair currPair;
 	bool found = false;
 	for(auto it = map_MyObjectsTypes.begin(); it != map_MyObjectsTypes.end(); it++) {
@@ -72,7 +72,7 @@ DefiningPair Info::getMyObjectID(const char mapSymbol) {
 	return currPair;
 }
 
-MyObject* Info::getMyObject(const char mapSymbol) {
+MyObject* Handler::getMyObject(const char mapSymbol) {
 	for(auto it = map_MyObjectsTypes.begin(); it != map_MyObjectsTypes.end(); it++) {
 		for(MyObject* curr : it->second) {
 			// If match is found, return copy of the MyObject subclass
@@ -87,7 +87,7 @@ MyObject* Info::getMyObject(const char mapSymbol) {
 	return NULL;
 }
 
-MyObject* Info::getMyObject(const MyObject::ObjectGroup group, const int ID) {
+MyObject* Handler::getMyObject(const MyObject::ObjectGroup group, const int ID) {
 	auto it = map_MyObjectsTypes.find(group);
 	
 	if(it == map_MyObjectsTypes.end()) {
@@ -104,7 +104,7 @@ MyObject* Info::getMyObject(const MyObject::ObjectGroup group, const int ID) {
 	return NULL;
 }
 
-MyObject* Info::getMyObject(const MyObject::ObjectGroup group) {
+MyObject* Handler::getMyObject(const MyObject::ObjectGroup group) {
 	MyObject* tmp;
 	auto it = map_MyObjectsTypes.find(group);
 	
@@ -118,14 +118,14 @@ MyObject* Info::getMyObject(const MyObject::ObjectGroup group) {
 	return tmp;
 }
 
-Player* Info::getPlayer() {
+Player* Handler::getPlayer() {
 	return dynamic_cast<Player*> (player->clone());
 }
 
-int Info::getHeight() {
+int Handler::getHeight() {
 	return height;
 }
 
-int Info::getWidth() {
+int Handler::getWidth() {
 	return width;
 }

@@ -1,5 +1,5 @@
 #include "Entity.h"
-#include "Info.h"
+#include "Handler.h"
 
 Entity::Entity	(int ID, char mapSymbol, int health, int speed, 
 				int attackDmg, int attackSpeed, int range)
@@ -30,7 +30,7 @@ bool Entity::move(std::vector< std::vector<MyObject*> >& vect_levelMap, int newY
 	}
 	
 	// Update game map
-	MyObject* currStandsOn = Info::getMyObject(ground.first, ground.second);	
+	MyObject* currStandsOn = Handler::getMyObject(ground.first, ground.second);	
 		// Old position of this Entity is swapped for the MyObject that Entity stood on
 		currStandsOn->addToMap(vect_levelMap, y, x, false);
 		

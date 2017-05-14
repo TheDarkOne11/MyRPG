@@ -5,7 +5,7 @@ Levels::Levels() : currTurn(PLAYER), currState(INIT) {
 	srand(time(NULL));
 	
 	// Get player from ConfigClass
-	player = Info::getPlayer();
+	player = Handler::getPlayer();
 	
 	// Init game menu
 	ChoiceVect vect_GameMenu;
@@ -30,7 +30,7 @@ void Levels::clearLevel() {
 			MyObject* curr = vect_levelMap[y][x];
 			
 			// Remove everything but player
-			if(curr->getID() != Info::ID_Player || curr->getGroup() != MyObject::ENTITY) {
+			if(curr->getID() != Handler::ID_Player || curr->getGroup() != MyObject::ENTITY) {
 				delete curr;
 			}
 		}
@@ -144,10 +144,10 @@ void Levels::loadLevel() {
 		for(int x = 0; x < w; x++) {
 			MyObject* tmp;
 			if(y == 0 || y == h -1 || x == 0 || x == w - 1) {
-				tmp = Info::getMyObject('#');
+				tmp = Handler::getMyObject('#');
 			} else {
 				// Floor ' '
-				tmp = Info::getMyObject('.');
+				tmp = Handler::getMyObject('.');
 				vect_floors.push_back(tmp);
 			}
 			tmp->setCoordinates(y, x);
@@ -163,14 +163,14 @@ void Levels::loadLevel() {
 void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
 	MyObject* curr;
 	int ranPos = rand() % vect_floors.size();
-	int ranNum = rand() % Info::maxEnemiesPerLevel + 1;
+	int ranNum = rand() % Handler::maxEnemiesPerLevel + 1;
 		
 	// Add player to random position
 	curr = getFloor(vect_floors, ranPos);
 	player->addToMap(vect_levelMap, curr->getY(), curr->getX(), true);
 	
 	// Add door to random position
-	MyObject* door = Info::getMyObject(MyObject::STATIC, Info::ID_Door);
+	MyObject* door = Handler::getMyObject(MyObject::STATIC, Handler::ID_Door);
 	ranPos = rand() % vect_floors.size();
 	curr = getFloor(vect_floors, ranPos);
 	door->addToMap(vect_levelMap, curr->getY(), curr->getX(), true);
@@ -179,7 +179,7 @@ void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
 	//std::cerr << "Num of Enemies added: " << ranNum << std::endl;
 	for(int i = 0; i < ranNum || vect_floors.size() == 0; i++) {
 		// Get random enemy
-		Enemy* enemy = dynamic_cast<Enemy*> (Info::getMyObject(MyObject::ENTITY));
+		Enemy* enemy = dynamic_cast<Enemy*> (Handler::getMyObject(MyObject::ENTITY));
 		ranPos = rand() % vect_floors.size();
 		curr = getFloor(vect_floors, ranPos);
 		

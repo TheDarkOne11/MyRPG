@@ -12,7 +12,7 @@
 #include <ncurses.h>
 #include <list>
 #include "Levels.h"
-#include "Info.h"
+#include "Handler.h"
 #include "UserInput.h"
 #include "Menu.h"
 
@@ -57,7 +57,7 @@ public:
 private:
 	GameState currState;
 	Menu mainMenu;
-	Info configs;
+	Handler configs;
 	Levels* levels;
 	
 	

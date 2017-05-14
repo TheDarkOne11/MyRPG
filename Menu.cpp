@@ -7,8 +7,8 @@ Menu::Menu(std::string head) : head(head), headExists(true), currChoice(0) {
 }
 
 void Menu::paint() {
-	int currX = Info::getWidth()/2;
-	int currY = Info::getHeight()/2;
+	int currX = Handler::getWidth()/2;
+	int currY = Handler::getHeight()/2;
 	int i = 0;
 	
 	// Paint head if it exists

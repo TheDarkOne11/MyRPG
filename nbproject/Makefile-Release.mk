@@ -41,7 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Floor.o \
 	${OBJECTDIR}/Game.o \
 	${OBJECTDIR}/GameScreen.o \
-	${OBJECTDIR}/Info.o \
+	${OBJECTDIR}/Handler.o \
 	${OBJECTDIR}/Levels.o \
 	${OBJECTDIR}/Menu.o \
 	${OBJECTDIR}/Mob.o \
@@ -107,10 +107,10 @@ ${OBJECTDIR}/GameScreen.o: GameScreen.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GameScreen.o GameScreen.cpp
 
-${OBJECTDIR}/Info.o: Info.cpp
+${OBJECTDIR}/Handler.o: Handler.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Info.o Info.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Handler.o Handler.cpp
 
 ${OBJECTDIR}/Levels.o: Levels.cpp
 	${MKDIR} -p ${OBJECTDIR}
