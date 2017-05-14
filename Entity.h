@@ -35,7 +35,7 @@ public:
 	Entity	(const Entity* temp);
 		
 	// TODO remove
-	/*void printMap(std::vector< std::vector<MyObject*> >& vect_levelMap) {
+	void printMap(std::vector< std::vector<MyObject*> >& vect_levelMap) {
 		for(unsigned int y = 0; y < vect_levelMap.size(); y++) {
 			for(unsigned int x = 0; x < vect_levelMap[y].size(); x++) {
 				std::cerr << vect_levelMap[y][x]->getMapSymbol();
@@ -43,7 +43,7 @@ public:
 			std::cerr << std::endl;
 		}
 		std::cerr << std::endl;
-	}*/
+	}
 	
 	/**
 	 * Moves Entity to the new position.

@@ -23,6 +23,9 @@ void MyObject::addToMap(std::vector< std::vector<MyObject*> >& vect_levelMap, in
 	this->x = x;
 	this->y = y;
 	vect_levelMap[y][x] = this;
+	
+	std::cerr << "MyObjectAdd:" << std::endl;
+	std::cerr << "MyObejctAdd: " << mapSymbol << std::endl;
 }
 
 int MyObject::getID() const {
@@ -32,6 +35,15 @@ int MyObject::getID() const {
 int MyObject::getX() const {
 	return x;
 }
+
+void MyObject::setX(int x) {
+	this->x = x;
+}
+
+void MyObject::setY(int y) {
+	this->y = y;
+}
+
 	
 int MyObject::getY() const {
 	return y;

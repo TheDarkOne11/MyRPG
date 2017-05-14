@@ -39,6 +39,11 @@ bool Player::move(std::vector<std::vector<MyObject*> >& vect_levelMap, int press
 			break;
 	}
 	
+	if(y != newY || x != newX) {
+		//TODO Remove
+		printMap(vect_levelMap);
+	}
+	
 	return Entity::move(vect_levelMap, newY, newX);
 }
 

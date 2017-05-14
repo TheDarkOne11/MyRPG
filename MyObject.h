@@ -19,8 +19,8 @@ class MyObject {
 public:
 
 	enum ObjectGroup {
-		ENTITY,
-		STATIC
+		ENTITY = 1,
+		STATIC = 2
 	};
 
 	/**
@@ -58,6 +58,10 @@ public:
 	virtual int getID() const;
 
 	virtual int getX() const;
+	
+	virtual void setX(int x);
+	
+	virtual void setY(int y);
 
 	virtual int getY() const;
 	

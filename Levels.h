@@ -20,6 +20,7 @@
 #include "Info.h"
 #include "GameScreen.h"
 #include "Enemy.h"
+#include "Door.h"
 #include "Menu.h"
 
 class Levels {
@@ -66,9 +67,8 @@ private:
 	 */
 	void addRandomObjects(std::vector<MyObject*>& floors);
 	
-
-	void addToMap(std::vector<MyObject*>& floors, int index, MyObject* newObject);
-	
+	MyObject* getFloor( std::vector<MyObject*> vect_floors, int index );
+		
 	void ingameUpdate();
 };
 

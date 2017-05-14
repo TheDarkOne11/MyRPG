@@ -37,7 +37,6 @@ void GameScreen::paint(const std::vector<std::vector<MyObject*> >& vect_levelMap
 		endY = vect_levelMap.size();
 	}
 	
-	//FIXME Maybe paint static objects first and then entities
 	// Paint all MyObjects that are in screen
 	for(int y = startY; y < (signed) vect_levelMap.size(); y++) {
 		int startX = player->getX() - Info::getWidth()/2 - offsetX;

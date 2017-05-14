@@ -61,7 +61,7 @@ void Levels::loadLevel() {
 				tmp = Info::getMyObject('#');
 			} else {
 				// Floor ' '
-				tmp = Info::getMyObject(' ');
+				tmp = Info::getMyObject('.');
 				vect_floors.push_back(tmp);
 			}
 			row.push_back(tmp);
@@ -75,14 +75,19 @@ void Levels::loadLevel() {
 }
 
 void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
+	MyObject* curr;
 	int ranPos = rand() % vect_floors.size();
 	int ranNum = rand() % Info::maxEnemiesPerLevel + 1;
 		
 	// Add player to random position
-	this->addToMap(vect_floors, ranPos, player);
+	curr = getFloor(vect_floors, ranPos);
+	player->addToMap(vect_levelMap, curr->getY(), curr->getX());
 	
 	// Add door to random position
+	MyObject* door = Info::getMyObject(MyObject::STATIC, Info::ID_Door);
 	ranPos = rand() % vect_floors.size();
+	curr = getFloor(vect_floors, ranPos);
+	door->addToMap(vect_levelMap, curr->getY(), curr->getX());
 	
 	// Add random number of random enemies	
 	//std::cerr << "Num of Enemies added: " << ranNum << std::endl;
@@ -90,23 +95,20 @@ void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
 		// Get random enemy
 		Enemy* enemy = dynamic_cast<Enemy*> (Info::getMyObject(MyObject::ENTITY));
 		ranPos = rand() % vect_floors.size();
+		curr = getFloor(vect_floors, ranPos);
 		
 		vect_enemiesInLevel.push_back(enemy);
-		this->addToMap(vect_floors, ranPos, enemy);
+		enemy->addToMap(vect_levelMap, curr->getY(), curr->getX());
 		//std::cerr << "Enemy: " << enemy->getID() << "/ " << enemy->getMapSymbol() << std::endl;
 	}
 	
 }
 
-void Levels::addToMap(std::vector<MyObject*>& floors, int index, MyObject* newObject) {
-	MyObject* curr = floors[index];
-	
-	// Add new object to old object's coordinates
-	newObject->addToMap(vect_levelMap, curr->getY(), curr->getX());
-	
-	// Remove old floor
-	floors.erase(floors.begin() + index);
+MyObject* Levels::getFloor(std::vector<MyObject*> vect_floors, int index) {
+	vect_floors.erase( vect_floors.begin() + index );
+	return vect_floors[index];
 }
+
 
 void Levels::ingameUpdate() {
 	switch(currTurn) {

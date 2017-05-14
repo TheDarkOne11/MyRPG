@@ -11,7 +11,7 @@
 #include "StaticObject.h"
 
 
-class Door : public StaticObject{
+class Door : public StaticObject {
 public:
 	/**
 	 * This constructor is used for setting up "template" instances of derived classes.
