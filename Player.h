@@ -40,6 +40,8 @@ public:
 	
 	bool getDoorFound();
 	
+	void prepareToNextLevel();
+	
 	virtual MyObject* clone() const override;
 	
 private:

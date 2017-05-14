@@ -18,11 +18,11 @@ Levels::Levels() : currTurn(PLAYER), currState(INIT) {
 
 Levels::~Levels() {
 	clearLevel();
+	delete gameScreen;
 	delete player;
 }
 
 void Levels::clearLevel() {
-	delete gameScreen;
 	vect_enemiesInLevel.clear();
 	
 	for(unsigned int y = 0; y < vect_levelMap.size(); y++) {
@@ -52,6 +52,7 @@ void Levels::update() {
 			if(!player->alive()) {
 				// Player died
 				currState = EXIT;
+				nodelay(stdscr, true);
 			}
 			break;
 		case(INGAME_MENU):
@@ -66,6 +67,7 @@ void Levels::update() {
 			break;
 		case(NEXT_LEVEL):
 			clearLevel();
+			player->prepareToNextLevel();
 			loadLevel();
 			currState = INGAME;
 			break;
@@ -109,6 +111,11 @@ void Levels::ingameUpdate() {
 	}
 	
 	gameScreen->update();
+	
+	// Player found door, next level
+	if(player->getDoorFound()) {
+		currState = NEXT_LEVEL;
+	}
 }
 
 void Levels::paint() {

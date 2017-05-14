@@ -1,11 +1,11 @@
 #include "Player.h"
 
 Player::Player(int ID, char mapSymbol, int health, int speed, int attackDmg, int attackSpeed, int range) 
-			: Entity(ID, mapSymbol, health, speed, attackDmg, attackSpeed, range) 
+			: Entity(ID, mapSymbol, health, speed, attackDmg, attackSpeed, range), doorFound(false)
 {
 }
 
-Player::Player(const Player* temp) : Entity(temp), currDirection(RIGHT)
+Player::Player(const Player* temp) : Entity(temp), currDirection(RIGHT), doorFound(false)
 {
 }
 
@@ -55,11 +55,15 @@ MyObject* Player::clone() const {
 void Player::checkGround() {
 	Entity::checkGround();
 	
-	/*if(ground.second == Info::ID_Door) {
+	if(ground.second == Info::ID_Door) {
 		doorFound = true;
-	}*/
+	}
 }
 
 bool Player::getDoorFound() {
+	return doorFound;
+}
 
+void Player::prepareToNextLevel() {
+	doorFound = false;
 }

@@ -11,6 +11,7 @@
 #include <ncurses.h>
 #include <iostream>
 #include <vector>
+#include "Info.h"
 
 /**
  * Super class of all objects in the game (Walls, Player, Enemies...)
