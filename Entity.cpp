@@ -30,12 +30,15 @@ bool Entity::move(std::vector< std::vector<MyObject*> >& vect_levelMap, int newY
 	}
 	
 	// Update game map
-	MyObject* currStandsOn = Info::getMyObject(entityStandsOn.first, entityStandsOn.second);	
+	MyObject* currStandsOn = Info::getMyObject(ground.first, ground.second);	
 		// Old position of this Entity is swapped for the MyObject that Entity stood on
 		currStandsOn->addToMap(vect_levelMap, y, x, false);
 		
 		// Entity is moved to new position on the map
 		addToMap(vect_levelMap, newY, newX, true);
+		
+	
+	checkGround();
 		
 	return true;
 }
@@ -61,6 +64,10 @@ bool Entity::alive() {
 
 void Entity::addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x, bool removeFormer) {
 	MyObject* curr = vect_levelMap[y][x];
-	this->entityStandsOn = std::make_pair(curr->getGroup(), curr->getID());
+	this->ground = std::make_pair(curr->getGroup(), curr->getID());
 	this->MyObject::addToMap(vect_levelMap, y, x, removeFormer);
+}
+
+void Entity::checkGround() {
+	// Check ground for items
 }

@@ -11,7 +11,7 @@ Game::Game() : currState(MAIN_MENU) {
 	// TODO Load Main Menu
 	ChoiceVect choices;
 	choices.push_back( std::make_pair("New Game", NEW_LEVELS) );
-	choices.push_back( std::make_pair("Exit", EXIT) );
+	choices.push_back( std::make_pair("Exit application", EXIT) );
 	mainMenu.setChoices(choices);
 	mainMenu.setHead("MAIN MENU");
 	
@@ -44,7 +44,8 @@ void Game::update() {
 			currState = LEVELS;
 			break;
 		case(LEVELS):
-			if(!levels->update()) {
+			levels->update();
+			if(levels->getLevelState() == levels->EXIT) {
 				currState = LEVELS_ENDED;
 			}
 			break;

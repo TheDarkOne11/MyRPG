@@ -33,10 +33,18 @@ public:
 	 */
 	virtual bool move(std::vector< std::vector<MyObject*> >& vect_levelMap, int pressedKey);
 	
+	/**
+	 * Checks ground for items and for doors to next level;
+	 */
+	void checkGround() override;
+	
+	bool getDoorFound();
+	
 	virtual MyObject* clone() const override;
 	
 private:
 	Direction currDirection;
+	bool doorFound;
 };
 
 #endif /* PLAYER_H */

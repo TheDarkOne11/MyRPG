@@ -46,10 +46,12 @@ public:
 	
 	void clearLevel();
 	
-	bool update();
+	void update();
 	void paint();
 	
 	void loadLevel();
+	
+	LevelState getLevelState();
 
 private:
 	/**

@@ -61,6 +61,11 @@ public:
 	
 	virtual bool alive();
 	
+	/**
+	 * Checks the ground Entity stands on.
+	 */
+	virtual void checkGround();
+	
 	void addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x, bool removeFormer) override;
 
 
@@ -72,7 +77,7 @@ protected:
 	/**
 	 * Entity stores the MyObject it stands on.
 	 */
-	std::pair<ObjectGroup, int> entityStandsOn;
+	std::pair<ObjectGroup, int> ground;
 	
 private:
 	int timeSinceAttack;

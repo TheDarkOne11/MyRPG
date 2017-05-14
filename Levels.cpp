@@ -39,7 +39,7 @@ void Levels::clearLevel() {
 	vect_levelMap.clear();
 }
 
-bool Levels::update() {	
+void Levels::update() {	
 	int tmp;
 	
 	switch(currState) {
@@ -70,12 +70,8 @@ bool Levels::update() {
 			currState = INGAME;
 			break;
 		case(EXIT):
-			return false;
 			break;
-	}
-	
-	return true;
-	
+	}	
 }
 
 void Levels::ingameUpdate() {
@@ -197,4 +193,8 @@ void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
 MyObject* Levels::getFloor(std::vector<MyObject*> vect_floors, int index) {
 	vect_floors.erase( vect_floors.begin() + index );
 	return vect_floors[index];
+}
+
+Levels::LevelState Levels::getLevelState() {
+	return currState;
 }

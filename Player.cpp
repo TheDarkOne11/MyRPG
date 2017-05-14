@@ -51,3 +51,15 @@ bool Player::move(std::vector<std::vector<MyObject*> >& vect_levelMap, int press
 MyObject* Player::clone() const {
 	return new Player(this);
 }
+
+void Player::checkGround() {
+	Entity::checkGround();
+	
+	/*if(ground.second == Info::ID_Door) {
+		doorFound = true;
+	}*/
+}
+
+bool Player::getDoorFound() {
+
+}
