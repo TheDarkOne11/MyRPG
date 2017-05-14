@@ -39,7 +39,7 @@ void Levels::clearLevel() {
 	vect_levelMap.clear();
 }
 
-void Levels::update() {	
+bool Levels::update() {	
 	int tmp;
 	
 	switch(currState) {
@@ -59,6 +59,9 @@ void Levels::update() {
 			if(tmp != -1) {
 				// New gamestate chosen
 				currState = (LevelState) tmp;
+				nodelay(stdscr, true);
+			} else {
+				nodelay(stdscr, false);
 			}
 			break;
 		case(NEXT_LEVEL):
@@ -67,10 +70,49 @@ void Levels::update() {
 			currState = INGAME;
 			break;
 		case(EXIT):
-			
+			return false;
 			break;
 	}
 	
+	return true;
+	
+}
+
+void Levels::ingameUpdate() {
+	int tmp;
+	
+	switch(currTurn) {
+		case(PLAYER):
+			tmp = UserInput::getPressedKey();
+			// If player moved, enemy has turn
+			if( player->move(vect_levelMap, tmp) ) {
+				currTurn = ENEMY;
+			
+				// Enemies turn, we don't have to wait for input
+				nodelay(stdscr, true);
+				return;
+			}
+			
+			// Check other pressed keys
+			switch(tmp) {
+				case(UserInput::K_MENU):
+					currState = INGAME_MENU;
+					break;
+			}
+			
+			break;
+		case(ENEMY):
+			for(Enemy* curr : vect_enemiesInLevel) {
+				curr->AI_update(vect_levelMap, player->getY(), player->getX());
+			}
+			
+			// Players turn, we have to wait for input
+			nodelay(stdscr, false);
+			currTurn = PLAYER;
+			break;
+	}
+	
+	gameScreen->update();
 }
 
 void Levels::paint() {
@@ -155,43 +197,4 @@ void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
 MyObject* Levels::getFloor(std::vector<MyObject*> vect_floors, int index) {
 	vect_floors.erase( vect_floors.begin() + index );
 	return vect_floors[index];
-}
-
-
-void Levels::ingameUpdate() {
-	int tmp;
-	
-	switch(currTurn) {
-		case(PLAYER):
-			tmp = UserInput::getPressedKey();
-			// If player moved, enemy has turn
-			if( player->move(vect_levelMap, tmp) ) {
-				currTurn = ENEMY;
-			
-				// Enemies turn, we don't have to wait for input
-				nodelay(stdscr, true);
-				return;
-			}
-			
-			// Check other pressed keys
-			switch(tmp) {
-				case(UserInput::K_MENU):
-					currState = INGAME_MENU;
-					break;
-			}
-			
-			break;
-		case(ENEMY):
-			currTurn = PLAYER;
-			
-			for(Enemy* curr : vect_enemiesInLevel) {
-				curr->AI_update(vect_levelMap, player->getY(), player->getX());
-			}
-			
-			// Players turn, we have to wait for input
-			nodelay(stdscr, false);
-			break;
-	}
-	
-	gameScreen->update();
 }

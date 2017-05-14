@@ -29,7 +29,9 @@ public:
 	 */
 	enum GameState {
 		MAIN_MENU,
-		GAME,
+		NEW_LEVELS,
+		LEVELS,
+		LEVELS_ENDED,
 		EXIT
 	};
 	

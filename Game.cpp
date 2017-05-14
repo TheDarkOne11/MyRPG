@@ -10,12 +10,11 @@ Game::Game() : currState(MAIN_MENU) {
 	
 	// TODO Load Main Menu
 	ChoiceVect choices;
-	choices.push_back( std::make_pair("New Game", GAME) );
+	choices.push_back( std::make_pair("New Game", NEW_LEVELS) );
 	choices.push_back( std::make_pair("Exit", EXIT) );
 	mainMenu.setChoices(choices);
 	mainMenu.setHead("MAIN MENU");
 	
-	levels = new Levels();
 	//nodelay(stdscr, false);		// Wait for input when getch()
 }
 
@@ -41,10 +40,19 @@ void Game::update() {
 			}
 			
 			break;
-		case(GAME):
-			levels->update();
+		case(NEW_LEVELS):
+			levels = new Levels();
+			currState = LEVELS;
 			break;
-			
+		case(LEVELS):
+			if(!levels->update()) {
+				currState = LEVELS_ENDED;
+			}
+			break;
+		case(LEVELS_ENDED):
+			delete levels;
+			currState = MAIN_MENU;
+			break;
 		case(EXIT):
 			break;
 	}
@@ -65,7 +73,7 @@ void Game::paint() {
 		case(MAIN_MENU):
 			mainMenu.paint();
 			break;
-		case(GAME): 
+		case(LEVELS): 
 			levels->paint();
 			break;
 		case(EXIT):

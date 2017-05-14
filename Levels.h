@@ -46,7 +46,7 @@ public:
 	
 	void clearLevel();
 	
-	void update();
+	bool update();
 	void paint();
 	
 	void loadLevel();
