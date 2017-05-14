@@ -1,10 +1,3 @@
-/* 
- * File:   Mob.h
- * Author: petr
- *
- * Created on May 12, 2017, 5:46 PM
- */
-
 #ifndef MOB_H
 #define MOB_H
 

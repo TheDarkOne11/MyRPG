@@ -1,10 +1,3 @@
-/* 
- * File:   UserInput.h
- * Author: petr
- *
- * Created on May 10, 2017, 8:35 PM
- */
-
 #ifndef USERINPUT_H
 #define USERINPUT_H
 

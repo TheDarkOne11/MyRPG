@@ -1,10 +1,3 @@
-/* 
- * File:   Door.h
- * Author: petr
- *
- * Created on May 14, 2017, 10:19 AM
- */
-
 #ifndef DOOR_H
 #define DOOR_H
 

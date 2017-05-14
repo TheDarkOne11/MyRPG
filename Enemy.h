@@ -1,10 +1,3 @@
-/* 
- * File:   Enemy.h
- * Author: petr
- *
- * Created on May 13, 2017, 8:29 PM
- */
-
 #ifndef ENEMY_H
 #define ENEMY_H
 

@@ -1,10 +1,3 @@
-/* 
- * File:   MyObject.h
- * Author: petr
- *
- * Created on May 8, 2017, 3:39 PM
- */
-
 #ifndef MYOBJECT_H
 #define MYOBJECT_H
 

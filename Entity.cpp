@@ -3,15 +3,16 @@
 
 Entity::Entity	(int ID, char mapSymbol, int health, int speed, 
 				int attackDmg, int attackSpeed, int range)
-				: MyObject(ID, mapSymbol, MyObject::ENTITY, false), health(health), 
-				speed(speed), attackDmg(attackDmg), attackSpeed(attackSpeed), range(range), ground(NULL)
+				:	MyObject(ID, mapSymbol, MyObject::ENTITY, false), 
+					attributes(health, speed, attackDmg, attackSpeed, range), 
+					ground(NULL)
 {
 }
 
 Entity::Entity	(const Entity* temp)
 				: MyObject(temp->ID, temp->mapSymbol, temp->group, temp->isPassable), 
-				health(temp->health), speed(temp->speed), attackDmg(temp->attackDmg), 
-				attackSpeed(temp->attackSpeed), range(temp->range)
+				attributes(temp->attributes), 
+				ground(NULL)
 {
 }
 
@@ -58,7 +59,7 @@ void Entity::isAttacked(int damage)
 }
 
 bool Entity::alive() {
-	if(health <= 0) {
+	if(attributes.health <= 0) {
 		return false;
 	}
 	

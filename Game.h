@@ -1,10 +1,3 @@
-/* 
- * File:   Game.h
- * Author: petr
- *
- * Created on May 8, 2017, 4:53 PM
- */
-
 #ifndef GAME_H
 #define GAME_H
 

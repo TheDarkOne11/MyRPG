@@ -1,10 +1,3 @@
-/* 
- * File:   Camera.h
- * Author: petr
- *
- * Created on May 12, 2017, 10:06 AM
- */
-
 #ifndef CAMERA_H
 #define CAMERA_H
 

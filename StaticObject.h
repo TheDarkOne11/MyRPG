@@ -1,10 +1,3 @@
-/* 
- * File:   Static_Object.h
- * Author: petr
- *
- * Created on May 8, 2017, 8:57 PM
- */
-
 #ifndef STATIC_OBJECT_H
 #define STATIC_OBJECT_H
 

@@ -1,10 +1,3 @@
-/* 
- * File:   Entity.h
- * Author: petr
- *
- * Created on May 8, 2017, 4:01 PM
- */
-
 #ifndef ENTITY_H
 #define ENTITY_H
 
@@ -73,8 +66,7 @@ public:
 
 	
 protected:
-	int health, speed;
-	int attackDmg, attackSpeed, range;
+	Info::Attributes attributes;
 	
 	/**
 	 * Entity stores the MyObject it stands on.

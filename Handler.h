@@ -1,10 +1,3 @@
-/* 
- * File:   MyObjectDescendants.h
- * Author: petr
- *
- * Created on May 9, 2017, 5:11 PM
- */
-
 #ifndef MYOBJECTDESCENDANTS_H
 #define MYOBJECTDESCENDANTS_H
 

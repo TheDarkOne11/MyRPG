@@ -1,10 +1,3 @@
-/* 
- * File:   Menu.h
- * Author: petr
- *
- * Created on May 13, 2017, 9:11 PM
- */
-
 #ifndef MENU_H
 #define MENU_H
 

@@ -1,10 +1,3 @@
-/* 
- * File:   Info.h
- * Author: petr
- *
- * Created on May 14, 2017, 6:26 PM
- */
-
 #ifndef INFO_H
 #define INFO_H
 
@@ -25,11 +18,32 @@ public:
 	const static int ID_Floor = 1;
 	const static int ID_Wall = 2;
 	
-	
 	// List of Entity IDs
 	const static int ID_Player = 0;
 	const static int ID_Mob = 1;
 	const static int ID_Mob2 = 2;
+	
+	struct Attributes {
+		int health, speed;
+		int attackDmg, attackSpeed, range;
+		
+		Attributes(int h, int s, int ad, int as, int r)
+				: health(h), speed(s), attackDmg(ad), attackSpeed(as), range(r)
+		{
+		}
+		
+		Attributes operator+(const Attributes& right) {
+			return Attributes(health + right.health, speed + 
+					right.speed, attackDmg + right.attackDmg, 
+					attackSpeed + right.attackSpeed, range + right.range);
+		}
+		
+		Attributes operator-(const Attributes& right) {
+			return Attributes(health - right.health, speed - 
+					right.speed, attackDmg - right.attackDmg, 
+					attackSpeed - right.attackSpeed, range - right.range);
+		}
+	};
 	
 	static void update();
 	
