@@ -1,15 +1,11 @@
 #include "Entity.h"
 #include "Info.h"
 
-int Entity::lastID = 0;
-
-
-Entity::Entity	(char mapSymbol, int health, int speed, 
+Entity::Entity	(int ID, char mapSymbol, int health, int speed, 
 				int attackDmg, int attackSpeed, int range)
-				: MyObject(lastID, mapSymbol, MyObject::ENTITY, false), health(health), 
+				: MyObject(ID, mapSymbol, MyObject::ENTITY, false), health(health), 
 				speed(speed), attackDmg(attackDmg), attackSpeed(attackSpeed), range(range)
 {
-	lastID++;
 }
 
 Entity::Entity	(const Entity* temp)

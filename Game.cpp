@@ -8,11 +8,12 @@ Game::Game() : currState(MAIN_MENU) {
 	noecho();					// Do not print out pressed keys
 	nodelay(stdscr, true);		// Do not wait for input when getch()
 	
-	// TODO Load and pain Main Menu
+	// TODO Load Main Menu
 	ChoiceList choices;
 	choices.push_back( std::make_pair("New Game", GAME) );
 	choices.push_back( std::make_pair("Exit", EXIT) );
 	mainMenu.setChoices(choices);
+	mainMenu.setHead("MAIN MENU");
 	
 	levels = new Levels();
 	//nodelay(stdscr, false);		// Wait for input when getch()
@@ -47,6 +48,14 @@ void Game::update() {
 		case(EXIT):
 			break;
 	}
+	
+	// TODO remove
+	switch(UserInput::getPressedKey()) {
+		case('o'):
+			currState = EXIT;
+			break;
+	}
+	
 }
 
 void Game::paint() {
@@ -60,12 +69,6 @@ void Game::paint() {
 			levels->paint();
 			break;
 		case(EXIT):
-			break;
-	}
-	
-	switch(UserInput::getPressedKey()) {
-		case('o'):
-			currState = EXIT;
 			break;
 	}
 	

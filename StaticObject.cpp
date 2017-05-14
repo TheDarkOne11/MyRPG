@@ -1,11 +1,8 @@
 #include "StaticObject.h"
 
-int StaticObject::lastID = 0;
-
-StaticObject::StaticObject(char mapSymbol, bool isPassable) 
-					: MyObject(lastID, mapSymbol, MyObject::STATIC, isPassable)
+StaticObject::StaticObject(int ID, char mapSymbol, bool isPassable) 
+					: MyObject(ID, mapSymbol, MyObject::STATIC, isPassable)
 {
-	lastID++;
 }
 
 StaticObject::StaticObject(const StaticObject* tmp) 

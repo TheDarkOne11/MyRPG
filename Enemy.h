@@ -22,7 +22,7 @@ public:
 	 * @param attackDmg
 	 * @param attackSpeed
 	 */
-	Enemy	(char mapSymbol, int health, int speed, 
+	Enemy	(int ID, char mapSymbol, int health, int speed, 
 			int attackDmg, int attackSpeed, int range);
 	
 	/**

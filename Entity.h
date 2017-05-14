@@ -25,7 +25,7 @@ public:
 	 * @param attackDmg
 	 * @param attackSpeed
 	 */
-	Entity	(char mapSymbol, int health, int speed, 
+	Entity	(int ID, char mapSymbol, int health, int speed, 
 			int attackDmg, int attackSpeed, int range);
 	
 	/**
@@ -81,7 +81,6 @@ protected:
 	
 private:
 	int timeSinceAttack;
-	static int lastID;
 };
 
 #endif /* ENTITY_H */

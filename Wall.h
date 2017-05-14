@@ -12,7 +12,7 @@
 
 class Wall : public StaticObject {
 public:
-	Wall(char mapSymbol, bool isPassable);
+	Wall(int ID, char mapSymbol, bool isPassable);
 	Wall(const Wall* temp);
 	
 	void addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x) override;

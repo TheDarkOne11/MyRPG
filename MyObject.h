@@ -69,13 +69,13 @@ public:
 
 protected:
 	/**
-	 * ID unique to this MyObject's ObjectGroup
+	 * ID is unique inside one ObjectGroup
 	 */
 	int ID;
 	int x, y;
 
 	/**
-	 * Ingame representation of the object.
+	 * Default representation of MyObject subclass inside levelMap.
 	 */
 	char mapSymbol;
 

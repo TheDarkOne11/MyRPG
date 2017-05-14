@@ -20,6 +20,7 @@
 #include "Info.h"
 #include "GameScreen.h"
 #include "Enemy.h"
+#include "Menu.h"
 
 class Levels {
 public:
@@ -30,8 +31,9 @@ public:
 	
 	enum LevelState {
 		INIT,
-		START,
-		INGAME
+		INGAME_MENU,
+		INGAME,
+		NEXT_LEVEL
 	};
 	
 	Levels();
@@ -53,6 +55,7 @@ private:
 	std::vector<Enemy*> vect_enemiesInLevel;
 	Player* player;
 	GameScreen* gameScreen;
+	Menu gameMenu;
 	
 	Turns currTurn;
 	LevelState currState;

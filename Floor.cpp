@@ -1,6 +1,6 @@
 #include "Floor.h"
 
-Floor::Floor(char mapSymbol, bool isPassable) : StaticObject(mapSymbol, isPassable)
+Floor::Floor(int ID, char mapSymbol, bool isPassable) : StaticObject(ID, mapSymbol, isPassable)
 {
 }
 

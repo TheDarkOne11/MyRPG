@@ -19,6 +19,7 @@
 #include "Player.h"
 #include "Floor.h"
 #include "Mob.h"
+#include "Door.h"
 
 #define DefiningPair std::pair<int, MyObject::ObjectGroup>
 
@@ -32,6 +33,17 @@ public:
 	// TODO Put them in config file? Maybe update them with player level?
 	const static int maxEnemiesPerLevel = 15;
 	const static int maxItemsPerLevel = 5;
+		
+	// List of StaticObject IDs
+	const static int ID_Door = 0;
+	const static int ID_Floor = 1;
+	const static int ID_Wall = 2;
+	
+	
+	// List of Entity IDs
+	const static int ID_Player = 0;
+	const static int ID_Mob = 1;
+	const static int ID_Mob2 = 2;
 	
 	Info();
 	~Info();

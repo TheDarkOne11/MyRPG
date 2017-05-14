@@ -1,7 +1,7 @@
 #include "Player.h"
 
-Player::Player(char mapSymbol, int health, int speed, int attackDmg, int attackSpeed, int range) 
-			: Entity(mapSymbol, health, speed, attackDmg, attackSpeed, range) 
+Player::Player(int ID, char mapSymbol, int health, int speed, int attackDmg, int attackSpeed, int range) 
+			: Entity(ID, mapSymbol, health, speed, attackDmg, attackSpeed, range) 
 {
 }
 

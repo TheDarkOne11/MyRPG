@@ -16,7 +16,7 @@
  */
 class Mob : public Enemy {
 public:
-	Mob(char mapSymbol, int health, int speed, 
+	Mob(int ID, char mapSymbol, int health, int speed, 
 			int attackDmg, int attackSpeed, int range);
 	Mob(const Mob* temp);
 	

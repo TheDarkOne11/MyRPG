@@ -1,7 +1,7 @@
 #include "Mob.h"
 
-Mob::Mob(char mapSymbol, int health, int speed, int attackDmg, int attackSpeed, int range)
-				: Enemy(mapSymbol, health, speed, attackDmg, attackSpeed, range)
+Mob::Mob(int ID, char mapSymbol, int health, int speed, int attackDmg, int attackSpeed, int range)
+				: Enemy(ID, mapSymbol, health, speed, attackDmg, attackSpeed, range)
 {
 }
 

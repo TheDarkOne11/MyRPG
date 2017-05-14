@@ -81,6 +81,9 @@ void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
 	// Add player to random position
 	this->addToMap(vect_floors, ranPos, player);
 	
+	// Add door to random position
+	ranPos = rand() % vect_floors.size();
+	
 	// Add random number of random enemies	
 	//std::cerr << "Num of Enemies added: " << ranNum << std::endl;
 	for(int i = 0; i < ranNum || vect_floors.size() == 0; i++) {
