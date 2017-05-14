@@ -67,7 +67,8 @@ public:
 	
 	virtual void isAttacked(int damage);
 	
-	void addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x) override;
+	void addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x, bool removeFormer) override;
+
 
 	
 protected:

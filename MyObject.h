@@ -48,10 +48,13 @@ public:
 
 	/**
 	 * Adds this MyObject into the game.
+	 * Used when adding into the map randomly.
 	 * @param x
 	 * @param y
+	 * @param removeFormer true if we want to delete former MyObject on these coordinates
 	 */
-	virtual void addToMap(std::vector< std::vector<MyObject*> >& vect_levelMap, int y, int x);
+	virtual void addToMap(std::vector< std::vector<MyObject*> >& vect_levelMap, int y, 
+							int x, bool removeFormer);
 	
 	virtual MyObject* clone() const = 0;
 	
@@ -59,9 +62,7 @@ public:
 
 	virtual int getX() const;
 	
-	virtual void setX(int x);
-	
-	virtual void setY(int y);
+	virtual void setCoordinates(int y, int x);
 
 	virtual int getY() const;
 	

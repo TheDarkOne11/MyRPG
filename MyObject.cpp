@@ -19,13 +19,15 @@ void MyObject::update() {
 	
 }
 
-void MyObject::addToMap(std::vector< std::vector<MyObject*> >& vect_levelMap, int y, int x) {
+void MyObject::addToMap(std::vector< std::vector<MyObject*> >& vect_levelMap, int y, int x, bool removeFormer) {
 	this->x = x;
 	this->y = y;
-	vect_levelMap[y][x] = this;
 	
-	std::cerr << "MyObjectAdd:" << std::endl;
-	std::cerr << "MyObejctAdd: " << mapSymbol << std::endl;
+	if(removeFormer) {
+		delete vect_levelMap[y][x];
+	}
+	
+	vect_levelMap[y][x] = this;
 }
 
 int MyObject::getID() const {
@@ -36,15 +38,11 @@ int MyObject::getX() const {
 	return x;
 }
 
-void MyObject::setX(int x) {
+void MyObject::setCoordinates(int y, int x) {
+	this->y = y;
 	this->x = x;
 }
 
-void MyObject::setY(int y) {
-	this->y = y;
-}
-
-	
 int MyObject::getY() const {
 	return y;
 }

@@ -64,8 +64,8 @@ void Levels::loadLevel() {
 				tmp = Info::getMyObject('.');
 				vect_floors.push_back(tmp);
 			}
+			tmp->setCoordinates(y, x);
 			row.push_back(tmp);
-			tmp->addToMap(vect_levelMap, y, x);
 		}
 		vect_levelMap.push_back(row);
 	}
@@ -81,13 +81,13 @@ void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
 		
 	// Add player to random position
 	curr = getFloor(vect_floors, ranPos);
-	player->addToMap(vect_levelMap, curr->getY(), curr->getX());
+	player->addToMap(vect_levelMap, curr->getY(), curr->getX(), true);
 	
 	// Add door to random position
 	MyObject* door = Info::getMyObject(MyObject::STATIC, Info::ID_Door);
 	ranPos = rand() % vect_floors.size();
 	curr = getFloor(vect_floors, ranPos);
-	door->addToMap(vect_levelMap, curr->getY(), curr->getX());
+	door->addToMap(vect_levelMap, curr->getY(), curr->getX(), true);
 	
 	// Add random number of random enemies	
 	//std::cerr << "Num of Enemies added: " << ranNum << std::endl;
@@ -98,7 +98,7 @@ void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
 		curr = getFloor(vect_floors, ranPos);
 		
 		vect_enemiesInLevel.push_back(enemy);
-		enemy->addToMap(vect_levelMap, curr->getY(), curr->getX());
+		enemy->addToMap(vect_levelMap, curr->getY(), curr->getX(), true);
 		//std::cerr << "Enemy: " << enemy->getID() << "/ " << enemy->getMapSymbol() << std::endl;
 	}
 	
