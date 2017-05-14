@@ -4,7 +4,7 @@
 Entity::Entity	(int ID, char mapSymbol, int health, int speed, 
 				int attackDmg, int attackSpeed, int range)
 				: MyObject(ID, mapSymbol, MyObject::ENTITY, false), health(health), 
-				speed(speed), attackDmg(attackDmg), attackSpeed(attackSpeed), range(range)
+				speed(speed), attackDmg(attackDmg), attackSpeed(attackSpeed), range(range), ground(NULL)
 {
 }
 
@@ -15,27 +15,31 @@ Entity::Entity	(const Entity* temp)
 {
 }
 
+Entity::~Entity() {
+	if(ground != NULL) {
+		delete ground;
+	}
+}
+
 bool Entity::move(std::vector< std::vector<MyObject*> >& vect_levelMap, int newY, int newX)
 {
-	MyObject* destination = vect_levelMap[newY][newX];
 	// Check if entity moved
 	if(y == newY && x == newX) {
 		return true;
 	}
 	
 	// Check for collision
-	if(!destination->getPassable()) {
+	if(!vect_levelMap[newY][newX]->getPassable()) {
 		// MyObject on new coordinates not passable. No move.
 		return false;
 	}
 	
 	// Update game map
-	MyObject* currStandsOn = Handler::getMyObject(ground.first, ground.second);	
 		// Old position of this Entity is swapped for the MyObject that Entity stood on
-		currStandsOn->addToMap(vect_levelMap, y, x, false);
+		ground->addToMap(vect_levelMap, y, x, false);
 		
 		// Entity is moved to new position on the map
-		addToMap(vect_levelMap, newY, newX, true);
+		this->addToMap(vect_levelMap, newY, newX, false);
 		
 	
 	checkGround();
@@ -64,7 +68,7 @@ bool Entity::alive() {
 
 void Entity::addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x, bool removeFormer) {
 	MyObject* curr = vect_levelMap[y][x];
-	this->ground = std::make_pair(curr->getGroup(), curr->getID());
+	this->ground = curr;
 	this->MyObject::addToMap(vect_levelMap, y, x, removeFormer);
 }
 

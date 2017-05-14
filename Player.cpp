@@ -55,7 +55,7 @@ MyObject* Player::clone() const {
 void Player::checkGround() {
 	Entity::checkGround();
 	
-	if(ground.second == Info::ID_Door) {
+	if(ground->getID() == Info::ID_Door) {
 		doorFound = true;
 	}
 }
@@ -66,4 +66,6 @@ bool Player::getDoorFound() {
 
 void Player::prepareToNextLevel() {
 	doorFound = false;
+	delete ground;
+	ground = NULL;
 }

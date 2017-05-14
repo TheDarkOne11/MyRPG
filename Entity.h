@@ -28,6 +28,8 @@ public:
 	Entity	(int ID, char mapSymbol, int health, int speed, 
 			int attackDmg, int attackSpeed, int range);
 	
+	virtual ~Entity();
+	
 	/**
 	 This constructor is used for cloning "templates" of derived classes.
 	 * @param temp is a "template" instance of the derived class.
@@ -77,7 +79,7 @@ protected:
 	/**
 	 * Entity stores the MyObject it stands on.
 	 */
-	std::pair<ObjectGroup, int> ground;
+	MyObject* ground;
 	
 private:
 	int timeSinceAttack;
