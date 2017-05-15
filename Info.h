@@ -24,6 +24,12 @@ public:
 	const static int ID_Mob = 1;
 	const static int ID_Mob2 = 2;
 	
+	// Constants for working with files
+	const static std::string pathDirMaps;
+	const static std::string pathNamesMaps;
+	const static std::string pathDirSaves;
+	const static std::string pathNamesSaves;
+	
 	struct Attributes {
 		int health, speed;
 		int attackDmg, attackSpeed, range;
@@ -55,7 +61,8 @@ private:
 	// Maximum values of the screen
 	static int width, height;
 	
-	const static std::string mapsDir;
+	std::vector<std::string> fileNamesMaps;
+	std::vector<std::string> fileNamesSaves;
 };
 
 #endif /* INFO_H */
