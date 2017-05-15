@@ -19,7 +19,7 @@ void MyObject::update() {
 	
 }
 
-void MyObject::addToMap(std::vector< std::vector<MyObject*> >& vect_levelMap, int y, int x, bool removeFormer) {
+void MyObject::addToMap(LevelMap& vect_levelMap, int y, int x, bool removeFormer) {
 	this->x = x;
 	this->y = y;
 	

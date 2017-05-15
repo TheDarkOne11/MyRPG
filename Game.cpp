@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game() : currState(MAIN_MENU) {
+Game::Game() : currState(MAIN_MENU), mainMenu("MAIN MENU") {
 	// Init Ncurses
 	initscr();
 	keypad(stdscr,true);
@@ -15,7 +15,6 @@ Game::Game() : currState(MAIN_MENU) {
 	choices.push_back( std::make_pair("New Game", NEW_LEVELS) );
 	choices.push_back( std::make_pair("Exit application", EXIT) );
 	mainMenu.setChoices(choices);
-	mainMenu.setHead("MAIN MENU");
 }
 
 Game::~Game() {

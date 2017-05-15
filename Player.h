@@ -24,7 +24,7 @@ public:
 	 * @param pressedKey
 	 * @return true if the Entity could move to new coordinates.
 	 */
-	virtual bool move(std::vector< std::vector<MyObject*> >& vect_levelMap, int pressedKey);
+	virtual bool move(LevelMap& vect_levelMap, int pressedKey);
 	
 	/**
 	 * Checks ground for items and for doors to next level;

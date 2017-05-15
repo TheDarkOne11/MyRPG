@@ -30,7 +30,7 @@ public:
 	Entity	(const Entity* temp);
 		
 	// TODO remove
-	void printMap(std::vector< std::vector<MyObject*> >& vect_levelMap) {
+	void printMap(LevelMap& vect_levelMap) {
 		for(unsigned int y = 0; y < vect_levelMap.size(); y++) {
 			for(unsigned int x = 0; x < vect_levelMap[y].size(); x++) {
 				std::cerr << vect_levelMap[y][x]->getMapSymbol();
@@ -48,7 +48,7 @@ public:
 	 * @param newX is X-coordinate of new position.
 	 * @return true if the Entity could move to new coordinates.
 	 */
-	virtual bool move(std::vector< std::vector<MyObject*> >& vect_levelMap, int newY, int newX);
+	virtual bool move(LevelMap& vect_levelMap, int newY, int newX);
 	
 	virtual void attack(Entity* target);
 	

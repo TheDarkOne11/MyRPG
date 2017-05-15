@@ -24,7 +24,7 @@ public:
 	 */
 	Enemy	(const Enemy* temp);
 	
-	void AI_update(std::vector< std::vector<MyObject*> >& vect_levelMap, 
+	void AI_update(LevelMap& vect_levelMap, 
 			const int playerY, const int playerX);
 	
 private:

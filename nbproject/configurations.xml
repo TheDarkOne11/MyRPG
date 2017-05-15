@@ -15,6 +15,7 @@
         <itemPath>StaticObject.h</itemPath>
         <itemPath>Wall.h</itemPath>
       </logicalFolder>
+      <itemPath>FileHandler.h</itemPath>
       <itemPath>Game.h</itemPath>
       <itemPath>GameScreen.h</itemPath>
       <itemPath>Handler.h</itemPath>
@@ -41,6 +42,7 @@
         <itemPath>StaticObject.cpp</itemPath>
         <itemPath>Wall.cpp</itemPath>
       </logicalFolder>
+      <itemPath>FileHandler.cpp</itemPath>
       <itemPath>Game.cpp</itemPath>
       <itemPath>GameScreen.cpp</itemPath>
       <itemPath>Handler.cpp</itemPath>
@@ -90,6 +92,10 @@
       <item path="Entity.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Entity.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FileHandler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FileHandler.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Floor.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -177,6 +183,10 @@
       <item path="Entity.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Entity.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FileHandler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FileHandler.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Floor.cpp" ex="false" tool="1" flavor2="0">
       </item>

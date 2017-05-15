@@ -7,8 +7,6 @@
 #include "UserInput.h"
 #include "Info.h"
 
-#define ChoiceVect std::vector< std::pair<std::string, int> >
-
 /**
  * Class handles painting and updates of simple menus.
  */

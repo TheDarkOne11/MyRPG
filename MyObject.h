@@ -47,7 +47,7 @@ public:
 	 * @param y
 	 * @param removeFormer true if we want to delete former MyObject on these coordinates
 	 */
-	virtual void addToMap(std::vector< std::vector<MyObject*> >& vect_levelMap, int y, 
+	virtual void addToMap(LevelMap& vect_levelMap, int y, 
 							int x, bool removeFormer);
 	
 	virtual MyObject* clone() const = 0;

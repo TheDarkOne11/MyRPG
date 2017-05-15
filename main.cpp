@@ -21,6 +21,9 @@ int main(int argc, char** argv) {
 		} catch(const char* s) {
 			cerr << s << endl;
 			break;
+		} catch(string s) {
+			cerr << s << endl;
+			break;
 		}
 		
 		usleep(sleepTime);	

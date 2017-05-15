@@ -2,8 +2,11 @@
 #define INFO_H
 
 #include <ncurses.h>
-#include <fstream>
-#include <vector>
+#include <iostream>
+
+#define ChoiceVect std::vector< std::pair<std::string, int> >
+#define DefiningPair std::pair<int, MyObject::ObjectGroup>
+#define LevelMap std::vector< std::vector<MyObject*> >
 
 /**
  * Storage class for important constants.
@@ -51,10 +54,7 @@ public:
 					attackSpeed - right.attackSpeed, range - right.range);
 		}
 	};
-	
-private:	
-	std::vector<std::string> fileNamesMaps;
-	std::vector<std::string> fileNamesSaves;
+		
 };
 
 #endif /* INFO_H */

@@ -44,7 +44,8 @@ void Levels::update() {
 	
 	switch(currState) {
 		case(INIT):
-			loadLevel();
+			fileHandler.loadLevel(vect_levelMap, vect_enemiesInLevel, player);
+			//loadLevel();
 			currState = INGAME;
 			break;
 		case(INGAME):
@@ -68,7 +69,7 @@ void Levels::update() {
 		case(NEXT_LEVEL):
 			clearLevel();
 			player->prepareToNextLevel();
-			loadLevel();
+			fileHandler.loadLevel(vect_levelMap, vect_enemiesInLevel, player);
 			currState = INGAME;
 			break;
 		case(EXIT):
@@ -136,71 +137,6 @@ void Levels::paint() {
 			
 			break;
 	}
-}
-
-void Levels::loadLevel() {
-	// Used for adding other MyObjects (enemies, items), randomly
-	std::vector<MyObject*> vect_floors;
-	//TODO Read map from file instead of hardcoding it
-	int h = 30;
-	int w = 50;
-	
-	// Read map from file
-	for(int y = 0; y < h; y++) {
-		std::vector<MyObject*> row;
-		for(int x = 0; x < w; x++) {
-			MyObject* tmp;
-			if(y == 0 || y == h -1 || x == 0 || x == w - 1) {
-				tmp = Handler::getMyObject('#');
-			} else {
-				// Floor ' '
-				tmp = Handler::getMyObject('.');
-				vect_floors.push_back(tmp);
-			}
-			tmp->setCoordinates(y, x);
-			row.push_back(tmp);
-		}
-		vect_levelMap.push_back(row);
-	}
-	
-	// Add other MyObjects
-	addRandomObjects(vect_floors);	
-}
-
-void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
-	MyObject* curr;
-	int ranPos = rand() % vect_floors.size();
-	int ranNum = rand() % Info::maxEnemiesPerLevel + 1;
-		
-	// Add player to random position
-	curr = getFloor(vect_floors, ranPos);
-	player->addToMap(vect_levelMap, curr->getY(), curr->getX(), false);
-	
-	// Add door to random position
-	MyObject* door = Handler::getMyObject(MyObject::STATIC, Info::ID_Door);
-	ranPos = rand() % vect_floors.size();
-	curr = getFloor(vect_floors, ranPos);
-	door->addToMap(vect_levelMap, curr->getY(), curr->getX(), true);
-	
-	// Add random number of random enemies	
-	//std::cerr << "Num of Enemies added: " << ranNum << std::endl;
-	for(int i = 0; i < ranNum || vect_floors.size() < 0; i++) {
-		// Get random enemy
-		Enemy* enemy = dynamic_cast<Enemy*> (Handler::getMyObject(MyObject::ENTITY));
-		ranPos = rand() % vect_floors.size();
-		curr = getFloor(vect_floors, ranPos);
-		
-		vect_enemiesInLevel.push_back(enemy);
-		enemy->addToMap(vect_levelMap, curr->getY(), curr->getX(), false);
-		//std::cerr << "Enemy: " << enemy->getID() << "/ " << enemy->getMapSymbol() << std::endl;
-	}
-	
-}
-
-MyObject* Levels::getFloor(std::vector<MyObject*>& vect_floors, int index) {
-	MyObject* curr = vect_floors[index];
-	vect_floors.erase( vect_floors.begin() + index );
-	return curr;
 }
 
 Levels::LevelState Levels::getLevelState() {

@@ -20,7 +20,7 @@ public:
 	 * MyObject is in the game screen when its coordinates are between top-right and bottom-left corners of the game screen.
 	 * @param vect_levelMap 2D vector of all MyObjects currently placed in the current level
 	 */
-	void paint(const std::vector< std::vector<MyObject*> > & vect_levelMap);
+	void paint(const LevelMap & vect_levelMap);
 	
 	/**
 	 * Checks if MyObject of these coordinates is in the game screen.

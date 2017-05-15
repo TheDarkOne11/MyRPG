@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Door.o \
 	${OBJECTDIR}/Enemy.o \
 	${OBJECTDIR}/Entity.o \
+	${OBJECTDIR}/FileHandler.o \
 	${OBJECTDIR}/Floor.o \
 	${OBJECTDIR}/Game.o \
 	${OBJECTDIR}/GameScreen.o \
@@ -92,6 +93,11 @@ ${OBJECTDIR}/Entity.o: Entity.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Entity.o Entity.cpp
+
+${OBJECTDIR}/FileHandler.o: FileHandler.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FileHandler.o FileHandler.cpp
 
 ${OBJECTDIR}/Floor.o: Floor.cpp
 	${MKDIR} -p ${OBJECTDIR}

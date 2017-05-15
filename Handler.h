@@ -15,8 +15,6 @@
 #include "Door.h"
 #include "Info.h"
 
-#define DefiningPair std::pair<int, MyObject::ObjectGroup>
-
 /**
  * Class has some important constants for the game.
  * All types of MyObject subclasses that can be placed in the game are initialized here. (Wall, Player..)

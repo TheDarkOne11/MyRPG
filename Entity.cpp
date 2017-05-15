@@ -22,7 +22,7 @@ Entity::~Entity() {
 	}
 }
 
-bool Entity::move(std::vector< std::vector<MyObject*> >& vect_levelMap, int newY, int newX)
+bool Entity::move(LevelMap& vect_levelMap, int newY, int newX)
 {
 	// Check if entity moved
 	if(y == newY && x == newX) {
@@ -74,5 +74,5 @@ void Entity::addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y
 }
 
 void Entity::checkGround() {
-	// Check ground for items
+	// TODO Check ground for items
 }

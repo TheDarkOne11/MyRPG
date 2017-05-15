@@ -16,8 +16,7 @@
 #include "Door.h"
 #include "Menu.h"
 #include "Info.h"
-
-#define ChoiceVect std::vector< std::pair<std::string, int> >
+#include "FileHandler.h"
 
 class Levels {
 public:
@@ -42,34 +41,25 @@ public:
 	
 	void update();
 	void paint();
-	
-	void loadLevel();
-	
+		
 	LevelState getLevelState();
 
 private:
 	/**
 	 * All MyObjects that were placed in the current level are stored here.
 	 */
-	std::vector< std::vector<MyObject*> > vect_levelMap;
+	LevelMap vect_levelMap;
 	/**
 	 * Stores all enemy Entities that were added to current level.
 	 */
 	std::vector<Enemy*> vect_enemiesInLevel;
 	Player* player;
 	GameScreen* gameScreen;
+	FileHandler fileHandler;
 	Menu gameMenu;
 	
 	Turns currTurn;
-	LevelState currState;
-		
-	/**
-	 * Addes other MyObjects (enemies, items) to the map randomly.
-	 * @param floors All positions in the game map where we can add new MyObjects
-	 */
-	void addRandomObjects(std::vector<MyObject*>& floors);
-	
-	MyObject* getFloor( std::vector<MyObject*>& vect_floors, int index );
+	LevelState currState;	
 			
 	void ingameUpdate();
 };

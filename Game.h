@@ -10,8 +10,6 @@
 #include "Menu.h"
 #include "Info.h"
 
-#define ChoiceVect std::vector< std::pair<std::string, int> >
-
 /**
  * Class represents the whole game.
  * It handles all updates and paints.
