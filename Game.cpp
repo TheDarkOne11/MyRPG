@@ -26,7 +26,6 @@ Game::~Game() {
 void Game::update() {
 	int tmp;
 	UserInput::update();
-	Info::update();
 	
 	switch(currState) {
 		case(MAIN_MENU):

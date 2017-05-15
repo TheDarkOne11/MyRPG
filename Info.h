@@ -3,10 +3,10 @@
 
 #include <ncurses.h>
 #include <fstream>
+#include <vector>
 
 /**
- * Class has important constants.
- * //TODO MOre
+ * Storage class for important constants.
  */
 class Info {
 public:
@@ -52,15 +52,7 @@ public:
 		}
 	};
 	
-	static void update();
-	
-	static int getHeight();
-	
-	static int getWidth();
-private:
-	// Maximum values of the screen
-	static int width, height;
-	
+private:	
 	std::vector<std::string> fileNamesMaps;
 	std::vector<std::string> fileNamesSaves;
 };

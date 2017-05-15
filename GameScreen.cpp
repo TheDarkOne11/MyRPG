@@ -5,8 +5,8 @@ GameScreen::GameScreen(Player*& player) : player(player) {
 }
 
 void GameScreen::update() {
-	offsetY = player->getY() - Info::getHeight()/2;
-	offsetX = player->getX() - Info::getWidth()/2;
+	offsetY = player->getY() - UserInput::getHeight()/2;
+	offsetX = player->getX() - UserInput::getWidth()/2;
 }
 
 bool GameScreen::isInScreen(const int y, const int x) const {
@@ -14,7 +14,7 @@ bool GameScreen::isInScreen(const int y, const int x) const {
 	int screenX = x - offsetX;
 	
 	if(screenY >= 0 && screenX >= 0) {
-		if(screenY <= Info::getHeight() && screenX <= Info::getWidth()) {
+		if(screenY <= UserInput::getHeight() && screenX <= UserInput::getWidth()) {
 			return true;
 		}
 	}
@@ -24,9 +24,9 @@ bool GameScreen::isInScreen(const int y, const int x) const {
 
 void GameScreen::paint(const std::vector<std::vector<MyObject*> >& vect_levelMap) {
 	// Y coordinate of top-left corner
-	int startY = player->getY() - Info::getHeight()/2 - offsetY;
+	int startY = player->getY() - UserInput::getHeight()/2 - offsetY;
 	// Y coordinate of bottom-right corner
-	int endY = player->getY() + Info::getHeight()/2 - offsetY;
+	int endY = player->getY() + UserInput::getHeight()/2 - offsetY;
 	
 	// Check if not out of bounds
 	if(startY < 0) {
@@ -39,8 +39,8 @@ void GameScreen::paint(const std::vector<std::vector<MyObject*> >& vect_levelMap
 	
 	// Paint all MyObjects that are in screen
 	for(int y = startY; y < (signed) vect_levelMap.size(); y++) {
-		int startX = player->getX() - Info::getWidth()/2 - offsetX;
-		int endX = player->getX() + Info::getWidth()/2 - offsetX;
+		int startX = player->getX() - UserInput::getWidth()/2 - offsetX;
+		int endX = player->getX() + UserInput::getWidth()/2 - offsetX;
 		
 		if(startX < 0) {
 			startX = 0;
