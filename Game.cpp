@@ -32,9 +32,6 @@ void Game::update() {
 			if(tmp != -1) {
 				// New state was chosen
 				currState = (GameState) tmp;
-				//nodelay(stdscr, true);
-			} else {
-				//nodelay(stdscr, false);
 			}
 			
 			break;

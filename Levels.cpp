@@ -53,7 +53,6 @@ void Levels::update() {
 			if(!player->alive()) {
 				// Player died
 				currState = EXIT;
-				//nodelay(stdscr, true);
 			}
 			break;
 		case(INGAME_MENU):
@@ -61,9 +60,6 @@ void Levels::update() {
 			if(tmp != -1) {
 				// New gamestate chosen
 				currState = (LevelState) tmp;
-				//nodelay(stdscr, true);
-			} else {
-				//nodelay(stdscr, false);
 			}
 			break;
 		case(NEXT_LEVEL):
@@ -83,12 +79,10 @@ void Levels::ingameUpdate() {
 	switch(currTurn) {
 		case(PLAYER):
 			tmp = UserInput::getPressedKey();
-			// If player moved, enemy has turn
 			if( player->move(vect_levelMap, tmp) ) {
 				currTurn = ENEMY;
 			
 				// Enemies turn, we don't have to wait for input
-				//nodelay(stdscr, true);
 				break;
 			}
 			
@@ -106,7 +100,6 @@ void Levels::ingameUpdate() {
 			}
 			
 			// Players turn, we have to wait for input
-			//nodelay(stdscr, false);
 			currTurn = PLAYER;
 			break;
 	}

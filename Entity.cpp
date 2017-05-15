@@ -5,14 +5,13 @@ Entity::Entity	(int ID, char mapSymbol, int health, int speed,
 				int attackDmg, int attackSpeed, int range)
 				:	MyObject(ID, mapSymbol, MyObject::ENTITY, false), 
 					attributes(health, speed, attackDmg, attackSpeed, range), 
-					ground(NULL)
+					actionsMade(0), ground(NULL)
 {
 }
 
 Entity::Entity	(const Entity* temp)
 				: MyObject(temp->ID, temp->mapSymbol, temp->group, temp->isPassable), 
-				attributes(temp->attributes), 
-				ground(NULL)
+				attributes(temp->attributes), actionsMade(0), ground(NULL)
 {
 }
 

@@ -62,11 +62,14 @@ public:
 	virtual void checkGround();
 	
 	void addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x, bool removeFormer) override;
-
-
 	
 protected:
 	Info::Attributes attributes;
+	
+	/**
+	 * How many actions Entity did this turn
+	 */
+	int actionsMade;
 	
 	/**
 	 * Entity stores the MyObject it stands on.
