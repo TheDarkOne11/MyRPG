@@ -20,6 +20,7 @@
       <itemPath>GameScreen.h</itemPath>
       <itemPath>Handler.h</itemPath>
       <itemPath>Info.h</itemPath>
+      <itemPath>InfoPanel.h</itemPath>
       <itemPath>Levels.h</itemPath>
       <itemPath>Menu.h</itemPath>
       <itemPath>UserInput.h</itemPath>
@@ -47,6 +48,7 @@
       <itemPath>GameScreen.cpp</itemPath>
       <itemPath>Handler.cpp</itemPath>
       <itemPath>Info.cpp</itemPath>
+      <itemPath>InfoPanel.cpp</itemPath>
       <itemPath>Levels.cpp</itemPath>
       <itemPath>Menu.cpp</itemPath>
       <itemPath>UserInput.cpp</itemPath>
@@ -116,6 +118,10 @@
       <item path="Info.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Info.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="InfoPanel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="InfoPanel.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Levels.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -207,6 +213,10 @@
       <item path="Info.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Info.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="InfoPanel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="InfoPanel.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Levels.cpp" ex="false" tool="1" flavor2="0">
       </item>

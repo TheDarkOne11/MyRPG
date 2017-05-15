@@ -44,6 +44,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/GameScreen.o \
 	${OBJECTDIR}/Handler.o \
 	${OBJECTDIR}/Info.o \
+	${OBJECTDIR}/InfoPanel.o \
 	${OBJECTDIR}/Levels.o \
 	${OBJECTDIR}/Menu.o \
 	${OBJECTDIR}/Mob.o \
@@ -123,6 +124,11 @@ ${OBJECTDIR}/Info.o: Info.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Info.o Info.cpp
+
+${OBJECTDIR}/InfoPanel.o: InfoPanel.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/InfoPanel.o InfoPanel.cpp
 
 ${OBJECTDIR}/Levels.o: Levels.cpp
 	${MKDIR} -p ${OBJECTDIR}
