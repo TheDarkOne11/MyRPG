@@ -88,7 +88,7 @@ void Levels::ingameUpdate() {
 			
 				// Enemies turn, we don't have to wait for input
 				//nodelay(stdscr, true);
-				return;
+				break;
 			}
 			
 			// Check other pressed keys
@@ -184,7 +184,7 @@ void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
 	
 	// Add random number of random enemies	
 	//std::cerr << "Num of Enemies added: " << ranNum << std::endl;
-	for(int i = 0; i < ranNum || vect_floors.size() == 0; i++) {
+	for(int i = 0; i < ranNum || vect_floors.size() < 0; i++) {
 		// Get random enemy
 		Enemy* enemy = dynamic_cast<Enemy*> (Handler::getMyObject(MyObject::ENTITY));
 		ranPos = rand() % vect_floors.size();
@@ -197,9 +197,10 @@ void Levels::addRandomObjects(std::vector<MyObject*>& vect_floors) {
 	
 }
 
-MyObject* Levels::getFloor(std::vector<MyObject*> vect_floors, int index) {
+MyObject* Levels::getFloor(std::vector<MyObject*>& vect_floors, int index) {
+	MyObject* curr = vect_floors[index];
 	vect_floors.erase( vect_floors.begin() + index );
-	return vect_floors[index];
+	return curr;
 }
 
 Levels::LevelState Levels::getLevelState() {

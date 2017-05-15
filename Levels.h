@@ -69,8 +69,8 @@ private:
 	 */
 	void addRandomObjects(std::vector<MyObject*>& floors);
 	
-	MyObject* getFloor( std::vector<MyObject*> vect_floors, int index );
-		
+	MyObject* getFloor( std::vector<MyObject*>& vect_floors, int index );
+			
 	void ingameUpdate();
 };
 

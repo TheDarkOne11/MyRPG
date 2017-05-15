@@ -2,6 +2,7 @@
 #define INFO_H
 
 #include <ncurses.h>
+#include <fstream>
 
 /**
  * Class has important constants.
@@ -53,6 +54,8 @@ public:
 private:
 	// Maximum values of the screen
 	static int width, height;
+	
+	const static std::string mapsDir;
 };
 
 #endif /* INFO_H */
