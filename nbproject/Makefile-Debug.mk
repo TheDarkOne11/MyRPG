@@ -44,13 +44,14 @@ OBJECTFILES= \
 	${OBJECTDIR}/GameScreen.o \
 	${OBJECTDIR}/Handler.o \
 	${OBJECTDIR}/Info.o \
-	${OBJECTDIR}/InfoPanel.o \
 	${OBJECTDIR}/Levels.o \
 	${OBJECTDIR}/Menu.o \
 	${OBJECTDIR}/Mob.o \
 	${OBJECTDIR}/MyObject.o \
 	${OBJECTDIR}/Player.o \
+	${OBJECTDIR}/Screen.o \
 	${OBJECTDIR}/StaticObject.o \
+	${OBJECTDIR}/StatsScreen.o \
 	${OBJECTDIR}/UserInput.o \
 	${OBJECTDIR}/Wall.o \
 	${OBJECTDIR}/main.o
@@ -125,11 +126,6 @@ ${OBJECTDIR}/Info.o: Info.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Info.o Info.cpp
 
-${OBJECTDIR}/InfoPanel.o: InfoPanel.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/InfoPanel.o InfoPanel.cpp
-
 ${OBJECTDIR}/Levels.o: Levels.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -155,10 +151,20 @@ ${OBJECTDIR}/Player.o: Player.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Player.o Player.cpp
 
+${OBJECTDIR}/Screen.o: Screen.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Screen.o Screen.cpp
+
 ${OBJECTDIR}/StaticObject.o: StaticObject.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StaticObject.o StaticObject.cpp
+
+${OBJECTDIR}/StatsScreen.o: StatsScreen.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StatsScreen.o StatsScreen.cpp
 
 ${OBJECTDIR}/UserInput.o: UserInput.cpp
 	${MKDIR} -p ${OBJECTDIR}

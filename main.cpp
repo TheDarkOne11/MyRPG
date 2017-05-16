@@ -1,6 +1,5 @@
 #include <cstdlib>
 #include <iostream>
-#include <ncurses.h>
 #include <unistd.h>
 
 #include "Game.h"

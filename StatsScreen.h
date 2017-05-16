@@ -16,10 +16,10 @@
 /**
  * Handles game info panel
  */
-class InfoPanel {
+class StatsScreen {
 public:
-	InfoPanel(int width, int height);
-	~InfoPanel();
+	StatsScreen(int width, int height);
+	~StatsScreen();
 	
 	void update();
 	

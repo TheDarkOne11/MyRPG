@@ -1,12 +1,8 @@
 #include "Game.h"
 
 Game::Game() : currState(MAIN_MENU), mainMenu("MAIN MENU") {
-	// Init Ncurses
-	initscr();
-	keypad(stdscr,true);
-	curs_set(0);				// Hide cursor
-	noecho();					// Do not print out pressed keys
-	nodelay(stdscr, true);		// Do not wait for input when getch()
+	// Init ncurses screen
+	screen = new Screen();
 	
 	Handler::init();
 	
@@ -14,12 +10,12 @@ Game::Game() : currState(MAIN_MENU), mainMenu("MAIN MENU") {
 	ChoiceVect choices;
 	choices.push_back( std::make_pair("New Game", NEW_LEVELS) );
 	choices.push_back( std::make_pair("Exit application", EXIT) );
-	mainMenu.setChoices(choices);
+	mainMenu.setChoices(choices);	
 }
 
 Game::~Game() {
 	Handler::clear();
-	endwin();
+	delete screen;
 }
 
 void Game::update() {
@@ -56,7 +52,7 @@ void Game::update() {
 }
 
 void Game::paint() {
-	clear();
+	screen->sClear();
 	
 	switch(currState) {
 		case(MAIN_MENU):
@@ -69,7 +65,7 @@ void Game::paint() {
 			break;
 	}
 	
-	refresh();
+	screen->sRefresh();
 }
 
 bool Game::isRunning() const {

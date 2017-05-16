@@ -1,7 +1,6 @@
 #ifndef INFO_H
 #define INFO_H
 
-#include <ncurses.h>
 #include <iostream>
 
 #define ChoiceVect std::vector< std::pair<std::string, int> >

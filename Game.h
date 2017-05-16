@@ -2,13 +2,13 @@
 #define GAME_H
 
 #include <iostream>
-#include <ncurses.h>
 #include <list>
 #include "Levels.h"
 #include "Handler.h"
 #include "UserInput.h"
 #include "Menu.h"
 #include "Info.h"
+#include "Screen.h"
 
 /**
  * Class represents the whole game.
@@ -50,6 +50,7 @@ private:
 	GameState currState;
 	Menu mainMenu;
 	Levels* levels;
+	Screen* screen;
 	
 	
 };
