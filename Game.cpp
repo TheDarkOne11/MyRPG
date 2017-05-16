@@ -21,9 +21,11 @@ Game::~Game() {
 void Game::update() {
 	int tmp;
 	UserInput::update();
+	screen->update();
 	
 	switch(currState) {
 		case(MAIN_MENU):
+			screen->setCurrScreen(screen->STANDARD);
 			tmp = mainMenu.update();
 			if(tmp != -1) {
 				// New state was chosen
@@ -32,7 +34,8 @@ void Game::update() {
 			
 			break;
 		case(NEW_LEVELS):
-			levels = new Levels();
+			screen->setCurrScreen(screen->GAME);
+			levels = new Levels(screen);
 			currState = LEVELS;
 			break;
 		case(LEVELS):
@@ -56,7 +59,7 @@ void Game::paint() {
 	
 	switch(currState) {
 		case(MAIN_MENU):
-			mainMenu.paint();
+			mainMenu.paint(screen);
 			break;
 		case(LEVELS): 
 			levels->paint();

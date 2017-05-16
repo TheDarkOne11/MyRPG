@@ -66,7 +66,7 @@ bool Entity::alive() {
 	return true;
 }
 
-void Entity::addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x, bool removeFormer) {
+void Entity::addToMap(LevelMap& vect_levelMap, int y, int x, bool removeFormer) {
 	MyObject* curr = vect_levelMap[y][x];
 	this->ground = curr;
 	this->MyObject::addToMap(vect_levelMap, y, x, removeFormer);

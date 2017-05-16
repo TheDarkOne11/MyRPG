@@ -1,32 +1,18 @@
 #include "GameScreen.h"
 
 GameScreen::GameScreen(Player*& player) : player(player) {
-	update();
 }
 
-void GameScreen::update() {
-	offsetY = player->getY() - UserInput::getHeight()/2;
-	offsetX = player->getX() - UserInput::getWidth()/2;
-}
-
-bool GameScreen::isInScreen(const int y, const int x) const {
-	int screenY = y - offsetY;
-	int screenX = x - offsetX;
+void GameScreen::paint(const LevelMap& vect_levelMap, Screen* screen) {
+	std::pair<int, int> dim = screen->getCurrDimensions();
 	
-	if(screenY >= 0 && screenX >= 0) {
-		if(screenY <= UserInput::getHeight() && screenX <= UserInput::getWidth()) {
-			return true;
-		}
-	}
+	offsetY = player->getY() - dim.first/2;
+	offsetX = player->getX() - dim.second/2;
 	
-	return false;
-}
-
-void GameScreen::paint(const std::vector<std::vector<MyObject*> >& vect_levelMap) {
 	// Y coordinate of top-left corner
-	int startY = player->getY() - UserInput::getHeight()/2 - offsetY;
+	int startY = player->getY() - dim.first/2;
 	// Y coordinate of bottom-right corner
-	int endY = player->getY() + UserInput::getHeight()/2 - offsetY;
+	int endY = player->getY() + dim.first/2;
 	
 	// Check if not out of bounds
 	if(startY < 0) {
@@ -39,8 +25,8 @@ void GameScreen::paint(const std::vector<std::vector<MyObject*> >& vect_levelMap
 	
 	// Paint all MyObjects that are in screen
 	for(int y = startY; y < (signed) vect_levelMap.size(); y++) {
-		int startX = player->getX() - UserInput::getWidth()/2 - offsetX;
-		int endX = player->getX() + UserInput::getWidth()/2 - offsetX;
+		int startX = player->getX() - dim.second/2;
+		int endX = player->getX() + dim.second/2;
 		
 		if(startX < 0) {
 			startX = 0;
@@ -52,9 +38,7 @@ void GameScreen::paint(const std::vector<std::vector<MyObject*> >& vect_levelMap
 		
 		for(int x = startX; x < (signed) vect_levelMap[y].size(); x++) {
 			MyObject* curr = vect_levelMap[y][x];
-			curr->paint(curr->getY() - offsetY, curr->getX() - offsetX);
+			curr->paint(screen, curr->getY() - offsetY, curr->getX() - offsetX);
 		}
 	}
-	
-	player->paint(player->getY() - offsetY, player->getX() - offsetX);
 }

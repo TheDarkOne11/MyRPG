@@ -18,13 +18,7 @@ public:
 	static void update();
 	
 	static int getPressedKey();
-	
-	static int getHeight();
-	
-	static int getWidth();
 private:
-	// Maximum values of the screen
-	static int width, height;
 	static int pressedKey;
 };
 

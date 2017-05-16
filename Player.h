@@ -16,7 +16,7 @@ public:
 	Player(int ID, char mapSymbol, int health, int speed, int attackDmg, int attackSpeed, int range);
 	Player(const Player* temp);
 	
-	virtual void paint(const int y, const int x) override;
+	virtual void paint(Screen* screen, const int y, const int x) override;
 		
 	/**
 	 * Moves Entity according to the pressed key.

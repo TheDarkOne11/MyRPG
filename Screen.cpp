@@ -5,10 +5,10 @@
 Screen::Screen() {
 	// Init Ncurses
 	initscr();
+	currScreen = stdscr;
 	curs_set(0);				// Hide cursor
 	noecho();					// Do not print out pressed keys	
-	getmaxyx(stdscr, maxHeight, maxWidth);
-	currScreen = stdscr;
+	update();
 
 	//TODO full init
 	addScreen( stdscr );
@@ -24,6 +24,11 @@ Screen::~Screen() {
 	
 	endwin();
 }
+
+void Screen::update() {
+	getmaxyx(stdscr, maxHeight, maxWidth);
+}
+
 
 void Screen::sClear() {
 	wclear(currScreen);
@@ -42,9 +47,18 @@ void Screen::addScreen(WINDOW* screen) {
 
 WINDOW* Screen::setCurrScreen(ScreenTypes type) {
 	currScreen = vect_screens.at(type);
+	sClear();
 }
 
 
 WINDOW* Screen::getCurrScreen() {
 	return currScreen;
+}
+
+std::pair<int, int> Screen::getCurrDimensions() {
+	std::pair<int, int> p;
+	
+	getmaxyx(currScreen, p.first, p.second);
+	
+	return p;
 }

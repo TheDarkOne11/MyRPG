@@ -1,10 +1,3 @@
-/* 
- * File:   Screen.h
- * Author: petr
- *
- * Created on May 16, 2017, 4:47 PM
- */
-
 #ifndef SCREEN_H
 #define SCREEN_H
 
@@ -23,6 +16,8 @@ public:
 	Screen();
 	~Screen();
 	
+	void update();
+	
 	void sClear();
 	
 	void sRefresh();
@@ -30,6 +25,8 @@ public:
 	WINDOW* setCurrScreen(ScreenTypes type);
 	
 	WINDOW* getCurrScreen();
+	
+	std::pair<int, int> getCurrDimensions();
 	
 private:
 	int maxHeight, maxWidth;

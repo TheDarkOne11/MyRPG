@@ -9,11 +9,11 @@ Player::Player(const Player* temp) : Entity(temp), currDirection(RIGHT), doorFou
 {
 }
 
-void Player::paint(const int y, const int x) {
-	mvprintw(y, x, "%c", currDirection);
+void Player::paint(Screen* screen, const int y, const int x) {
+	mvwprintw(screen->getCurrScreen(), y, x, "%c", currDirection);
 }
 
-bool Player::move(std::vector<std::vector<MyObject*> >& vect_levelMap, int pressedKey) {
+bool Player::move(LevelMap& vect_levelMap, int pressedKey) {
 	int newY = y;
 	int newX = x;
 	

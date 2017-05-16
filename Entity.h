@@ -61,7 +61,7 @@ public:
 	 */
 	virtual void checkGround();
 	
-	void addToMap(std::vector<std::vector<MyObject*> >& vect_levelMap, int y, int x, bool removeFormer) override;
+	void addToMap(LevelMap& vect_levelMap, int y, int x, bool removeFormer) override;
 	
 protected:
 	Info::Attributes attributes;

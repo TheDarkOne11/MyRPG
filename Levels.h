@@ -16,6 +16,7 @@
 #include "Menu.h"
 #include "Info.h"
 #include "FileHandler.h"
+#include "Screen.h"
 
 class Levels {
 public:
@@ -33,7 +34,7 @@ public:
 		EXIT
 	};
 	
-	Levels();
+	Levels(Screen* screen);
 	~Levels();
 	
 	void clearLevel();
@@ -53,6 +54,7 @@ private:
 	 */
 	std::vector<Enemy*> vect_enemiesInLevel;
 	Player* player;
+	Screen* screen;
 	GameScreen* gameScreen;
 	FileHandler fileHandler;
 	Menu gameMenu;

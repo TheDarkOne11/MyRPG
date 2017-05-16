@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "Screen.h"
 
 Menu::Menu() : head(""), headExists(false), currChoice(0) {
 }
@@ -6,15 +7,16 @@ Menu::Menu() : head(""), headExists(false), currChoice(0) {
 Menu::Menu(std::string head) : head(head), headExists(true), currChoice(0) {
 }
 
-void Menu::paint() {
-	int currX = UserInput::getWidth()/2;
-	int currY = UserInput::getHeight()/2;
+void Menu::paint(Screen* screen) {
+	std::pair<int, int> p = screen->getCurrDimensions();
+	int currX = p.second/2;
+	int currY = p.first/2;
 	int i = 0;
 	
 	// Paint head if it exists
 	if(headExists) {
 		attron(A_BOLD);
-		mvprintw(currY - 2, currX - head.size()/2, head.c_str());
+		mvwprintw(screen->getCurrScreen(), currY - 2, currX - head.size()/2, head.c_str());
 		attroff(A_BOLD);
 	}
 	
@@ -24,10 +26,10 @@ void Menu::paint() {
 		
 		if(i == currChoice) {
 			attron(A_REVERSE);
-			mvprintw(currY, currX - currString.size()/2, currString.c_str());
+			mvwprintw(screen->getCurrScreen(), currY, currX - currString.size()/2, currString.c_str());
 			attroff(A_REVERSE);
 		} else {
-			mvprintw(currY, currX - currString.size()/2, currString.c_str());
+			mvwprintw(screen->getCurrScreen(), currY, currX - currString.size()/2, currString.c_str());
 		}
 		
 		i++;

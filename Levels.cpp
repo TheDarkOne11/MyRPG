@@ -1,7 +1,7 @@
 #include "Levels.h"
 #include "Game.h"
 
-Levels::Levels() : currTurn(PLAYER), currState(INIT) {
+Levels::Levels(Screen* screen) : screen(screen), currTurn(PLAYER), currState(INIT) {
 	srand(time(NULL));
 	
 	// Get player from ConfigClass
@@ -75,7 +75,7 @@ void Levels::update() {
 
 void Levels::ingameUpdate() {
 	int tmp;
-	
+		
 	switch(currTurn) {
 		case(PLAYER):
 			tmp = UserInput::getPressedKey();
@@ -103,9 +103,7 @@ void Levels::ingameUpdate() {
 			currTurn = PLAYER;
 			break;
 	}
-	
-	gameScreen->update();
-	
+		
 	// Player found door, next level
 	if(player->getDoorFound()) {
 		currState = NEXT_LEVEL;
@@ -118,10 +116,12 @@ void Levels::paint() {
 			
 			break;
 		case(INGAME):
-			gameScreen->paint(vect_levelMap);
+			screen->setCurrScreen(screen->GAME);
+			gameScreen->paint(vect_levelMap, screen);
 			break;
 		case(INGAME_MENU):
-			gameMenu.paint();
+			screen->setCurrScreen(screen->STANDARD);
+			gameMenu.paint(screen);
 			break;
 		case(NEXT_LEVEL):
 			

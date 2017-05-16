@@ -11,8 +11,8 @@ MyObject::~MyObject()
 {
 }
 
-void MyObject::paint(const int y, const int x) {
-	mvprintw(y, x, "%c", mapSymbol);
+void MyObject::paint(Screen* screen, const int y, const int x) {
+	mvwprintw(screen->getCurrScreen(), y, x, "%c", mapSymbol);
 }
 
 void MyObject::update() {

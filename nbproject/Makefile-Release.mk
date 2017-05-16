@@ -44,6 +44,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/GameScreen.o \
 	${OBJECTDIR}/Handler.o \
 	${OBJECTDIR}/Info.o \
+	${OBJECTDIR}/InfoScreen.o \
 	${OBJECTDIR}/Levels.o \
 	${OBJECTDIR}/Menu.o \
 	${OBJECTDIR}/Mob.o \
@@ -51,7 +52,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/Player.o \
 	${OBJECTDIR}/Screen.o \
 	${OBJECTDIR}/StaticObject.o \
-	${OBJECTDIR}/StatsScreen.o \
 	${OBJECTDIR}/UserInput.o \
 	${OBJECTDIR}/Wall.o \
 	${OBJECTDIR}/main.o
@@ -126,6 +126,11 @@ ${OBJECTDIR}/Info.o: Info.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Info.o Info.cpp
 
+${OBJECTDIR}/InfoScreen.o: InfoScreen.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/InfoScreen.o InfoScreen.cpp
+
 ${OBJECTDIR}/Levels.o: Levels.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -160,11 +165,6 @@ ${OBJECTDIR}/StaticObject.o: StaticObject.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StaticObject.o StaticObject.cpp
-
-${OBJECTDIR}/StatsScreen.o: StatsScreen.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StatsScreen.o StatsScreen.cpp
 
 ${OBJECTDIR}/UserInput.o: UserInput.cpp
 	${MKDIR} -p ${OBJECTDIR}

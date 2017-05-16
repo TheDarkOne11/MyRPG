@@ -6,6 +6,7 @@
 #include <ncurses.h>
 #include "UserInput.h"
 #include "Info.h"
+#include "Screen.h"
 
 /**
  * Class handles painting and updates of simple menus.
@@ -20,7 +21,7 @@ public:
 	
 	void setHead(std::string head);
 	
-	void paint();
+	void paint(Screen* screen);
 	
 	/**
 	 * 

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include "Info.h"
+#include "Screen.h"
 
 /**
  * Super class of all objects in the game (Walls, Player, Enemies...)
@@ -31,7 +32,7 @@ public:
 	 * @param y
 	 * @param x
 	 */
-	virtual void paint(const int y, const int x);
+	virtual void paint(Screen* screen, const int y, const int x);
 	
 	/**
 	 * Updates MyObject.
