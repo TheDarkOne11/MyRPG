@@ -59,8 +59,7 @@ bool Entity::alive() const {
 }
 
 void Entity::addToMap(LevelMap& vect_levelMap, int y, int x, bool removeFormer) {
-	MyObject* curr = vect_levelMap[y][x];
-	this->ground = curr;
+	this->ground = vect_levelMap[y][x];
 	this->MyObject::addToMap(vect_levelMap, y, x, removeFormer);
 }
 

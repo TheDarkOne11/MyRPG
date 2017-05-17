@@ -20,20 +20,20 @@ Levels::~Levels() {
 }
 
 void Levels::clearLevel() {
-	vect_enemiesInLevel.clear();
+	enemiesInLevel.clear();
 	
-	for(unsigned int y = 0; y < vect_levelMap.size(); y++) {
-		for(unsigned int x = 0; x < vect_levelMap[y].size(); x++) {
-			MyObject* curr = vect_levelMap[y][x];
+	for(unsigned int y = 0; y < levelMap.size(); y++) {
+		for(unsigned int x = 0; x < levelMap[y].size(); x++) {
+			MyObject* curr = levelMap[y][x];
 			
 			// Remove everything but player
 			if(curr->getID() != Info::ID_Player || curr->getGroup() != MyObject::ENTITY) {
 				delete curr;
 			}
 		}
-		vect_levelMap[y].clear();
+		levelMap[y].clear();
 	}
-	vect_levelMap.clear();
+	levelMap.clear();
 }
 
 void Levels::update() {	
@@ -41,7 +41,7 @@ void Levels::update() {
 	
 	switch(currState) {
 		case(INIT):
-			fileHandler.loadLevel(vect_levelMap, vect_enemiesInLevel, player);
+			fileHandler.loadLevel(levelMap, enemiesInLevel, player);
 			currState = INGAME;
 			break;
 		case(INGAME):
@@ -60,7 +60,7 @@ void Levels::update() {
 		case(NEXT_LEVEL):
 			clearLevel();
 			player->prepareToNextLevel();
-			fileHandler.loadLevel(vect_levelMap, vect_enemiesInLevel, player);
+			fileHandler.loadLevel(levelMap, enemiesInLevel, player);
 			currState = INGAME;
 			break;
 		case(EXIT):
@@ -73,11 +73,10 @@ void Levels::ingameUpdate() {
 		
 	switch(currTurn) {
 		case(PLAYER):
-			player->update(vect_levelMap, msgBox);
+			player->update(levelMap, msgBox);
 			if( !player->hasActionsLeft() ) {
 				// Player has no actions left, enemies turn
 				currTurn = ENEMY;
-				break;
 			}
 			
 			// Check other pressed keys
@@ -87,10 +86,24 @@ void Levels::ingameUpdate() {
 					break;
 			}
 			
+			// Check if enemies didn't die
+			for(auto it = enemiesInLevel.begin(); it != enemiesInLevel.end(); ) {
+				Enemy* enemy = *it;
+				
+				// If enemy is dead, delete him
+				if(!enemy->alive()) {
+					it = enemiesInLevel.erase(it);
+					enemy->die(levelMap);
+					delete enemy;
+				} else {
+					it++;
+				}
+			}
+			
 			break;
 		case(ENEMY):
-			for(Enemy* curr : vect_enemiesInLevel) {
-				curr->AI_update(vect_levelMap, player->getY(), player->getX());
+			for(Enemy* curr : enemiesInLevel) {
+				curr->AI_update(levelMap, player, msgBox);
 			}
 			
 			currTurn = PLAYER;
@@ -110,7 +123,7 @@ void Levels::paint() {
 			break;
 		case(INGAME):
 			screen->setCurrScreen(screen->GAME);
-			gameScreen.paint(vect_levelMap, screen, msgBox);
+			gameScreen.paint(levelMap, screen, msgBox);
 			break;
 		case(INGAME_MENU):
 			screen->setCurrScreen(screen->STANDARD);

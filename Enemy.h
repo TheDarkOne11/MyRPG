@@ -24,8 +24,9 @@ public:
 	 */
 	Enemy	(const Enemy* temp);
 	
-	void AI_update(LevelMap& vect_levelMap, 
-			const int playerY, const int playerX);
+	void die(LevelMap& levelMap);
+		
+	void AI_update(LevelMap& vect_levelMap, const Player* player, MsgBox* msgBox);
 };
 
 #endif /* ENEMY_H */

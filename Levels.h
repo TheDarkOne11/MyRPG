@@ -51,11 +51,11 @@ private:
 	/**
 	 * All MyObjects that were placed in the current level are stored here.
 	 */
-	LevelMap vect_levelMap;
+	LevelMap levelMap;
 	/**
 	 * Stores all enemy Entities that were added to current level.
 	 */
-	std::vector<Enemy*> vect_enemiesInLevel;
+	std::vector<Enemy*> enemiesInLevel;
 	Player* player;
 	Screen* screen;
 	GameScreen gameScreen;
