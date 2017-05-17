@@ -2,15 +2,16 @@
 #define SCREEN_H
 
 #include <ncurses.h>
+#include <vector>
 
 class Screen {
 public:
-	const int statsScreenHeight = 5;
+	const int infoScreenHeight = 5;
 	
 	enum ScreenTypes {
 		STANDARD = 0,
 		GAME = 1,
-		STATS = 2
+		INFO = 2
 	};
 	
 	Screen();

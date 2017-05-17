@@ -46,16 +46,6 @@ bool Entity::move(LevelMap& vect_levelMap, int newY, int newX)
 		
 	return true;
 }
-	
-void Entity::attack(Entity* target)
-{
-	
-}
-
-void Entity::isAttacked(int damage)
-{
-	
-}
 
 bool Entity::alive() {
 	if(attributes.health <= 0) {
@@ -74,4 +64,16 @@ void Entity::addToMap(LevelMap& vect_levelMap, int y, int x, bool removeFormer) 
 
 void Entity::checkGround() {
 	// TODO Check ground for items
+}
+
+Info::Attributes Entity::getAttributes() {
+	return attributes;
+}
+
+void Entity::attack(Entity* target) {
+
+}
+
+void Entity::isAttacked(Entity* attacker) {
+
 }

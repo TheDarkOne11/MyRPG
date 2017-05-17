@@ -1,5 +1,3 @@
-#include <vector>
-
 #include "Screen.h"
 
 Screen::Screen() {
@@ -12,8 +10,8 @@ Screen::Screen() {
 
 	//TODO full init
 	addScreen( stdscr );
-	addScreen( newwin(maxHeight - statsScreenHeight, maxWidth, 0, 0) );
-	addScreen( newwin(statsScreenHeight, maxWidth, maxHeight - statsScreenHeight, 0) );
+	addScreen( newwin(maxHeight - infoScreenHeight, maxWidth, 0, 0) );
+	addScreen( newwin(infoScreenHeight, maxWidth, maxHeight - infoScreenHeight, 0) );
 }
 
 Screen::~Screen() {

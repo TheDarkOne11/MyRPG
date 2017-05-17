@@ -14,8 +14,8 @@ class MyObject {
 public:
 
 	enum ObjectGroup {
-		ENTITY = 1,
-		STATIC = 2
+		ENTITY,
+		STATIC
 	};
 
 	/**

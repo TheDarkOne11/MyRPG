@@ -2,9 +2,11 @@
 #define LEVEL_H
 
 #include <vector>
+#include <list>
 #include <unistd.h>
 #include <stdlib.h>
 #include <time.h>
+#include <sstream>
 #include "MyObject.h"
 #include "Entity.h"
 #include "StaticObject.h"
@@ -55,14 +57,27 @@ private:
 	std::vector<Enemy*> vect_enemiesInLevel;
 	Player* player;
 	Screen* screen;
-	GameScreen* gameScreen;
+	GameScreen gameScreen;
 	FileHandler fileHandler;
 	Menu gameMenu;
+	
+	std::vector<std::string> msgBuffer;
+	int msgCount;
 	
 	Turns currTurn;
 	LevelState currState;	
 			
 	void ingameUpdate();
+	
+	/**
+	 * Adds message that is to be written to the info screen
+	 * @param msg
+	 */
+	void addMsg(std::string msg);
+	
+	void paintMsgs();
+	
+	void paintPlayerInfo();
 };
 
 #endif /* LEVEL_H */

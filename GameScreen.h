@@ -20,16 +20,8 @@ public:
 	 * @param vect_levelMap 2D vector of all MyObjects currently placed in the current level
 	 */
 	void paint(const LevelMap & vect_levelMap, Screen* screen);
-	
-	/**
-	 * Checks if MyObject of these coordinates is in the game screen.
-	 * @param y Y-coordinate
-	 * @param x X-coordinate
-	 * @return true if coordinates are between top-right and bottom-left corners of the game screen.
-	 */
-	bool isInScreen(const int y, const int x) const;
 private:
-	Player* player;
+	const Player* player;
 	
 	int offsetY, offsetX;
 };

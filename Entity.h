@@ -40,6 +40,8 @@ public:
 		std::cerr << std::endl;
 	}
 	
+	void addToMap(LevelMap& vect_levelMap, int y, int x, bool removeFormer) override;
+	
 	/**
 	 * Moves Entity to the new position.
 	 * Updates gameMap accordingly.
@@ -52,7 +54,7 @@ public:
 	
 	virtual void attack(Entity* target);
 	
-	virtual void isAttacked(int damage);
+	virtual void isAttacked(Entity* attacker);
 	
 	virtual bool alive();
 	
@@ -61,7 +63,7 @@ public:
 	 */
 	virtual void checkGround();
 	
-	void addToMap(LevelMap& vect_levelMap, int y, int x, bool removeFormer) override;
+	Info::Attributes getAttributes();
 	
 protected:
 	Info::Attributes attributes;
