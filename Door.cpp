@@ -1,6 +1,7 @@
 #include "Door.h"
 
-Door::Door(int ID, char mapSymbol, bool isPassable) : StaticObject(ID, mapSymbol, isPassable)
+Door::Door(int ID, char mapSymbol, bool isPassable, std::string name) 
+			: StaticObject(ID, mapSymbol, isPassable, name)
 {
 }
 

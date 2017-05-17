@@ -23,7 +23,7 @@ public:
 	 * @param ID is unique value used to distinguish MyObjects's subclasses
 	 * @param mapSymbol what the object looks like in the game
 	 */
-	MyObject(int ID, char mapSymbol, ObjectGroup type, bool isPassable);
+	MyObject(int ID, char mapSymbol, ObjectGroup type, bool isPassable, std::string name);
 
 	virtual ~MyObject();
 
@@ -33,13 +33,6 @@ public:
 	 * @param x
 	 */
 	virtual void paint(Screen* screen, const int y, const int x);
-	
-	/**
-	 * Updates MyObject.
-	 * @param y
-	 * @param x
-	 */
-	virtual void update();
 
 	/**
 	 * Adds this MyObject into the game.
@@ -66,6 +59,8 @@ public:
 	virtual ObjectGroup getGroup() const;
 	
 	virtual char getMapSymbol() const;
+	
+	virtual std::string getName() const;
 
 protected:
 	/**
@@ -85,6 +80,8 @@ protected:
 	 * true if Entity can move to this MyObject's position
 	 */
 	bool isPassable;
+	
+	std::string name;
 };
 
 #endif /* MYOBJECT_H */

@@ -10,7 +10,7 @@ public:
 	 * This constructor is used for setting up "template" instances of derived classes.
 	 * @param mapSymbol what the object looks like in the game
 	 */
-	Door(int ID, char mapSymbol, bool isPassable);
+	Door(int ID, char mapSymbol, bool isPassable, std::string name);
 	
 	/**
 	 * This constructor is used for cloning "templates" of derived classes.

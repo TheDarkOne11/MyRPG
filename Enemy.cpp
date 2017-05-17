@@ -1,8 +1,8 @@
 #include "Enemy.h"
 
-Enemy::Enemy	(int ID, char mapSymbol, int health, int speed, 
+Enemy::Enemy	(int ID, char mapSymbol, std::string name, int health, int speed, 
 				int attackDmg, int attackSpeed, int range)
-				: Entity(ID, mapSymbol, health, speed, attackDmg, attackSpeed, range)
+				: Entity(ID, mapSymbol, name, health, speed, attackDmg, attackSpeed, range)
 {
 }
 

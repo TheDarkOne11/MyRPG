@@ -1,17 +1,19 @@
+#include <sstream>
+
 #include "Entity.h"
 #include "Handler.h"
 
-Entity::Entity	(int ID, char mapSymbol, int health, int speed, 
+Entity::Entity	(int ID, char mapSymbol, std::string name, int health, int speed, 
 				int attackDmg, int attackSpeed, int range)
-				:	MyObject(ID, mapSymbol, MyObject::ENTITY, false), 
+				:	MyObject(ID, mapSymbol, MyObject::ENTITY, false, name), 
 					attributes(health, speed, attackDmg, attackSpeed, range), 
-					actionsMade(0), ground(NULL)
+					actionsMade(speed), ground(NULL)
 {
 }
 
 Entity::Entity	(const Entity* temp)
-				: MyObject(temp->ID, temp->mapSymbol, temp->group, temp->isPassable), 
-				attributes(temp->attributes), actionsMade(0), ground(NULL)
+				: MyObject(temp->ID, temp->mapSymbol, temp->group, temp->isPassable, temp->name), 
+				attributes(temp->attributes), actionsMade(temp->actionsMade), ground(NULL)
 {
 }
 
@@ -47,7 +49,7 @@ bool Entity::move(LevelMap& vect_levelMap, int newY, int newX)
 	return true;
 }
 
-bool Entity::alive() {
+bool Entity::alive() const {
 	if(attributes.health <= 0) {
 		return false;
 	}
@@ -70,10 +72,76 @@ Info::Attributes Entity::getAttributes() const {
 	return attributes;
 }
 
-void Entity::attack(Entity* target) {
-
+bool Entity::findTarget(LevelMap& vect_levelMap, Direction direction, Entity*& target) {
+	int addY = 0;
+	int addX = 0;
+	int currRange = attributes.range;
+	
+	switch(direction) {
+		case UP:
+			addY = -1;
+			break;
+		case DOWN:
+			addY = 1;
+			break;
+		case LEFT:
+			addX = -1;
+			break;
+		case RIGHT:
+			addX = 1;
+			break;
+	}
+	
+	int currX = x + addX;
+	int currY = y + addY;
+	
+	do {
+		
+		// Check bounds
+		if(y < 0 || y >= (signed) vect_levelMap.size() || x < 0 || x >= (signed) vect_levelMap[y].size()) {
+			return false;
+		}
+		
+		MyObject* currObject = vect_levelMap[currY][currX];
+		
+		// If not passable static object found
+		if(currObject->getGroup() == STATIC && !currObject->getPassable()) {
+			return false;
+		}
+		
+		// Entity found, potential target
+		if(currObject->getGroup() == ENTITY) {
+			target = dynamic_cast<Entity*> (currObject);
+			return true;
+		}
+		
+		currX += addX;
+		currY += addY;
+		currRange--;	
+	} while(currRange > 0);
+	
+	return false;
 }
 
-void Entity::isAttacked(Entity* attacker) {
+void Entity::isAttacked(const Entity* attacker, MsgBox* msgBox) {
+	Info::Attributes attr = attacker->getAttributes();
+	attributes.health -= attr.attackDmg;
+	
+	std::stringstream ss;
+	ss << attacker->name << " hit " << name << " for " << attr.attackDmg << " HP.";
+	msgBox->addMsg(ss.str().c_str());
+}
 
+void Entity::attack(Entity* target, MsgBox* msgBox) {
+	target->isAttacked(this, msgBox);
+	actionsMade--;
+}
+
+bool Entity::hasActionsLeft() {
+	if(actionsMade <= 0) {
+		actionsMade = attributes.speed;
+		return false;
+	}
+	
+	return true;
 }

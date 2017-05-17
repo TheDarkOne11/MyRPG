@@ -9,7 +9,7 @@
  */
 class Mob : public Enemy {
 public:
-	Mob(int ID, char mapSymbol, int health, int speed, 
+	Mob(int ID, char mapSymbol, std::string name, int health, int speed, 
 			int attackDmg, int attackSpeed, int range);
 	Mob(const Mob* temp);
 	

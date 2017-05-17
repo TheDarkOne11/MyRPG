@@ -5,7 +5,7 @@
 
 class Floor : public StaticObject {
 public:
-	Floor(int ID, char mapSymbol, bool isPassable);
+	Floor(int ID, char mapSymbol, bool isPassable, std::string name);
 	Floor(const Floor* temp);
 	
 	MyObject* clone() const override;

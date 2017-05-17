@@ -9,24 +9,25 @@ void Handler::clear() {
 			delete curr;
 		}
 	}
+	delete player;
 }
 
 void Handler::init() {
 	srand(time(NULL));
 	
 	// Initialize static objects
-	MyObject* door = new Door(Info::ID_Door, '0', true);
+	MyObject* door = new Door(Info::ID_Door, '0', true, "Door");
 	addObject(door);
-	MyObject* wall = new Wall(Info::ID_Wall, '#', false);
+	MyObject* wall = new Wall(Info::ID_Wall, '#', false, "Wall");
 	addObject(wall);
-	MyObject* floor = new Floor(Info::ID_Floor, '.', true);
+	MyObject* floor = new Floor(Info::ID_Floor, '.', true, "Floor");
 	addObject(floor);
 	
 	// Initialize entities
-	player = new Player(Info::ID_Player, 'P', 50, 1, 5, 2, 3);
-	MyObject* mob = new Mob(Info::ID_Mob, 'M', 10, 1, 2, 1, 1);
+	player = new Player(Info::ID_Player, 'P', "Player", 50, 1, 5, 2, 3);
+	MyObject* mob = new Mob(Info::ID_Mob, 'M', "Mob", 10, 1, 2, 1, 1);
 	addObject(mob);
-	MyObject* mob2 = new Mob(Info::ID_Mob2, 'N', 10, 1, 2, 1, 1);
+	MyObject* mob2 = new Mob(Info::ID_Mob2, 'N', "Mob2", 10, 1, 2, 1, 1);
 	addObject(mob2);
 }
 

@@ -1,6 +1,7 @@
 #include "Wall.h"
 
-Wall::Wall(int ID, char mapSymbol, bool isPassable) : StaticObject(ID, mapSymbol, isPassable)
+Wall::Wall(int ID, char mapSymbol, bool isPassable, std::string name) 
+		: StaticObject(ID, mapSymbol, isPassable, name)
 {
 }
 

@@ -55,7 +55,7 @@ void GameScreen::paintInfoBox(Screen* screen, MsgBox* msgBox) {
 	Info::Attributes a = player->getAttributes();
 	ss << "Player HP: " << a.health << ", SPEED: " << a.speed;
 	mvwprintw(screen->getCurrScreen(), 0, 0, ss.str().c_str());
-	
+		
 	int y = screen->infoScreenHeight - 1;
 	for(auto it = msgBuffer.rbegin(); it != msgBuffer.rend(); it++, y--) {
 		mvwprintw(screen->getCurrScreen(), y, 0, (*it).c_str());

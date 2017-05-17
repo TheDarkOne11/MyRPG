@@ -9,6 +9,7 @@
 class UserInput {
 public:
 	const static int K_ENTER = 10;
+	const static int K_ATTACK= 'q';
 	const static int K_MENU = 'm';
 	const static int K_UP = KEY_UP;
 	const static int K_DOWN = KEY_DOWN;

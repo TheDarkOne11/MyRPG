@@ -5,7 +5,7 @@
 
 class Wall : public StaticObject {
 public:
-	Wall(int ID, char mapSymbol, bool isPassable);
+	Wall(int ID, char mapSymbol, bool isPassable, std::string name);
 	Wall(const Wall* temp);
 		
 	virtual MyObject* clone() const override;

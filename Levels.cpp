@@ -69,21 +69,19 @@ void Levels::update() {
 }
 
 void Levels::ingameUpdate() {
-	int tmp;
 	std::stringstream ss;
 		
 	switch(currTurn) {
 		case(PLAYER):
-			tmp = UserInput::getPressedKey();
-			if( player->move(vect_levelMap, tmp) ) {
+			player->update(vect_levelMap, msgBox);
+			if( !player->hasActionsLeft() ) {
+				// Player has no actions left, enemies turn
 				currTurn = ENEMY;
-				ss << "Player moved to: " << player->getY() << "/ " << player->getX();
-				msgBox->addMsg(ss.str());
 				break;
 			}
 			
 			// Check other pressed keys
-			switch(tmp) {
+			switch(UserInput::getPressedKey()) {
 				case(UserInput::K_MENU):
 					currState = INGAME_MENU;
 					break;

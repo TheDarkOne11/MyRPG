@@ -2,6 +2,7 @@
 #define ENTITY_H
 
 #include "MyObject.h"
+#include "MsgBox.h"
 #include <vector>
 
 /**
@@ -9,6 +10,13 @@
  */
 class Entity : public MyObject {
 public:
+	enum Direction {
+		UP = '^',
+		DOWN = 'V',
+		LEFT = '<',
+		RIGHT = '>'
+	};
+	
 	/**
 	 * This constructor is used for setting up "template" instances of derived classes.
 	 * @param ID
@@ -18,11 +26,11 @@ public:
 	 * @param attackDmg
 	 * @param attackSpeed
 	 */
-	Entity	(int ID, char mapSymbol, int health, int speed, 
+	Entity	(int ID, char mapSymbol, std::string name, int health, int speed, 
 			int attackDmg, int attackSpeed, int range);
 	
 	virtual ~Entity();
-	
+		
 	/**
 	 This constructor is used for cloning "templates" of derived classes.
 	 * @param temp is a "template" instance of the derived class.
@@ -52,11 +60,22 @@ public:
 	 */
 	virtual bool move(LevelMap& vect_levelMap, int newY, int newX);
 	
-	virtual void attack(Entity* target);
+	/**
+	 * Searches for target Entity in given direction.
+	 * @param vect_levelMap
+	 * @param direction says in what direction to look.
+	 * @param target is the entity that was found
+	 * @return true if found
+	 */
+	virtual bool findTarget(LevelMap& vect_levelMap, Direction direction, Entity*& target);
 	
-	virtual void isAttacked(Entity* attacker);
+	virtual void attack(Entity* target, MsgBox* msgBox);
 	
-	virtual bool alive();
+	virtual void isAttacked(const Entity* attacker, MsgBox* msgBox);
+	
+	virtual bool hasActionsLeft();
+	
+	virtual bool alive() const;
 	
 	/**
 	 * Checks the ground Entity stands on.

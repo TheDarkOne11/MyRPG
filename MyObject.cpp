@@ -1,8 +1,9 @@
 #include "MyObject.h"
 
-MyObject::MyObject(int ID, char mapSymbol, ObjectGroup type, bool isPassable)	
+MyObject::MyObject(int ID, char mapSymbol, ObjectGroup type, 
+		bool isPassable, std::string name)	
 							: ID(ID), x(0), y(0), mapSymbol(mapSymbol), 
-							group(type), isPassable(isPassable)
+							group(type), isPassable(isPassable), name(name)
 {
 
 }
@@ -13,10 +14,6 @@ MyObject::~MyObject()
 
 void MyObject::paint(Screen* screen, const int y, const int x) {
 	mvwprintw(screen->getCurrScreen(), y, x, "%c", mapSymbol);
-}
-
-void MyObject::update() {
-	
 }
 
 void MyObject::addToMap(LevelMap& vect_levelMap, int y, int x, bool removeFormer) {
@@ -57,4 +54,8 @@ bool MyObject::getPassable() const {
 
 char MyObject::getMapSymbol() const {
 	return mapSymbol;
+}
+
+std::string MyObject::getName() const {
+	return name;
 }

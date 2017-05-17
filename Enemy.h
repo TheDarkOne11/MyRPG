@@ -15,7 +15,7 @@ public:
 	 * @param attackDmg
 	 * @param attackSpeed
 	 */
-	Enemy	(int ID, char mapSymbol, int health, int speed, 
+	Enemy	(int ID, char mapSymbol, std::string name, int health, int speed, 
 			int attackDmg, int attackSpeed, int range);
 	
 	/**
@@ -26,9 +26,6 @@ public:
 	
 	void AI_update(LevelMap& vect_levelMap, 
 			const int playerY, const int playerX);
-	
-private:
-
 };
 
 #endif /* ENEMY_H */

@@ -1,6 +1,7 @@
 #include "Floor.h"
 
-Floor::Floor(int ID, char mapSymbol, bool isPassable) : StaticObject(ID, mapSymbol, isPassable)
+Floor::Floor(int ID, char mapSymbol, bool isPassable, std::string name) 
+			: StaticObject(ID, mapSymbol, isPassable, name)
 {
 }
 
