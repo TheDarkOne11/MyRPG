@@ -1,23 +1,21 @@
 #include "Levels.h"
 
 Levels::Levels(Screen* screen) : player(Handler::getPlayer()), gameScreen(player),
-		screen(screen), currTurn(PLAYER), currState(INIT), msgBuffer(screen->infoScreenHeight - 2),
-		msgCount(0)
+		screen(screen), currTurn(PLAYER), currState(INIT)
 {
 	srand(time(NULL));
+	msgBox = new MsgBox(screen->infoScreenHeight - 2);
 	
 	// Init game menu
 	ChoiceVect vect_GameMenu;
 	vect_GameMenu.push_back( std::make_pair("Resume game", INGAME) );
 	vect_GameMenu.push_back( std::make_pair("Exit game", EXIT) );
-	this->gameMenu.setChoices(vect_GameMenu);
-	
-	paintMsgs();
-	
+	this->gameMenu.setChoices(vect_GameMenu);	
 }
 
 Levels::~Levels() {
 	clearLevel();
+	delete msgBox;
 	delete player;
 }
 
@@ -80,7 +78,7 @@ void Levels::ingameUpdate() {
 			if( player->move(vect_levelMap, tmp) ) {
 				currTurn = ENEMY;
 				ss << "Player moved to: " << player->getY() << "/ " << player->getX();
-				addMsg(ss.str());
+				msgBox->addMsg(ss.str());
 				break;
 			}
 			
@@ -114,12 +112,7 @@ void Levels::paint() {
 			break;
 		case(INGAME):
 			screen->setCurrScreen(screen->GAME);
-			gameScreen.paint(vect_levelMap, screen);
-			screen->sRefresh();
-			screen->setCurrScreen(screen->INFO);
-			paintPlayerInfo();
-			paintMsgs();
-			screen->sRefresh();
+			gameScreen.paint(vect_levelMap, screen, msgBox);
 			break;
 		case(INGAME_MENU):
 			screen->setCurrScreen(screen->STANDARD);
@@ -136,27 +129,4 @@ void Levels::paint() {
 
 Levels::LevelState Levels::getLevelState() {
 	return currState;
-}
-
-void Levels::addMsg(std::string msg) {
-	// Number of msgs info screen can show: infoScreenHeight - playerInfoRow
-	int pos = msgCount % (screen->infoScreenHeight - 2);
-	std::cerr << msgCount << "% " << screen->infoScreenHeight - 2 << " = " << pos << std::endl;
-	msgBuffer.at(pos) = msg;
-	msgCount++;
-}
-
-void Levels::paintMsgs() {
-	std::cerr << "OUTUPUT:" << std::endl;
-	int y = screen->infoScreenHeight - 1;
-	for(auto it = msgBuffer.rbegin(); it != msgBuffer.rend(); it++, y--) {
-		mvwprintw(screen->getCurrScreen(), y, 0, (*it).c_str());
-	}
-}
-
-void Levels::paintPlayerInfo() {
-	std::stringstream ss;
-	Info::Attributes a = player->getAttributes();
-	ss << "Player HP: " << a.health << ", SPEED: " << a.speed;
-	mvwprintw(screen->getCurrScreen(), 0, 0, ss.str().c_str());
 }

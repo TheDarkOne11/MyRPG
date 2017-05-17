@@ -47,6 +47,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Levels.o \
 	${OBJECTDIR}/Menu.o \
 	${OBJECTDIR}/Mob.o \
+	${OBJECTDIR}/MsgBox.o \
 	${OBJECTDIR}/MyObject.o \
 	${OBJECTDIR}/Player.o \
 	${OBJECTDIR}/Screen.o \
@@ -139,6 +140,11 @@ ${OBJECTDIR}/Mob.o: Mob.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mob.o Mob.cpp
+
+${OBJECTDIR}/MsgBox.o: MsgBox.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MsgBox.o MsgBox.cpp
 
 ${OBJECTDIR}/MyObject.o: MyObject.cpp
 	${MKDIR} -p ${OBJECTDIR}

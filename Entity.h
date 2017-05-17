@@ -63,7 +63,7 @@ public:
 	 */
 	virtual void checkGround();
 	
-	Info::Attributes getAttributes();
+	Info::Attributes getAttributes() const;
 	
 protected:
 	Info::Attributes attributes;

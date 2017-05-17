@@ -66,7 +66,7 @@ void Entity::checkGround() {
 	// TODO Check ground for items
 }
 
-Info::Attributes Entity::getAttributes() {
+Info::Attributes Entity::getAttributes() const {
 	return attributes;
 }
 

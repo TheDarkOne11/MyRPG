@@ -43,7 +43,7 @@ void Screen::addScreen(WINDOW* screen) {
 	vect_screens.push_back(screen);
 }
 
-WINDOW* Screen::setCurrScreen(ScreenTypes type) {
+void Screen::setCurrScreen(ScreenTypes type) {
 	currScreen = vect_screens.at(type);
 	sClear();
 }

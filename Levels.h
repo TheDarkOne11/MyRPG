@@ -19,6 +19,7 @@
 #include "Info.h"
 #include "FileHandler.h"
 #include "Screen.h"
+#include "MsgBox.h"
 
 class Levels {
 public:
@@ -58,22 +59,14 @@ private:
 	Player* player;
 	Screen* screen;
 	GameScreen gameScreen;
+	MsgBox* msgBox;
 	FileHandler fileHandler;
 	Menu gameMenu;
-	
-	std::vector<std::string> msgBuffer;
-	int msgCount;
 	
 	Turns currTurn;
 	LevelState currState;	
 			
 	void ingameUpdate();
-	
-	/**
-	 * Adds message that is to be written to the info screen
-	 * @param msg
-	 */
-	void addMsg(std::string msg);
 	
 	void paintMsgs();
 	

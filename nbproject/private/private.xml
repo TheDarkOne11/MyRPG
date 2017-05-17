@@ -7,16 +7,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Vlastni">
-            <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/GameScreen.h</file>
-            <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/GameScreen.cpp</file>
+            <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Entity.h</file>
+            <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Enemy.h</file>
             <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Levels.h</file>
-            <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/InfoScreen.h</file>
             <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Levels.cpp</file>
             <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Game.cpp</file>
-            <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/InfoScreen.cpp</file>
+            <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Entity.cpp</file>
             <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Game.h</file>
-            <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Screen.h</file>
-            <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Screen.cpp</file>
         </group>
     </open-files>
 </project-private>

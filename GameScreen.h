@@ -2,10 +2,12 @@
 #define CAMERA_H
 
 #include <vector>
+#include <sstream>
 #include "Handler.h"
 #include "Player.h"
 #include "Info.h"
 #include "Screen.h"
+#include "MsgBox.h"
 
 /**
  * TODO Documentation
@@ -19,7 +21,10 @@ public:
 	 * MyObject is in the game screen when its coordinates are between top-right and bottom-left corners of the game screen.
 	 * @param vect_levelMap 2D vector of all MyObjects currently placed in the current level
 	 */
-	void paint(const LevelMap & vect_levelMap, Screen* screen);
+	void paint(const LevelMap & vect_levelMap, Screen* screen, MsgBox* msgBox);
+	
+	void paintInfoBox(Screen* screen, MsgBox* msgBox);
+	
 private:
 	const Player* player;
 	

@@ -23,7 +23,7 @@ public:
 	
 	void sRefresh();
 	
-	WINDOW* setCurrScreen(ScreenTypes type);
+	void setCurrScreen(ScreenTypes type);
 	
 	WINDOW* getCurrScreen();
 	

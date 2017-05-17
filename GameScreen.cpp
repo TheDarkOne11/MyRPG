@@ -3,7 +3,7 @@
 GameScreen::GameScreen(Player*& player) : player(player) {
 }
 
-void GameScreen::paint(const LevelMap& vect_levelMap, Screen* screen) {
+void GameScreen::paint(const LevelMap& vect_levelMap, Screen* screen, MsgBox* msgBox) {
 	std::pair<int, int> dim = screen->getCurrDimensions();
 	
 	offsetY = player->getY() - dim.first/2;
@@ -40,5 +40,24 @@ void GameScreen::paint(const LevelMap& vect_levelMap, Screen* screen) {
 			MyObject* curr = vect_levelMap[y][x];
 			curr->paint(screen, curr->getY() - offsetY, curr->getX() - offsetX);
 		}
+	}
+	
+	screen->sRefresh();
+	screen->setCurrScreen(screen->INFO);
+	paintInfoBox(screen, msgBox);
+	screen->sRefresh();
+	
+}
+
+void GameScreen::paintInfoBox(Screen* screen, MsgBox* msgBox) {
+	std::stringstream ss;
+	auto msgBuffer = msgBox->getMsgBuffer();
+	Info::Attributes a = player->getAttributes();
+	ss << "Player HP: " << a.health << ", SPEED: " << a.speed;
+	mvwprintw(screen->getCurrScreen(), 0, 0, ss.str().c_str());
+	
+	int y = screen->infoScreenHeight - 1;
+	for(auto it = msgBuffer.rbegin(); it != msgBuffer.rend(); it++, y--) {
+		mvwprintw(screen->getCurrScreen(), y, 0, (*it).c_str());
 	}
 }
