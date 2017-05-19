@@ -61,8 +61,14 @@ void Game::paint() {
 		case(MAIN_MENU):
 			mainMenu.paint(screen);
 			break;
+		case(NEW_LEVELS):
+			
+			break;
 		case(LEVELS): 
 			levels->paint();
+			break;
+		case(LEVELS_ENDED):
+			
 			break;
 		case(EXIT):
 			break;

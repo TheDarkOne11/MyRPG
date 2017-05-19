@@ -1,13 +1,11 @@
 #include "Player.h"
 
-Player::Player(int ID, char mapSymbol, std::string name, int health, 
-		int speed, int attackDmg, int attackSpeed, int range) 
-			: Entity(ID, mapSymbol, name, health, speed, attackDmg, attackSpeed, range), 
-			doorFound(false)
+Player::Player(int ID, char mapSymbol, std::string name, Info::Attributes attr) 
+			: Entity(ID, mapSymbol, name, attr), currDirection(RIGHT), doorFound(false)
 {
 }
 
-Player::Player(const Player* temp) : Entity(temp), currDirection(RIGHT), doorFound(false)
+Player::Player(const Player* temp) : Entity(temp), currDirection(temp->currDirection), doorFound(false)
 {
 }
 
@@ -35,6 +33,7 @@ void Player::prepareToNextLevel() {
 	doorFound = false;
 	delete ground;
 	ground = NULL;
+	actionsMade = 0;
 }
 
 void Player::setName(std::string name) {
@@ -42,25 +41,28 @@ void Player::setName(std::string name) {
 }
 
 void Player::update(LevelMap& vect_levelMap, MsgBox* msgBox) {
+	bool madeAction = false;
+	
 	switch(UserInput::getPressedKey()) {
 		case(UserInput::K_UP):
-			Entity::move(vect_levelMap, y - 1, x);
+			madeAction = Entity::move(vect_levelMap, y - 1, x);
 			currDirection = UP;
 			break;
 		case(UserInput::K_DOWN):
-			Entity::move(vect_levelMap, y + 1, x);
+			madeAction = Entity::move(vect_levelMap, y + 1, x);
 			currDirection = DOWN;
 			break;
 		case(UserInput::K_LEFT):
-			Entity::move(vect_levelMap, y, x - 1);
+			madeAction = Entity::move(vect_levelMap, y, x - 1);
 			currDirection = LEFT;
 			break;
 		case(UserInput::K_RIGHT):
-			Entity::move(vect_levelMap, y, x + 1);
+			madeAction = Entity::move(vect_levelMap, y, x + 1);
 			currDirection = RIGHT;
 			break;
 		case(UserInput::K_ATTACK):
 			Entity* target;
+			madeAction = true;
 			if( Entity::findTarget(vect_levelMap, currDirection, target) ) {
 				// Target found
 				target->isAttacked(this, msgBox);
@@ -74,5 +76,6 @@ void Player::update(LevelMap& vect_levelMap, MsgBox* msgBox) {
 			break;
 	}
 	
-	actionsMade--;
+	if(madeAction)
+		actionsMade--;
 }

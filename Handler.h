@@ -8,12 +8,10 @@
 #include <iostream>
 #include <utility>
 #include "MyObject.h"
-#include "Wall.h"
 #include "Player.h"
-#include "Floor.h"
-#include "Mob.h"
-#include "Door.h"
 #include "Info.h"
+#include "StaticObject.h"
+#include "Enemy.h"
 
 /**
  * Class has some important constants for the game.

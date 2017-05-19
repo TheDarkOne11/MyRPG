@@ -14,7 +14,6 @@
 #include "Handler.h"
 #include "GameScreen.h"
 #include "Enemy.h"
-#include "Door.h"
 #include "Menu.h"
 #include "Info.h"
 #include "FileHandler.h"

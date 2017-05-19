@@ -5,15 +5,11 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Game_Objects" projectFiles="true">
-        <itemPath>Door.h</itemPath>
         <itemPath>Enemy.h</itemPath>
         <itemPath>Entity.h</itemPath>
-        <itemPath>Floor.h</itemPath>
-        <itemPath>Mob.h</itemPath>
         <itemPath>MyObject.h</itemPath>
         <itemPath>Player.h</itemPath>
         <itemPath>StaticObject.h</itemPath>
-        <itemPath>Wall.h</itemPath>
       </logicalFolder>
       <itemPath>FileHandler.h</itemPath>
       <itemPath>Game.h</itemPath>
@@ -34,15 +30,11 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Game_Objects" projectFiles="true">
-        <itemPath>Door.cpp</itemPath>
         <itemPath>Enemy.cpp</itemPath>
         <itemPath>Entity.cpp</itemPath>
-        <itemPath>Floor.cpp</itemPath>
-        <itemPath>Mob.cpp</itemPath>
         <itemPath>MyObject.cpp</itemPath>
         <itemPath>Player.cpp</itemPath>
         <itemPath>StaticObject.cpp</itemPath>
-        <itemPath>Wall.cpp</itemPath>
       </logicalFolder>
       <itemPath>FileHandler.cpp</itemPath>
       <itemPath>Game.cpp</itemPath>
@@ -85,10 +77,6 @@
           <commandLine>-std=c++11 -lncurses</commandLine>
         </ccTool>
       </compileType>
-      <item path="Door.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Door.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Enemy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Enemy.h" ex="false" tool="3" flavor2="0">
@@ -100,10 +88,6 @@
       <item path="FileHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FileHandler.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Floor.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Floor.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Game.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -129,10 +113,6 @@
       </item>
       <item path="Menu.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Mob.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Mob.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="MsgBox.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MsgBox.h" ex="false" tool="3" flavor2="0">
@@ -156,10 +136,6 @@
       <item path="UserInput.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="UserInput.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Wall.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Wall.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -184,10 +160,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="Door.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Door.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Enemy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Enemy.h" ex="false" tool="3" flavor2="0">
@@ -199,10 +171,6 @@
       <item path="FileHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FileHandler.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Floor.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Floor.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Game.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -228,10 +196,6 @@
       </item>
       <item path="Menu.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Mob.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Mob.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="MsgBox.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MsgBox.h" ex="false" tool="3" flavor2="0">
@@ -255,10 +219,6 @@
       <item path="UserInput.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="UserInput.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Wall.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Wall.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

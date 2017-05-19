@@ -26,8 +26,7 @@ public:
 	 * @param attackDmg
 	 * @param attackSpeed
 	 */
-	Entity	(int ID, char mapSymbol, std::string name, int health, int speed, 
-			int attackDmg, int attackSpeed, int range);
+	Entity	(int ID, char mapSymbol, std::string name, Info::Attributes attr);
 	
 	virtual ~Entity();
 		

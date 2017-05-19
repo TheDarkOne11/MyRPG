@@ -20,7 +20,7 @@ public:
 	 */
 	StaticObject(const StaticObject* temp);
 	
-private:
+	MyObject* clone() const override;
 };
 
 #endif /* STATIC_OBJECT_H */

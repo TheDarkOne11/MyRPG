@@ -9,3 +9,7 @@ StaticObject::StaticObject(const StaticObject* tmp)
 					: MyObject(tmp->ID, tmp->mapSymbol, tmp->group, tmp->isPassable, tmp->name)
 {
 }
+
+MyObject* StaticObject::clone() const {
+	return new StaticObject(this);
+}

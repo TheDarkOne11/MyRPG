@@ -3,17 +3,15 @@
 #include "Entity.h"
 #include "Handler.h"
 
-Entity::Entity	(int ID, char mapSymbol, std::string name, int health, int speed, 
-				int attackDmg, int attackSpeed, int range)
+Entity::Entity	(int ID, char mapSymbol, std::string name, Info::Attributes attr)
 				:	MyObject(ID, mapSymbol, MyObject::ENTITY, false, name), 
-					attributes(health, speed, attackDmg, attackSpeed, range), 
-					actionsMade(speed), ground(NULL)
+					attributes(attr), actionsMade(attr.speed), ground(NULL)
 {
 }
 
 Entity::Entity	(const Entity* temp)
 				: MyObject(temp->ID, temp->mapSymbol, temp->group, temp->isPassable, temp->name), 
-				attributes(temp->attributes), actionsMade(temp->actionsMade), ground(NULL)
+				attributes(temp->attributes), actionsMade(temp->actionsMade), ground(temp->ground)
 {
 }
 

@@ -1,7 +1,7 @@
 #include "Levels.h"
 
-Levels::Levels(Screen* screen) : player(Handler::getPlayer()), gameScreen(player),
-		screen(screen), currTurn(PLAYER), currState(INIT)
+Levels::Levels(Screen* screen) : player(Handler::getPlayer()), screen(screen),
+		gameScreen(player), currTurn(PLAYER), currState(INIT)
 {
 	srand(time(NULL));
 	msgBox = new MsgBox(screen->infoScreenHeight - 2);
@@ -56,6 +56,9 @@ void Levels::update() {
 			if(tmp != -1) {
 				currState = (LevelState) tmp;
 			}
+			break;
+		case(INVENTORY):
+			
 			break;
 		case(NEXT_LEVEL):
 			clearLevel();
@@ -128,6 +131,9 @@ void Levels::paint() {
 		case(INGAME_MENU):
 			screen->setCurrScreen(screen->STANDARD);
 			gameMenu.paint(screen);
+			break;
+		case(INVENTORY):
+			
 			break;
 		case(NEXT_LEVEL):
 			

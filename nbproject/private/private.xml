@@ -9,9 +9,11 @@
         <group name="Vlastni">
             <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Entity.h</file>
             <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Enemy.h</file>
+            <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Handler.cpp</file>
             <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Levels.h</file>
             <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Levels.cpp</file>
             <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Game.cpp</file>
+            <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Handler.h</file>
             <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Entity.cpp</file>
             <file>file:/media/sf_Shared_Folder/NetBeans_Projects/MyRPG/Game.h</file>
         </group>

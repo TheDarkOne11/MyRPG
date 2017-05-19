@@ -1,8 +1,7 @@
 #include "Enemy.h"
 
-Enemy::Enemy	(int ID, char mapSymbol, std::string name, int health, int speed, 
-				int attackDmg, int attackSpeed, int range)
-				: Entity(ID, mapSymbol, name, health, speed, attackDmg, attackSpeed, range)
+Enemy::Enemy	(int ID, char mapSymbol, std::string name, Info::Attributes attr)
+				: Entity(ID, mapSymbol, name, attr)
 {
 }
 
@@ -17,4 +16,8 @@ void Enemy::AI_update(LevelMap& vect_levelMap, const Player* player, MsgBox* msg
 void Enemy::die(LevelMap& levelMap) {
 	ground->addToMap(levelMap, y, x, false);
 	ground = NULL;
+}
+
+MyObject* Enemy::clone() const {
+	return new Enemy(this);
 }

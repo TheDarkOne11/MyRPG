@@ -35,25 +35,21 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Door.o \
 	${OBJECTDIR}/Enemy.o \
 	${OBJECTDIR}/Entity.o \
 	${OBJECTDIR}/FileHandler.o \
-	${OBJECTDIR}/Floor.o \
 	${OBJECTDIR}/Game.o \
 	${OBJECTDIR}/GameScreen.o \
 	${OBJECTDIR}/Handler.o \
 	${OBJECTDIR}/Info.o \
 	${OBJECTDIR}/Levels.o \
 	${OBJECTDIR}/Menu.o \
-	${OBJECTDIR}/Mob.o \
 	${OBJECTDIR}/MsgBox.o \
 	${OBJECTDIR}/MyObject.o \
 	${OBJECTDIR}/Player.o \
 	${OBJECTDIR}/Screen.o \
 	${OBJECTDIR}/StaticObject.o \
 	${OBJECTDIR}/UserInput.o \
-	${OBJECTDIR}/Wall.o \
 	${OBJECTDIR}/main.o
 
 
@@ -81,11 +77,6 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/myrpg: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/myrpg ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Door.o: Door.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Door.o Door.cpp
-
 ${OBJECTDIR}/Enemy.o: Enemy.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -100,11 +91,6 @@ ${OBJECTDIR}/FileHandler.o: FileHandler.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FileHandler.o FileHandler.cpp
-
-${OBJECTDIR}/Floor.o: Floor.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Floor.o Floor.cpp
 
 ${OBJECTDIR}/Game.o: Game.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -136,11 +122,6 @@ ${OBJECTDIR}/Menu.o: Menu.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Menu.o Menu.cpp
 
-${OBJECTDIR}/Mob.o: Mob.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mob.o Mob.cpp
-
 ${OBJECTDIR}/MsgBox.o: MsgBox.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -170,11 +151,6 @@ ${OBJECTDIR}/UserInput.o: UserInput.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/UserInput.o UserInput.cpp
-
-${OBJECTDIR}/Wall.o: Wall.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Wall.o Wall.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}

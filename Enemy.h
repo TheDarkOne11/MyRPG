@@ -15,8 +15,7 @@ public:
 	 * @param attackDmg
 	 * @param attackSpeed
 	 */
-	Enemy	(int ID, char mapSymbol, std::string name, int health, int speed, 
-			int attackDmg, int attackSpeed, int range);
+	Enemy	(int ID, char mapSymbol, std::string name, Info::Attributes attr);
 	
 	/**
 	 This constructor is used for cloning "templates" of derived classes.
@@ -27,6 +26,9 @@ public:
 	void die(LevelMap& levelMap);
 		
 	void AI_update(LevelMap& vect_levelMap, const Player* player, MsgBox* msgBox);
+	
+	MyObject* clone() const override;
+
 };
 
 #endif /* ENEMY_H */
