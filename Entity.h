@@ -37,36 +37,37 @@ public:
 	Entity	(const Entity* temp);
 		
 	// TODO remove
-	void printMap(LevelMap& vect_levelMap) {
-		for(unsigned int y = 0; y < vect_levelMap.size(); y++) {
-			for(unsigned int x = 0; x < vect_levelMap[y].size(); x++) {
-				std::cerr << vect_levelMap[y][x]->getMapSymbol();
+	void printMap(LevelMap& levelMap) {
+		for(unsigned int y = 0; y < levelMap.size(); y++) {
+			for(unsigned int x = 0; x < levelMap[y].size(); x++) {
+				std::cerr << levelMap[y][x]->getMapSymbol();
 			}
 			std::cerr << std::endl;
 		}
 		std::cerr << std::endl;
 	}
 	
-	void addToMap(LevelMap& vect_levelMap, int y, int x, bool removeFormer) override;
+	void addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) override;
 	
 	/**
 	 * Moves Entity to the new position.
 	 * Updates gameMap accordingly.
-	 * @param vect_levelMap is the 2D vector game map.
+	 * @param levelMap is the 2D vector game map.
 	 * @param newY is Y-coordinate of new position.
 	 * @param newX is X-coordinate of new position.
 	 * @return true if the Entity could move to new coordinates.
 	 */
-	virtual bool move(LevelMap& vect_levelMap, int newY, int newX);
+	virtual bool move(LevelMap& levelMap, int newY, int newX);
 	
 	/**
 	 * Searches for target Entity in given direction.
-	 * @param vect_levelMap
+	 * Stops at impassable positions.
+	 * @param levelMap
 	 * @param direction says in what direction to look.
 	 * @param target is the entity that was found
 	 * @return true if found
 	 */
-	virtual bool findTarget(LevelMap& vect_levelMap, Direction direction, Entity*& target);
+	virtual bool findTarget(LevelMap& levelMap, Direction direction, Entity*& target);
 	
 	virtual void attack(Entity* target, MsgBox* msgBox);
 	

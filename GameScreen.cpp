@@ -3,7 +3,7 @@
 GameScreen::GameScreen(Player*& player) : player(player) {
 }
 
-void GameScreen::paint(const LevelMap& vect_levelMap, Screen* screen, MsgBox* msgBox) {
+void GameScreen::paint(const LevelMap& levelMap, Screen* screen, MsgBox* msgBox) {
 	std::pair<int, int> dim = screen->getCurrDimensions();
 	
 	offsetY = player->getY() - dim.first/2;
@@ -19,12 +19,12 @@ void GameScreen::paint(const LevelMap& vect_levelMap, Screen* screen, MsgBox* ms
 		startY = 0;
 	}
 	
-	if(endY > (signed) vect_levelMap.size()) {
-		endY = vect_levelMap.size();
+	if(endY > (signed) levelMap.size()) {
+		endY = levelMap.size();
 	}
 	
 	// Paint all MyObjects that are in screen
-	for(int y = startY; y < (signed) vect_levelMap.size(); y++) {
+	for(int y = startY; y < (signed) levelMap.size(); y++) {
 		int startX = player->getX() - dim.second/2;
 		int endX = player->getX() + dim.second/2;
 		
@@ -32,12 +32,12 @@ void GameScreen::paint(const LevelMap& vect_levelMap, Screen* screen, MsgBox* ms
 			startX = 0;
 		}
 
-		if(endX > (signed) vect_levelMap[y].size()) {
-			endX = vect_levelMap[y].size();
+		if(endX > (signed) levelMap[y].size()) {
+			endX = levelMap[y].size();
 		}
 		
-		for(int x = startX; x < (signed) vect_levelMap[y].size(); x++) {
-			MyObject* curr = vect_levelMap[y][x];
+		for(int x = startX; x < (signed) levelMap[y].size(); x++) {
+			MyObject* curr = levelMap[y][x];
 			curr->paint(screen, curr->getY() - offsetY, curr->getX() - offsetX);
 		}
 	}

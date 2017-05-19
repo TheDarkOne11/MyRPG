@@ -33,37 +33,37 @@ void Player::prepareToNextLevel() {
 	doorFound = false;
 	delete ground;
 	ground = NULL;
-	actionsMade = 0;
+	actionsMade = attributes.speed;
 }
 
 void Player::setName(std::string name) {
 	this->name = name;
 }
 
-void Player::update(LevelMap& vect_levelMap, MsgBox* msgBox) {
+void Player::update(LevelMap& levelMap, MsgBox* msgBox) {
 	bool madeAction = false;
 	
 	switch(UserInput::getPressedKey()) {
 		case(UserInput::K_UP):
-			madeAction = Entity::move(vect_levelMap, y - 1, x);
+			madeAction = Entity::move(levelMap, y - 1, x);
 			currDirection = UP;
 			break;
 		case(UserInput::K_DOWN):
-			madeAction = Entity::move(vect_levelMap, y + 1, x);
+			madeAction = Entity::move(levelMap, y + 1, x);
 			currDirection = DOWN;
 			break;
 		case(UserInput::K_LEFT):
-			madeAction = Entity::move(vect_levelMap, y, x - 1);
+			madeAction = Entity::move(levelMap, y, x - 1);
 			currDirection = LEFT;
 			break;
 		case(UserInput::K_RIGHT):
-			madeAction = Entity::move(vect_levelMap, y, x + 1);
+			madeAction = Entity::move(levelMap, y, x + 1);
 			currDirection = RIGHT;
 			break;
 		case(UserInput::K_ATTACK):
 			Entity* target;
 			madeAction = true;
-			if( Entity::findTarget(vect_levelMap, currDirection, target) ) {
+			if( Entity::findTarget(levelMap, currDirection, target) ) {
 				// Target found
 				target->isAttacked(this, msgBox);
 			} else {

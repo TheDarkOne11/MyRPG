@@ -16,15 +16,15 @@ void MyObject::paint(Screen* screen, const int y, const int x) {
 	mvwprintw(screen->getCurrScreen(), y, x, "%c", mapSymbol);
 }
 
-void MyObject::addToMap(LevelMap& vect_levelMap, int y, int x, bool removeFormer) {
+void MyObject::addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) {
 	this->x = x;
 	this->y = y;
 	
 	if(removeFormer) {
-		delete vect_levelMap[y][x];
+		delete levelMap[y][x];
 	}
 	
-	vect_levelMap[y][x] = this;
+	levelMap[y][x] = this;
 }
 
 int MyObject::getID() const {

@@ -21,7 +21,7 @@ Entity::~Entity() {
 	}
 }
 
-bool Entity::move(LevelMap& vect_levelMap, int newY, int newX)
+bool Entity::move(LevelMap& levelMap, int newY, int newX)
 {
 	// Check if entity moved
 	if(y == newY && x == newX) {
@@ -29,17 +29,17 @@ bool Entity::move(LevelMap& vect_levelMap, int newY, int newX)
 	}
 	
 	// Check for collision
-	if(!vect_levelMap[newY][newX]->getPassable()) {
+	if(!levelMap[newY][newX]->getPassable()) {
 		// MyObject on new coordinates not passable. No move.
 		return false;
 	}
 	
 	// Update game map
 		// Old position of this Entity is swapped for the MyObject that Entity stood on
-		ground->addToMap(vect_levelMap, y, x, false);
+		ground->addToMap(levelMap, y, x, false);
 		
 		// Entity is moved to new position on the map
-		this->addToMap(vect_levelMap, newY, newX, false);
+		this->addToMap(levelMap, newY, newX, false);
 		
 	
 	checkGround();
@@ -56,9 +56,9 @@ bool Entity::alive() const {
 	return true;
 }
 
-void Entity::addToMap(LevelMap& vect_levelMap, int y, int x, bool removeFormer) {
-	this->ground = vect_levelMap[y][x];
-	this->MyObject::addToMap(vect_levelMap, y, x, removeFormer);
+void Entity::addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) {
+	this->ground = levelMap[y][x];
+	this->MyObject::addToMap(levelMap, y, x, removeFormer);
 }
 
 void Entity::checkGround() {
@@ -69,7 +69,7 @@ Info::Attributes Entity::getAttributes() const {
 	return attributes;
 }
 
-bool Entity::findTarget(LevelMap& vect_levelMap, Direction direction, Entity*& target) {
+bool Entity::findTarget(LevelMap& levelMap, Direction direction, Entity*& target) {
 	int addY = 0;
 	int addX = 0;
 	int currRange = attributes.range;
@@ -95,11 +95,12 @@ bool Entity::findTarget(LevelMap& vect_levelMap, Direction direction, Entity*& t
 	do {
 		
 		// Check bounds
-		if(y < 0 || y >= (signed) vect_levelMap.size() || x < 0 || x >= (signed) vect_levelMap[y].size()) {
+		if(currY < 0 || currY >= (signed) levelMap.size() || currX < 0 
+				|| currX >= (signed) levelMap[currY].size()) {
 			return false;
 		}
 		
-		MyObject* currObject = vect_levelMap[currY][currX];
+		MyObject* currObject = levelMap[currY][currX];
 		
 		// If not passable static object found
 		if(currObject->getGroup() == STATIC && !currObject->getPassable()) {

@@ -10,7 +10,7 @@ public:
 	Player(const Player* temp);
 	
 	virtual void paint(Screen* screen, const int y, const int x) override;
-	
+		
 	/**
 	 * Checks ground for items and for doors to next level;
 	 */
@@ -22,7 +22,7 @@ public:
 	
 	void prepareToNextLevel();
 	
-	void update(LevelMap& vect_levelMap, MsgBox* msgBox);
+	void update(LevelMap& levelMap, MsgBox* msgBox);
 	
 	virtual MyObject* clone() const override;
 	

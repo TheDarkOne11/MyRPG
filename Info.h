@@ -13,7 +13,7 @@
 class Info {
 public:
 	// TODO Put them in config file? Maybe update them with player level?
-	const static int maxEnemiesPerLevel = 15;
+	const static int maxEnemiesPerLevel = 1;//15;
 	const static int maxItemsPerLevel = 5;
 		
 	// List of StaticObject IDs

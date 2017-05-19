@@ -25,7 +25,7 @@ void Handler::init() {
 	
 	// Initialize entities
 	player = new Player(Info::ID_Player, 'P', "Player", Info::Attributes(50, 1, 5, 2, 3));
-	MyObject* mob = new Enemy(Info::ID_Mob, 'M', "Mob", Info::Attributes(10, 1, 2, 1, 1));
+	MyObject* mob = new Enemy(Info::ID_Mob, 'M', "Mob", Info::Attributes(10, 1, 2, 1, 2));
 	addObject(mob);
 	MyObject* mob2 = new Enemy(Info::ID_Mob2, 'N', "Mob2", Info::Attributes(10, 1, 2, 1, 1));
 	addObject(mob2);
