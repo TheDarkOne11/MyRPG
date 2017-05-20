@@ -14,10 +14,10 @@
 class AttributesMenu {
 public:
 	enum AttributeMenuChoices {
-		HEALTH,			/// Change health
-		ATTACK_DAMAGE,	/// Change attack damage
-		SPEED,			/// Change speed
-		CONTINUE		/// Leave AttributesMenu
+		HEALTH,			///< Change health
+		ATTACK_DAMAGE,	///< Change attack damage
+		SPEED,			///< Change speed
+		CONTINUE		///< Leave AttributesMenu
 	};
 	
 	
