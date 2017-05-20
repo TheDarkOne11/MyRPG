@@ -71,6 +71,8 @@ bool AttributesMenu::changeChosenAttribute(const int change) {
 				changed = true;
 			}
 			break;
+		case(CONTINUE):
+			break;
 	}
 	
 	return changed;

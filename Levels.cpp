@@ -16,7 +16,7 @@ Levels::Levels(Screen* screen) : player(Handler::getPlayer()), screen(screen),
 	// Load first level
 	fileHandler.loadLevel(levelMap, enemiesInLevel, player);
 	
-	// Set player name
+	// Ask player for a new player name
 	char name[100];
 	screen->setCurrScreen(screen->INFO);
 	echo();

@@ -14,10 +14,10 @@
 class AttributesMenu {
 public:
 	enum AttributeMenuChoices {
-		HEALTH,
-		ATTACK_DAMAGE,
-		SPEED,
-		CONTINUE
+		HEALTH,			/// Change health
+		ATTACK_DAMAGE,	/// Change attack damage
+		SPEED,			/// Change speed
+		CONTINUE		/// Leave AttributesMenu
 	};
 	
 	
@@ -29,8 +29,17 @@ public:
 private:
 	Menu attributesMenu;
 	Player* player;
+	
+	/**
+	 * Dummy atributes, used for applying changes.
+	 */
 	Info::Attributes dummy;
 	
+	/**
+	 * Change attributes according to the player choice.
+	 * @param change says how much the attribute has to change.
+	 * @return true if any attribute value was successfuly changed.
+	 */
 	bool changeChosenAttribute(const int change);
 };
 
