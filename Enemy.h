@@ -45,9 +45,12 @@ protected:
 	 * Node of pathToPlayer.
 	 */
 	struct PathStep {
-		int y, x;			/** Coordinates */
-		bool inPath;		/** True if this PathStep is part of the pathToPlayer */
-		PathStep* parent;	/** Pointer to previous PathStep. */
+		/** Coordinates */
+		int y, x;
+		/** True if this PathStep is part of the pathToPlayer */
+		bool inPath;
+		/** Pointer to previous PathStep. */
+		PathStep* parent;
 		
 		PathStep(int y, int x, PathStep* parent);
 	};
@@ -78,14 +81,16 @@ protected:
 	 * Checks for distance and obstacles in the way.
 	 * @param levelMap
 	 * @param player
-	 * @param currY and currX is the position we want to attack from.
+	 * @param currY is y-coord of the position we want to attack from.
+	 * @param currX is x-coord of the position we want to attack from.
 	 * @return true if Enemy can attack Player from this position
 	 */
 	bool canAttackPlayer(LevelMap& levelMap, const Player* player, const int currY, const int currX);
 	
 	/**
 	 * Get distance to player from this position.
-	 * @param currY and currY is position we want to get distance to player from.
+	 * @param currY is y-coord of the position we want to get distance to player from.
+	 * @param currX is y-coord of the position we want to get distance to player from.
 	 * @param player
 	 * @return distance to player rounded up.
 	 */

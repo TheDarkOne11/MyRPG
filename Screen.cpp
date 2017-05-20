@@ -8,14 +8,15 @@ Screen::Screen() {
 	noecho();					// Do not print out pressed keys	
 	update();
 
-	//TODO full init
+	// Init custom windows
 	addScreen( stdscr );
 	addScreen( newwin(maxHeight - infoScreenHeight, maxWidth, 0, 0) );
 	addScreen( newwin(infoScreenHeight, maxWidth, maxHeight - infoScreenHeight, 0) );
+	addScreen( newwin(maxHeight, maxWidth, 0, 0) );
 }
 
 Screen::~Screen() {
-	
+	// Delete all custom windows.
 	for(auto it = vect_screens.begin() + 1; it != vect_screens.end(); it++) {
 		delwin(*it);
 	}

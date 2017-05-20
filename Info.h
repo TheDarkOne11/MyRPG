@@ -12,7 +12,6 @@
  */
 class Info {
 public:
-	// TODO Put them in config file? Maybe update them with player level?
 	const static int maxEnemiesPerLevel = 15;
 	const static int maxItemsPerLevel = 5;
 		
@@ -32,25 +31,28 @@ public:
 	const static std::string pathDirSaves;
 	const static std::string pathNamesSaves;
 	
+	/**
+	 * Struct of all types of attributes every Entity and Item can have.
+	 */
 	struct Attributes {
 		int health, speed;
-		int attackDmg, attackSpeed, range;
+		int attackDmg, range;
 		
-		Attributes(int h, int s, int ad, int as, int r)
-				: health(h), speed(s), attackDmg(ad), attackSpeed(as), range(r)
+		Attributes(int h, int s, int ad, int r)
+				: health(h), speed(s), attackDmg(ad), range(r)
 		{
 		}
 		
 		Attributes operator+(const Attributes& right) {
 			return Attributes(health + right.health, speed + 
 					right.speed, attackDmg + right.attackDmg, 
-					attackSpeed + right.attackSpeed, range + right.range);
+					range + right.range);
 		}
 		
 		Attributes operator-(const Attributes& right) {
 			return Attributes(health - right.health, speed - 
 					right.speed, attackDmg - right.attackDmg, 
-					attackSpeed - right.attackSpeed, range - right.range);
+					range - right.range);
 		}
 	};
 		
