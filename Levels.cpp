@@ -10,7 +10,7 @@ Levels::Levels(Screen* screen) : player(Handler::getPlayer()), screen(screen),
 	ChoiceVect vect_GameMenu;
 	vect_GameMenu.push_back( std::make_pair("Resume game", INGAME) );
 	vect_GameMenu.push_back( std::make_pair("Exit game", EXIT) );
-	this->gameMenu.setChoices(vect_GameMenu);	
+	this->gameMenu.setChoices(vect_GameMenu);
 }
 
 Levels::~Levels() {
@@ -42,6 +42,7 @@ void Levels::update() {
 	switch(currState) {
 		case(INIT):
 			fileHandler.loadLevel(levelMap, enemiesInLevel, player);
+			// TODO Initial player attributes settings
 			currState = INGAME;
 			break;
 		case(INGAME):

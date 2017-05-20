@@ -40,13 +40,13 @@ public:
 	/**
 	 * @return currently selected window.
 	 */
-	WINDOW* getCurrScreen();
+	WINDOW* getCurrScreen() const;
 	
 	/**
 	 * Gets height and width of the currently selected window.
 	 * @return pair<height, width> of the currently selected window.
 	 */
-	std::pair<int, int> getCurrDimensions();
+	std::pair<int, int> getCurrDimensions() const;
 	
 private:
 	int maxHeight, maxWidth;

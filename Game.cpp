@@ -34,7 +34,6 @@ void Game::update() {
 			
 			break;
 		case(NEW_LEVELS):
-			screen->setCurrScreen(screen->GAME);
 			levels = new Levels(screen);
 			currState = LEVELS;
 			break;

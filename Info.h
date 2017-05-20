@@ -14,6 +14,7 @@ class Info {
 public:
 	const static int maxEnemiesPerLevel = 15;
 	const static int maxItemsPerLevel = 5;
+	const static int initialAttributePointsCount = 5;
 		
 	// List of StaticObject IDs
 	const static int ID_Door = 0;

@@ -47,6 +47,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/MsgBox.o \
 	${OBJECTDIR}/MyObject.o \
 	${OBJECTDIR}/Player.o \
+	${OBJECTDIR}/PlayerAttributes.o \
 	${OBJECTDIR}/Screen.o \
 	${OBJECTDIR}/StaticObject.o \
 	${OBJECTDIR}/UserInput.o \
@@ -136,6 +137,11 @@ ${OBJECTDIR}/Player.o: Player.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Player.o Player.cpp
+
+${OBJECTDIR}/PlayerAttributes.o: PlayerAttributes.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PlayerAttributes.o PlayerAttributes.cpp
 
 ${OBJECTDIR}/Screen.o: Screen.cpp
 	${MKDIR} -p ${OBJECTDIR}

@@ -1,11 +1,13 @@
 #include "Player.h"
 
 Player::Player(int ID, char mapSymbol, std::string name, Info::Attributes attr) 
-			: Entity(ID, mapSymbol, name, attr), currDirection(RIGHT), doorFound(false)
+			: Entity(ID, mapSymbol, name, attr), currDirection(RIGHT), 
+			doorFound(false), attrPointsCount(Info::initialAttributePointsCount)
 {
 }
 
-Player::Player(const Player* temp) : Entity(temp), currDirection(temp->currDirection), doorFound(false)
+Player::Player(const Player* temp) : Entity(temp), 
+		currDirection(temp->currDirection), doorFound(false), attrPointsCount(temp->attrPointsCount)
 {
 }
 
@@ -78,4 +80,12 @@ void Player::update(LevelMap& levelMap, MsgBox* msgBox) {
 	
 	if(madeAction)
 		actionsLeft--;
+}
+
+int Player::getAttrPointsCount() {
+	return attrPointsCount;
+}
+
+void Player::setAttrPointsCount(int i) {
+	attrPointsCount = i;
 }

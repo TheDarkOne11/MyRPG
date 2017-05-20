@@ -18,6 +18,10 @@ public:
 	
 	bool getDoorFound();
 	
+	int getAttrPointsCount();
+	
+	void setAttrPointsCount(int i);
+	
 	void setName(std::string name);
 	
 	void prepareToNextLevel();
@@ -29,6 +33,11 @@ public:
 private:
 	Direction currDirection;
 	bool doorFound;
+	
+	/**
+	 * Number of currently owned attribute points for upgrading player's attributes.
+	 */
+	int attrPointsCount;
 };
 
 #endif /* PLAYER_H */
