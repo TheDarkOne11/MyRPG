@@ -1,9 +1,10 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
+#include <vector>
+#include <sstream>
 #include "MyObject.h"
 #include "MsgBox.h"
-#include <vector>
 
 /**
  * Super class of the Player and all Enemies.
@@ -17,6 +18,9 @@ public:
 		RIGHT = '>'
 	};
 	
+	/**
+	 * Entitie's attributes.
+	 */
 	Info::Attributes attributes;
 	
 	/**
@@ -39,15 +43,7 @@ public:
 	Entity	(const Entity* temp);
 		
 	// TODO remove
-	void printMap(LevelMap& levelMap) {
-		for(unsigned int y = 0; y < levelMap.size(); y++) {
-			for(unsigned int x = 0; x < levelMap[y].size(); x++) {
-				std::cerr << levelMap[y][x]->getMapSymbol();
-			}
-			std::cerr << std::endl;
-		}
-		std::cerr << std::endl;
-	}
+	void printMap(LevelMap& levelMap);
 	
 	void addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) override;
 	
@@ -85,8 +81,11 @@ public:
 	 */
 	virtual void checkGround();
 	
+	virtual std::string getInfo() const;
+	
 protected:	
 	int actionsLeft;
+	int hpRemaining;
 	
 	/**
 	 * Entity stores the MyObject it stands on.

@@ -52,7 +52,7 @@ void GameScreen::paint(const LevelMap& levelMap, Screen* screen, MsgBox* msgBox)
 void GameScreen::paintInfoBox(Screen* screen, MsgBox* msgBox) {
 	std::stringstream ss;
 	auto msgBuffer = msgBox->getMsgBuffer();
-	ss << player->getName() << ": " << player->attributes;
+	ss << player->getInfo();
 	mvwprintw(screen->getCurrScreen(), 0, 0, ss.str().c_str());
 		
 	int y = screen->infoScreenHeight - 1;

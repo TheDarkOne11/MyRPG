@@ -43,6 +43,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/GameScreen.o \
 	${OBJECTDIR}/Handler.o \
 	${OBJECTDIR}/Info.o \
+	${OBJECTDIR}/Item.o \
 	${OBJECTDIR}/Levels.o \
 	${OBJECTDIR}/Menu.o \
 	${OBJECTDIR}/MsgBox.o \
@@ -117,6 +118,11 @@ ${OBJECTDIR}/Info.o: Info.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Info.o Info.cpp
+
+${OBJECTDIR}/Item.o: Item.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Item.o Item.cpp
 
 ${OBJECTDIR}/Levels.o: Levels.cpp
 	${MKDIR} -p ${OBJECTDIR}

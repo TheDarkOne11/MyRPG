@@ -37,10 +37,10 @@ public:
 	 * Struct of all types of attributes every Entity and Item can have.
 	 */
 	struct Attributes {
-		int health;		///< How much damage can this Entity take
-		int speed;		///< How many actions per its turn can Entity do
-		int attackDmg;	///< How much damage does this Entity inflict in one attack
-		int range;		///< Range of this Entitie's attack
+		int maxHP;		///< How much damage can this Entity take.
+		int speed;		///< How many actions per its turn can Entity do.
+		int attackDmg;	///< How much damage does this Entity inflict in one attack.
+		int range;		///< Range of this Entitie's attack.
 		
 		Attributes(int h, int s, int ad, int r);
 		

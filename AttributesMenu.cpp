@@ -51,9 +51,9 @@ bool AttributesMenu::changeChosenAttribute(const int change) {
 	
 	switch(choice) {
 		case(HEALTH):
-			tmp = dummy.health + change * Info::hpPerPoint;
+			tmp = dummy.maxHP + change * Info::hpPerPoint;
 			if(tmp >= 0) {
-				dummy.health = tmp;
+				dummy.maxHP = tmp;
 				changed = true;
 			}
 			break;
@@ -94,4 +94,5 @@ void AttributesMenu::paint(Screen* screen) {
 	mvwprintw(screen->getCurrScreen(), 0, 0, "Change attributes using LEFT/ RIGHT arrow keys.");
 	mvwprintw(screen->getCurrScreen(), 1, 0, ss.str().c_str());
 	mvwprintw(screen->getCurrScreen(), 2, 0, ss2.str().c_str());
+	mvwprintw(screen->getCurrScreen(), 3, 0, "You have %d points left.", player->getAttrPointsCount());
 }

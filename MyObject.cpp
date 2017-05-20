@@ -13,7 +13,7 @@ MyObject::~MyObject()
 }
 
 void MyObject::paint(Screen* screen, const int y, const int x) {
-	mvwprintw(screen->getCurrScreen(), y, x, "%c", mapSymbol);
+	mvwaddch(screen->getCurrScreen(), y, x, mapSymbol);
 }
 
 void MyObject::addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) {

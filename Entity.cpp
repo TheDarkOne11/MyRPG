@@ -1,17 +1,16 @@
-#include <sstream>
-
 #include "Entity.h"
-#include "Handler.h"
 
 Entity::Entity	(int ID, char mapSymbol, std::string name, Info::Attributes attr)
 				:	MyObject(ID, mapSymbol, MyObject::ENTITY, false, name), 
-					attributes(attr), actionsLeft(attr.speed), ground(NULL)
+					attributes(attr), actionsLeft(attr.speed), hpRemaining(attr.maxHP),
+					ground(NULL)
 {
 }
 
 Entity::Entity	(const Entity* temp)
 				: MyObject(temp->ID, temp->mapSymbol, temp->group, temp->isPassable, temp->name), 
-				attributes(temp->attributes), actionsLeft(temp->actionsLeft), ground(temp->ground)
+				attributes(temp->attributes), actionsLeft(temp->actionsLeft), 
+				hpRemaining(temp->attributes.maxHP), ground(temp->ground)
 {
 }
 
@@ -48,7 +47,7 @@ bool Entity::move(LevelMap& levelMap, int newY, int newX)
 }
 
 bool Entity::alive() const {
-	if(attributes.health <= 0) {
+	if(attributes.maxHP <= 0) {
 		return false;
 	}
 	
@@ -120,7 +119,7 @@ bool Entity::findTarget(LevelMap& levelMap, Direction direction, Entity*& target
 
 void Entity::isAttacked(const Entity* attacker, MsgBox* msgBox) {
 	Info::Attributes attr = attacker->attributes;
-	attributes.health -= attr.attackDmg;
+	attributes.maxHP -= attr.attackDmg;
 	
 	std::stringstream ss;
 	ss << attacker->name << " hit " << name << " for " << attr.attackDmg << " HP.";
@@ -139,4 +138,10 @@ bool Entity::hasActionsLeft() {
 	}
 	
 	return true;
+}
+
+std::string Entity::getInfo() const {
+	std::stringstream ss;
+	ss << name << ": " << attributes;
+	return ss.str();
 }
