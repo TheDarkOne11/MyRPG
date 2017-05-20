@@ -69,10 +69,6 @@ private:
 	LevelState currState;	
 			
 	void ingameUpdate();
-	
-	void paintMsgs();
-	
-	void paintPlayerInfo();
 };
 
 #endif /* LEVEL_H */

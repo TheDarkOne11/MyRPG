@@ -87,9 +87,9 @@ void AttributesMenu::paint(Screen* screen) {
 	// Paint info menu
 	screen->setCurrScreen(screen->INFO);
 	ss << "After CONTINUE,  " << player->getName() << " will have these stats: " << (player->attributes + dummy);
-	ss2 << "Player currently invested in stats: " << dummy;
+	ss2 << "You currently invested in these stats: " << dummy;
 	
-	mvwprintw(screen->getCurrScreen(), 0, 0, "Change attributes using LEFT/ RIGHT arrow keys");
+	mvwprintw(screen->getCurrScreen(), 0, 0, "Change attributes using LEFT/ RIGHT arrow keys.");
 	mvwprintw(screen->getCurrScreen(), 1, 0, ss.str().c_str());
 	mvwprintw(screen->getCurrScreen(), 2, 0, ss2.str().c_str());
 }

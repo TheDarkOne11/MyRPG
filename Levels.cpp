@@ -12,6 +12,22 @@ Levels::Levels(Screen* screen) : player(Handler::getPlayer()), screen(screen),
 	vect_GameMenu.push_back( std::make_pair("Change attributes", ATTRIBUTES) );
 	vect_GameMenu.push_back( std::make_pair("Exit game", EXIT) );
 	this->gameMenu.setChoices(vect_GameMenu);
+	
+	// Load first level
+	fileHandler.loadLevel(levelMap, enemiesInLevel, player);
+	
+	// Set player name
+	char name[100];
+	screen->setCurrScreen(screen->INFO);
+	echo();
+	nodelay(screen->getCurrScreen(), false);
+	mvwprintw(screen->getCurrScreen(), 0, 0, "Write your player name: ");
+	screen->sRefresh();
+	
+	wgetstr(screen->getCurrScreen(), name);
+	player->setName(std::string(name));
+	noecho();
+	nodelay(screen->getCurrScreen(), true);
 }
 
 Levels::~Levels() {
@@ -42,9 +58,10 @@ void Levels::update() {
 	
 	switch(currState) {
 		case(INIT):
-			fileHandler.loadLevel(levelMap, enemiesInLevel, player);
-			// TODO Initial player attributes settings
-			currState = INGAME;
+			// Edit attributes
+			if(!attrMenu.update()) {
+				currState = INGAME;
+			}
 			break;
 		case(INGAME):
 			ingameUpdate();
@@ -129,7 +146,7 @@ void Levels::ingameUpdate() {
 void Levels::paint() {
 	switch(currState) {
 		case(INIT):
-			
+			attrMenu.paint(screen);
 			break;
 		case(INGAME):
 			screen->setCurrScreen(screen->GAME);

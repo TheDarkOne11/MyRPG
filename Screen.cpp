@@ -6,6 +6,7 @@ Screen::Screen() {
 	currScreen = stdscr;
 	curs_set(0);				// Hide cursor
 	noecho();					// Do not print out pressed keys	
+	cbreak();
 	update();
 
 	// Init custom windows
