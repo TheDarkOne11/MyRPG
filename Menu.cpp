@@ -25,15 +25,15 @@ void Menu::paint(Screen* screen) {
 		std::string currString = it->first;
 		
 		if(i == currChoice) {
-			attron(A_REVERSE);
+			wattron(screen->getCurrScreen(), A_REVERSE);
 			mvwprintw(screen->getCurrScreen(), currY, currX - currString.size()/2, currString.c_str());
-			attroff(A_REVERSE);
+			wattroff(screen->getCurrScreen(), A_REVERSE);
 		} else {
 			mvwprintw(screen->getCurrScreen(), currY, currX - currString.size()/2, currString.c_str());
 		}
 		
 		i++;
-		currY += 2*i;
+		currY += 2;
 	}
 }
 
@@ -71,4 +71,8 @@ void Menu::setChoices(ChoiceVect choices) {
 void Menu::setHead(std::string head) {
 	this->head = head;
 	headExists = true;
+}
+
+int Menu::getCurrentChoice() {
+	return currChoice;
 }

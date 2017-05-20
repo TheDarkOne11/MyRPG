@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/AttributesMenu.o \
 	${OBJECTDIR}/Enemy.o \
 	${OBJECTDIR}/Entity.o \
 	${OBJECTDIR}/FileHandler.o \
@@ -47,7 +48,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/MsgBox.o \
 	${OBJECTDIR}/MyObject.o \
 	${OBJECTDIR}/Player.o \
-	${OBJECTDIR}/PlayerAttributes.o \
 	${OBJECTDIR}/Screen.o \
 	${OBJECTDIR}/StaticObject.o \
 	${OBJECTDIR}/UserInput.o \
@@ -77,6 +77,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/myrpg: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/myrpg ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/AttributesMenu.o: AttributesMenu.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/AttributesMenu.o AttributesMenu.cpp
 
 ${OBJECTDIR}/Enemy.o: Enemy.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -137,11 +142,6 @@ ${OBJECTDIR}/Player.o: Player.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Player.o Player.cpp
-
-${OBJECTDIR}/PlayerAttributes.o: PlayerAttributes.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PlayerAttributes.o PlayerAttributes.cpp
 
 ${OBJECTDIR}/Screen.o: Screen.cpp
 	${MKDIR} -p ${OBJECTDIR}

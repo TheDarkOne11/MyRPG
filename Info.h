@@ -15,6 +15,7 @@ public:
 	const static int maxEnemiesPerLevel = 15;
 	const static int maxItemsPerLevel = 5;
 	const static int initialAttributePointsCount = 5;
+	const static int hpPerPoint = 5;
 		
 	// List of StaticObject IDs
 	const static int ID_Door = 0;
@@ -39,22 +40,15 @@ public:
 		int health, speed;
 		int attackDmg, range;
 		
-		Attributes(int h, int s, int ad, int r)
-				: health(h), speed(s), attackDmg(ad), range(r)
-		{
-		}
+		Attributes(int h, int s, int ad, int r);
 		
-		Attributes operator+(const Attributes& right) {
-			return Attributes(health + right.health, speed + 
-					right.speed, attackDmg + right.attackDmg, 
-					range + right.range);
-		}
+		Attributes operator+(const Attributes& right);
 		
-		Attributes operator-(const Attributes& right) {
-			return Attributes(health - right.health, speed - 
-					right.speed, attackDmg - right.attackDmg, 
-					range - right.range);
-		}
+		Attributes operator-(const Attributes& right);
+		
+		void clear();
+		
+		friend std::ostream& operator<<(std::ostream& os, const Attributes attr);
 	};
 		
 };

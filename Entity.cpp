@@ -65,10 +65,6 @@ void Entity::checkGround() {
 	// TODO Check ground for items
 }
 
-Info::Attributes Entity::getAttributes() const {
-	return attributes;
-}
-
 bool Entity::findTarget(LevelMap& levelMap, Direction direction, Entity*& target, 
 		const int yPos, const int xPos) {
 	int addY = 0;
@@ -123,7 +119,7 @@ bool Entity::findTarget(LevelMap& levelMap, Direction direction, Entity*& target
 }
 
 void Entity::isAttacked(const Entity* attacker, MsgBox* msgBox) {
-	Info::Attributes attr = attacker->getAttributes();
+	Info::Attributes attr = attacker->attributes;
 	attributes.health -= attr.attackDmg;
 	
 	std::stringstream ss;

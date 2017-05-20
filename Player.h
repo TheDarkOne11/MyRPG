@@ -10,6 +10,8 @@ public:
 	Player(const Player* temp);
 
 	virtual void paint(Screen* screen, const int y, const int x) override;
+	
+	void paintInfo(Screen* screen);
 		
 	/**
 	 * Checks ground for items and for doors to next level;

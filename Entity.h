@@ -17,6 +17,8 @@ public:
 		RIGHT = '>'
 	};
 	
+	Info::Attributes attributes;
+	
 	/**
 	 * This constructor is used for setting up "template" instances of derived classes.
 	 * @param ID
@@ -83,20 +85,13 @@ public:
 	 */
 	virtual void checkGround();
 	
-	Info::Attributes getAttributes() const;
-	
-protected:
-	Info::Attributes attributes;
-	
+protected:	
 	int actionsLeft;
 	
 	/**
 	 * Entity stores the MyObject it stands on.
 	 */
 	MyObject* ground;
-	
-private:
-	int timeSinceAttack;
 };
 
 #endif /* ENTITY_H */

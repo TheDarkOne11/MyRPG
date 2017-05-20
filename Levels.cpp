@@ -1,7 +1,7 @@
 #include "Levels.h"
 
 Levels::Levels(Screen* screen) : player(Handler::getPlayer()), screen(screen),
-		gameScreen(player), currTurn(PLAYER), currState(INIT)
+		gameScreen(player), attrMenu(player), currTurn(PLAYER), currState(INIT)
 {
 	srand(time(NULL));
 	msgBox = new MsgBox(screen->infoScreenHeight - 2);
@@ -9,6 +9,7 @@ Levels::Levels(Screen* screen) : player(Handler::getPlayer()), screen(screen),
 	// Init game menu
 	ChoiceVect vect_GameMenu;
 	vect_GameMenu.push_back( std::make_pair("Resume game", INGAME) );
+	vect_GameMenu.push_back( std::make_pair("Change attributes", ATTRIBUTES) );
 	vect_GameMenu.push_back( std::make_pair("Exit game", EXIT) );
 	this->gameMenu.setChoices(vect_GameMenu);
 }
@@ -60,6 +61,11 @@ void Levels::update() {
 			break;
 		case(INVENTORY):
 			
+			break;
+		case(ATTRIBUTES):
+			if(!attrMenu.update()) {
+				currState = INGAME_MENU;
+			}
 			break;
 		case(NEXT_LEVEL):
 			clearLevel();
@@ -135,6 +141,9 @@ void Levels::paint() {
 			break;
 		case(INVENTORY):
 			
+			break;
+		case(ATTRIBUTES):
+			attrMenu.paint(screen);
 			break;
 		case(NEXT_LEVEL):
 			

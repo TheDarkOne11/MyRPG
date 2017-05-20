@@ -12,9 +12,9 @@
         <itemPath>StaticObject.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="Graphics" projectFiles="true">
+        <itemPath>AttributesMenu.h</itemPath>
         <itemPath>GameScreen.h</itemPath>
         <itemPath>Menu.h</itemPath>
-        <itemPath>PlayerAttributes.h</itemPath>
         <itemPath>Screen.h</itemPath>
       </logicalFolder>
       <itemPath>FileHandler.h</itemPath>
@@ -40,9 +40,9 @@
         <itemPath>StaticObject.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="Graphics" projectFiles="true">
+        <itemPath>AttributesMenu.cpp</itemPath>
         <itemPath>GameScreen.cpp</itemPath>
         <itemPath>Menu.cpp</itemPath>
-        <itemPath>PlayerAttributes.cpp</itemPath>
         <itemPath>Screen.cpp</itemPath>
       </logicalFolder>
       <itemPath>FileHandler.cpp</itemPath>
@@ -83,6 +83,10 @@
           <commandLine>-std=c++11 -lncurses</commandLine>
         </ccTool>
       </compileType>
+      <item path="AttributesMenu.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AttributesMenu.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Enemy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Enemy.h" ex="false" tool="3" flavor2="0">
@@ -130,10 +134,6 @@
       <item path="Player.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Player.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="PlayerAttributes.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="PlayerAttributes.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Screen.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -170,6 +170,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="AttributesMenu.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AttributesMenu.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Enemy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Enemy.h" ex="false" tool="3" flavor2="0">
@@ -217,10 +221,6 @@
       <item path="Player.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Player.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="PlayerAttributes.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="PlayerAttributes.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Screen.cpp" ex="false" tool="1" flavor2="0">
       </item>

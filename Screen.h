@@ -10,10 +10,10 @@ public:
 	const int infoScreenHeight = 5;
 	
 	enum ScreenTypes {
-		STANDARD,
-		GAME,
-		INFO,
-		ATTRIBUTES
+		STANDARD = 0,
+		GAME = 1,
+		INFO = 2,
+		ATTRIBUTES = 3
 	};
 	
 	Screen();
@@ -46,7 +46,7 @@ public:
 	 * Gets height and width of the currently selected window.
 	 * @return pair<height, width> of the currently selected window.
 	 */
-	std::pair<int, int> getCurrDimensions() const;
+	std::pair<int, int> getCurrDimensions();
 	
 private:
 	int maxHeight, maxWidth;

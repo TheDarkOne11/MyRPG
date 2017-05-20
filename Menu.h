@@ -24,10 +24,12 @@ public:
 	void paint(Screen* screen);
 	
 	/**
-	 * 
+	 * Update menu, traverse choices.
 	 * @return int (enum) associated with choice that was chosen. Else returns -1.
 	 */
 	int update();
+	
+	int getCurrentChoice();
 	
 private:
 	std::string head;

@@ -12,7 +12,7 @@ Screen::Screen() {
 	addScreen( stdscr );
 	addScreen( newwin(maxHeight - infoScreenHeight, maxWidth, 0, 0) );
 	addScreen( newwin(infoScreenHeight, maxWidth, maxHeight - infoScreenHeight, 0) );
-	addScreen( newwin(maxHeight, maxWidth, 0, 0) );
+	addScreen( newwin(maxHeight - infoScreenHeight, maxWidth, 0, 0) );
 }
 
 Screen::~Screen() {
@@ -54,7 +54,7 @@ WINDOW* Screen::getCurrScreen() const {
 	return currScreen;
 }
 
-std::pair<int, int> Screen::getCurrDimensions() const {
+std::pair<int, int> Screen::getCurrDimensions() {
 	std::pair<int, int> p;
 	
 	getmaxyx(currScreen, p.first, p.second);

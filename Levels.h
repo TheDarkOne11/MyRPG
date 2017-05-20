@@ -19,6 +19,7 @@
 #include "FileHandler.h"
 #include "Screen.h"
 #include "MsgBox.h"
+#include "AttributesMenu.h"
 
 class Levels {
 public:
@@ -31,6 +32,7 @@ public:
 		INIT,		// Went from Main menu to game
 		INGAME,
 		INGAME_MENU,
+		ATTRIBUTES,
 		INVENTORY,
 		NEXT_LEVEL,
 		EXIT
@@ -58,6 +60,7 @@ private:
 	Player* player;
 	Screen* screen;
 	GameScreen gameScreen;
+	AttributesMenu attrMenu;
 	MsgBox* msgBox;
 	FileHandler fileHandler;
 	Menu gameMenu;
