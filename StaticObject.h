@@ -10,7 +10,10 @@ class StaticObject : public MyObject {
 public:
 	/**
 	 * This constructor is used for setting up "template" instances of derived classes.
-	 * @param mapSymbol what the object looks like in the game
+	 * @param ID
+	 * @param mapSymbol
+	 * @param isPassable
+	 * @param name
 	 */
 	StaticObject(int ID, char mapSymbol, bool isPassable, std::string name);
 	

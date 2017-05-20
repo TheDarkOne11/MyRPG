@@ -33,7 +33,7 @@ void Player::prepareToNextLevel() {
 	doorFound = false;
 	delete ground;
 	ground = NULL;
-	actionsMade = attributes.speed;
+	actionsLeft = attributes.speed;
 }
 
 void Player::setName(std::string name) {
@@ -63,7 +63,7 @@ void Player::update(LevelMap& levelMap, MsgBox* msgBox) {
 		case(UserInput::K_ATTACK):
 			Entity* target;
 			madeAction = true;
-			if( Entity::findTarget(levelMap, currDirection, target) ) {
+			if( findTarget(levelMap, currDirection, target, y, x) ) {
 				// Target found
 				target->isAttacked(this, msgBox);
 			} else {
@@ -77,5 +77,5 @@ void Player::update(LevelMap& levelMap, MsgBox* msgBox) {
 	}
 	
 	if(madeAction)
-		actionsMade--;
+		actionsLeft--;
 }

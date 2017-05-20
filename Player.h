@@ -8,7 +8,7 @@ class Player : public Entity {
 public:
 	Player(int ID, char mapSymbol, std::string name, Info::Attributes attr);
 	Player(const Player* temp);
-	
+
 	virtual void paint(Screen* screen, const int y, const int x) override;
 		
 	/**

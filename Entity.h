@@ -64,10 +64,11 @@ public:
 	 * Stops at impassable positions.
 	 * @param levelMap
 	 * @param direction says in what direction to look.
-	 * @param target is the entity that was found
+	 * @param target is the pointer to the found entity.
 	 * @return true if found
 	 */
-	virtual bool findTarget(LevelMap& levelMap, Direction direction, Entity*& target);
+	virtual bool findTarget(LevelMap& levelMap, Direction direction, Entity*& target, 
+			const int yPos, const int xPos);
 	
 	virtual void attack(Entity* target, MsgBox* msgBox);
 	
@@ -87,10 +88,7 @@ public:
 protected:
 	Info::Attributes attributes;
 	
-	/**
-	 * How many actions Entity did this turn
-	 */
-	int actionsMade;
+	int actionsLeft;
 	
 	/**
 	 * Entity stores the MyObject it stands on.

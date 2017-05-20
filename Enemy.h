@@ -5,7 +5,7 @@
 #include <set>
 #include <algorithm>
 #include <cmath>
-#include <stack>
+#include <list>
 #include "Entity.h"
 #include "Player.h"
 
@@ -14,11 +14,9 @@ public:
 	/**
 	 * This constructor is used for setting up "template" instances of derived classes.
 	 * @param ID
-	 * @param mapSymbol what the entity looks like in the game
-	 * @param health
-	 * @param speed
-	 * @param attackDmg
-	 * @param attackSpeed
+	 * @param mapSymbol
+	 * @param name
+	 * @param attr
 	 */
 	Enemy	(int ID, char mapSymbol, std::string name, Info::Attributes attr);
 	
@@ -28,19 +26,28 @@ public:
 	 */
 	Enemy	(const Enemy* temp);
 	
-	~Enemy();
+	virtual ~Enemy();
 	
 	void die(LevelMap& levelMap);
 		
-	void AI_update(LevelMap& levelMap, const Player* player, MsgBox* msgBox);
+	/**
+	 * Update enemy. 
+	 * @param levelMap
+	 * @param player
+	 * @param msgBox for adding new messages.
+	 */
+	void AI_update(LevelMap& levelMap, Player* player, MsgBox* msgBox);
 	
 	MyObject* clone() const override;
 	
 protected:
+	/**
+	 * Node of pathToPlayer.
+	 */
 	struct PathStep {
-		int y, x;
-		bool inPath;
-		PathStep* parent;
+		int y, x;			/** Coordinates */
+		bool inPath;		/** True if this PathStep is part of the pathToPlayer */
+		PathStep* parent;	/** Pointer to previous PathStep. */
 		
 		PathStep(int y, int x, PathStep* parent);
 	};
@@ -48,7 +55,7 @@ protected:
 	/**
 	 * Stores steps to take in order to move to and attack player.
 	 */
-	std::stack<PathStep*> pathToPlayer;
+	std::list<PathStep*> pathToPlayer;
 	
 	/**
 	 * Fills path which Enemy has to take in order to attack player.
@@ -66,7 +73,28 @@ protected:
 	 */
 	void findPath(LevelMap& levelMap, const Player* player, PathStep* root);
 	
-	int getDistanceToPlayer(PathStep* curr, const Player* player);
+	/**
+	 * Check if player can be attacked from this position.
+	 * Checks for distance and obstacles in the way.
+	 * @param levelMap
+	 * @param player
+	 * @param currY and currX is the position we want to attack from.
+	 * @return true if Enemy can attack Player from this position
+	 */
+	bool canAttackPlayer(LevelMap& levelMap, const Player* player, const int currY, const int currX);
+	
+	/**
+	 * Get distance to player from this position.
+	 * @param currY and currY is position we want to get distance to player from.
+	 * @param player
+	 * @return distance to player rounded up.
+	 */
+	int distanceToPlayer(const int currY, const int currX, const Player* player);
+	
+	/**
+	 * Remove everything from pathToPlayer list.
+	 */
+	void clearPath();
 	
 private:
 	/**
@@ -78,6 +106,13 @@ private:
 		}
 	};
 	
+	/**
+	 * Adds new PathStep to all possible PathSteps if it hasn't been visited yet.
+	 * @param levelMap
+	 * @param s is set of all visited PathSteps
+	 * @param q is queue of all PathSteps we should visit
+	 * @param curr is the current PathStep we want to add.
+	 */
 	void addNewStep(LevelMap& levelMap, std::set<PathStep*, PathStepCmp>& s, 
 				std::queue<PathStep*>& q, PathStep* curr);
 };

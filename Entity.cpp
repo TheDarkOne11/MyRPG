@@ -5,13 +5,13 @@
 
 Entity::Entity	(int ID, char mapSymbol, std::string name, Info::Attributes attr)
 				:	MyObject(ID, mapSymbol, MyObject::ENTITY, false, name), 
-					attributes(attr), actionsMade(attr.speed), ground(NULL)
+					attributes(attr), actionsLeft(attr.speed), ground(NULL)
 {
 }
 
 Entity::Entity	(const Entity* temp)
 				: MyObject(temp->ID, temp->mapSymbol, temp->group, temp->isPassable, temp->name), 
-				attributes(temp->attributes), actionsMade(temp->actionsMade), ground(temp->ground)
+				attributes(temp->attributes), actionsLeft(temp->actionsLeft), ground(temp->ground)
 {
 }
 
@@ -69,7 +69,8 @@ Info::Attributes Entity::getAttributes() const {
 	return attributes;
 }
 
-bool Entity::findTarget(LevelMap& levelMap, Direction direction, Entity*& target) {
+bool Entity::findTarget(LevelMap& levelMap, Direction direction, Entity*& target, 
+		const int yPos, const int xPos) {
 	int addY = 0;
 	int addX = 0;
 	int currRange = attributes.range;
@@ -89,8 +90,8 @@ bool Entity::findTarget(LevelMap& levelMap, Direction direction, Entity*& target
 			break;
 	}
 	
-	int currX = x + addX;
-	int currY = y + addY;
+	int currX = xPos + addX;
+	int currY = yPos + addY;
 	
 	do {
 		
@@ -132,12 +133,12 @@ void Entity::isAttacked(const Entity* attacker, MsgBox* msgBox) {
 
 void Entity::attack(Entity* target, MsgBox* msgBox) {
 	target->isAttacked(this, msgBox);
-	actionsMade--;
+	actionsLeft--;
 }
 
 bool Entity::hasActionsLeft() {
-	if(actionsMade <= 0) {
-		actionsMade = attributes.speed;
+	if(actionsLeft <= 0) {
+		actionsLeft = attributes.speed;
 		return false;
 	}
 	
