@@ -43,7 +43,8 @@ int Menu::update() {
 	// Traverse choices
 	switch(UserInput::getPressedKey()) {
 		case(UserInput::K_UP):
-			currChoice = (currChoice - 1) % choices.size();
+			currChoice = (currChoice <= 0) ? choices.size() : currChoice;
+			currChoice--;
 			break;
 		case(UserInput::K_DOWN):
 			currChoice = (currChoice + 1) % choices.size();
@@ -53,7 +54,6 @@ int Menu::update() {
 			tmp = currChoice;
 			currChoice = 0;
 			return choices[tmp].second;
-			break;
 	}
 	
 	return -1;
