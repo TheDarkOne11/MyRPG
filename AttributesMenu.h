@@ -17,6 +17,7 @@ public:
 		HEALTH,			///< Change health
 		ATTACK_DAMAGE,	///< Change attack damage
 		SPEED,			///< Change speed
+		RANGE,
 		CONTINUE		///< Leave AttributesMenu
 	};
 	

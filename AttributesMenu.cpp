@@ -8,6 +8,7 @@ AttributesMenu::AttributesMenu(Player*& player) : attributesMenu("Player Attribu
 	choices.push_back( std::make_pair("<Health>", HEALTH) );
 	choices.push_back( std::make_pair("<Attack damage>", ATTACK_DAMAGE) );
 	choices.push_back( std::make_pair("<Speed>", SPEED) );
+	choices.push_back( std::make_pair("<Range>", RANGE) );
 	choices.push_back( std::make_pair("CONTINUE", CONTINUE) );
 	attributesMenu.setChoices(choices);	
 }
@@ -68,6 +69,13 @@ bool AttributesMenu::changeChosenAttribute(const int change) {
 			tmp = dummy.speed + change;
 			if(tmp >= 0) {
 				dummy.speed = tmp;
+				changed = true;
+			}
+			break;
+		case(RANGE):
+			tmp = dummy.range + change;
+			if(tmp >= 0) {
+				dummy.range = tmp;
 				changed = true;
 			}
 			break;
