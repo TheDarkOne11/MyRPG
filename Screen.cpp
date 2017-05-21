@@ -7,6 +7,7 @@ Screen::Screen() {
 	curs_set(0);				// Hide cursor
 	noecho();					// Do not print out pressed keys	
 	cbreak();
+	ESCDELAY = 250;				// Set delay of ESCAPE key
 	update();
 
 	// Init custom windows

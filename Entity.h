@@ -72,14 +72,24 @@ public:
 	
 	virtual void isAttacked(const Entity* attacker, MsgBox* msgBox);
 	
-	virtual bool hasActionsLeft();
-	
-	virtual bool alive() const;
-	
 	/**
 	 * Checks the ground Entity stands on.
 	 */
 	virtual void checkGround();
+	
+	/**
+	 * Transfers items from one inventory to another.
+	 * When invSize is specified, only items that exceed the source inventory are transfered.
+	 * When invSize isn't specified, transfer all items.
+	 * @param destination is the inventory to transfer items to.
+	 * @param source is the inventory to transfer items from.
+	 * @param invSize is the size of source inventory.
+	 */
+	virtual void transferItems(MyObject* destination, MyObject* source, const int invSize = -1);
+	
+	virtual bool hasActionsLeft();
+	
+	virtual bool alive() const;
 	
 	virtual std::string getInfo() const;
 	

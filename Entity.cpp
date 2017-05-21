@@ -36,12 +36,21 @@ bool Entity::move(LevelMap& levelMap, int newY, int newX)
 	// Update game map
 		// Old position of this Entity is swapped for the MyObject that Entity stood on
 		ground->addToMap(levelMap, y, x, false);
+		transferItems(ground , this, attributes.invSpace);
 		
 		// Entity is moved to new position on the map
 		this->addToMap(levelMap, newY, newX, false);
 		
 	
 	checkGround();
+	
+	if(!inventory.empty()) {
+		std::cerr << this->name << " [" << y << "/ " << x << "]" << std::endl;
+		for(Item* curr : inventory) {
+			std::cerr << curr->getName() << ",";
+		}
+		std::cerr << std::endl;
+	}
 		
 	return true;
 }
@@ -50,7 +59,6 @@ bool Entity::alive() const {
 	if(attributes.maxHP <= 0) {
 		return false;
 	}
-	
 	
 	return true;
 }
@@ -61,7 +69,7 @@ void Entity::addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) {
 }
 
 void Entity::checkGround() {
-	// TODO Check ground for items
+	transferItems(this, ground);
 }
 
 bool Entity::findTarget(LevelMap& levelMap, Direction direction, Entity*& target, 
@@ -144,4 +152,21 @@ std::string Entity::getInfo() const {
 	std::stringstream ss;
 	ss << name << ": " << attributes;
 	return ss.str();
+}
+
+void Entity::transferItems(MyObject* destination, MyObject* source, const int invSize) {
+	InvList& destInv = destination->getInventory();
+	InvList& srcInv = source->getInventory();
+	
+	if(invSize == -1) {
+		// Transfer all Items
+		destInv.merge(srcInv);
+	} else {
+		// Transfer exceeding items
+		for(int i = 0; i < ( (signed) srcInv.size() - invSize); i++) {
+			Item* curr = srcInv.back();
+			srcInv.pop_back();
+			destInv.push_back(curr);
+		}
+	}
 }

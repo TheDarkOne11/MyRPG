@@ -10,7 +10,7 @@ Menu::Menu(std::string head) : head(head), headExists(true), currChoice(0) {
 void Menu::paint(Screen* screen) {
 	std::pair<int, int> p = screen->getCurrDimensions();
 	int currX = p.second/2;
-	int currY = p.first/2;
+	int currY = p.first/2 - choices.size();
 	int i = 0;
 	
 	// Paint head if it exists

@@ -161,6 +161,7 @@ bool Enemy::canAttackPlayer(LevelMap& levelMap, const Player* player, const int 
 
 void Enemy::die(LevelMap& levelMap) {
 	ground->addToMap(levelMap, y, x, false);
+	transferItems(ground, this);
 	ground = NULL;
 }
 

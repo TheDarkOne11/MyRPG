@@ -12,11 +12,12 @@
 #include "Info.h"
 #include "StaticObject.h"
 #include "Enemy.h"
+#include "Item.h"
 
 /**
  * Class has some important constants for the game.
- * All types of MyObject subclasses that can be placed in the game are initialized here. (Wall, Player..)
- * These initialized subclass serve as "templates", their copies are provided outside ConfigClass.
+ * Class stores initialized "template" instances of all MyObject and Item classes.
+ * Class provides copies of these "templates" to other classes.
  */
 class Handler {
 public:	
@@ -26,6 +27,10 @@ public:
 	 * Class initialization.
 	 */
 	static void init();
+	
+	static Item* getItem(const int ID, const Item::ItemType type);
+	
+	static Item* getItem(const Item::ItemType);
 		
 	/**
 	 * Finds the MyObject subclass using mapSymbol.
@@ -66,10 +71,16 @@ public:
 		
 private:
 	/**
-	 * Map of all types of MyObject subclasses.
+	 * Map of all types of MyObject template instances.
 	 * Divided into groups by ObjectType key.
 	 */
 	static std::map<MyObject::ObjectGroup, std::vector<MyObject*>> map_MyObjectsTypes;
+	
+	/**
+	 * Map of all types of Item template instances.
+	 * Divided into groups by ItemType key.
+	 */
+	static std::map<Item::ItemType, std::vector<Item*>> map_ItemTypes;
 	static Player* player;
 	
 	/**
@@ -77,6 +88,12 @@ private:
 	 * @param object is the object which we want to store.
 	 */
 	static void addObject(MyObject* object);
+	
+	/**
+	 * Stores new item into the map.
+	 * @param item is the object which we want to store.
+	 */
+	static void addItem(Item* item);
 };
 
 #endif /* MYOBJECTDESCENDANTS_H */

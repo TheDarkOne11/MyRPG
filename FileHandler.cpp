@@ -69,7 +69,7 @@ void FileHandler::addRandomObjects(LevelMap& levelMap, EnemyVect& enemies, Playe
 		InnerVect& possiblePositions) {
 	MyObject* curr;
 	int ranPos = rand() % possiblePositions.size();
-	int ranNum = rand() % Info::maxEnemiesPerLevel + 1;
+	int ranNum;
 		
 	// Add player to random position
 	curr = getPossiblePos(possiblePositions, ranPos);
@@ -81,8 +81,14 @@ void FileHandler::addRandomObjects(LevelMap& levelMap, EnemyVect& enemies, Playe
 	curr = getPossiblePos(possiblePositions, ranPos);
 	door->addToMap(levelMap, curr->getY(), curr->getX(), true);
 	
-	// Add random number of random enemies	
-	//std::cerr << "Num of Enemies added: " << ranNum << std::endl;
+	// Add random number of random items
+	ranNum = rand() % Info::maxConsumableItemsPerLevel + 1;
+	addRandomItems(possiblePositions, ranNum, Item::CONSUMABLE);
+	ranNum = rand() % Info::maxUsableItemsPerLevel + 1;
+	addRandomItems(possiblePositions, ranNum, Item::USEABLE);
+	
+	// Add random number of random enemies
+	ranNum = rand() % Info::maxEnemiesPerLevel + 1;
 	for(int i = 0; i < ranNum || possiblePositions.size() < 0; i++) {
 		// Get random enemy
 		Enemy* enemy = dynamic_cast<Enemy*> (Handler::getMyObject(MyObject::ENTITY));
@@ -91,7 +97,6 @@ void FileHandler::addRandomObjects(LevelMap& levelMap, EnemyVect& enemies, Playe
 		
 		enemies.push_back(enemy);
 		enemy->addToMap(levelMap, curr->getY(), curr->getX(), false);
-		//std::cerr << "Enemy: " << enemy->getID() << "/ " << enemy->getMapSymbol() << std::endl;
 	}
 }
 
@@ -99,4 +104,24 @@ MyObject* FileHandler::getPossiblePos(InnerVect& possiblePositions, int index) {
 	MyObject* curr = possiblePositions[index];
 	possiblePositions.erase( possiblePositions.begin() + index );
 	return curr;
+}
+
+void FileHandler::addRandomItems(const InnerVect& possiblePositions, 
+			const int count, const Item::ItemType type) {
+	int ranPos;
+	int currCount = 0;
+	for(int i = 0; i < count || possiblePositions.size() < 0; i += currCount) {
+		ranPos = rand() % possiblePositions.size();
+		MyObject* curr = possiblePositions.at(ranPos);
+		
+		// How many items in current position
+		currCount = rand() % (count - i) + 1;
+		
+		// Add currCount of items to the current MyObject
+		for(int f = 0; f < currCount; f++) {
+			Item* item = Handler::getItem(type);
+			InvList& inv = curr->getInventory();
+			inv.push_back( item );
+		}
+	}
 }

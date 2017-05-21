@@ -10,6 +10,9 @@ MyObject::MyObject(int ID, char mapSymbol, ObjectGroup type,
 
 MyObject::~MyObject() 
 {
+	for(Item* curr : inventory) {
+		delete curr;
+	}
 }
 
 void MyObject::paint(Screen* screen, const int y, const int x) {
@@ -58,4 +61,8 @@ char MyObject::getMapSymbol() const {
 
 std::string MyObject::getName() const {
 	return name;
+}
+
+InvList& MyObject::getInventory() {
+	return inventory;
 }

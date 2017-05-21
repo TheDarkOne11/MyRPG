@@ -4,6 +4,7 @@
 #include <iostream>
 
 #define ChoiceVect std::vector< std::pair<std::string, int> >
+#define InvList std::list<Item*>
 #define DefiningPair std::pair<int, MyObject::ObjectGroup>
 #define LevelMap std::vector< std::vector<MyObject*> >
 
@@ -13,9 +14,18 @@
 class Info {
 public:
 	const static int maxEnemiesPerLevel = 15;
-	const static int maxItemsPerLevel = 5;
+	const static int maxConsumableItemsPerLevel = 5;
+	const static int maxUsableItemsPerLevel = 3;
 	const static int initialAttributePointsCount = 5;
 	const static int hpPerPoint = 5;
+	const static char symbol_staticObjectHasItem = '*';
+	
+	// List of Consumable items IDs
+	const static int ID_healthPotion = 0;
+	
+	// List of Usable items IDs
+	const static int ID_fastBoots = 0;
+	const static int ID_bag = 1;
 		
 	// List of StaticObject IDs
 	const static int ID_Door = 0;
@@ -37,12 +47,21 @@ public:
 	 * Struct of all types of attributes every Entity and Item can have.
 	 */
 	struct Attributes {
-		int maxHP;		///< How much damage can this Entity take.
-		int speed;		///< How many actions per its turn can Entity do.
-		int attackDmg;	///< How much damage does this Entity inflict in one attack.
-		int range;		///< Range of this Entitie's attack.
+		int maxHP;		///< How much damage can be taken.
+		int speed;		///< How many actions per turn can be done.
+		int attackDmg;	///< How much damage can be inflicted in one attack.
+		int range;		///< Range of attack.
+		int invSpace;	///< How much items can be carried
 		
-		Attributes(int h, int s, int ad, int r);
+		/**
+		 * Standard constructor.
+		 * @param health
+		 * @param speed
+		 * @param attack damage
+		 * @param range
+		 * @param inventory space
+		 */
+		Attributes(int h = 0, int s = 0, int ad = 0, int r = 0, int inv = 0);
 		
 		Attributes operator+(const Attributes& right);
 		

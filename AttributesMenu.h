@@ -17,7 +17,8 @@ public:
 		HEALTH,			///< Change health
 		ATTACK_DAMAGE,	///< Change attack damage
 		SPEED,			///< Change speed
-		RANGE,
+		RANGE,			///< Change attack range
+		INV_SPACE,		///< Change inventory space
 		CONTINUE		///< Leave AttributesMenu
 	};
 	

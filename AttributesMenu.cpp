@@ -1,7 +1,7 @@
 #include "AttributesMenu.h"
 
 AttributesMenu::AttributesMenu(Player*& player) : attributesMenu("Player Attributes"), 
-				player(player), dummy(0, 0, 0, 0)
+				player(player), dummy(0, 0, 0, 0, 0)
 {
 	// Init choices menu
 	ChoiceVect choices;
@@ -9,6 +9,7 @@ AttributesMenu::AttributesMenu(Player*& player) : attributesMenu("Player Attribu
 	choices.push_back( std::make_pair("<Attack damage>", ATTACK_DAMAGE) );
 	choices.push_back( std::make_pair("<Speed>", SPEED) );
 	choices.push_back( std::make_pair("<Range>", RANGE) );
+	choices.push_back( std::make_pair("<Inventory space>", INV_SPACE) );
 	choices.push_back( std::make_pair("CONTINUE", CONTINUE) );
 	attributesMenu.setChoices(choices);	
 }
@@ -76,6 +77,13 @@ bool AttributesMenu::changeChosenAttribute(const int change) {
 			tmp = dummy.range + change;
 			if(tmp >= 0) {
 				dummy.range = tmp;
+				changed = true;
+			}
+			break;
+		case(INV_SPACE):
+			tmp = dummy.invSpace + change;
+			if(tmp >= 0) {
+				dummy.invSpace = tmp;
 				changed = true;
 			}
 			break;

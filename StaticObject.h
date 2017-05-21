@@ -23,6 +23,8 @@ public:
 	 */
 	StaticObject(const StaticObject* temp);
 	
+	void paint(Screen* screen, const int y, const int x) override;
+	
 	MyObject* clone() const override;
 };
 

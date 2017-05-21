@@ -13,3 +13,11 @@ StaticObject::StaticObject(const StaticObject* tmp)
 MyObject* StaticObject::clone() const {
 	return new StaticObject(this);
 }
+
+void StaticObject::paint(Screen* screen, const int y, const int x) {
+	if(!inventory.empty()) {
+		mvwaddch(screen->getCurrScreen(), y, x, Info::symbol_staticObjectHasItem);
+	} else {
+		MyObject::paint(screen, y, x);
+	}
+}

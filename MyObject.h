@@ -4,11 +4,13 @@
 #include <ncurses.h>
 #include <iostream>
 #include <vector>
+#include <list>
 #include "Info.h"
 #include "Screen.h"
+#include "Item.h"
 
 /**
- * Super class of all objects in the game (Walls, Player, Enemies...)
+ * Super class of all entities and static objects that can be placed in the game map.
  */
 class MyObject {
 public:
@@ -61,6 +63,8 @@ public:
 	virtual char getMapSymbol() const;
 	
 	virtual std::string getName() const;
+	
+	virtual InvList& getInventory();
 
 protected:
 	/**
@@ -82,6 +86,11 @@ protected:
 	bool isPassable;
 	
 	std::string name;
+	
+	/**
+	 * All Items this MyObject currently has.
+	 */
+	InvList inventory;
 };
 
 #endif /* MYOBJECT_H */

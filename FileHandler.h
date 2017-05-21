@@ -70,6 +70,9 @@ private:
 				Player*& player, InnerVect& possiblePositions);
 	
 	MyObject* getPossiblePos( InnerVect& possiblePositions, int index );
+	
+	void addRandomItems(const InnerVect& possiblePositions, 
+			const int count, const Item::ItemType type);
 };
 
 #endif /* FILEHANDLER_H */
