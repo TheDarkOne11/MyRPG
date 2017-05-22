@@ -35,7 +35,7 @@ void Player::prepareToNextLevel() {
 	doorFound = false;
 	delete ground;
 	ground = NULL;
-	actionsLeft = attributes.speed;
+	actionsLeft = getCurrAttributes().speed;
 }
 
 void Player::setName(std::string name) {

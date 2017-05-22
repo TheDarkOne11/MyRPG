@@ -10,13 +10,13 @@ Info::Attributes::Attributes(int h, int s, int ad, int r, int inv)
 {
 }
 
-Info::Attributes Info::Attributes::operator+(const Attributes& right) {
+Info::Attributes Info::Attributes::operator+(const Attributes& right) const {
 	return Attributes(maxHP + right.maxHP, speed + 
 			right.speed, attackDmg + right.attackDmg, 
 			range + right.range, invSpace + right.invSpace);
 }
 
-Info::Attributes Info::Attributes::operator-(const Attributes& right) {
+Info::Attributes Info::Attributes::operator-(const Attributes& right) const {
 	return Attributes(maxHP - right.maxHP, speed - 
 			right.speed, attackDmg - right.attackDmg, 
 			range - right.range, invSpace - right.invSpace);

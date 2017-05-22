@@ -2,7 +2,7 @@
 
 Entity::Entity	(int ID, char mapSymbol, std::string name, Info::Attributes attr)
 				:	MyObject(ID, mapSymbol, MyObject::ENTITY, false, name), 
-					attributes(attr), actionsLeft(attr.speed), hpRemaining(attr.maxHP),
+					attributes(attr), actionsLeft(attr.speed), currState(),
 					ground(NULL)
 {
 }
@@ -10,7 +10,7 @@ Entity::Entity	(int ID, char mapSymbol, std::string name, Info::Attributes attr)
 Entity::Entity	(const Entity* temp)
 				: MyObject(temp->ID, temp->mapSymbol, temp->group, temp->isPassable, temp->name), 
 				attributes(temp->attributes), actionsLeft(temp->actionsLeft), 
-				hpRemaining(temp->attributes.maxHP), ground(temp->ground)
+				currState(temp->currState), ground(temp->ground)
 {
 }
 
@@ -47,7 +47,7 @@ bool Entity::move(LevelMap& levelMap, int newY, int newX)
 }
 
 bool Entity::alive() const {
-	if(attributes.maxHP <= 0) {
+	if(getCurrAttributes().maxHP <= 0) {
 		return false;
 	}
 	
@@ -67,7 +67,7 @@ bool Entity::findTarget(LevelMap& levelMap, Direction direction, Entity*& target
 		const int yPos, const int xPos) {
 	int addY = 0;
 	int addX = 0;
-	int currRange = attributes.range;
+	int currRange = getCurrAttributes().range;
 	
 	switch(direction) {
 		case UP:
@@ -117,8 +117,8 @@ bool Entity::findTarget(LevelMap& levelMap, Direction direction, Entity*& target
 }
 
 void Entity::isAttacked(const Entity* attacker, MsgBox* msgBox) {
-	Info::Attributes attr = attacker->attributes;
-	attributes.maxHP -= attr.attackDmg;
+	Info::Attributes attr = attacker->getCurrAttributes();
+	currState.maxHP -= attr.attackDmg;
 	
 	std::stringstream ss;
 	ss << attacker->name << " hit " << name << " for " << attr.attackDmg << " HP.";
@@ -132,7 +132,7 @@ void Entity::attack(Entity* target, MsgBox* msgBox) {
 
 bool Entity::hasActionsLeft() {
 	if(actionsLeft <= 0) {
-		actionsLeft = attributes.speed;
+		actionsLeft = getCurrAttributes().speed;
 		return false;
 	}
 	
@@ -141,7 +141,7 @@ bool Entity::hasActionsLeft() {
 
 std::string Entity::getInfo() const {
 	std::stringstream ss;
-	ss << name << ": " << attributes;
+	ss << name << ": " << getCurrAttributes();
 	return ss.str();
 }
 
@@ -165,4 +165,8 @@ void Entity::transferItems(MyObject* destination, MyObject* source, const int in
 			destInv.push_back(curr);
 		}
 	}
+}
+
+const Info::Attributes Entity::getCurrAttributes() const {
+	return attributes + currState;
 }

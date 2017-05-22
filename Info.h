@@ -63,9 +63,9 @@ public:
 		 */
 		Attributes(int h = 0, int s = 0, int ad = 0, int r = 0, int inv = 0);
 		
-		Attributes operator+(const Attributes& right);
+		Attributes operator+(const Attributes& right) const;
 		
-		Attributes operator-(const Attributes& right);
+		Attributes operator-(const Attributes& right) const;
 		
 		void clear();
 		

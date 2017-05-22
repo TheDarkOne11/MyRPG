@@ -74,7 +74,7 @@ bool InventoryMenu::update() {
 	if(!inv.empty()) {
 		if(currentType == INVENTORY) {
 			selectedItem = inv[invMenu.getCurrentChoice()];
-		} else if(currentType == EXCESSIVE && (signed) inv.size() > player->attributes.invSpace) {
+		} else if(currentType == EXCESSIVE && (signed) inv.size() > player->getCurrAttributes().invSpace) {
 			selectedItem = inv[excessiveMenu.getCurrentChoice()];
 		}
 	}
@@ -88,7 +88,7 @@ void InventoryMenu::reloadInventory() {
 	InvList& inv = player->getInventory();
 	
 	for(int i = 0; i < (signed) inv.size(); i++) {
-		if(i < player->attributes.invSpace)
+		if(i < player->getCurrAttributes().invSpace)
 			inventoryList.push_back(std::make_pair(inv[i]->getName(), i));
 		else
 			excessiveList.push_back(std::make_pair(inv[i]->getName(), i));

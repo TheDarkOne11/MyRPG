@@ -91,11 +91,23 @@ public:
 	
 	virtual bool alive() const;
 	
+	/**
+	 * @return Entities attributes with applied changes from current state.
+	 */
+	virtual const Info::Attributes getCurrAttributes() const;
+	
 	virtual std::string getInfo() const;
 	
 protected:	
+	/**
+	 * Actions Entity has till the end of turn.
+	 */
 	int actionsLeft;
-	int hpRemaining;
+	
+	/**
+	 * All temporary effects (damage taken, buffs...) are stored here.
+	 */
+	Info::Attributes currState;
 	
 	/**
 	 * Entity stores the MyObject it stands on.

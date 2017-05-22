@@ -19,7 +19,7 @@ Enemy::PathStep::PathStep(int y, int x, PathStep* parent)
 }
 
 void Enemy::AI_update(LevelMap& levelMap, Player* player, MsgBox* msgBox) {
-	while(actionsLeft > 0) {
+	while(hasActionsLeft()) {
 		if( canAttackPlayer(levelMap, player, y, x) ) {
 			attack(player, msgBox);
 			actionsLeft--;
@@ -35,9 +35,6 @@ void Enemy::AI_update(LevelMap& levelMap, Player* player, MsgBox* msgBox) {
 			actionsLeft--;			
 		}
 	}
-	
-	// Refresh actionsLeft
-	actionsLeft = attributes.speed;
 }
 
 void Enemy::fillPath(LevelMap& levelMap, const Player* player) {	
@@ -130,7 +127,7 @@ bool Enemy::canAttackPlayer(LevelMap& levelMap, const Player* player, const int 
 	// If Enemy & Player are in same column/ row
 	if(currY == player->getY() || currX == player->getX()) {
 		// If enemy in range
-		if(distanceToPlayer(currY, currX, player) <= attributes.range) {
+		if(distanceToPlayer(currY, currX, player) <= getCurrAttributes().range) {
 			// If no obstacle between enemy and player
 			Direction currDir;
 			if(currY < player->getY()) {
