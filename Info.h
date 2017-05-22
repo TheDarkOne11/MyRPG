@@ -4,7 +4,7 @@
 #include <iostream>
 
 #define ChoiceVect std::vector< std::pair<std::string, int> >
-#define InvList std::list<Item*>
+#define InvList std::vector<Item*>
 #define DefiningPair std::pair<int, MyObject::ObjectGroup>
 #define LevelMap std::vector< std::vector<MyObject*> >
 

@@ -1,16 +1,16 @@
 #include "Menu.h"
 #include "Screen.h"
 
-Menu::Menu() : head(""), headExists(false), currChoice(0) {
+Menu::Menu() : head(""), headExists(false), currChoice(0), offsetY(0), offsetX(0) {
 }
 
-Menu::Menu(std::string head) : head(head), headExists(true), currChoice(0) {
+Menu::Menu(std::string head) : head(head), headExists(true), currChoice(0), offsetY(0), offsetX(0) {
 }
 
 void Menu::paint(Screen* screen) {
 	std::pair<int, int> p = screen->getCurrDimensions();
-	int currX = p.second/2;
-	int currY = p.first/2 - choices.size();
+	int currX = p.second/2 + offsetX;
+	int currY = p.first/2 + offsetY - choices.size();
 	int i = 0;
 	
 	// Paint head if it exists
@@ -40,6 +40,10 @@ void Menu::paint(Screen* screen) {
 int Menu::update() {
 	int tmp;
 	
+	if(choices.empty()) {
+		return -1;
+	}
+	
 	// Traverse choices
 	switch(UserInput::getPressedKey()) {
 		case(UserInput::K_UP):
@@ -60,7 +64,7 @@ int Menu::update() {
 }
 
 
-void Menu::setChoices(ChoiceVect choices) {
+void Menu::setChoices(ChoiceVect& choices) {
 	this->choices.clear();
 	
 	for(auto iter = choices.begin(); iter != choices.end(); iter++) {
@@ -74,5 +78,10 @@ void Menu::setHead(std::string head) {
 }
 
 int Menu::getCurrentChoice() {
-	return currChoice;
+	return choices.at(currChoice).second;
+}
+
+void Menu::setScreenOffset(const int y, const int x) {
+	offsetY = y;
+	offsetX = x;
 }

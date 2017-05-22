@@ -1,7 +1,7 @@
 #include "Levels.h"
 
 Levels::Levels(Screen* screen) : player(Handler::getPlayer()), screen(screen),
-		gameScreen(player), attrMenu(player), currTurn(PLAYER), currState(INIT)
+		gameScreen(player), attrMenu(player), invMenu(player), currTurn(PLAYER), currState(INIT)
 {
 	srand(time(NULL));
 	msgBox = new MsgBox(screen->infoScreenHeight - 2);
@@ -10,6 +10,7 @@ Levels::Levels(Screen* screen) : player(Handler::getPlayer()), screen(screen),
 	ChoiceVect vect_GameMenu;
 	vect_GameMenu.push_back( std::make_pair("Resume game", INGAME) );
 	vect_GameMenu.push_back( std::make_pair("Change attributes", ATTRIBUTES) );
+	vect_GameMenu.push_back( std::make_pair("Inventory", INVENTORY) );
 	vect_GameMenu.push_back( std::make_pair("Exit game", EXIT) );
 	this->gameMenu.setChoices(vect_GameMenu);
 	
@@ -77,7 +78,9 @@ void Levels::update() {
 			}
 			break;
 		case(INVENTORY):
-			
+			if(!invMenu.update()) {
+				currState = INGAME_MENU;
+			}
 			break;
 		case(ATTRIBUTES):
 			if(!attrMenu.update()) {
@@ -108,7 +111,7 @@ void Levels::ingameUpdate() {
 			
 			// Check other pressed keys
 			switch(UserInput::getPressedKey()) {
-				case(UserInput::K_MENU):
+				case(UserInput::K_ESC):
 					currState = INGAME_MENU;
 					break;
 			}
@@ -157,7 +160,7 @@ void Levels::paint() {
 			gameMenu.paint(screen);
 			break;
 		case(INVENTORY):
-			
+			invMenu.paint(screen);
 			break;
 		case(ATTRIBUTES):
 			attrMenu.paint(screen);

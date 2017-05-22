@@ -13,7 +13,7 @@ public:
 		STANDARD = 0,
 		GAME = 1,
 		INFO = 2,
-		ATTRIBUTES = 3
+		ATTR_INV = 3
 	};
 	
 	Screen();

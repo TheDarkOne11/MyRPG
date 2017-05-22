@@ -108,26 +108,6 @@ void Handler::addObject(MyObject* object) {
 	it->second.push_back(object);
 }
 
-DefiningPair Handler::getMyObjectID(const char mapSymbol) {
-	DefiningPair currPair;
-	bool found = false;
-	for(auto it = map_MyObjectsTypes.begin(); it != map_MyObjectsTypes.end(); it++) {
-		for(MyObject* curr : it->second) {
-			// If match is found, return copy of the MyObject subclass
-			if(curr->getMapSymbol() == mapSymbol) {
-				currPair = std::make_pair(curr->getID(), curr->getGroup());
-				found = true;
-			}
-		}
-	}
-	
-	if(!found) {
-		throw "No match for mapSymbol found: " + mapSymbol;
-	}
-		
-	return currPair;
-}
-
 MyObject* Handler::getMyObject(const char mapSymbol) {
 	for(auto it = map_MyObjectsTypes.begin(); it != map_MyObjectsTypes.end(); it++) {
 		for(MyObject* curr : it->second) {

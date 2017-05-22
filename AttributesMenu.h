@@ -18,10 +18,8 @@ public:
 		ATTACK_DAMAGE,	///< Change attack damage
 		SPEED,			///< Change speed
 		RANGE,			///< Change attack range
-		INV_SPACE,		///< Change inventory space
-		CONTINUE		///< Leave AttributesMenu
+		INV_SPACE		///< Change inventory space
 	};
-	
 	
 	AttributesMenu(Player*& player);
 	

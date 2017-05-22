@@ -10,20 +10,12 @@ AttributesMenu::AttributesMenu(Player*& player) : attributesMenu("Player Attribu
 	choices.push_back( std::make_pair("<Speed>", SPEED) );
 	choices.push_back( std::make_pair("<Range>", RANGE) );
 	choices.push_back( std::make_pair("<Inventory space>", INV_SPACE) );
-	choices.push_back( std::make_pair("CONTINUE", CONTINUE) );
 	attributesMenu.setChoices(choices);	
 }
 
 bool AttributesMenu::update() {
-	AttributeMenuChoices tmp = (AttributeMenuChoices) attributesMenu.update();
 	int currAttrPoints = player->getAttrPointsCount();
-	
-	if(tmp == CONTINUE) {
-		// Player chose to return to the previous screen
-		player->attributes = player->attributes + dummy;
-		dummy.clear();
-		return false;
-	}
+	attributesMenu.update();
 	
 	switch(UserInput::getPressedKey()) {
 		case(UserInput::K_LEFT):
@@ -40,6 +32,11 @@ bool AttributesMenu::update() {
 				currAttrPoints--;
 			}
 			break;
+		case(UserInput::K_ESC):
+			// Player chose to return to the previous screen
+			player->attributes = player->attributes + dummy;
+			dummy.clear();
+			return false;
 	}
 	player->setAttrPointsCount(currAttrPoints);
 	
@@ -87,8 +84,6 @@ bool AttributesMenu::changeChosenAttribute(const int change) {
 				changed = true;
 			}
 			break;
-		case(CONTINUE):
-			break;
 	}
 	
 	return changed;
@@ -98,7 +93,7 @@ void AttributesMenu::paint(Screen* screen) {
 	std::stringstream ss, ss2;
 	
 	// Paint attributes menu
-	screen->setCurrScreen(screen->ATTRIBUTES);
+	screen->setCurrScreen(screen->ATTR_INV);
 	attributesMenu.paint(screen);
 	screen->sRefresh();
 	
@@ -107,7 +102,7 @@ void AttributesMenu::paint(Screen* screen) {
 	ss << "After CONTINUE,  " << player->getName() << " will have these stats: " << (player->attributes + dummy);
 	ss2 << "You currently invested in these stats: " << dummy;
 	
-	mvwprintw(screen->getCurrScreen(), 0, 0, "Change attributes using LEFT/ RIGHT arrow keys.");
+	mvwprintw(screen->getCurrScreen(), 0, 0, "Change attributes using LEFT/ RIGHT arrow keys. Press ESC to return/ continue.");
 	mvwprintw(screen->getCurrScreen(), 1, 0, ss.str().c_str());
 	mvwprintw(screen->getCurrScreen(), 2, 0, ss2.str().c_str());
 	mvwprintw(screen->getCurrScreen(), 3, 0, "You have %d points left.", player->getAttrPointsCount());

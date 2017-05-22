@@ -17,7 +17,9 @@ public:
 	
 	Menu(std::string head);
 	
-	void setChoices(ChoiceVect choices);
+	void setChoices(ChoiceVect& choices);
+	
+	void setScreenOffset(const int y, const int x);
 	
 	void setHead(std::string head);
 	
@@ -29,6 +31,9 @@ public:
 	 */
 	int update();
 	
+	/**
+	 * @return Currently chosen value;
+	 */
 	int getCurrentChoice();
 	
 private:
@@ -36,6 +41,7 @@ private:
 	bool headExists;
 	ChoiceVect choices;
 	int currChoice;
+	int offsetY, offsetX;
 };
 
 #endif /* MENU_H */

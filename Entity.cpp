@@ -42,16 +42,7 @@ bool Entity::move(LevelMap& levelMap, int newY, int newX)
 		this->addToMap(levelMap, newY, newX, false);
 		
 	
-	checkGround();
-	
-	if(!inventory.empty()) {
-		std::cerr << this->name << " [" << y << "/ " << x << "]" << std::endl;
-		for(Item* curr : inventory) {
-			std::cerr << curr->getName() << ",";
-		}
-		std::cerr << std::endl;
-	}
-		
+	checkGround();		
 	return true;
 }
 
@@ -160,10 +151,15 @@ void Entity::transferItems(MyObject* destination, MyObject* source, const int in
 	
 	if(invSize == -1) {
 		// Transfer all Items
-		destInv.merge(srcInv);
+		for(auto it = srcInv.rbegin(); it != srcInv.rend(); it++) {
+			Item* curr = *it;
+			destInv.push_back(curr);
+		}
+		srcInv.clear();
 	} else {
 		// Transfer exceeding items
-		for(int i = 0; i < ( (signed) srcInv.size() - invSize); i++) {
+		int exceeding = srcInv.size() - invSize;
+		for(int i = 0; i < exceeding; i++) {
 			Item* curr = srcInv.back();
 			srcInv.pop_back();
 			destInv.push_back(curr);

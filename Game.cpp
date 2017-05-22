@@ -6,7 +6,7 @@ Game::Game() : currState(MAIN_MENU), mainMenu("MAIN MENU") {
 	
 	Handler::init();
 	
-	// TODO Load Main Menu
+	// Load Main Menu
 	ChoiceVect choices;
 	choices.push_back( std::make_pair("New Game", NEW_LEVELS) );
 	choices.push_back( std::make_pair("Exit application", EXIT) );

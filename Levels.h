@@ -20,6 +20,7 @@
 #include "Screen.h"
 #include "MsgBox.h"
 #include "AttributesMenu.h"
+#include "InventoryMenu.h"
 
 class Levels {
 public:
@@ -61,6 +62,7 @@ private:
 	Screen* screen;
 	GameScreen gameScreen;
 	AttributesMenu attrMenu;
+	InventoryMenu invMenu;
 	MsgBox* msgBox;
 	FileHandler fileHandler;
 	Menu gameMenu;

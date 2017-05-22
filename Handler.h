@@ -31,13 +31,6 @@ public:
 	static Item* getItem(const int ID, const Item::ItemType type);
 	
 	static Item* getItem(const Item::ItemType);
-		
-	/**
-	 * Finds the MyObject subclass using mapSymbol.
-	 * @param mapSymbol is the unique symbol each MyObject class has.
-	 * @return Pair<ID, ObjectGroup> of the MyObject subclass
-	 */
-	static DefiningPair getMyObjectID(const char mapSymbol);
 	
 	/**
 	 * Finds the MyObject subclass using mapSymbol.
