@@ -87,6 +87,12 @@ public:
 	 */
 	virtual void transferItems(MyObject* destination, MyObject* source, const int invSize = -1);
 	
+	/**
+	 * Equips/ Unequips an item.
+	 * @param index is the index of Item in inventory to equip/ unequip.
+	 */
+	virtual void equipItem(const int index);
+	
 	virtual bool hasActionsLeft();
 	
 	virtual bool alive() const;

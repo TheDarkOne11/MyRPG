@@ -25,7 +25,7 @@ public:
 	
 	// List of Usable items IDs
 	const static int ID_fastBoots = 0;
-	const static int ID_bag = 1;
+	const static int ID_gun = 1;
 		
 	// List of StaticObject IDs
 	const static int ID_Door = 0;

@@ -22,10 +22,16 @@ private:
 	Player* player;
 	MenuType currentType;
 	bool changes;
-	Item* selectedItem;
+	std::string currItemInfo;
 	
+	/**
+	 * Reload inventory menues.
+	 */
 	void reloadInventory();
 	
+	/**
+	 * Swap items between inventory and exceeding items.
+	 */
 	void swap();
 };
 

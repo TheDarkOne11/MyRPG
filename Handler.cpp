@@ -31,8 +31,8 @@ void Handler::init() {
 	// Initialize Usable items
 	Item* fastBoots =  new Item(Info::ID_fastBoots, "Fast boots", Item::USEABLE, Info::Attributes(5, 3));
 	addItem(fastBoots);
-	Item* bag =  new Item(Info::ID_bag, "Bag", Item::USEABLE, Info::Attributes(2, -1, 0, 0, 3));
-	addItem(bag);
+	Item* gun =  new Item(Info::ID_gun, "Gun", Item::USEABLE, Info::Attributes(2, -1, 0, 3, 0));
+	addItem(gun);
 	
 	// Initialize static objects
 	MyObject* door = new StaticObject(Info::ID_Door, '0', true, "Door");

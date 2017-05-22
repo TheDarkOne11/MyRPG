@@ -36,7 +36,7 @@ bool Entity::move(LevelMap& levelMap, int newY, int newX)
 	// Update game map
 		// Old position of this Entity is swapped for the MyObject that Entity stood on
 		ground->addToMap(levelMap, y, x, false);
-		transferItems(ground , this, attributes.invSpace);
+		transferItems(ground , this, getCurrAttributes().invSpace);
 		
 		// Entity is moved to new position on the map
 		this->addToMap(levelMap, newY, newX, false);
@@ -154,6 +154,11 @@ void Entity::transferItems(MyObject* destination, MyObject* source, const int in
 		for(auto it = srcInv.rbegin(); it != srcInv.rend(); it++) {
 			Item* curr = *it;
 			destInv.push_back(curr);
+			
+			// Unequip if equiped
+			if(curr->getEquiped()) {
+				equipItem(it - srcInv.rbegin());
+			}
 		}
 		srcInv.clear();
 	} else {
@@ -163,6 +168,30 @@ void Entity::transferItems(MyObject* destination, MyObject* source, const int in
 			Item* curr = srcInv.back();
 			srcInv.pop_back();
 			destInv.push_back(curr);
+			
+			// Unequip if equiped
+			if(curr->getEquiped()) {
+				equipItem(i);
+			}
+		}
+	}
+}
+
+void Entity::equipItem(const int index) {
+	Item* item = inventory.at(index);
+	
+	if(item->getEquiped()) {
+		// Item is equiped, unequip it
+		currState = currState - item->getAttributes();
+		item->setEquiped(false);
+	} else {
+		// Item isn't equiped, equip it
+		currState = currState + item->getAttributes();
+		item->setEquiped(true);
+		
+		if(item->getType() == item->CONSUMABLE) {
+			inventory.erase(inventory.begin() + index);
+			delete item;
 		}
 	}
 }

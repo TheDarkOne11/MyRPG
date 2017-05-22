@@ -1,7 +1,7 @@
 #include "InventoryMenu.h"
 
 InventoryMenu::InventoryMenu(Player* player) : invMenu("Inventory"), excessiveMenu("Excessive items"),
-		player(player), currentType(INVENTORY), changes(true), selectedItem(NULL)
+		player(player), currentType(INVENTORY), changes(true), currItemInfo("")
 {
 	invMenu.setScreenOffset(0, -30);
 	excessiveMenu.setScreenOffset(0, 30);
@@ -21,27 +21,27 @@ void InventoryMenu::paint(Screen* screen) {
 	screen->setCurrScreen(screen->INFO);
 	ss << "Press " << (char) UserInput::K_SWAP << " to swap currently selected items in both menus.";
 	ss2 << "Press " << (char) UserInput::K_EQUIP << " to equip an item selected in Inventory.";
-	ss3 << "Currently selected ";
+	ss3 << "Currently selected " << currItemInfo;
 	
 	mvwprintw(screen->getCurrScreen(), 0, 0, "Select menu to scroll through using LEFT/ RIGHT arrow keys. Press ESC to return/ continue.");
 	mvwprintw(screen->getCurrScreen(), 1, 0, ss.str().c_str());
 	mvwprintw(screen->getCurrScreen(), 2, 0, ss2.str().c_str());
 	
 	// Paint selected item info
-	if(selectedItem != NULL) {
-		 ss3 << selectedItem->getInfo();
-	}
 	mvwprintw(screen->getCurrScreen(), 3, 0, ss3.str().c_str());
 }
 
 bool InventoryMenu::update() {	
 	InvList& inv = player->getInventory();
+	int index;
+	
+	// Changes occured - swaps, equips, leaving inventory
 	if(changes) {
 		changes = false;
 		reloadInventory();
 	}
 	
-	// Switch menus
+	// Switch menus, equip, swap...
 	switch(UserInput::getPressedKey()) {
 		case(UserInput::K_LEFT):
 		case(UserInput::K_RIGHT):
@@ -53,6 +53,11 @@ bool InventoryMenu::update() {
 			break;
 		case(UserInput::K_EQUIP):
 			changes = true;
+			if(!inv.empty()) {
+				// Get currently selected item
+				index = invMenu.getCurrentChoice();
+				player->equipItem( index);
+			}
 			break;
 		case(UserInput::K_ESC):
 			// Return back
@@ -73,9 +78,9 @@ bool InventoryMenu::update() {
 	
 	if(!inv.empty()) {
 		if(currentType == INVENTORY) {
-			selectedItem = inv[invMenu.getCurrentChoice()];
+			currItemInfo = inv[invMenu.getCurrentChoice()]->getInfo();
 		} else if(currentType == EXCESSIVE && (signed) inv.size() > player->getCurrAttributes().invSpace) {
-			selectedItem = inv[excessiveMenu.getCurrentChoice()];
+			currItemInfo = inv[excessiveMenu.getCurrentChoice()]->getInfo();
 		}
 	}
 	
@@ -87,11 +92,19 @@ void InventoryMenu::reloadInventory() {
 	ChoiceVect excessiveList;
 	InvList& inv = player->getInventory();
 	
-	for(int i = 0; i < (signed) inv.size(); i++) {
+	for(int i = 0; (signed) i < inv.size(); i++) {
+		std::string currName = inv.at(i)->getName();
+		
+		// If item is equipped, indicate it
+		if(inv.at(i)->getEquiped()) {
+			currName.append(" (Eq)");
+		}
+		
+		// Add item name to the list it belongs to
 		if(i < player->getCurrAttributes().invSpace)
-			inventoryList.push_back(std::make_pair(inv[i]->getName(), i));
+			inventoryList.push_back(std::make_pair(currName, i));
 		else
-			excessiveList.push_back(std::make_pair(inv[i]->getName(), i));
+			excessiveList.push_back(std::make_pair(currName, i));
 	}
 	invMenu.setChoices(inventoryList);
 	excessiveMenu.setChoices(excessiveList);
@@ -99,12 +112,23 @@ void InventoryMenu::reloadInventory() {
 
 void InventoryMenu::swap() {
 	InvList& inv = player->getInventory();
+	
+	if(inv.size() < player->getCurrAttributes().invSpace) {
+		// Nothing to swap, return
+		return;
+	}
+	
 	int indexI = invMenu.getCurrentChoice();
 	int indexE = excessiveMenu.getCurrentChoice();
+		
+	Item* tmp = inv.at(indexI);
 	
-	std::cerr << indexI << "<>" << indexE << std::endl;
+	// Unequip item if it is equipped
+	if(tmp->getEquiped()) {
+		player->equipItem(indexI);
+	}
 	
-	Item* tmp = inv[indexI];
-	inv[indexI] = inv[indexE];
-	inv[indexE] = tmp;
+	// Swap items
+	inv.at(indexI) = inv.at(indexE);
+	inv.at(indexE) = tmp;
 }
