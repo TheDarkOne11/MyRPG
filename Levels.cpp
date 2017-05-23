@@ -207,6 +207,9 @@ void Levels::paint() {
 		case(ATTRIBUTES):
 			attrMenu.paint(screen);
 			break;
+		case(SAVE):
+			
+			break;
 		case(LOAD):
 			loadMenu.paint(screen);
 			break;

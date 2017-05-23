@@ -140,6 +140,7 @@ void FileHandler::saveGame(const LevelMap& levelMap, const std::string playerNam
 	std::ofstream file( Info::pathDirSaves + "/" + fileName );
 	
 	// Save whole levelMap into the file
+	// Add levelMap size as first thing to save?
 	for(auto it = levelMap.begin(); it != levelMap.end(); it++) {
 		for(MyObject* curr : *it) {
 			curr->save(file);
@@ -147,6 +148,7 @@ void FileHandler::saveGame(const LevelMap& levelMap, const std::string playerNam
 	}
 	
 	// Save new filename inside filenames file
+	// TODO Sort them, newest on top
 	std::ofstream saveFileNames(Info::pathNamesSaves, std::ofstream::app);
 	saveFileNames << fileName << '\n';
 	
@@ -164,7 +166,7 @@ void FileHandler::loadGame(std::string fileName, LevelMap& levelMap, EnemyVect& 
 	std::string s;
 	
 	while(std::getline(file, s)) {
-		
+		std::cerr << s << std::endl;
 	}
 	
 	file.close();

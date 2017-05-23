@@ -2,6 +2,7 @@
 
 LoadMenu::LoadMenu() {
 	reloadChoices();
+	fileNamesMenu.setHead("Saved games");
 }
 
 void LoadMenu::reloadChoices() {
