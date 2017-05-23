@@ -15,6 +15,24 @@ void Player::paint(Screen* screen, const int y, const int x) {
 	mvwaddch(screen->getCurrScreen(), y, x, currDirection);
 }
 
+void Player::save(std::ofstream& file) {
+	Entity::save(file);
+	
+	file << name << " " << currDirection << " " << attrPointsCount << '\n';
+	
+	// Save inventory indexes of equiped items
+	// TODO enable
+	/*for(auto it = inventory.begin(); it != inventory.end(); it++) {
+		Item* curr = *it;
+		if(curr->getEquiped()) {
+			file << (it - inventory.begin()) << " ";
+		}
+	}
+	file << '\n';*/
+	
+	file.flush();
+}
+
 MyObject* Player::clone() const {
 	return new Player(this);
 }

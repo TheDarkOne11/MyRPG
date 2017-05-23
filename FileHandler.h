@@ -33,15 +33,11 @@ public:
 	 */
 	void loadLevel(LevelMap& levelMap, EnemyVect& enemies, Player*& player);
 	
-	/**
-	 * Saves the game.
-	 */
-	void saveGame(LevelMap& levelMap);
 	
-	/**
-	 * Loads saved game.
-	 */
-	void loadGame(LevelMap& levelMap);
+	void saveGame(const LevelMap& levelMap, const std::string playerName);
+	
+	
+	void loadGame(std::string fileName, LevelMap& levelMap, EnemyVect& enemies, Player*& player);
 	
 private:
 	std::vector<std::string> fileNamesSaves;

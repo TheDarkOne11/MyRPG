@@ -125,3 +125,47 @@ void FileHandler::addRandomItems(const InnerVect& possiblePositions,
 		}
 	}
 }
+
+void FileHandler::saveGame(const LevelMap& levelMap, const std::string playerName) {
+	std::stringstream ss;
+	
+	// Get unique name using time
+	time_t t = time(0);
+    struct tm * now = localtime( & t );
+	ss << now->tm_hour << now->tm_min << now->tm_gmtoff << "_"
+			<< now->tm_mday << now->tm_mon + 1 << now->tm_year + 1900;
+	
+	//std::string fileName =  ss.str() + "_" + playerName;	
+	std::string fileName = "test";
+	std::ofstream file( Info::pathDirSaves + "/" + fileName );
+	
+	// Save whole levelMap into the file
+	for(auto it = levelMap.begin(); it != levelMap.end(); it++) {
+		for(MyObject* curr : *it) {
+			curr->save(file);
+		}
+	}
+	
+	// Save new filename inside filenames file
+	std::ofstream saveFileNames(Info::pathNamesSaves, std::ofstream::app);
+	saveFileNames << fileName << '\n';
+	
+	
+	saveFileNames.flush();
+	saveFileNames.close();
+	file.flush();
+	file.close();
+}
+
+void FileHandler::loadGame(std::string fileName, LevelMap& levelMap, EnemyVect& enemies, Player*& player) {
+	// TODO remove
+	fileName = "test";
+	std::ifstream file(Info::pathDirSaves + "/" + fileName);
+	std::string s;
+	
+	while(std::getline(file, s)) {
+		
+	}
+	
+	file.close();
+}

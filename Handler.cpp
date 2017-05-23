@@ -2,7 +2,6 @@
 
 std::map<MyObject::ObjectGroup, std::vector<MyObject*>> Handler::map_MyObjectsTypes;
 std::map<Item::ItemType, std::vector<Item*>> Handler::map_ItemTypes;
-Player* Handler::player;
 
 void Handler::clear() {
 	// Delete MyObject templates
@@ -11,7 +10,6 @@ void Handler::clear() {
 			delete curr;
 		}
 	}
-	delete player;
 	
 	// Delete Item templates
 	for(auto it = map_ItemTypes.begin(); it != map_ItemTypes.end(); it++) {
@@ -43,7 +41,8 @@ void Handler::init() {
 	addObject(floor);
 	
 	// Initialize entities
-	player = new Player(Info::ID_Player, 'P', "Player", Info::Attributes(50, 2, 5, 3, 5));
+	MyObject* player = new Player(Info::ID_Player, 'P', "Player", Info::Attributes(50, 2, 5, 3, 5));
+	addObject(player);
 	MyObject* mob = new Enemy(Info::ID_Mob, 'M', "Mob", Info::Attributes(10, 1, 2, 2, 10));
 	addObject(mob);
 	MyObject* mob2 = new Enemy(Info::ID_Mob2, 'N', "Mob2", Info::Attributes(5, 3, 1, 1, 2));
@@ -148,12 +147,15 @@ MyObject* Handler::getMyObject(const MyObject::ObjectGroup group) {
 		throw "Group doesn't exist.";
 	} else {
 		int ranID = rand() % it->second.size();
+		
+		if(ranID == Info::ID_Player) {
+			// We don't want to randomly add another player
+			ranID = it->second.size() - 1;
+		}
+		
+		// Get clone of the random enemy from the vector
 		tmp = it->second[ranID]->clone();
 	}
 	
 	return tmp;
-}
-
-Player* Handler::getPlayer() {
-	return dynamic_cast<Player*> (player->clone());
 }

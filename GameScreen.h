@@ -14,8 +14,6 @@
  */
 class GameScreen {
 public:
-	GameScreen(Player*& player);
-		
 	/**
 	 * Paints only those MyObjects that are in the game screen.
 	 * MyObject is in the game screen when its coordinates are between top-right and bottom-left corners of the game screen.
@@ -24,6 +22,8 @@ public:
 	void paint(const LevelMap & levelMap, Screen* screen, MsgBox* msgBox);
 	
 	void paintInfoBox(Screen* screen, MsgBox* msgBox);
+	
+	void setPlayer(Player* player);
 	
 private:
 	const Player* player;

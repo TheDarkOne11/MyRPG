@@ -1,7 +1,6 @@
 #include "AttributesMenu.h"
 
-AttributesMenu::AttributesMenu(Player*& player) : attributesMenu("Player Attributes"), 
-				player(player), dummy(0, 0, 0, 0, 0)
+AttributesMenu::AttributesMenu() : attributesMenu("Player Attributes"), dummy(0, 0, 0, 0, 0)
 {
 	// Init choices menu
 	ChoiceVect choices;
@@ -99,11 +98,16 @@ void AttributesMenu::paint(Screen* screen) {
 	
 	// Paint info menu
 	screen->setCurrScreen(screen->INFO);
-	ss << "After CONTINUE,  " << player->getName() << " will have these stats: " << (player->attributes + dummy);
-	ss2 << "You currently invested in these stats: " << dummy;
+	ss << "After CONTINUE,  " << player->getName() << " will have these stats: " 
+			<< (player->attributes + dummy).getInfo();
+	ss2 << "You currently invested in these stats: " << dummy.getInfo();
 	
 	mvwprintw(screen->getCurrScreen(), 0, 0, "Change attributes using LEFT/ RIGHT arrow keys. Press ESC to return/ continue.");
 	mvwprintw(screen->getCurrScreen(), 1, 0, ss.str().c_str());
 	mvwprintw(screen->getCurrScreen(), 2, 0, ss2.str().c_str());
 	mvwprintw(screen->getCurrScreen(), 3, 0, "You have %d points left.", player->getAttrPointsCount());
+}
+
+void AttributesMenu::setPlayer(Player* player) {
+	this->player = player;
 }

@@ -26,11 +26,9 @@ public:
 	/**
 	 * This constructor is used for setting up "template" instances of derived classes.
 	 * @param ID
-	 * @param mapSymbol what the entity looks like in the game
-	 * @param health
-	 * @param speed
-	 * @param attackDmg
-	 * @param attackSpeed
+	 * @param mapSymbol
+	 * @param name
+	 * @param attr are this Entitie's attributes.
 	 */
 	Entity	(int ID, char mapSymbol, std::string name, Info::Attributes attr);
 	
@@ -41,11 +39,17 @@ public:
 	 * @param temp is a "template" instance of the derived class.
 	 */
 	Entity	(const Entity* temp);
-		
-	// TODO remove
-	void printMap(LevelMap& levelMap);
 	
+	/**
+	 * Used when adding Entity to levelMap in random position.
+	 * @param levelMap
+	 * @param y
+	 * @param x
+	 * @param removeFormer true if the MyObject in y, x position should be removed.
+	 */
 	void addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) override;
+	
+	void save(std::ofstream& file) override;
 	
 	/**
 	 * Moves Entity to the new position.
@@ -68,8 +72,18 @@ public:
 	virtual bool findTarget(LevelMap& levelMap, Direction direction, Entity*& target, 
 			const int yPos, const int xPos);
 	
+	/**
+	 * This Entity attacks another Entity.
+	 * @param target is the Entity to attack.
+	 * @param msgBox
+	 */
 	virtual void attack(Entity* target, MsgBox* msgBox);
 	
+	/**
+	 * This Entity is attacked by another Entity
+	 * @param attacker is the Entity that attacked this Entity.
+	 * @param msgBox
+	 */
 	virtual void isAttacked(const Entity* attacker, MsgBox* msgBox);
 	
 	/**

@@ -1,8 +1,5 @@
 #include "GameScreen.h"
 
-GameScreen::GameScreen(Player*& player) : player(player) {
-}
-
 void GameScreen::paint(const LevelMap& levelMap, Screen* screen, MsgBox* msgBox) {
 	std::pair<int, int> dim = screen->getCurrDimensions();
 	
@@ -59,4 +56,8 @@ void GameScreen::paintInfoBox(Screen* screen, MsgBox* msgBox) {
 	for(auto it = msgBuffer.rbegin(); it != msgBuffer.rend(); it++, y--) {
 		mvwprintw(screen->getCurrScreen(), y, 0, (*it).c_str());
 	}
+}
+
+void GameScreen::setPlayer(Player* player) {
+	this->player = player;
 }

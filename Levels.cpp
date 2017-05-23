@@ -1,7 +1,7 @@
 #include "Levels.h"
 
-Levels::Levels(Screen* screen) : player(Handler::getPlayer()), screen(screen),
-		gameScreen(player), attrMenu(player), invMenu(player), currTurn(PLAYER), currState(INIT)
+Levels::Levels(Screen* screen, std::string fileName) : player(NULL), screen(screen), 
+		currTurn(PLAYER), currState(INIT)
 {
 	srand(time(NULL));
 	msgBox = new MsgBox(screen->infoScreenHeight - 2);
@@ -11,24 +11,38 @@ Levels::Levels(Screen* screen) : player(Handler::getPlayer()), screen(screen),
 	vect_GameMenu.push_back( std::make_pair("Resume game", INGAME) );
 	vect_GameMenu.push_back( std::make_pair("Change attributes", ATTRIBUTES) );
 	vect_GameMenu.push_back( std::make_pair("Inventory", INVENTORY) );
+	vect_GameMenu.push_back( std::make_pair("Save", SAVE) );
+	vect_GameMenu.push_back( std::make_pair("Load", LOAD) );
 	vect_GameMenu.push_back( std::make_pair("Exit game", EXIT) );
 	this->gameMenu.setChoices(vect_GameMenu);
 	
-	// Load first level
-	fileHandler.loadLevel(levelMap, enemiesInLevel, player);
+	if(fileName.compare("") == 0) {
+		// Load new level
+		player = dynamic_cast <Player*> (Handler::getMyObject(MyObject::ENTITY, Info::ID_Player));
+		fileHandler.loadLevel(levelMap, enemiesInLevel, player);
+
+		// Ask player for a new player name
+		char name[100];
+		screen->setCurrScreen(screen->INFO);
+		echo();
+		nodelay(screen->getCurrScreen(), false);
+		mvwprintw(screen->getCurrScreen(), 0, 0, "Write your player name: ");
+		screen->sRefresh();
+
+		wgetstr(screen->getCurrScreen(), name);
+		player->setName(std::string(name));
+		noecho();
+		nodelay(screen->getCurrScreen(), true);
+	} else {
+		// Load level from file
+		currState = INGAME;
+		fileHandler.loadGame(fileName, levelMap, enemiesInLevel, player);
+	}
 	
-	// Ask player for a new player name
-	char name[100];
-	screen->setCurrScreen(screen->INFO);
-	echo();
-	nodelay(screen->getCurrScreen(), false);
-	mvwprintw(screen->getCurrScreen(), 0, 0, "Write your player name: ");
-	screen->sRefresh();
-	
-	wgetstr(screen->getCurrScreen(), name);
-	player->setName(std::string(name));
-	noecho();
-	nodelay(screen->getCurrScreen(), true);
+	// Set screens
+	gameScreen.setPlayer(player);
+	attrMenu.setPlayer(player);
+	invMenu.setPlayer(player);
 }
 
 Levels::~Levels() {
@@ -40,6 +54,7 @@ Levels::~Levels() {
 void Levels::clearLevel() {
 	enemiesInLevel.clear();
 	
+	// Clear levelMap
 	for(unsigned int y = 0; y < levelMap.size(); y++) {
 		for(unsigned int x = 0; x < levelMap[y].size(); x++) {
 			MyObject* curr = levelMap[y][x];
@@ -86,6 +101,13 @@ void Levels::update() {
 			if(!attrMenu.update()) {
 				currState = INGAME_MENU;
 			}
+			break;
+		case(SAVE):
+			fileHandler.saveGame(levelMap, player->getName());
+			currState = INGAME_MENU;
+			break;
+		case(LOAD):
+			
 			break;
 		case(NEXT_LEVEL):
 			clearLevel();

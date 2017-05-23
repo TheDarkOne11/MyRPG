@@ -45,6 +45,6 @@ Item::ItemType Item::getType() const {
 
 std::string Item::getInfo() const {
 	std::stringstream ss;
-	ss << name << ": " << attributes;
+	ss << name << ": " << attributes.getInfo();
 	return ss.str();
 }

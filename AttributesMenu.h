@@ -21,11 +21,13 @@ public:
 		INV_SPACE		///< Change inventory space
 	};
 	
-	AttributesMenu(Player*& player);
+	AttributesMenu();
 	
 	bool update();
 	
 	void paint(Screen* screen);
+	
+	void setPlayer(Player* player);
 private:
 	Menu attributesMenu;
 	Player* player;

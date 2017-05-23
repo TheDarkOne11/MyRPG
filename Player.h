@@ -10,9 +10,11 @@ public:
 	Player(const Player* temp);
 
 	virtual void paint(Screen* screen, const int y, const int x) override;
+	
+	void save(std::ofstream& file) override;
 			
 	/**
-	 * Checks ground for items and for doors to next level;
+	 * Checks ground for items and for doors to next level.
 	 */
 	void checkGround() override;
 	

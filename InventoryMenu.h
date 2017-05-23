@@ -11,11 +11,13 @@ public:
 		EXCESSIVE
 	};
 	
-	InventoryMenu(Player* player);
+	InventoryMenu();
 	
 	bool update();
 	
 	void paint(Screen* screen);
+	
+	void setPlayer(Player* player);
 	
 private:
 	Menu invMenu, excessiveMenu;

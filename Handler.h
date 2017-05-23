@@ -55,12 +55,6 @@ public:
 	 * @return copy of the MyObject subclass.
 	 */
 	static MyObject* getMyObject(const MyObject::ObjectGroup);
-	
-	/**
-	 * Returns a copy of player subclass.
-	 * @return player
-	 */
-	static Player* getPlayer();
 		
 private:
 	/**
@@ -74,7 +68,6 @@ private:
 	 * Divided into groups by ItemType key.
 	 */
 	static std::map<Item::ItemType, std::vector<Item*>> map_ItemTypes;
-	static Player* player;
 	
 	/**
 	 * Stores new object into the map.

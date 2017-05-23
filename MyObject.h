@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <fstream>
 #include "Info.h"
 #include "Screen.h"
 #include "Item.h"
@@ -21,11 +22,13 @@ public:
 	};
 
 	/**
-	 * 
-	 * @param ID is unique value used to distinguish MyObjects's subclasses
-	 * @param mapSymbol what the object looks like in the game
+	 * @param ID is unique in the MyObject's group.
+	 * @param mapSymbol is the symbol used in level map.
+	 * @param group
+	 * @param isPassable is true if Entity can move into this MyObjects position
+	 * @param name
 	 */
-	MyObject(int ID, char mapSymbol, ObjectGroup type, bool isPassable, std::string name);
+	MyObject(int ID, char mapSymbol, ObjectGroup group, bool isPassable, std::string name);
 
 	virtual ~MyObject();
 
@@ -46,13 +49,29 @@ public:
 	virtual void addToMap(LevelMap& levelMap, int y, 
 							int x, bool removeFormer);
 	
+	/**
+	 * Returns a clone derived instance of the current MyObject.
+	 * @return Clone of more derived instance of MyObject.
+	 */
 	virtual MyObject* clone() const = 0;
 	
+	/**
+	 * Save this MyObject into the file.
+	 * @param file is the stream we write info to.
+	 */
+	virtual void save(std::ofstream& file);
+	
+	/**
+	 * Load this MyObject from the file.
+	 * @param file is the stream we get info from.
+	 */
+	virtual void load(std::ifstream& file);
+	
 	virtual int getID() const;
-
-	virtual int getX() const;
 	
 	virtual void setCoordinates(int y, int x);
+	
+	virtual int getX() const;
 
 	virtual int getY() const;
 	
@@ -64,6 +83,9 @@ public:
 	
 	virtual std::string getName() const;
 	
+	/**
+	 * @return Reference to this MyObject's inventory.
+	 */
 	virtual InvList& getInventory();
 
 protected:

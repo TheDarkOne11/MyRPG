@@ -30,16 +30,24 @@ public:
 	};
 	
 	enum LevelState {
-		INIT,		// Went from Main menu to game
+		INIT,
 		INGAME,
 		INGAME_MENU,
 		ATTRIBUTES,
 		INVENTORY,
+		SAVE,
+		LOAD,
 		NEXT_LEVEL,
 		EXIT
 	};
 	
-	Levels(Screen* screen);
+	/**
+	 * If fileName is not specified, loads new level. 
+	 * Otherwise loads level from the file with specified fileName.
+	 * @param screen
+	 * @param fileName is the name of the file we want to load level from.
+	 */
+	Levels(Screen* screen, std::string fileName = "");
 	~Levels();
 	
 	void clearLevel();

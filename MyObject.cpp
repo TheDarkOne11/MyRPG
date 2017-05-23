@@ -1,9 +1,9 @@
 #include "MyObject.h"
 
-MyObject::MyObject(int ID, char mapSymbol, ObjectGroup type, 
+MyObject::MyObject(int ID, char mapSymbol, ObjectGroup group, 
 		bool isPassable, std::string name)	
 							: ID(ID), x(0), y(0), mapSymbol(mapSymbol), 
-							group(type), isPassable(isPassable), name(name)
+							group(group), isPassable(isPassable), name(name)
 {
 
 }
@@ -66,3 +66,21 @@ std::string MyObject::getName() const {
 InvList& MyObject::getInventory() {
 	return inventory;
 }
+
+void MyObject::save(std::ofstream& file) {
+	// Save important data
+	file << ID << " " << group << "\n" << y << " " << x << '\n';
+	
+	// Save inventory
+	// TODO enable inventory saving
+	/*for(auto it = inventory.begin(); it != inventory.end(); it++) {
+		file << (*it)->getID() << " ";
+	}
+	file << '\n';*/
+	file.flush();
+}
+
+void MyObject::load(std::ifstream& file) {
+	
+}
+

@@ -23,11 +23,19 @@ Info::Attributes Info::Attributes::operator-(const Attributes& right) const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Info::Attributes attr) {
-	os << "HP: " << attr.maxHP << ", AD: " << attr.attackDmg << ", Speed: "
-			<< attr.speed << ", Range: " << attr.range 
-			<< ", InvSpace: " << attr.invSpace;
+	os << attr.maxHP << " " << attr.attackDmg << " " << attr.speed 
+			<< " " << attr.range << " " << attr.invSpace;
 	
 	return os;
+}
+
+std::string Info::Attributes::getInfo() const {
+	std::stringstream os;
+	os << "HP: " << maxHP << ", AD: " << attackDmg << ", Speed: "
+			<< speed << ", Range: " << range 
+			<< ", InvSpace: " << invSpace;
+	
+	return os.str();
 }
 
 void Info::Attributes::clear() {

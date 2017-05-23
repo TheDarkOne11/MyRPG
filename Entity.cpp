@@ -59,6 +59,15 @@ void Entity::addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) {
 	this->MyObject::addToMap(levelMap, y, x, removeFormer);
 }
 
+void Entity::save(std::ofstream& file) {
+	MyObject::save(file);
+	
+	file << actionsLeft << " " << ground->getID() << " " << ground->getGroup() 
+			<< attributes << " " << currState << '\n';
+	
+	file.flush();
+}
+
 void Entity::checkGround() {
 	transferItems(this, ground);
 }
@@ -141,7 +150,7 @@ bool Entity::hasActionsLeft() {
 
 std::string Entity::getInfo() const {
 	std::stringstream ss;
-	ss << name << ": " << getCurrAttributes();
+	ss << name << ": " << getCurrAttributes().getInfo();
 	return ss.str();
 }
 

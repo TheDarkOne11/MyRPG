@@ -5,8 +5,8 @@ StaticObject::StaticObject(int ID, char mapSymbol, bool isPassable, std::string 
 {
 }
 
-StaticObject::StaticObject(const StaticObject* tmp) 
-					: MyObject(tmp->ID, tmp->mapSymbol, tmp->group, tmp->isPassable, tmp->name)
+StaticObject::StaticObject(const StaticObject* temp) 
+					: MyObject(temp->ID, temp->mapSymbol, temp->group, temp->isPassable, temp->name)
 {
 }
 
