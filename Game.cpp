@@ -9,6 +9,7 @@ Game::Game() : currState(MAIN_MENU), mainMenu("MAIN MENU") {
 	// Load Main Menu
 	ChoiceVect choices;
 	choices.push_back( std::make_pair("New Game", NEW_LEVELS) );
+	choices.push_back( std::make_pair("Load Game", LOAD_LEVEL) );
 	choices.push_back( std::make_pair("Exit application", EXIT) );
 	mainMenu.setChoices(choices);
 }
