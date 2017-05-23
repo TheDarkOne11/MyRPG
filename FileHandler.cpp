@@ -140,7 +140,7 @@ void FileHandler::saveGame(const LevelMap& levelMap, const std::string playerNam
 	std::ofstream file( Info::pathDirSaves + "/" + fileName );
 	
 	// Save whole levelMap into the file
-	// Add levelMap size as first thing to save?
+	// TODO Add levelMap size as first thing to save?
 	for(auto it = levelMap.begin(); it != levelMap.end(); it++) {
 		for(MyObject* curr : *it) {
 			curr->save(file);
@@ -160,11 +160,21 @@ void FileHandler::saveGame(const LevelMap& levelMap, const std::string playerNam
 }
 
 void FileHandler::loadGame(std::string fileName, LevelMap& levelMap, EnemyVect& enemies, Player*& player) {
-	// TODO remove
-	fileName = "test";
 	std::ifstream file(Info::pathDirSaves + "/" + fileName);
 	std::string s;
 	
+	if(!file.is_open()) {
+		throw "File " + fileName + " didn't open.";
+	}
+	
+	// TODO loading
+	
+	/*
+	 * 1/ Read MyObject's ID and group.
+	 * 2/ Create this MyObject using Handler.
+	 * 3/ Use load() method of this MyObject.
+	 * 4/ Repeat until eof.
+	 */
 	while(std::getline(file, s)) {
 		std::cerr << s << std::endl;
 	}

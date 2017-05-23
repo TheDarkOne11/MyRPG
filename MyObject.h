@@ -84,6 +84,7 @@ public:
 	virtual std::string getName() const;
 	
 	/**
+	 * Provide MyObject's inventory for Item manipulations.
 	 * @return Reference to this MyObject's inventory.
 	 */
 	virtual InvList& getInventory();
