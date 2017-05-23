@@ -21,6 +21,7 @@
 #include "MsgBox.h"
 #include "AttributesMenu.h"
 #include "InventoryMenu.h"
+#include "LoadMenu.h"
 
 class Levels {
 public:
@@ -71,14 +72,25 @@ private:
 	GameScreen gameScreen;
 	AttributesMenu attrMenu;
 	InventoryMenu invMenu;
+	LoadMenu loadMenu;
 	MsgBox* msgBox;
 	FileHandler fileHandler;
 	Menu gameMenu;
 	
 	Turns currTurn;
 	LevelState currState;	
-			
+	
+	/**
+	 * Handle ingame updates.
+	 * Used to make code easier to read;
+	 */
 	void ingameUpdate();
+	
+	/**
+	 * Handle load screen update;
+	 * Used to make code easier to read;
+	 */
+	void loadUpdate();
 };
 
 #endif /* LEVEL_H */

@@ -10,7 +10,7 @@ Game::Game() : currState(MAIN_MENU), mainMenu("MAIN MENU") {
 	ChoiceVect choices;
 	choices.push_back( std::make_pair("New Game", NEW_LEVELS) );
 	choices.push_back( std::make_pair("Exit application", EXIT) );
-	mainMenu.setChoices(choices);	
+	mainMenu.setChoices(choices);
 }
 
 Game::~Game() {
@@ -36,6 +36,9 @@ void Game::update() {
 		case(NEW_LEVELS):
 			levels = new Levels(screen);
 			currState = LEVELS;
+			break;
+		case(LOAD_LEVEL):
+			loadUpdate();
 			break;
 		case(LEVELS):
 			levels->update();
@@ -63,6 +66,9 @@ void Game::paint() {
 		case(NEW_LEVELS):
 			
 			break;
+		case(LOAD_LEVEL):
+			loadMenu.paint(screen);
+			break;
 		case(LEVELS): 
 			levels->paint();
 			break;
@@ -78,4 +84,23 @@ void Game::paint() {
 
 bool Game::isRunning() const {
 	return currState != GameState::EXIT;
+}
+
+void Game::loadUpdate() {
+	std::string fileName;
+	switch( loadMenu.update(fileName) ) {
+		case(1):
+			// FileName chosen, load game
+			levels = new Levels(screen, fileName);
+			currState = LEVELS;
+			break;
+		case(0):
+			// Return
+			currState = MAIN_MENU;
+			break;
+			
+		case(-1):
+			// Wait
+			break;
+	}
 }

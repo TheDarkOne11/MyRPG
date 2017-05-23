@@ -107,7 +107,7 @@ void Levels::update() {
 			currState = INGAME_MENU;
 			break;
 		case(LOAD):
-			
+			loadUpdate();
 			break;
 		case(NEXT_LEVEL):
 			clearLevel();
@@ -168,6 +168,26 @@ void Levels::ingameUpdate() {
 	}
 }
 
+void Levels::loadUpdate() {
+	std::string fileName;
+	switch( loadMenu.update(fileName) ) {
+		case(1):
+			// FileName chosen
+			clearLevel();
+			fileHandler.loadGame(fileName, levelMap, enemiesInLevel, player);
+			currState = INGAME;
+			break;
+		case(0):
+			// Return
+			currState = INGAME_MENU;
+			break;
+			
+		case(-1):
+			// Wait
+			break;
+	}
+}
+
 void Levels::paint() {
 	switch(currState) {
 		case(INIT):
@@ -186,6 +206,9 @@ void Levels::paint() {
 			break;
 		case(ATTRIBUTES):
 			attrMenu.paint(screen);
+			break;
+		case(LOAD):
+			loadMenu.paint(screen);
 			break;
 		case(NEXT_LEVEL):
 			

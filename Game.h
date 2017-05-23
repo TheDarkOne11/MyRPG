@@ -9,6 +9,7 @@
 #include "Menu.h"
 #include "Info.h"
 #include "Screen.h"
+#include "LoadMenu.h"
 
 /**
  * Class represents the whole game.
@@ -22,6 +23,7 @@ public:
 	enum GameState {
 		MAIN_MENU,
 		NEW_LEVELS,
+		LOAD_LEVEL,
 		LEVELS,
 		LEVELS_ENDED,
 		EXIT
@@ -49,10 +51,11 @@ public:
 private:
 	GameState currState;
 	Menu mainMenu;
+	LoadMenu loadMenu;
 	Levels* levels;
 	Screen* screen;
 	
-	
+	void loadUpdate();
 };
 
 #endif /* GAME_H */

@@ -46,6 +46,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/InventoryMenu.o \
 	${OBJECTDIR}/Item.o \
 	${OBJECTDIR}/Levels.o \
+	${OBJECTDIR}/LoadMenu.o \
 	${OBJECTDIR}/Menu.o \
 	${OBJECTDIR}/MsgBox.o \
 	${OBJECTDIR}/MyObject.o \
@@ -134,6 +135,11 @@ ${OBJECTDIR}/Levels.o: Levels.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Levels.o Levels.cpp
+
+${OBJECTDIR}/LoadMenu.o: LoadMenu.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LoadMenu.o LoadMenu.cpp
 
 ${OBJECTDIR}/Menu.o: Menu.cpp
 	${MKDIR} -p ${OBJECTDIR}
