@@ -33,6 +33,19 @@ void Player::save(std::ofstream& file) {
 	file.flush();
 }
 
+void Player::load(std::ifstream& file) {
+	Entity::load(file);
+	
+	std::string line;
+	getline(file, line);
+	
+	name = Info::parseString(line);
+	currDirection = (Direction) stoi(Info::parseString(line));
+	attrPointsCount = stoi(Info::parseString(line));
+	
+	// TODO inventory
+}
+
 MyObject* Player::clone() const {
 	return new Player(this);
 }

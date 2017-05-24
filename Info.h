@@ -71,7 +71,7 @@ public:
 		
 		void clear();
 		
-		void load(std::ofstream& file);
+		void load(std::ifstream& file);
 		
 		void save(std::ofstream& file);
 		

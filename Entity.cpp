@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "Handler.h"
 
 Entity::Entity	(int ID, char mapSymbol, std::string name, Info::Attributes attr)
 				:	MyObject(ID, mapSymbol, MyObject::ENTITY, false, name), 
@@ -62,10 +63,27 @@ void Entity::addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) {
 void Entity::save(std::ofstream& file) {
 	MyObject::save(file);
 	
-	file << actionsLeft << " " << ground->getID() << " " << ground->getGroup() 
-			<< attributes << " " << currState << '\n';
+	file << actionsLeft << " " << ground->getID() << " " << ground->getGroup() <<'\n';
+	attributes.save(file);
+	file << '\n';
+	currState.save(file);
+	file << '\n';
 	
 	file.flush();
+}
+
+void Entity::load(std::ifstream& file) {
+	MyObject::load(file);
+	
+	std::string line;
+	getline(file, line);
+	actionsLeft = stoi(Info::parseString(line));
+	int ID = stoi(Info::parseString(line));
+	MyObject::ObjectGroup group = (MyObject::ObjectGroup) stoi(Info::parseString(line));
+	ground = Handler::getMyObject(group, ID);
+	
+	attributes.load(file);
+	currState.load(file);
 }
 
 void Entity::checkGround() {

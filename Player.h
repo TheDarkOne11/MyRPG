@@ -12,6 +12,8 @@ public:
 	virtual void paint(Screen* screen, const int y, const int x) override;
 	
 	void save(std::ofstream& file) override;
+	
+	void load(std::ifstream& file) override;
 			
 	/**
 	 * Checks ground for items and for doors to next level.

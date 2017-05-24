@@ -49,7 +49,17 @@ public:
 	 */
 	void addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) override;
 	
+	/**
+	 * Save Entity info.
+	 * @param file
+	 */
 	void save(std::ofstream& file) override;
+	
+	/**
+	 * Load Entity info.
+	 * @param file
+	 */
+	void load(std::ifstream& file) override;
 	
 	/**
 	 * Moves Entity to the new position.

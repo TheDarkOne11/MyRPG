@@ -35,6 +35,16 @@ void Info::Attributes::save(std::ofstream& file) {
 			<< " " << range << " " << invSpace;
 }
 
+void Info::Attributes::load(std::ifstream& file) {
+	std::string line;
+	getline(file, line);
+	maxHP = stoi(parseString(line));
+	attackDmg = stoi(parseString(line));
+	speed = stoi(parseString(line));
+	range = stoi(parseString(line));
+	invSpace = stoi(parseString(line));
+}
+
 void Info::Attributes::clear() {
 	maxHP = 0;
 	attackDmg = 0;
