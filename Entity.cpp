@@ -150,7 +150,7 @@ bool Entity::hasActionsLeft() {
 
 std::string Entity::getInfo() const {
 	std::stringstream ss;
-	ss << name << ": " << getCurrAttributes().getInfo();
+	ss << name << ": " << getCurrAttributes();
 	return ss.str();
 }
 

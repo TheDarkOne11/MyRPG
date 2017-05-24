@@ -23,19 +23,16 @@ Info::Attributes Info::Attributes::operator-(const Attributes& right) const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Info::Attributes attr) {
-	os << attr.maxHP << " " << attr.attackDmg << " " << attr.speed 
-			<< " " << attr.range << " " << attr.invSpace;
+	os << "HP: " << attr.maxHP << ", AD: " << attr.attackDmg << ", Speed: "
+			<< attr.speed << ", Range: " << attr.range 
+			<< ", InvSpace: " << attr.invSpace;
 	
 	return os;
 }
 
-std::string Info::Attributes::getInfo() const {
-	std::stringstream os;
-	os << "HP: " << maxHP << ", AD: " << attackDmg << ", Speed: "
-			<< speed << ", Range: " << range 
-			<< ", InvSpace: " << invSpace;
-	
-	return os.str();
+void Info::Attributes::save(std::ofstream& file) {
+	file << maxHP << " " << attackDmg << " " << speed 
+			<< " " << range << " " << invSpace;
 }
 
 void Info::Attributes::clear() {
@@ -44,4 +41,15 @@ void Info::Attributes::clear() {
 	range = 0;
 	speed = 0;
 	invSpace = 0;
+}
+
+std::string Info::parseString(std::string& line, std::string delim) {
+	size_t pos = 0;
+	std::string info;
+
+	pos = line.find(delim);
+	info = line.substr(0, pos);
+	line.erase(0, pos + delim.length());
+	
+	return info;//stoi(token);
 }

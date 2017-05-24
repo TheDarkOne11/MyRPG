@@ -81,6 +81,11 @@ void MyObject::save(std::ofstream& file) {
 }
 
 void MyObject::load(std::ifstream& file) {
+	std::string line;
+	std::getline(file, line);
+	y = stoi(Info::parseString(line));
+	x = stoi(Info::parseString(line));
 	
+	// TODO load inventory
 }
 

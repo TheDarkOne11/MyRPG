@@ -40,7 +40,7 @@ void FileHandler::loadLevel(LevelMap& levelMap, EnemyVect& enemies, Player*& pla
 	InnerVect possiblePositions;	// Used for random spawning
 	int x = 0;
 	int y = 0;
-	while( getline(file, s) ) {
+	while( std::getline(file, s) ) {
 		InnerVect row;
 		
 		for(char c : s) {
@@ -161,22 +161,24 @@ void FileHandler::saveGame(const LevelMap& levelMap, const std::string playerNam
 
 void FileHandler::loadGame(std::string fileName, LevelMap& levelMap, EnemyVect& enemies, Player*& player) {
 	std::ifstream file(Info::pathDirSaves + "/" + fileName);
-	std::string s;
+	std::string line;
 	
 	if(!file.is_open()) {
 		throw "File " + fileName + " didn't open.";
 	}
-	
-	// TODO loading
-	
+		
 	/*
 	 * 1/ Read MyObject's ID and group.
 	 * 2/ Create this MyObject using Handler.
 	 * 3/ Use load() method of this MyObject.
 	 * 4/ Repeat until eof.
 	 */
-	while(std::getline(file, s)) {
-		std::cerr << s << std::endl;
+	while(std::getline(file, line)) {
+		int ID = stoi(Info::parseString(line));
+		MyObject::ObjectGroup group = (MyObject::ObjectGroup) stoi(Info::parseString(line));
+		MyObject* currObject = Handler::getMyObject(group, ID);
+		
+		currObject->load(file);
 	}
 	
 	file.close();

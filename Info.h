@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <fstream>
 
 #define ChoiceVect std::vector< std::pair<std::string, int> >
 #define InvList std::vector<Item*>
@@ -70,17 +71,17 @@ public:
 		
 		void clear();
 		
-		/**
-		 * Output all Attributes information.
-		 * Used for paining to the screen.
-		 */
-		std::string getInfo() const;
+		void load(std::ofstream& file);
+		
+		void save(std::ofstream& file);
 		
 		/**
 		 * Used for saving attributes into a file.
 		 */
 		friend std::ostream& operator<<(std::ostream& os, const Attributes attr);
 	};
+	
+	static std::string parseString(std::string& line, std::string delim = " ");
 		
 };
 
