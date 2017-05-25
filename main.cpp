@@ -9,11 +9,10 @@ using namespace std;
 int main(int argc, char** argv) {
 	Game game;
 	int fps = 60;
-	int sleepTime = 1000000/fps;	// TODO Count sleepTime
+	int sleepTime = 1000000/fps;	///< Sleep time should give us 60 FPS
 	
 	// Main game loop
 	while( game.isRunning() ) {
-		// TODO Make exception handling somewhere else
 		try {
 			game.update();
 			game.paint();
@@ -28,6 +27,7 @@ int main(int argc, char** argv) {
 			break;
 		}
 		
+		// Sleep
 		usleep(sleepTime);	
 	}
 	
