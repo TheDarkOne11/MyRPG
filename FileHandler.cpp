@@ -135,12 +135,10 @@ void FileHandler::saveGame(const LevelMap& levelMap, const std::string playerNam
 	ss << now->tm_hour << now->tm_min << now->tm_gmtoff << "_"
 			<< now->tm_mday << now->tm_mon + 1 << now->tm_year + 1900;
 	
-	//std::string fileName =  ss.str() + "_" + playerName;	
-	std::string fileName = "test";
+	std::string fileName =  ss.str() + "_" + playerName;	
 	std::ofstream file( Info::pathDirSaves + "/" + fileName );
 	
 	// Save whole levelMap into the file
-	// TODO Add levelMap size as first thing to save?
 	for(auto it = levelMap.begin(); it != levelMap.end(); it++) {
 		for(MyObject* curr : *it) {
 			curr->save(file);
@@ -162,6 +160,8 @@ void FileHandler::saveGame(const LevelMap& levelMap, const std::string playerNam
 void FileHandler::loadGame(std::string fileName, LevelMap& levelMap, EnemyVect& enemies, Player*& player) {
 	std::ifstream file(Info::pathDirSaves + "/" + fileName);
 	std::string line;
+	int lastY = 0;
+	InnerVect row;
 	
 	if(!file.is_open()) {
 		throw "File " + fileName + " didn't open.";
@@ -177,9 +177,25 @@ void FileHandler::loadGame(std::string fileName, LevelMap& levelMap, EnemyVect& 
 		int ID = stoi(Info::parseString(line));
 		MyObject::ObjectGroup group = (MyObject::ObjectGroup) stoi(Info::parseString(line));
 		MyObject* currObject = Handler::getMyObject(group, ID);
-		
 		currObject->load(file);
+				
+		if(group == MyObject::ENTITY) {
+			if(ID == Info::ID_Player) {
+				player = dynamic_cast<Player*>(currObject);
+			} else {
+				enemies.push_back(dynamic_cast<Enemy*>(currObject));
+			}
+		}
+		
+		if(lastY != currObject->getY()) {
+			lastY++;
+			levelMap.push_back(row);
+			row.clear();
+		}
+		
+		row.push_back(currObject);
 	}
 	
+	levelMap.push_back(row);
 	file.close();
 }

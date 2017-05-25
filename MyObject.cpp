@@ -1,4 +1,5 @@
 #include "MyObject.h"
+#include "Handler.h"
 
 MyObject::MyObject(int ID, char mapSymbol, ObjectGroup group, 
 		bool isPassable, std::string name)	
@@ -73,10 +74,10 @@ void MyObject::save(std::ofstream& file) {
 	
 	// Save inventory
 	// TODO enable inventory saving
-	/*for(auto it = inventory.begin(); it != inventory.end(); it++) {
-		file << (*it)->getID() << " ";
+	for(auto it = inventory.begin(); it != inventory.end(); it++) {
+		file << (*it)->getID() << " " << (*it)->getType() << " ";
 	}
-	file << '\n';*/
+	file << '\n';
 	file.flush();
 }
 
@@ -86,6 +87,13 @@ void MyObject::load(std::ifstream& file) {
 	y = stoi(Info::parseString(line));
 	x = stoi(Info::parseString(line));
 	
-	// TODO load inventory
+	std::getline(file, line);
+	while(line.compare(" ") != 0 && !line.empty()) {
+		int ID = stoi(Info::parseString(line));
+		Item::ItemType type = (Item::ItemType) stoi(Info::parseString(line));
+		
+		Item* currItem = Handler::getItem(ID, type);
+		inventory.push_back(currItem);
+	}
 }
 

@@ -39,7 +39,6 @@
         </logicalFolder>
         <logicalFolder name="saves" displayName="saves" projectFiles="true">
           <itemPath>res/saves/fileNames</itemPath>
-          <itemPath>res/saves/test</itemPath>
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
@@ -189,8 +188,6 @@
       </item>
       <item path="res/saves/fileNames" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="res/saves/test" ex="false" tool="3" flavor2="0">
-      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -297,8 +294,6 @@
       <item path="res/maps/map2.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="res/saves/fileNames" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="res/saves/test" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

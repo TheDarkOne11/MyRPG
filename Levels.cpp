@@ -175,6 +175,10 @@ void Levels::loadUpdate() {
 			// FileName chosen
 			clearLevel();
 			fileHandler.loadGame(fileName, levelMap, enemiesInLevel, player);
+			// Set screens
+			gameScreen.setPlayer(player);
+			attrMenu.setPlayer(player);
+			invMenu.setPlayer(player);
 			currState = INGAME;
 			break;
 		case(0):

@@ -17,7 +17,7 @@ void Player::paint(Screen* screen, const int y, const int x) {
 
 void Player::save(std::ofstream& file) {
 	Entity::save(file);
-	
+
 	file << name << " " << currDirection << " " << attrPointsCount << '\n';
 	
 	// Save inventory indexes of equiped items
@@ -35,7 +35,7 @@ void Player::save(std::ofstream& file) {
 
 void Player::load(std::ifstream& file) {
 	Entity::load(file);
-	
+
 	std::string line;
 	getline(file, line);
 	

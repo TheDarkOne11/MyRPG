@@ -18,13 +18,13 @@ public:
 	 * @param name
 	 * @param attr
 	 */
-	Enemy	(int ID, char mapSymbol, std::string name, Info::Attributes attr);
+	Enemy(int ID, char mapSymbol, std::string name, Info::Attributes attr);
 	
 	/**
 	 * This constructor is used for cloning "templates" of derived classes.
 	 * @param temp is a "template" instance of the derived class.
 	 */
-	Enemy	(const Enemy* temp);
+	Enemy(const Enemy* temp);
 	
 	virtual ~Enemy();
 	
