@@ -61,7 +61,7 @@ public:
 	
 	int getAttrPointsCount();
 	
-	void setAttrPointsCount(int i);
+	void setAttrPointsCount(const int i);
 	
 	void setName(std::string name);
 	

@@ -52,7 +52,7 @@ public:
 	 * @param delim is the delimiter which separates 2 informations.
 	 * @return A substring with information.
 	 */
-	static std::string parseString(std::string& line, std::string delim = " ");
+	static std::string parseString(std::string& line, const std::string delim = " ");
 		
 };
 

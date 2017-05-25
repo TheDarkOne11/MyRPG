@@ -21,7 +21,7 @@ Entity::~Entity() {
 	}
 }
 
-bool Entity::move(LevelMap& levelMap, int newY, int newX)
+bool Entity::move(LevelMap& levelMap, const int newY, const int newX)
 {
 	// Check if entity moved
 	if(y == newY && x == newX) {
@@ -55,7 +55,7 @@ bool Entity::alive() const {
 	return true;
 }
 
-void Entity::addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) {
+void Entity::addToMap(LevelMap& levelMap, const int y, const int x, const bool removeFormer) {
 	this->ground = levelMap[y][x];
 	this->MyObject::addToMap(levelMap, y, x, removeFormer);
 }
@@ -93,7 +93,7 @@ void Entity::checkGround() {
 	transferItems(this, ground);
 }
 
-bool Entity::findTarget(const LevelMap& levelMap, Direction direction, Entity*& target, 
+bool Entity::findTarget(const LevelMap& levelMap, const Direction direction, Entity*& target, 
 		const int yPos, const int xPos) const {
 	int addY = 0;
 	int addX = 0;

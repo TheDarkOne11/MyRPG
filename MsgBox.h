@@ -20,7 +20,7 @@ public:
 	* Adds message that is to be written to the info screen
 	* @param msg
 	*/
-	void addMsg(std::string msg);
+	void addMsg(const std::string msg);
 	
 	/**
 	 * @return All messages.

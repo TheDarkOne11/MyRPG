@@ -46,7 +46,7 @@ public:
 	 * @param x
 	 * @param removeFormer true if the MyObject in y, x position should be removed.
 	 */
-	void addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) override;
+	void addToMap(LevelMap& levelMap, const int y, const int x, const bool removeFormer) override;
 	
 	/**
 	 * Save Entity info in a file.
@@ -68,7 +68,7 @@ public:
 	 * @param newX is X-coordinate of new position.
 	 * @return True if the Entity could move to new coordinates.
 	 */
-	virtual bool move(LevelMap& levelMap, int newY, int newX);
+	virtual bool move(LevelMap& levelMap, const int newY, const int newX);
 	
 	/**
 	 * Searches for target Entity in given direction.
@@ -78,7 +78,7 @@ public:
 	 * @param target is the pointer to the found entity.
 	 * @return True if found
 	 */
-	virtual bool findTarget(const LevelMap& levelMap, Direction direction, Entity*& target, 
+	virtual bool findTarget(const LevelMap& levelMap, const Direction direction, Entity*& target, 
 			const int yPos, const int xPos) const;
 	
 	/**

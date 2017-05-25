@@ -35,7 +35,7 @@ public:
 	 * Set new head of the menu.
 	 * @param head
 	 */
-	void setHead(std::string head);
+	void setHead(const std::string head);
 	
 	/**
 	 * Paints menu in the currently selected window.

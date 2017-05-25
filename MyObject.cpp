@@ -20,7 +20,7 @@ void MyObject::paint(Screen* screen, const int y, const int x) {
 	mvwaddch(screen->getCurrScreen(), y, x, mapSymbol);
 }
 
-void MyObject::addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) {
+void MyObject::addToMap(LevelMap& levelMap, const int y, const int x, const bool removeFormer) {
 	this->x = x;
 	this->y = y;
 	
@@ -39,7 +39,7 @@ int MyObject::getX() const {
 	return x;
 }
 
-void MyObject::setCoordinates(int y, int x) {
+void MyObject::setCoordinates(const int y, const int x) {
 	this->y = y;
 	this->x = x;
 }

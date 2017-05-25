@@ -135,7 +135,7 @@ int Player::getAttrPointsCount() {
 	return attrPointsCount;
 }
 
-void Player::setAttrPointsCount(int i) {
+void Player::setAttrPointsCount(const int i) {
 	attrPointsCount = i;
 }
 

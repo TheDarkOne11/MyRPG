@@ -45,8 +45,8 @@ public:
 	 * @param y
 	 * @param removeFormer true if we want to delete former MyObject on these coordinates
 	 */
-	virtual void addToMap(LevelMap& levelMap, int y, 
-							int x, bool removeFormer);
+	virtual void addToMap(LevelMap& levelMap, const int y, 
+							const int x, const bool removeFormer);
 	
 	/**
 	 * Returns a clone derived instance of the current MyObject.
@@ -68,7 +68,7 @@ public:
 	
 	virtual int getID() const;
 	
-	virtual void setCoordinates(int y, int x);
+	virtual void setCoordinates(const int y, const int x);
 	
 	virtual int getX() const;
 

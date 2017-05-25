@@ -83,7 +83,7 @@ void Menu::setChoices(ChoiceVect& choices) {
 	}
 }
 
-void Menu::setHead(std::string head) {
+void Menu::setHead(const std::string head) {
 	this->head = head;
 	headExists = true;
 }

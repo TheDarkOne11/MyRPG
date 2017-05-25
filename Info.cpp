@@ -5,7 +5,7 @@ const std::string Info::pathDirSaves = "./res/saves";
 const std::string Info::pathNamesMaps = pathDirMaps + "/" + "fileNames";
 const std::string Info::pathNamesSaves = pathDirSaves + "/" + "fileNames";
 
-std::string Info::parseString(std::string& line, std::string delim) {
+std::string Info::parseString(std::string& line, const std::string delim) {
 	size_t pos = 0;
 	std::string info;
 
