@@ -220,7 +220,7 @@ void Levels::paint() {
 		case(NEXT_LEVEL):
 			break;
 		case(PLAYER_DEAD):
-			paintDeadScreen();
+			paintDeathScreen();
 			break;
 		case(EXIT):
 			break;
@@ -231,7 +231,7 @@ Levels::LevelState Levels::getLevelState() {
 	return currState;
 }
 
-void Levels::paintDeadScreen() {
+void Levels::paintDeathScreen() {
 	std::stringstream ss;
 	screen->setCurrScreen(Screen::STANDARD);
 	std::pair<int, int> dim = screen->getCurrDimensions();

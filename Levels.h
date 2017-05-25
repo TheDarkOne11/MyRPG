@@ -96,7 +96,7 @@ private:
 	/**
 	 * Paint simple dead screen.
 	 */
-	void paintDeadScreen();
+	void paintDeathScreen();
 };
 
 #endif /* LEVEL_H */
