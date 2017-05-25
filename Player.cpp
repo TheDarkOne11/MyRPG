@@ -21,14 +21,13 @@ void Player::save(std::ofstream& file) {
 	file << name << " " << currDirection << " " << attrPointsCount << '\n';
 	
 	// Save inventory indexes of equiped items
-	// TODO enable
-	/*for(auto it = inventory.begin(); it != inventory.end(); it++) {
+	for(auto it = inventory.begin(); it != inventory.end(); it++) {
 		Item* curr = *it;
 		if(curr->getEquiped()) {
 			file << (it - inventory.begin()) << " ";
 		}
 	}
-	file << '\n';*/
+	file << '\n';
 	
 	file.flush();
 }
@@ -43,7 +42,12 @@ void Player::load(std::ifstream& file) {
 	currDirection = (Direction) stoi(Info::parseString(line));
 	attrPointsCount = stoi(Info::parseString(line));
 	
-	// TODO inventory
+	// Load equipped items
+	getline(file, line);
+	while(!line.empty()) {
+		int index = stoi(Info::parseString(line));
+		inventory.at(index)->setEquiped(true);
+	}
 }
 
 MyObject* Player::clone() const {

@@ -73,7 +73,6 @@ void MyObject::save(std::ofstream& file) {
 	file << ID << " " << group << "\n" << y << " " << x << '\n';
 	
 	// Save inventory
-	// TODO enable inventory saving
 	for(auto it = inventory.begin(); it != inventory.end(); it++) {
 		file << (*it)->getID() << " " << (*it)->getType() << " ";
 	}
@@ -87,13 +86,13 @@ void MyObject::load(std::ifstream& file) {
 	y = stoi(Info::parseString(line));
 	x = stoi(Info::parseString(line));
 	
+	// Load inventory
 	std::getline(file, line);
 	while(line.compare(" ") != 0 && !line.empty()) {
 		int ID = stoi(Info::parseString(line));
 		Item::ItemType type = (Item::ItemType) stoi(Info::parseString(line));
 		
-		Item* currItem = Handler::getItem(ID, type);
-		inventory.push_back(currItem);
+		inventory.push_back( Handler::getItem(ID, type) );
 	}
 }
 

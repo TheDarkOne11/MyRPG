@@ -71,12 +71,20 @@ public:
 		
 		void clear();
 		
+		/**
+		 * Load attributes from a file.
+		 * @param file
+		 */
 		void load(std::ifstream& file);
 		
+		/**
+		 * Save attributes into a file
+		 * @param file
+		 */
 		void save(std::ofstream& file);
 		
 		/**
-		 * Used for saving attributes into a file.
+		 * Output information about attributes.
 		 */
 		friend std::ostream& operator<<(std::ostream& os, const Attributes attr);
 	};

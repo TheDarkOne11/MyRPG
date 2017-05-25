@@ -50,13 +50,13 @@ public:
 	void addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) override;
 	
 	/**
-	 * Save Entity info.
+	 * Save Entity info in a file.
 	 * @param file
 	 */
 	void save(std::ofstream& file) override;
 	
 	/**
-	 * Load Entity info.
+	 * Load Entity info from a file.
 	 * @param file
 	 */
 	void load(std::ifstream& file) override;
@@ -126,6 +126,9 @@ public:
 	 */
 	virtual const Info::Attributes getCurrAttributes() const;
 	
+	/**
+	 * @return All important information about this Entity.
+	 */
 	virtual std::string getInfo() const;
 	
 protected:	

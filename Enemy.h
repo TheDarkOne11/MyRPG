@@ -26,8 +26,15 @@ public:
 	 */
 	Enemy(const Enemy* temp);
 	
+	/**
+	 * Overriden destructor for clearing pathToPlayer vector.
+	 */
 	virtual ~Enemy();
 	
+	/**
+	 * Prepares current Enemy instance for deletion.
+	 * @param levelMap
+	 */
 	void die(LevelMap& levelMap);
 		
 	/**
@@ -38,6 +45,10 @@ public:
 	 */
 	void AI_update(LevelMap& levelMap, Player* player, MsgBox* msgBox);
 	
+	/**
+	 * Returns a clone Enemy instance of the current MyObject.
+	 * @return Clone of Enemy instance of MyObject.
+	 */
 	MyObject* clone() const override;
 	
 protected:

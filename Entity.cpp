@@ -78,10 +78,13 @@ void Entity::load(std::ifstream& file) {
 	std::string line;
 	getline(file, line);
 	actionsLeft = stoi(Info::parseString(line));
+	
+	// Load ground
 	int ID = stoi(Info::parseString(line));
 	MyObject::ObjectGroup group = (MyObject::ObjectGroup) stoi(Info::parseString(line));
 	ground = Handler::getMyObject(group, ID);
 	
+	// Load attributes and currState
 	attributes.load(file);
 	currState.load(file);
 }

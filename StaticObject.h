@@ -4,7 +4,7 @@
 #include "MyObject.h"
 
 /**
- * Super class for static objects (walls, chests, doors...)
+ * Super class for static objects (walls, floors, doors...)
  */
 class StaticObject : public MyObject {
 public:
@@ -25,6 +25,10 @@ public:
 	
 	void paint(Screen* screen, const int y, const int x) override;
 	
+	/**
+	 * Returns a clone derived instance of the current MyObject.
+	 * @return Clone of more derived instance of MyObject.
+	 */
 	MyObject* clone() const override;
 };
 
