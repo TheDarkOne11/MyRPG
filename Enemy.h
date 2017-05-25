@@ -9,6 +9,9 @@
 #include "Entity.h"
 #include "Player.h"
 
+/**
+ * Class represents enemies of the Player.
+ */
 class Enemy : public Entity {
 public:
 	/**

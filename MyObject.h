@@ -15,7 +15,6 @@
  */
 class MyObject {
 public:
-
 	enum ObjectGroup {
 		ENTITY,
 		STATIC
@@ -90,30 +89,14 @@ public:
 	virtual InvList& getInventory();
 
 protected:
-	/**
-	 * ID is unique inside one ObjectGroup
-	 */
-	int ID;
-	int x, y;
-
-	/**
-	 * Default representation of MyObject subclass inside levelMap.
-	 */
-	char mapSymbol;
-
-	ObjectGroup group;
-	
-	/**
-	 * true if Entity can move to this MyObject's position
-	 */
-	bool isPassable;
-	
-	std::string name;
-	
-	/**
-	 * All Items this MyObject currently has.
-	 */
-	InvList inventory;
+	int ID;				///< ID is unique inside one ObjectGroup.
+	int y;				///< Y-coordinate of this MyObject in the map.
+	int x;				///< X-coordinate of this MyObject in the map.
+	char mapSymbol;		///< Default representation of MyObject subclass inside levelMap.
+	ObjectGroup group;	
+	bool isPassable;	///< True if Entity can move to this MyObject's position.
+	std::string name;	///< Name of this MyObject.
+	InvList inventory;	///< All Items this MyObject currently has.
 };
 
 #endif /* MYOBJECT_H */

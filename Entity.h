@@ -8,6 +8,7 @@
 
 /**
  * Super class of the Player and all Enemies.
+ * Anything that moves is an Entity.
  */
 class Entity : public MyObject {
 public:
@@ -117,6 +118,10 @@ public:
 	 */
 	virtual void equipItem(const int index);
 	
+	/**
+	 * Check if this Entity has any actions left. If not, reset actionsLeft variable.
+	 * @return True if Entity has any actions left.
+	 */
 	virtual bool hasActionsLeft();
 	
 	virtual bool alive() const;

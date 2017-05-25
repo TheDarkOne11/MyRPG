@@ -23,6 +23,12 @@ public:
 	 */
 	StaticObject(const StaticObject* temp);
 	
+	/**
+	 * Override: When StaticObject has an item, it's painted differently.
+	 * @param screen
+	 * @param y
+	 * @param x
+	 */
 	void paint(Screen* screen, const int y, const int x) override;
 	
 	/**

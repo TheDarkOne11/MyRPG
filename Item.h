@@ -36,6 +36,9 @@ public:
 	 */
 	virtual std::string getInfo() const;
 	
+	/**
+	 * @return Clone of Item.
+	 */
 	virtual Item* clone() const;
 	
 	virtual int getID() const;
@@ -46,6 +49,9 @@ public:
 	
 	virtual Info::Attributes getAttributes() const;
 	
+	/**
+	 * @return True if equiped by the player.
+	 */
 	virtual bool getEquiped() const;
 	
 	virtual void setEquiped(bool equiped);

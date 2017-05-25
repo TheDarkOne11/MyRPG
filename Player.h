@@ -82,16 +82,12 @@ public:
 	virtual MyObject* clone() const override;
 	
 private:
-	Direction currDirection;
-	bool doorFound;
-	
-	/**
-	 * Number of currently owned attribute points for upgrading player's attributes.
-	 */
-	int attrPointsCount;
-	int currXP;
-	int levelsCleared;
-	int enemiesKilled;
+	Direction currDirection;///< Direction player currently faces.
+	bool doorFound;			///< True if player found door to the next level.
+	int attrPointsCount;	///< Number of currently owned attribute points for upgrading player's attributes.
+	int currXP;				///< Currently earned xp.
+	int levelsCleared;		///< Number of cleared levels.
+	int enemiesKilled;		///< Number of killed enemies.
 };
 
 #endif /* PLAYER_H */
