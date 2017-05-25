@@ -3,13 +3,14 @@
 Player::Player(int ID, char mapSymbol, std::string name, Info::Attributes attr) 
 			: Entity(ID, mapSymbol, name, attr), currDirection(RIGHT), 
 			doorFound(false), attrPointsCount(Info::initialAttributePointsCount),
-		currXP(0), levelsCleared(0)
+		currXP(0), levelsCleared(0), enemiesKilled(0)
 {
 }
 
 Player::Player(const Player* temp) : Entity(temp), 
 		currDirection(temp->currDirection), doorFound(false), 
-		attrPointsCount(temp->attrPointsCount), currXP(temp->currXP), levelsCleared(temp->levelsCleared)
+		attrPointsCount(temp->attrPointsCount), currXP(temp->currXP), 
+		levelsCleared(temp->levelsCleared), enemiesKilled(temp->enemiesKilled)
 {
 }
 
@@ -109,6 +110,7 @@ void Player::update(LevelMap& levelMap, MsgBox* msgBox) {
 				if(!target->alive()) {
 					// Add xp
 					currXP += 10;
+					enemiesKilled++;
 				}
 			} else {
 				// Target not found
@@ -135,4 +137,12 @@ int Player::getAttrPointsCount() {
 
 void Player::setAttrPointsCount(int i) {
 	attrPointsCount = i;
+}
+
+int Player::getEnemiesKilled() {
+	return enemiesKilled;
+}
+
+int Player::getLevelsCleared() {
+	return levelsCleared;
 }

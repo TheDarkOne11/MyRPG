@@ -31,15 +31,16 @@ public:
 	};
 	
 	enum LevelState {
-		INIT,
-		INGAME,
-		INGAME_MENU,
-		ATTRIBUTES,
-		INVENTORY,
-		SAVE,
-		LOAD,
-		NEXT_LEVEL,
-		EXIT
+		INIT,		///< Game initiation.
+		INGAME,		///< Player is playing the game.
+		INGAME_MENU,///< Player is in ingame menu.
+		ATTRIBUTES,	///< Player is in attributes screen.
+		INVENTORY,	///< Player is in inventory screen.
+		SAVE,		///< Player saves the game.
+		LOAD,		///< Player loads new game from saved file.
+		NEXT_LEVEL,	///< Player moves to the next level.
+		PLAYER_DEAD,///< Death screen
+		EXIT		///< Player exited the game.
 	};
 	
 	/**
@@ -91,6 +92,11 @@ private:
 	 * Used to make code easier to read;
 	 */
 	void loadUpdate();
+	
+	/**
+	 * Paint simple dead screen.
+	 */
+	void paintDeadScreen();
 };
 
 #endif /* LEVEL_H */

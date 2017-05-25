@@ -30,6 +30,13 @@ public:
 	virtual void paint(Screen* screen, const int y, const int x) override;
 	
 	/**
+	 * Chech for player movement, attack etc.
+	 * @param levelMap
+	 * @param msgBox
+	 */
+	void update(LevelMap& levelMap, MsgBox* msgBox);
+	
+	/**
 	 * Save Player info into a file.
 	 * @param file
 	 */
@@ -58,18 +65,15 @@ public:
 	
 	void setName(std::string name);
 	
+	int getLevelsCleared();
+	
+	int getEnemiesKilled();
+	
 	/**
 	 * Player found the door and proccedes to the next level.
 	 * This method updates some of his attributes.
 	 */
 	void prepareToNextLevel();
-	
-	/**
-	 * Chech for player movement, attack etc.
-	 * @param levelMap
-	 * @param msgBox
-	 */
-	void update(LevelMap& levelMap, MsgBox* msgBox);
 	
 	/**
 	 * Returns a clone Player instance of the current MyObject.
@@ -87,6 +91,7 @@ private:
 	int attrPointsCount;
 	int currXP;
 	int levelsCleared;
+	int enemiesKilled;
 };
 
 #endif /* PLAYER_H */

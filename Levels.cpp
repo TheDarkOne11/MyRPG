@@ -83,7 +83,7 @@ void Levels::update() {
 			ingameUpdate();
 			if(!player->alive()) {
 				// Player died
-				currState = EXIT;
+				currState = PLAYER_DEAD;
 			}
 			break;
 		case(INGAME_MENU):
@@ -114,6 +114,10 @@ void Levels::update() {
 			player->prepareToNextLevel();
 			fileHandler.loadLevel(levelMap, enemiesInLevel, player);
 			currState = INGAME;
+			break;
+		case(PLAYER_DEAD):
+			if(UserInput::getPressedKey() == UserInput::K_ENTER)
+				currState = EXIT;
 			break;
 		case(EXIT):
 			break;
@@ -186,10 +190,6 @@ void Levels::loadUpdate() {
 			// Return
 			currState = INGAME_MENU;
 			break;
-			
-		case(-1):
-			// Wait
-			break;
 	}
 }
 
@@ -213,20 +213,42 @@ void Levels::paint() {
 			attrMenu.paint(screen);
 			break;
 		case(SAVE):
-			
 			break;
 		case(LOAD):
 			loadMenu.paint(screen);
 			break;
 		case(NEXT_LEVEL):
-			
+			break;
+		case(PLAYER_DEAD):
+			paintDeadScreen();
 			break;
 		case(EXIT):
-			
 			break;
 	}
 }
 
 Levels::LevelState Levels::getLevelState() {
 	return currState;
+}
+
+void Levels::paintDeadScreen() {
+	std::stringstream ss;
+	screen->setCurrScreen(Screen::STANDARD);
+	std::pair<int, int> dim = screen->getCurrDimensions();
+	ss << "Levels cleared: " << player->getLevelsCleared();
+	int y = dim.first/2;
+	int x = (dim.second - ss.str().size())/2;
+	mvwprintw(screen->getCurrScreen(), y, x, ss.str().c_str());
+	ss.str("");
+	
+	ss << "Enemies killed: " << player->getEnemiesKilled();
+	y = dim.first/2 + 2;
+	x = (dim.second - ss.str().size())/2;
+	mvwprintw(screen->getCurrScreen(), y, x, ss.str().c_str());
+	ss.str("");
+	
+	ss << "Press ENTER to go back to main menu.";
+	y = dim.first/2 + 4;
+	x = (dim.second - ss.str().size())/2;
+	mvwprintw(screen->getCurrScreen(), y, x, ss.str().c_str());
 }
