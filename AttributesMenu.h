@@ -8,7 +8,6 @@
 #include "Menu.h"
 #include "Attributes.h"
 
-
 /**
  * Class handles a special menu used for manipulating player attributes.
  */
@@ -24,19 +23,23 @@ public:
 	
 	AttributesMenu();
 	
+	/**
+	 * Iteration throught attributes menu.
+	 * @return False if player wants out of Attributes menu.
+	 */
 	bool update();
 	
+	/**
+	 * Paint attributes menu.
+	 * @param screen
+	 */
 	void paint(Screen* screen);
 	
 	void setPlayer(Player* player);
 private:
 	Menu attributesMenu;
 	Player* player;
-	
-	/**
-	 * Dummy atributes, used for applying changes.
-	 */
-	Attributes dummy;
+	Attributes dummy; ///< Dummy atributes, used for applying changes.
 	
 	/**
 	 * Change attributes according to the player choice.

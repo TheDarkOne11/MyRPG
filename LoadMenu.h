@@ -5,10 +5,17 @@
 #include "Info.h"
 #include "Menu.h"
 
+/**
+ * Class handles special menu for loading games from saved files.
+ */
 class LoadMenu {
 public:
 	LoadMenu();
 	
+	/**
+	 * Paints all avaible saved files.
+	 * @param screen
+	 */
 	void paint(Screen* screen);
 	
 	/**
@@ -20,8 +27,11 @@ public:
 private:
 	Menu fileNamesMenu;
 	std::vector<std::string> vect_FileNames;
-	bool isUpdated;
+	bool isUpdated;		///< True if Load menu has been updated.
 	
+	/**
+	 * Reloades available save files.
+	 */
 	void reloadChoices();
 };
 

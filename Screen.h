@@ -4,21 +4,29 @@
 #include <ncurses.h>
 #include <vector>
 
+/**
+ * Class handles initialization and destruction of ncurses screens.
+ */
 class Screen {
 public:
-	// Height of INFO screen
-	const int infoScreenHeight = 5;
+	const int infoScreenHeight = 5;	///< Height of INFO screen
 	
+	/**
+	 * List of all the screens that are available.
+	 */
 	enum ScreenTypes {
-		STANDARD = 0,
-		GAME = 1,
-		INFO = 2,
-		ATTR_INV = 3
+		STANDARD = 0,	///< Standard screen
+		GAME = 1,		///< Game screen
+		INFO = 2,		///< Info screen
+		ATTR_INV = 3	///< Attributes and Inventory screen
 	};
 	
 	Screen();
 	~Screen();
 	
+	/**
+	 * Update maximum width and height of the terminal.
+	 */
 	void update();
 	
 	/**
@@ -49,17 +57,10 @@ public:
 	std::pair<int, int> getCurrDimensions();
 	
 private:
-	int maxHeight, maxWidth;
-	
-	/**
-	 * All types of screen
-	 */
-	std::vector<WINDOW*> vect_screens;
-	
-	/**
-	 * Screen used currently
-	 */
-	WINDOW* currScreen;
+	int maxHeight;		///< Current height of the terminal.
+	int maxWidth;		///< Current width of the terminal.
+	std::vector<WINDOW*> vect_screens;	///< All types of screen
+	WINDOW* currScreen;	///< Currently used screen.
 	
 	/**
 	 * Adds new screen to the vector. 

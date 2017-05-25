@@ -10,6 +10,7 @@
 
 /**
  * Class handles painting and updates of simple menus - list of choices, each can be picked.
+ * Used as a base of more specialized menus.
  */
 class Menu {
 public:
@@ -25,11 +26,15 @@ public:
 	
 	/**
 	 * Set screen offset from the middle.
-	 * @param y
-	 * @param x
+	 * @param y is Y-offset from the middle.
+	 * @param x is X-offset from the middle.
 	 */
 	void setScreenOffset(const int y, const int x);
 	
+	/**
+	 * Set new head of the menu.
+	 * @param head
+	 */
 	void setHead(std::string head);
 	
 	/**
@@ -51,8 +56,8 @@ public:
 	int getCurrentChoice();
 	
 private:
-	std::string head;
-	bool headExists;
+	std::string head;		///< Head of the menu.
+	bool headExists;		///< True if a head exists
 	ChoiceVect choices;		///< Vector of all choices with int values, which are returned when choice is picked
 	int currChoice;			///< Index of currently selected choice.
 	int offsetY, offsetX;
