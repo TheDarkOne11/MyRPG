@@ -68,7 +68,7 @@ InvList& MyObject::getInventory() {
 	return inventory;
 }
 
-void MyObject::save(std::ofstream& file) {
+void MyObject::save(std::ofstream& file) const {
 	// Save important data
 	file << ID << " " << group << "\n" << y << " " << x << '\n';
 	

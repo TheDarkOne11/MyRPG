@@ -58,11 +58,11 @@ public:
 	virtual void setEquiped(bool equiped);
 	
 protected:
-	int ID;
-	std::string name;
+	int ID;					///< ID unique in the Item's type
+	std::string name;		///< Name of the Item
 	ItemType type;
 	Attributes attributes;
-	bool equiped;
+	bool equiped;			///< True if item is equipped by the player
 };
 
 #endif /* ITEM_H */

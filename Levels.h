@@ -66,7 +66,7 @@ public:
 	/**
 	 * @return Current state of the game.
 	 */
-	LevelState getLevelState();
+	LevelState getLevelState() const;
 
 private:
 	LevelMap levelMap;	///< All MyObjects that were placed in the current level are stored here.

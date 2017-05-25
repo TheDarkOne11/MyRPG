@@ -40,7 +40,7 @@ public:
 	 * Save Player info into a file.
 	 * @param file
 	 */
-	void save(std::ofstream& file) override;
+	void save(std::ofstream& file) const override;
 	
 	/**
 	 * Load Player info from a file.
@@ -57,7 +57,7 @@ public:
 	 * Check if player found door to next level.
 	 * @return True if player found the door.
 	 */
-	bool getDoorFound();
+	bool getDoorFound() const;
 	
 	int getAttrPointsCount();
 	
@@ -65,9 +65,9 @@ public:
 	
 	void setName(std::string name);
 	
-	int getLevelsCleared();
+	int getLevelsCleared() const;
 	
-	int getEnemiesKilled();
+	int getEnemiesKilled() const;
 	
 	/**
 	 * Player found the door and proccedes to the next level.

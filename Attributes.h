@@ -47,7 +47,7 @@ public:
 	* Save attributes into a file
 	* @param file
 	*/
-	void save(std::ofstream& file);
+	void save(std::ofstream& file) const;
 
 	/**
 	* Output information about attributes.

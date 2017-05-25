@@ -58,7 +58,7 @@ public:
 	 * Save this MyObject into the file.
 	 * @param file is the stream we write info to.
 	 */
-	virtual void save(std::ofstream& file);
+	virtual void save(std::ofstream& file) const;
 	
 	/**
 	 * Load this MyObject from the file.

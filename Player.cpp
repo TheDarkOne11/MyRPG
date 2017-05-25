@@ -18,7 +18,7 @@ void Player::paint(Screen* screen, const int y, const int x) {
 	mvwaddch(screen->getCurrScreen(), y, x, currDirection);
 }
 
-void Player::save(std::ofstream& file) {
+void Player::save(std::ofstream& file) const {
 	Entity::save(file);
 
 	file << name << " " << currDirection << " " << attrPointsCount << '\n';
@@ -65,7 +65,7 @@ void Player::checkGround() {
 	}
 }
 
-bool Player::getDoorFound() {
+bool Player::getDoorFound() const {
 	return doorFound;
 }
 
@@ -139,10 +139,10 @@ void Player::setAttrPointsCount(int i) {
 	attrPointsCount = i;
 }
 
-int Player::getEnemiesKilled() {
+int Player::getEnemiesKilled() const {
 	return enemiesKilled;
 }
 
-int Player::getLevelsCleared() {
+int Player::getLevelsCleared() const {
 	return levelsCleared;
 }

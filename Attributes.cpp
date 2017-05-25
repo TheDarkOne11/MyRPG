@@ -25,7 +25,7 @@ std::ostream& operator<<(std::ostream& os, const Attributes attr) {
 	return os;
 }
 
-void Attributes::save(std::ofstream& file) {
+void Attributes::save(std::ofstream& file) const {
 	file << maxHP << " " << attackDmg << " " << speed 
 			<< " " << range << " " << invSpace;
 }

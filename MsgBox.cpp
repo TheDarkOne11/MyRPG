@@ -10,6 +10,6 @@ void MsgBox::addMsg(std::string msg) {
 	msgCount++;
 }
 
-const std::vector<std::string> MsgBox::getMsgBuffer() {
+const std::vector<std::string> MsgBox::getMsgBuffer() const {
 	return msgBuffer;
 }

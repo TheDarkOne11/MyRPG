@@ -25,7 +25,7 @@ public:
 	/**
 	 * @return All messages.
 	 */
-	const std::vector<std::string> getMsgBuffer();
+	const std::vector<std::string> getMsgBuffer() const;
 private:
 	int max;		///< Maximum number of messages stored.
 	int msgCount;	///< Current count of messages stored.

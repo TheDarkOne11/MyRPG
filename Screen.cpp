@@ -56,7 +56,7 @@ WINDOW* Screen::getCurrScreen() const {
 	return currScreen;
 }
 
-std::pair<int, int> Screen::getCurrDimensions() {
+std::pair<int, int> Screen::getCurrDimensions() const {
 	std::pair<int, int> p;
 	
 	getmaxyx(currScreen, p.first, p.second);

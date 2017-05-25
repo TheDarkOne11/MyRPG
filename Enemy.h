@@ -69,10 +69,7 @@ protected:
 		PathStep(int y, int x, PathStep* parent);
 	};
 	
-	/**
-	 * Stores steps to take in order to move to and attack player.
-	 */
-	std::list<PathStep*> pathToPlayer;
+	std::list<PathStep*> pathToPlayer;	///< Stores steps to take in order to move to and attack player.
 	
 	/**
 	 * Fills path which Enemy has to take in order to attack player.
@@ -80,7 +77,7 @@ protected:
 	 * @param levelMap
 	 * @param player
 	 */
-	void fillPath(LevelMap& levelMap, const Player* player);
+	void fillPath(const LevelMap& levelMap, const Player* player);
 	
 	/**
 	 * Finds path which Enemy has to take in order to attack player.
@@ -88,7 +85,7 @@ protected:
 	 * @param player
 	 * @param root is the starting position for findPath
 	 */
-	void findPath(LevelMap& levelMap, const Player* player, PathStep* root);
+	void findPath(const LevelMap& levelMap, const Player* player, PathStep* root);
 	
 	/**
 	 * Check if player can be attacked from this position.
@@ -99,7 +96,7 @@ protected:
 	 * @param currX is x-coord of the position we want to attack from.
 	 * @return True if Enemy can attack Player from this position
 	 */
-	bool canAttackPlayer(LevelMap& levelMap, const Player* player, const int currY, const int currX);
+	bool canAttackPlayer(const LevelMap& levelMap, const Player* player, const int currY, const int currX);
 	
 	/**
 	 * Get distance to player from this position.
@@ -108,7 +105,7 @@ protected:
 	 * @param player
 	 * @return Distance to player rounded up.
 	 */
-	int distanceToPlayer(const int currY, const int currX, const Player* player);
+	int distanceToPlayer(const int currY, const int currX, const Player* player) const;
 	
 	/**
 	 * Remove everything from pathToPlayer list.
@@ -132,7 +129,7 @@ private:
 	 * @param q is queue of all PathSteps we should visit
 	 * @param curr is the current PathStep we want to add.
 	 */
-	void addNewStep(LevelMap& levelMap, std::set<PathStep*, PathStepCmp>& s, 
+	void addNewStep(const LevelMap& levelMap, std::set<PathStep*, PathStepCmp>& s, 
 				std::queue<PathStep*>& q, PathStep* curr);
 };
 

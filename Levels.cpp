@@ -227,7 +227,7 @@ void Levels::paint() {
 	}
 }
 
-Levels::LevelState Levels::getLevelState() {
+Levels::LevelState Levels::getLevelState() const {
 	return currState;
 }
 

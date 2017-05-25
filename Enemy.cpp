@@ -37,7 +37,7 @@ void Enemy::AI_update(LevelMap& levelMap, Player* player, MsgBox* msgBox) {
 	}
 }
 
-void Enemy::fillPath(LevelMap& levelMap, const Player* player) {	
+void Enemy::fillPath(const LevelMap& levelMap, const Player* player) {	
 	if( pathToPlayer.empty() ) {
 		PathStep* root = new PathStep(y, x, NULL);
 		findPath(levelMap, player, root);
@@ -57,7 +57,7 @@ void Enemy::fillPath(LevelMap& levelMap, const Player* player) {
 	}
 }
 
-void Enemy::findPath(LevelMap& levelMap, const Player* player, PathStep* root) {
+void Enemy::findPath(const LevelMap& levelMap, const Player* player, PathStep* root) {
 	std::set<PathStep*, PathStepCmp> s;
 	std::queue<PathStep*> q;
 	PathStep* curr;
@@ -98,7 +98,7 @@ void Enemy::findPath(LevelMap& levelMap, const Player* player, PathStep* root) {
 	
 }
 
-void Enemy::addNewStep(LevelMap& levelMap, std::set<PathStep*, PathStepCmp>& s, 
+void Enemy::addNewStep(const LevelMap& levelMap, std::set<PathStep*, PathStepCmp>& s, 
 			std::queue<PathStep*>& q, PathStep* curr) 
 	{
 	// Check bounds
@@ -123,7 +123,7 @@ void Enemy::addNewStep(LevelMap& levelMap, std::set<PathStep*, PathStepCmp>& s,
 	}
 }
 
-bool Enemy::canAttackPlayer(LevelMap& levelMap, const Player* player, const int currY, const int currX) {	
+bool Enemy::canAttackPlayer(const LevelMap& levelMap, const Player* player, const int currY, const int currX) {	
 	// If Enemy & Player are in same column/ row
 	if(currY == player->getY() || currX == player->getX()) {
 		// If enemy in range
@@ -166,7 +166,7 @@ MyObject* Enemy::clone() const {
 	return new Enemy(this);
 }
 
-int Enemy::distanceToPlayer(const int currY, const int currX, const Player* player) {
+int Enemy::distanceToPlayer(const int currY, const int currX, const Player* player) const {
 	double dis = std::pow(currY - player->getY(), 2) + std::pow(currX - player->getX(), 2);
 	return std::ceil( std::sqrt(dis) );
 }

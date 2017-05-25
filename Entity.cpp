@@ -60,7 +60,7 @@ void Entity::addToMap(LevelMap& levelMap, int y, int x, bool removeFormer) {
 	this->MyObject::addToMap(levelMap, y, x, removeFormer);
 }
 
-void Entity::save(std::ofstream& file) {
+void Entity::save(std::ofstream& file) const {
 	MyObject::save(file);
 
 	file << actionsLeft << " " << ground->getID() << " " << ground->getGroup() <<'\n';
@@ -93,8 +93,8 @@ void Entity::checkGround() {
 	transferItems(this, ground);
 }
 
-bool Entity::findTarget(LevelMap& levelMap, Direction direction, Entity*& target, 
-		const int yPos, const int xPos) {
+bool Entity::findTarget(const LevelMap& levelMap, Direction direction, Entity*& target, 
+		const int yPos, const int xPos) const {
 	int addY = 0;
 	int addX = 0;
 	int currRange = getCurrAttributes().range;

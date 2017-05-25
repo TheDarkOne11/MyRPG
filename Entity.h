@@ -20,10 +20,7 @@ public:
 		RIGHT = '>'
 	};
 	
-	/**
-	 * Entitie's attributes.
-	 */
-	Attributes attributes;
+	Attributes attributes;	///< Entitie's attributes.
 	
 	/**
 	 * This constructor is used for setting up "template" instances of derived classes.
@@ -55,7 +52,7 @@ public:
 	 * Save Entity info in a file.
 	 * @param file
 	 */
-	void save(std::ofstream& file) override;
+	void save(std::ofstream& file) const override;
 	
 	/**
 	 * Load Entity info from a file.
@@ -81,8 +78,8 @@ public:
 	 * @param target is the pointer to the found entity.
 	 * @return True if found
 	 */
-	virtual bool findTarget(LevelMap& levelMap, Direction direction, Entity*& target, 
-			const int yPos, const int xPos);
+	virtual bool findTarget(const LevelMap& levelMap, Direction direction, Entity*& target, 
+			const int yPos, const int xPos) const;
 	
 	/**
 	 * This Entity attacks another Entity.
