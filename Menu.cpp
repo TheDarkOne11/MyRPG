@@ -9,9 +9,18 @@ Menu::Menu(std::string head) : head(head), headExists(true), currChoice(0), offs
 
 void Menu::paint(Screen* screen) {
 	std::pair<int, int> p = screen->getCurrDimensions();
-	int currX = p.second/2 + offsetX;
 	int currY = p.first/2 + offsetY - choices.size();
-	int i = 0;
+	int currX = p.second/2 + offsetX;
+	int firstIndex = 0;
+	
+	/*
+	 * When choices are longer than screen, this makes it possible to see all of them.
+	 * 'Scrolling' to the bottom of the choices vector.
+	 */
+	if(currY < 2) {
+		currY = 2;
+		firstIndex = currChoice;
+	}
 	
 	// Paint head if it exists
 	if(headExists) {
@@ -21,10 +30,12 @@ void Menu::paint(Screen* screen) {
 	}
 	
 	// Paint choices
-	for(auto it = choices.begin(); it != choices.end(); it++) {
+	int i = firstIndex;
+	for(auto it = choices.begin() + firstIndex; it != choices.end(); it++) {
 		std::string currString = it->first;
 		
 		if(i == currChoice) {
+			// Highlight current choice
 			wattron(screen->getCurrScreen(), A_REVERSE);
 			mvwprintw(screen->getCurrScreen(), currY, currX - currString.size()/2, currString.c_str());
 			wattroff(screen->getCurrScreen(), A_REVERSE);

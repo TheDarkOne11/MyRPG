@@ -2,12 +2,14 @@
 
 Player::Player(int ID, char mapSymbol, std::string name, Info::Attributes attr) 
 			: Entity(ID, mapSymbol, name, attr), currDirection(RIGHT), 
-			doorFound(false), attrPointsCount(Info::initialAttributePointsCount)
+			doorFound(false), attrPointsCount(Info::initialAttributePointsCount),
+		currXP(0), levelsCleared(0)
 {
 }
 
 Player::Player(const Player* temp) : Entity(temp), 
-		currDirection(temp->currDirection), doorFound(false), attrPointsCount(temp->attrPointsCount)
+		currDirection(temp->currDirection), doorFound(false), 
+		attrPointsCount(temp->attrPointsCount), currXP(temp->currXP), levelsCleared(temp->levelsCleared)
 {
 }
 
@@ -67,6 +69,7 @@ bool Player::getDoorFound() {
 }
 
 void Player::prepareToNextLevel() {
+	levelsCleared++;
 	doorFound = false;
 	delete ground;
 	ground = NULL;
@@ -103,6 +106,10 @@ void Player::update(LevelMap& levelMap, MsgBox* msgBox) {
 			if( findTarget(levelMap, currDirection, target, y, x) ) {
 				// Target found
 				target->isAttacked(this, msgBox);
+				if(!target->alive()) {
+					// Add xp
+					currXP += 10;
+				}
 			} else {
 				// Target not found
 				msgBox->addMsg("Player missed.");
@@ -111,6 +118,11 @@ void Player::update(LevelMap& levelMap, MsgBox* msgBox) {
 		default:
 			return;
 			break;
+	}
+	
+	if(currXP - Info::xpLevelCap == 0) {
+		attrPointsCount++;
+		currXP = 0;
 	}
 	
 	if(madeAction)

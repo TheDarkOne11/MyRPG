@@ -85,6 +85,8 @@ private:
 	 * Number of currently owned attribute points for upgrading player's attributes.
 	 */
 	int attrPointsCount;
+	int currXP;
+	int levelsCleared;
 };
 
 #endif /* PLAYER_H */

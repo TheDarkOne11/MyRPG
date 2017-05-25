@@ -21,9 +21,10 @@ public:
 	const static int initialAttributePointsCount = 5;
 	const static int hpPerPoint = 5;
 	const static char symbol_staticObjectHasItem = '*';
+	const static int xpLevelCap = 100;
 	
 	// List of Consumable items IDs
-	const static int ID_healthPotion = 0;
+	const static int ID_healthUpgrade = 0;
 	
 	// List of Usable items IDs
 	const static int ID_fastBoots = 0;

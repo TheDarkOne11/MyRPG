@@ -7,8 +7,8 @@
 class InventoryMenu {
 public:
 	enum MenuType {
-		INVENTORY,
-		EXCESSIVE
+		INVENTORY,		///< Menu for actual player inventory
+		EXCESSIVE		///< Menu for all items that exceed player inventory
 	};
 	
 	InventoryMenu();

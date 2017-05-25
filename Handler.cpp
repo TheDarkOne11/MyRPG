@@ -23,8 +23,8 @@ void Handler::init() {
 	srand(time(NULL));
 	
 	// Initialize Consumable items
-	Item* healtPotion = new Item(Info::ID_healthPotion, "Health potion", Item::CONSUMABLE, Info::Attributes(15));
-	addItem(healtPotion);
+	Item* healtUpgrade = new Item(Info::ID_healthUpgrade, "Health upgrade", Item::CONSUMABLE, Info::Attributes(15));
+	addItem(healtUpgrade);
 	
 	// Initialize Usable items
 	Item* fastBoots =  new Item(Info::ID_fastBoots, "Fast boots", Item::USEABLE, Info::Attributes(5, 3));

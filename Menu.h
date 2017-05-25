@@ -9,7 +9,7 @@
 #include "Screen.h"
 
 /**
- * Class handles painting and updates of simple menus.
+ * Class handles painting and updates of simple menus - list of choices, each can be picked.
  */
 class Menu {
 public:
@@ -17,12 +17,26 @@ public:
 	
 	Menu(std::string head);
 	
+	/**
+	 * Set which choices menu has.
+	 * @param choices
+	 */
 	void setChoices(ChoiceVect& choices);
 	
+	/**
+	 * Set screen offset from the middle.
+	 * @param y
+	 * @param x
+	 */
 	void setScreenOffset(const int y, const int x);
 	
 	void setHead(std::string head);
 	
+	/**
+	 * Paints menu in the currently selected window.
+	 * Enables "scrolling" through choices if they are too long.
+	 * @param screen
+	 */
 	void paint(Screen* screen);
 	
 	/**
@@ -39,8 +53,8 @@ public:
 private:
 	std::string head;
 	bool headExists;
-	ChoiceVect choices;
-	int currChoice;
+	ChoiceVect choices;		///< Vector of all choices with int values, which are returned when choice is picked
+	int currChoice;			///< Index of currently selected choice.
 	int offsetY, offsetX;
 };
 
