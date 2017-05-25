@@ -5,6 +5,7 @@
 #include <sstream>
 #include "MyObject.h"
 #include "MsgBox.h"
+#include "Attributes.h"
 
 /**
  * Super class of the Player and all Enemies.
@@ -22,7 +23,7 @@ public:
 	/**
 	 * Entitie's attributes.
 	 */
-	Info::Attributes attributes;
+	Attributes attributes;
 	
 	/**
 	 * This constructor is used for setting up "template" instances of derived classes.
@@ -31,7 +32,7 @@ public:
 	 * @param name
 	 * @param attr are this Entitie's attributes.
 	 */
-	Entity	(int ID, char mapSymbol, std::string name, Info::Attributes attr);
+	Entity	(int ID, char mapSymbol, std::string name, Attributes attr);
 	
 	virtual ~Entity();
 		
@@ -68,7 +69,7 @@ public:
 	 * @param levelMap is the 2D vector game map.
 	 * @param newY is Y-coordinate of new position.
 	 * @param newX is X-coordinate of new position.
-	 * @return true if the Entity could move to new coordinates.
+	 * @return True if the Entity could move to new coordinates.
 	 */
 	virtual bool move(LevelMap& levelMap, int newY, int newX);
 	
@@ -78,7 +79,7 @@ public:
 	 * @param levelMap
 	 * @param direction says in what direction to look.
 	 * @param target is the pointer to the found entity.
-	 * @return true if found
+	 * @return True if found
 	 */
 	virtual bool findTarget(LevelMap& levelMap, Direction direction, Entity*& target, 
 			const int yPos, const int xPos);
@@ -129,7 +130,7 @@ public:
 	/**
 	 * @return Entities attributes with applied changes from current state.
 	 */
-	virtual const Info::Attributes getCurrAttributes() const;
+	virtual const Attributes getCurrAttributes() const;
 	
 	/**
 	 * @return All important information about this Entity.
@@ -145,7 +146,7 @@ protected:
 	/**
 	 * All temporary effects (damage taken, buffs...) are stored here.
 	 */
-	Info::Attributes currState;
+	Attributes currState;
 	
 	/**
 	 * Entity stores the MyObject it stands on.

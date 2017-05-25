@@ -5,6 +5,7 @@
 
 /**
  * Handles input from keyboard.
+ * Stores used keys.
  */
 class UserInput {
 public:
@@ -17,8 +18,14 @@ public:
 	const static int K_LEFT = KEY_LEFT;
 	const static int K_RIGHT = KEY_RIGHT;
 
+	/**
+	 * Check currently pressed keys.
+	 */
 	static void update();
 	
+	/**
+	 * @return Key that was last pressed.
+	 */
 	static int getPressedKey();
 private:
 	static int pressedKey;

@@ -47,49 +47,11 @@ public:
 	const static std::string pathNamesSaves;
 	
 	/**
-	 * Struct of all types of attributes every Entity and Item can have.
+	 * Method for parsing strings from save files.
+	 * @param line is the string for parsing. Substring with information is removed from it.
+	 * @param delim is the delimiter which separates 2 informations.
+	 * @return A substring with information.
 	 */
-	struct Attributes {
-		int maxHP;		///< How much damage can be taken.
-		int speed;		///< How many actions per turn can be done.
-		int attackDmg;	///< How much damage can be inflicted in one attack.
-		int range;		///< Range of attack.
-		int invSpace;	///< How much items can be carried
-		
-		/**
-		 * Standard constructor.
-		 * @param health
-		 * @param speed
-		 * @param attack damage
-		 * @param range
-		 * @param inventory space
-		 */
-		Attributes(int h = 0, int s = 0, int ad = 0, int r = 0, int inv = 0);
-		
-		Attributes operator+(const Attributes& right) const;
-		
-		Attributes operator-(const Attributes& right) const;
-		
-		void clear();
-		
-		/**
-		 * Load attributes from a file.
-		 * @param file
-		 */
-		void load(std::ifstream& file);
-		
-		/**
-		 * Save attributes into a file
-		 * @param file
-		 */
-		void save(std::ofstream& file);
-		
-		/**
-		 * Output information about attributes.
-		 */
-		friend std::ostream& operator<<(std::ostream& os, const Attributes attr);
-	};
-	
 	static std::string parseString(std::string& line, std::string delim = " ");
 		
 };

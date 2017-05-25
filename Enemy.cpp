@@ -1,6 +1,6 @@
 #include "Enemy.h"
 
-Enemy::Enemy	(int ID, char mapSymbol, std::string name, Info::Attributes attr)
+Enemy::Enemy	(int ID, char mapSymbol, std::string name, Attributes attr)
 				: Entity(ID, mapSymbol, name, attr)
 {
 }

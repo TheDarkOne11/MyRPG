@@ -23,11 +23,14 @@
 #include "InventoryMenu.h"
 #include "LoadMenu.h"
 
+/**
+ * Class handles creation, update and painting of all levels Player visits.
+ */
 class Levels {
 public:
 	enum Turns {
-		PLAYER,
-		ENEMY
+		PLAYER,		///< It's Player's turn to play
+		ENEMY		///< It's Enemie's turn to play
 	};
 	
 	enum LevelState {
@@ -52,22 +55,22 @@ public:
 	Levels(Screen* screen, std::string fileName = "");
 	~Levels();
 	
+	/**
+	 * Deletes all objects in the level map but Player.
+	 */
 	void clearLevel();
 	
 	void update();
 	void paint();
 		
+	/**
+	 * @return Current state of the game.
+	 */
 	LevelState getLevelState();
 
 private:
-	/**
-	 * All MyObjects that were placed in the current level are stored here.
-	 */
-	LevelMap levelMap;
-	/**
-	 * Stores all enemy Entities that were added to current level.
-	 */
-	std::vector<Enemy*> enemiesInLevel;
+	LevelMap levelMap;	///< All MyObjects that were placed in the current level are stored here.
+	std::vector<Enemy*> enemiesInLevel;		///< Stores all enemy Entities that were added to current level.
 	Player* player;
 	Screen* screen;
 	GameScreen gameScreen;

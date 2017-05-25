@@ -21,14 +21,18 @@ public:
 	 * All different major game states.
 	 */
 	enum GameState {
-		MAIN_MENU,
-		NEW_LEVELS,
-		LOAD_LEVEL,
-		LEVELS,
-		LEVELS_ENDED,
-		EXIT
+		MAIN_MENU,		///< Player in the main menu.
+		NEW_LEVELS,		///< Player started new game.
+		LOAD_LEVEL,		///< Player loaded a game from a save file.
+		LEVELS,			///< Player is in the game.
+		LEVELS_ENDED,	///< Player exited the game.
+		EXIT			///< Player shut down whole application.
 	};
 	
+	/**
+	 * Standard constructor.
+	 * Initialize menus, screens etc.
+	 */
 	Game();
 	
 	~Game();
@@ -55,6 +59,9 @@ private:
 	Levels* levels;
 	Screen* screen;
 	
+	/**
+	 * Handles update of loading from save file.
+	 */
 	void loadUpdate();
 };
 

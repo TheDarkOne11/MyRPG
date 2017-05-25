@@ -1,7 +1,7 @@
 #include "Entity.h"
 #include "Handler.h"
 
-Entity::Entity	(int ID, char mapSymbol, std::string name, Info::Attributes attr)
+Entity::Entity	(int ID, char mapSymbol, std::string name, Attributes attr)
 				:	MyObject(ID, mapSymbol, MyObject::ENTITY, false, name), 
 					attributes(attr), actionsLeft(attr.speed), currState(),
 					ground(NULL)
@@ -147,7 +147,7 @@ bool Entity::findTarget(LevelMap& levelMap, Direction direction, Entity*& target
 }
 
 void Entity::isAttacked(const Entity* attacker, MsgBox* msgBox) {
-	Info::Attributes attr = attacker->getCurrAttributes();
+	Attributes attr = attacker->getCurrAttributes();
 	currState.maxHP -= attr.attackDmg;
 	
 	std::stringstream ss;
@@ -226,6 +226,6 @@ void Entity::equipItem(const int index) {
 	}
 }
 
-const Info::Attributes Entity::getCurrAttributes() const {
+const Attributes Entity::getCurrAttributes() const {
 	return attributes + currState;
 }

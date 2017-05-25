@@ -1,6 +1,6 @@
 #include "Item.h"
 
-Item::Item(int ID, std::string name, ItemType type, Info::Attributes attr)
+Item::Item(int ID, std::string name, ItemType type, Attributes attr)
 		: ID(ID), name(name), type(type), attributes(attr), equiped(false)
 {
 }
@@ -23,7 +23,7 @@ int Item::getID() const {
 	return ID;
 }
 
-Info::Attributes Item::getAttributes() const {
+Attributes Item::getAttributes() const {
 	return attributes;
 }
 

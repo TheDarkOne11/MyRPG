@@ -21,7 +21,7 @@ public:
 	 * @param name
 	 * @param attr
 	 */
-	Enemy(int ID, char mapSymbol, std::string name, Info::Attributes attr);
+	Enemy(int ID, char mapSymbol, std::string name, Attributes attr);
 	
 	/**
 	 * This constructor is used for cloning "templates" of derived classes.
@@ -97,7 +97,7 @@ protected:
 	 * @param player
 	 * @param currY is y-coord of the position we want to attack from.
 	 * @param currX is x-coord of the position we want to attack from.
-	 * @return true if Enemy can attack Player from this position
+	 * @return True if Enemy can attack Player from this position
 	 */
 	bool canAttackPlayer(LevelMap& levelMap, const Player* player, const int currY, const int currX);
 	
@@ -106,7 +106,7 @@ protected:
 	 * @param currY is y-coord of the position we want to get distance to player from.
 	 * @param currX is y-coord of the position we want to get distance to player from.
 	 * @param player
-	 * @return distance to player rounded up.
+	 * @return Distance to player rounded up.
 	 */
 	int distanceToPlayer(const int currY, const int currX, const Player* player);
 	

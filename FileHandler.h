@@ -14,15 +14,10 @@
 #define EnemyVect std::vector<Enemy*>
 
 /**
- * Handles saving/ loading levels.
+ * Handles saving/ loading levels in files.
  */
 class FileHandler {
-public:
-	enum FileType {
-		SAVE,
-		MAP
-	};
-	
+public:	
 	FileHandler();
 	
 	/**
@@ -33,15 +28,25 @@ public:
 	 */
 	void loadLevel(LevelMap& levelMap, EnemyVect& enemies, Player*& player);
 	
-	
+	/**
+	 * Saves the currently played game.
+	 * @param levelMap
+	 * @param playerName is the name of the player.
+	 */
 	void saveGame(const LevelMap& levelMap, const std::string playerName);
 	
-	
+	/**
+	 * Loads chosen game.
+	 * @param fileName is the fileName of the save file that should be loaded.
+	 * @param levelMap
+	 * @param enemies is the vector of all enemies in the map.
+	 * @param player
+	 */
 	void loadGame(std::string fileName, LevelMap& levelMap, EnemyVect& enemies, Player*& player);
 	
 private:
-	std::vector<std::string> fileNamesSaves;
-	std::vector<std::string> fileNamesMaps;
+	std::vector<std::string> fileNamesSaves;	///< File names of all available save files
+	std::vector<std::string> fileNamesMaps;		///< File names of all available map files
 	
 	/**
 	 * Load file names from all files
@@ -65,8 +70,20 @@ private:
 	void addRandomObjects(LevelMap& levelMap, EnemyVect& enemies, 
 				Player*& player, InnerVect& possiblePositions);
 	
+	/**
+	 * Gets a MyObject pointer and erases it from possiblePositions.
+	 * @param possiblePositions is a vector of all positions available for random spawning.
+	 * @param index is the index to get MyObject pointer from.
+	 * @return The MyObject pointer at the index.
+	 */
 	MyObject* getPossiblePos( InnerVect& possiblePositions, int index );
 	
+	/**
+	 * Adds random Items randomly into the map.
+	 * @param possiblePositions
+	 * @param count is a number of items to be added.
+	 * @param type is the type of items to be added.
+	 */
 	void addRandomItems(const InnerVect& possiblePositions, 
 			const int count, const Item::ItemType type);
 };

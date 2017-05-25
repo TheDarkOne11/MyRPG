@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Attributes.o \
 	${OBJECTDIR}/AttributesMenu.o \
 	${OBJECTDIR}/Enemy.o \
 	${OBJECTDIR}/Entity.o \
@@ -80,6 +81,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/myrpg: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/myrpg ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Attributes.o: Attributes.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Attributes.o Attributes.cpp
 
 ${OBJECTDIR}/AttributesMenu.o: AttributesMenu.cpp
 	${MKDIR} -p ${OBJECTDIR}

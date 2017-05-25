@@ -20,6 +20,7 @@
         <itemPath>Menu.h</itemPath>
         <itemPath>Screen.h</itemPath>
       </logicalFolder>
+      <itemPath>Attributes.h</itemPath>
       <itemPath>FileHandler.h</itemPath>
       <itemPath>Game.h</itemPath>
       <itemPath>Handler.h</itemPath>
@@ -61,6 +62,7 @@
         <itemPath>Menu.cpp</itemPath>
         <itemPath>Screen.cpp</itemPath>
       </logicalFolder>
+      <itemPath>Attributes.cpp</itemPath>
       <itemPath>FileHandler.cpp</itemPath>
       <itemPath>Game.cpp</itemPath>
       <itemPath>Handler.cpp</itemPath>
@@ -102,6 +104,10 @@
           <commandLine>-std=c++11 -lncurses</commandLine>
         </ccTool>
       </compileType>
+      <item path="Attributes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Attributes.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="AttributesMenu.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="AttributesMenu.h" ex="false" tool="3" flavor2="0">
@@ -209,6 +215,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Attributes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Attributes.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="AttributesMenu.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="AttributesMenu.h" ex="false" tool="3" flavor2="0">

@@ -23,13 +23,13 @@ void Handler::init() {
 	srand(time(NULL));
 	
 	// Initialize Consumable items
-	Item* healtUpgrade = new Item(Info::ID_healthUpgrade, "Health upgrade", Item::CONSUMABLE, Info::Attributes(15));
+	Item* healtUpgrade = new Item(Info::ID_healthUpgrade, "Health upgrade", Item::CONSUMABLE, Attributes(15));
 	addItem(healtUpgrade);
 	
 	// Initialize Usable items
-	Item* fastBoots =  new Item(Info::ID_fastBoots, "Fast boots", Item::USEABLE, Info::Attributes(5, 3));
+	Item* fastBoots =  new Item(Info::ID_fastBoots, "Fast boots", Item::USEABLE, Attributes(5, 3));
 	addItem(fastBoots);
-	Item* gun =  new Item(Info::ID_gun, "Gun", Item::USEABLE, Info::Attributes(2, -1, 0, 3, 0));
+	Item* gun =  new Item(Info::ID_gun, "Gun", Item::USEABLE, Attributes(2, -1, 0, 3, 0));
 	addItem(gun);
 	
 	// Initialize static objects
@@ -41,15 +41,15 @@ void Handler::init() {
 	addObject(floor);
 	
 	// Initialize entities
-	MyObject* player = new Player(Info::ID_Player, 'P', "Player", Info::Attributes(50, 2, 5, 3, 5));
+	MyObject* player = new Player(Info::ID_Player, 'P', "Player", Attributes(50, 2, 5, 3, 5));
 	addObject(player);
-	MyObject* mob = new Enemy(Info::ID_Mob, 'M', "Mob", Info::Attributes(10, 1, 2, 2, 10));
+	MyObject* mob = new Enemy(Info::ID_Mob, 'M', "Mob", Attributes(10, 1, 2, 2, 10));
 	addObject(mob);
-	MyObject* mob2 = new Enemy(Info::ID_Mob2, 'N', "Mob2", Info::Attributes(5, 3, 1, 1, 2));
+	MyObject* mob2 = new Enemy(Info::ID_Mob2, 'N', "Mob2", Attributes(5, 3, 1, 1, 2));
 	addObject(mob2);
 }
 
-Item* Handler::getItem(const int ID, const Item::ItemType type) {
+Item* Handler::getItem(const Item::ItemType type, const int ID) {
 	auto it = map_ItemTypes.find(type);
 	
 	if(it == map_ItemTypes.end()) {

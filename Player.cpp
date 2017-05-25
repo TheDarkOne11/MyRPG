@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(int ID, char mapSymbol, std::string name, Info::Attributes attr) 
+Player::Player(int ID, char mapSymbol, std::string name, Attributes attr) 
 			: Entity(ID, mapSymbol, name, attr), currDirection(RIGHT), 
 			doorFound(false), attrPointsCount(Info::initialAttributePointsCount),
 		currXP(0), levelsCleared(0), enemiesKilled(0)

@@ -2,6 +2,7 @@
 #define ITEM_H
 #include <sstream>
 #include "Info.h"
+#include "Attributes.h"
 
 /**
  * Superclass for all Items.
@@ -20,7 +21,7 @@ public:
 	 * @param type
 	 * @param attr
 	 */
-	Item(int ID, std::string name, ItemType type, Info::Attributes attr);
+	Item(int ID, std::string name, ItemType type, Attributes attr);
 	
 	/**
 	 * This constructor is used for cloning "templates" of derived classes.
@@ -32,7 +33,7 @@ public:
 	
 	/**
 	 * Get string of all relevant information about this item.
-	 * @return information string.
+	 * @return Information string.
 	 */
 	virtual std::string getInfo() const;
 	
@@ -47,7 +48,7 @@ public:
 	
 	virtual ItemType getType() const;
 	
-	virtual Info::Attributes getAttributes() const;
+	virtual Attributes getAttributes() const;
 	
 	/**
 	 * @return True if equiped by the player.
@@ -60,7 +61,7 @@ protected:
 	int ID;
 	std::string name;
 	ItemType type;
-	Info::Attributes attributes;
+	Attributes attributes;
 	bool equiped;
 };
 

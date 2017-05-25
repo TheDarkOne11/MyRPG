@@ -6,6 +6,7 @@
 #include "UserInput.h"
 #include "Screen.h"
 #include "Menu.h"
+#include "Attributes.h"
 
 
 /**
@@ -35,12 +36,12 @@ private:
 	/**
 	 * Dummy atributes, used for applying changes.
 	 */
-	Info::Attributes dummy;
+	Attributes dummy;
 	
 	/**
 	 * Change attributes according to the player choice.
 	 * @param change says how much the attribute has to change.
-	 * @return true if any attribute value was successfuly changed.
+	 * @return True if any attribute value was successfuly changed.
 	 */
 	bool changeChosenAttribute(const int change);
 };

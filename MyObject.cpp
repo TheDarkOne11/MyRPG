@@ -92,7 +92,7 @@ void MyObject::load(std::ifstream& file) {
 		int ID = stoi(Info::parseString(line));
 		Item::ItemType type = (Item::ItemType) stoi(Info::parseString(line));
 		
-		inventory.push_back( Handler::getItem(ID, type) );
+		inventory.push_back( Handler::getItem(type, ID) );
 	}
 }
 

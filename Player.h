@@ -13,7 +13,7 @@ public:
 	 * @param name
 	 * @param attr
 	 */
-	Player(int ID, char mapSymbol, std::string name, Info::Attributes attr);
+	Player(int ID, char mapSymbol, std::string name, Attributes attr);
 	
 	/**
 	 This constructor is used for cloning "templates" of Player class.

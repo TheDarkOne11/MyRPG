@@ -13,14 +13,17 @@
 #include "StaticObject.h"
 #include "Enemy.h"
 #include "Item.h"
+#include "Attributes.h"
 
 /**
- * Class has some important constants for the game.
  * Class stores initialized "template" instances of all MyObject and Item classes.
  * Class provides copies of these "templates" to other classes.
  */
 class Handler {
 public:	
+	/**
+	 * Deletes all templates.
+	 */
 	static void clear();
 	
 	/**
@@ -28,14 +31,23 @@ public:
 	 */
 	static void init();
 	
-	static Item* getItem(const int ID, const Item::ItemType type);
+	/**
+	 * @param type is a type of the Item.
+	 * @param ID is an ID of the Item.
+	 * @return Item of specified ID and type.
+	 */
+	static Item* getItem(const Item::ItemType type, const int ID);
 	
-	static Item* getItem(const Item::ItemType);
+	/**
+	 * @param type
+	 * @return Random Item of specified type.
+	 */
+	static Item* getItem(const Item::ItemType type);
 	
 	/**
 	 * Finds the MyObject subclass using mapSymbol.
 	 * @param mapSymbol is the unique symbol each MyObject class has.
-	 * @return copy of the MyObject subclass.
+	 * @return Copy of the MyObject subclass.
 	 */
 	static MyObject* getMyObject(const char mapSymbol);
 	
@@ -44,7 +56,7 @@ public:
 	 * Used when adding 
 	 * @param ObjectGroup
 	 * @param ID
-	 * @return copy of the MyObject subclass.
+	 * @return Copy of the MyObject subclass.
 	 */
 	static MyObject* getMyObject(const MyObject::ObjectGroup, const int ID);
 	
@@ -52,7 +64,7 @@ public:
 	 * Returns random member of ObjectGroup.
 	 * Used when adding MyObject subclasses into the game map (like enemies...)
 	 * @param ObjectGroup
-	 * @return copy of the MyObject subclass.
+	 * @return Copy of the MyObject subclass.
 	 */
 	static MyObject* getMyObject(const MyObject::ObjectGroup);
 		
