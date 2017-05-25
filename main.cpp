@@ -23,6 +23,9 @@ int main(int argc, char** argv) {
 		} catch(string s) {
 			cerr << s << endl;
 			break;
+		} catch(std::out_of_range e) {
+			cerr << e.what() << endl;
+			break;
 		}
 		
 		usleep(sleepTime);	

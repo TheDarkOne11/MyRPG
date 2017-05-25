@@ -11,7 +11,6 @@ public:
 	const static int K_ENTER = 10;			///< ENTER key
 	const static int K_ATTACK= 'q';
 	const static int K_SWAP= 's';
-	const static int K_EQUIP= 'q';
 	const static int K_ESC = 27;			///< ESCAPE key
 	const static int K_UP = KEY_UP;
 	const static int K_DOWN = KEY_DOWN;

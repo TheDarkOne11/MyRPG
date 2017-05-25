@@ -208,7 +208,7 @@ void Entity::transferItems(MyObject* destination, MyObject* source, const int in
 }
 
 void Entity::equipItem(const int index) {
-	Item* item = inventory.at(index);
+	Item* item = inventory[index];
 	
 	if(item->getEquiped()) {
 		// Item is equiped, unequip it

@@ -20,7 +20,7 @@ void InventoryMenu::paint(Screen* screen) {
 	// Paint info menu
 	screen->setCurrScreen(screen->INFO);
 	ss << "Press " << (char) UserInput::K_SWAP << " to swap currently selected items in both menus.";
-	ss2 << "Press " << (char) UserInput::K_EQUIP << " to equip an item selected in Inventory.";
+	ss2 << "Press ENTER to equip an item selected in Inventory.";
 	ss3 << "Currently selected " << currItemInfo;
 	
 	mvwprintw(screen->getCurrScreen(), 0, 0, "Select menu to scroll through using LEFT/ RIGHT arrow keys. Press ESC to return/ continue.");
@@ -45,7 +45,7 @@ bool InventoryMenu::update() {
 			swap();
 			changes = true;			
 			break;
-		case(UserInput::K_EQUIP):
+		case(UserInput::K_ENTER):
 			changes = true;
 			if(!inv.empty()) {
 				// Get currently selected item
@@ -93,10 +93,10 @@ void InventoryMenu::reloadInventory() {
 	InvList& inv = player->getInventory();
 	
 	for(int i = 0; i < (signed) inv.size(); i++) {
-		std::string currName = inv.at(i)->getName();
+		std::string currName = inv[i]->getName();
 		
 		// If item is equipped, indicate it
-		if(inv.at(i)->getEquiped()) {
+		if(inv[i]->getEquiped()) {
 			currName.append(" (Eq)");
 		}
 		
@@ -121,7 +121,7 @@ void InventoryMenu::swap() {
 	int indexI = invMenu.getCurrentChoice();
 	int indexE = excessiveMenu.getCurrentChoice();
 		
-	Item* tmp = inv.at(indexI);
+	Item* tmp = inv[indexI];
 	
 	// Unequip item if it is equipped
 	if(tmp->getEquiped()) {
@@ -129,8 +129,8 @@ void InventoryMenu::swap() {
 	}
 	
 	// Swap items
-	inv.at(indexI) = inv.at(indexE);
-	inv.at(indexE) = tmp;
+	inv[indexI] = inv[indexE];
+	inv[indexE] = tmp;
 }
 
 void InventoryMenu::setPlayer(Player* player) {
