@@ -3,7 +3,7 @@
 
 MyObject::MyObject(int ID, char mapSymbol, ObjectGroup group, 
 		bool isPassable, std::string name)	
-							: ID(ID), x(0), y(0), mapSymbol(mapSymbol), 
+							: ID(ID), y(0), x(0), mapSymbol(mapSymbol), 
 							group(group), isPassable(isPassable), name(name)
 {
 
