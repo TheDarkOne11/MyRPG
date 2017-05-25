@@ -20,6 +20,7 @@ public:
 private:
 	Menu fileNamesMenu;
 	std::vector<std::string> vect_FileNames;
+	bool isUpdated;
 	
 	void reloadChoices();
 };

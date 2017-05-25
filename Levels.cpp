@@ -174,6 +174,7 @@ void Levels::loadUpdate() {
 		case(1):
 			// FileName chosen
 			clearLevel();
+			delete player;
 			fileHandler.loadGame(fileName, levelMap, enemiesInLevel, player);
 			// Set screens
 			gameScreen.setPlayer(player);
