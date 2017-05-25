@@ -129,13 +129,13 @@ void FileHandler::addRandomItems(const InnerVect& possiblePositions,
 void FileHandler::saveGame(const LevelMap& levelMap, const std::string playerName) {
 	std::stringstream ss;
 	
-	// Get unique name using time
+	// Get unique name using time, format: playerName_ddmmyyyy_hhmmss
 	time_t t = time(0);
     struct tm * now = localtime( & t );
-	ss << now->tm_hour << now->tm_min << now->tm_gmtoff << "_"
-			<< now->tm_mday << now->tm_mon + 1 << now->tm_year + 1900;
+	ss << now->tm_mday << now->tm_mon + 1 << now->tm_year + 1900 << "_"
+			<< now->tm_hour << now->tm_min << now->tm_gmtoff;
 	
-	std::string fileName =  ss.str() + "_" + playerName;	
+	std::string fileName =  playerName + "_" + ss.str();	
 	std::ofstream file( Info::pathDirSaves + "/" + fileName );
 	
 	// Save whole levelMap into the file
@@ -145,16 +145,28 @@ void FileHandler::saveGame(const LevelMap& levelMap, const std::string playerNam
 		}
 	}
 	
-	// Save new filename inside filenames file
-	// TODO Sort them, newest on top
-	std::ofstream saveFileNames(Info::pathNamesSaves, std::ofstream::app);
-	saveFileNames << fileName << '\n';
-	
-	
-	saveFileNames.flush();
-	saveFileNames.close();
 	file.flush();
 	file.close();
+	
+	/**
+	 * Save new filename inside filenames file, newest at the top.
+	 */
+	std::string tmpName = Info::pathNamesSaves + "TMP";
+	std::string line;
+	std::ifstream oldFileNames(Info::pathNamesSaves);
+	std::ofstream newFileNames(tmpName);
+	
+	newFileNames << fileName << '\n';
+	while( getline(oldFileNames, line) ) {
+		newFileNames << line << '\n';
+	}
+	
+	newFileNames.close();
+	oldFileNames.close();
+	
+	// Remove oldFileNames, rename newFileNames
+	remove(Info::pathNamesSaves.c_str());
+	rename(tmpName.c_str(), Info::pathNamesSaves.c_str());
 }
 
 void FileHandler::loadGame(std::string fileName, LevelMap& levelMap, EnemyVect& enemies, Player*& player) {
@@ -181,13 +193,16 @@ void FileHandler::loadGame(std::string fileName, LevelMap& levelMap, EnemyVect& 
 				
 		if(group == MyObject::ENTITY) {
 			if(ID == Info::ID_Player) {
+				// Player loaded
 				player = dynamic_cast<Player*>(currObject);
 			} else {
+				// Enemy loaded
 				enemies.push_back(dynamic_cast<Enemy*>(currObject));
 			}
 		}
 		
 		if(lastY != currObject->getY()) {
+			// Loading is at a new row
 			lastY++;
 			levelMap.push_back(row);
 			row.clear();
