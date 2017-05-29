@@ -51,6 +51,7 @@ void GameScreen::paintInfoBox(Screen* screen, MsgBox* msgBox) {
 	auto msgBuffer = msgBox->getMsgBuffer();
 	ss << player->getInfo();
 	mvwprintw(screen->getCurrScreen(), 0, 0, ss.str().c_str());
+	mvwprintw(screen->getCurrScreen(), 1, 0, "Press %c to attack, arrow keys to move.", UserInput::K_ATTACK);
 		
 	int y = screen->infoScreenHeight - 1;
 	for(auto it = msgBuffer.rbegin(); it != msgBuffer.rend(); it++, y--) {

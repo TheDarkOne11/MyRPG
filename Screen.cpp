@@ -8,7 +8,7 @@ Screen::Screen() {
 	noecho();					// Do not print out pressed keys	
 	cbreak();
 	ESCDELAY = 250;				// Set delay of ESCAPE key
-	update();
+	getmaxyx(stdscr, maxHeight, maxWidth);
 
 	// Init custom windows
 	addScreen( stdscr );
@@ -27,7 +27,16 @@ Screen::~Screen() {
 }
 
 void Screen::update() {
+	int oldHeight = maxHeight;
+	int oldWidth = maxWidth;
 	getmaxyx(stdscr, maxHeight, maxWidth);
+	
+	if(oldHeight != maxHeight || oldWidth != maxWidth) {
+		wresize(vect_screens[1], maxHeight - infoScreenHeight, maxWidth);
+		wresize(vect_screens[2], infoScreenHeight, maxWidth);
+		mvwin(vect_screens[2], maxHeight - infoScreenHeight, 0);
+		wresize(vect_screens[3], maxHeight - infoScreenHeight, maxWidth);
+	}
 }
 
 
