@@ -1,0 +1,27 @@
+Jednoduché RPG II:
+Naprogramujte engine pro grafické RPG
+
+Váš engine:
+
+Ze souboru nahraje definici světa (mapu, předměty, příšery, ...)
+Umožní vytvořit herní postavu (její atributy a schopnosti) a následnou hru
+Implementuje jednoduchý soubojový systém a inventář
+Umožňuje ukládat a načítat rozehrané hry
+Engine může fungovat real-time hra, či tahová hra.
+
+Jak může vypadat mapa?
+
+# označuje zeď, T označuje truhlu s pokladem, > označuje pozici (směr otočení) hráče.
+
+###################
+# T   #      #    #
+#           ###   #
+#     ##   #      #
+#     #       # > #
+###################
+
+Rozšířený popis hry:
+Hráč prochází levely, utkává se s nepřáteli a sbírá věci, které mu pomáhají.
+Hráč hraje, dokud nezemře.
+Jde o tahovou hru. Každá entita může za svůj tah udělat více akcí v závislosti na atributech konkrétní Entity.
+Mapy jsou načítány ze souboru, ostatní věci se do mapy přidávají na náhodné pozice za běhu.
